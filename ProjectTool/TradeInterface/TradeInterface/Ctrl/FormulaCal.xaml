@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="TradeInterface.Ctrl.FormulaCal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="DataGrid">
+                <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+                <Setter Property="CanUserAddRows" Value="False"></Setter>
+                <Setter Property="IsReadOnly" Value="True"></Setter>
+                <Setter Property="ClipboardCopyMode" Value="IncludeHeader"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <Button Content="导入" Click="btnImport_Click" Margin="10,0,20,0" Width="70"></Button>
+
+            <Label x:Name="lblMultiply">乘系数:</Label>
+            <TextBox x:Name="txtMul" Width="80"></TextBox>
+            <Label x:Name="lblDivide" Margin="10,0,0,0">除系数:</Label>
+            <TextBox x:Name="txtDiv" Width="100"></TextBox>
+            <Button Content="重新计算" Click="btnCalculate_Click" Margin="10,0,10,0" Width="80"></Button>
+        </StackPanel>
+        <TabControl Grid.Row="2">
+            <TabItem Header="计算结果">
+                <DataGrid x:Name="dgCal">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Trader}" Header="交易员"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding StockID}" Header="股票代码"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding StockName}" Header="股票名称"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding PriceNow}" Header="现价(元)"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TurnoverRate}" Header="区间换手率"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FluctuationRate}" Header="区间振幅"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FillQty}" Header="区间成交量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Score}" Header="分数"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding MarketValue}" Header="市值"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TotalQty}" Header="股数"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Group}" Header="组合号"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="券单">
+                <DataGrid x:Name="dgLimit">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Group}" Header="组合号"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TraderAccount}" Header="交易员"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding StockID}" Header="股票代码"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TotalQty}" Header="总计可分配"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="股票信息">
+                <DataGrid x:Name="dgStock">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding StockID}" Header="股票代码"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding StockName}" Header="股票名称"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding PriceNow}" Header="现价(元)"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TurnoverRate}" Header="区间换手率"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FluctuationRate}" Header="区间振幅"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FillQty}" Header="区间成交量"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

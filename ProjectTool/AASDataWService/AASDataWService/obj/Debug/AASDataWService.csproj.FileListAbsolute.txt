@@ -1,0 +1,11 @@
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\AASDataWService.exe.config
+G:\githubProject\Tools\AASDataWService\AASDataWService\obj\Debug\AASDataWService.csprojResolveAssemblyReference.cache
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\AASDataWService.exe
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\AASDataWService.pdb
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\Ice.dll
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\log4net.dll
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\Newtonsoft.Json.dll
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\log4net.xml
+G:\githubProject\Tools\AASDataWService\AASDataWService\bin\Debug\ZeroMQ.xml
+G:\githubProject\Tools\AASDataWService\AASDataWService\obj\Debug\AASDataWService.exe
+G:\githubProject\Tools\AASDataWService\AASDataWService\obj\Debug\AASDataWService.pdb

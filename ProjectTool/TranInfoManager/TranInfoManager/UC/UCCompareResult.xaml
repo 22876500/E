@@ -1,0 +1,84 @@
+﻿<UserControl xmlns:UC="clr-namespace:TranInfoManager.UC"  x:Class="TranInfoManager.UC.UCCompareResult"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Background="SkyBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label>开始日期</Label>
+                <DatePicker Width="110" x:Name="dpDateStart"></DatePicker>
+                <Label Margin="10,0,0,0">截止日期</Label>
+                <DatePicker Width="110" x:Name="dpDateEnd"></DatePicker>
+                <ComboBox x:Name="cmbDate"  Margin="10,0,0,0" Width="92" Height="23" SelectionChanged="cmbDate_SelectionChanged"/>
+                <Button Margin="10,0" Click="btnSelect_Click" Width="50">查询</Button>
+                <Button Click="btnCaculate_Click" Width="50">统计</Button>
+            </StackPanel>
+            <Border BorderBrush="Silver" BorderThickness="0,1" Grid.Row="1" Height="40" Visibility="Collapsed" x:Name="bdFilter">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Label Content="交 易 员:"></Label>
+                    <ComboBox Width="110" x:Name="cbTrader" SelectionChanged="cbTrader_SelectionChanged"></ComboBox>
+                    <CheckBox x:Name="cbOnlySum" IsChecked="False" VerticalAlignment="Center" Margin="10,0,10,0" Click="cbOnlySum_Click">只看合计</CheckBox>
+                    <Button Width="80" Margin="5,0,0,0" Click="btnFilter_Click">条件查询</Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <TabControl  Grid.Row="1">
+            <TabControl.Resources>
+                <Style TargetType="DataGrid"  x:Key="GenerateInXaml">
+                    <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+                    <Setter Property="CanUserAddRows" Value="False"></Setter>
+                    <Setter Property="CanUserDeleteRows" Value="False"></Setter>
+                    <Setter Property="CanUserResizeRows" Value="False"></Setter>
+                    <Setter Property="ClipboardCopyMode" Value="IncludeHeader"></Setter>
+                    <Setter Property="TextBlock.TextAlignment" Value="Right"></Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="DailyDetail">
+                <DataGrid x:Name="dgDailyDetail" Style="{StaticResource GenerateInXaml}" LoadingRow="dgDaily_LoadingRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding DateFormat, StringFormat=\{0:yyyy-MM-dd\}}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Trader" Binding="{Binding TRADER}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Symbol2" Binding="{Binding Symbol2}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Shares" Binding="{Binding Shares}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Gross" Binding="{Binding Gross, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Comm" Binding="{Binding Comm, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ECN" Binding="{Binding ECN, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Other" Binding="{Binding Other, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Net" Binding="{Binding Net, StringFormat='n2'}" ></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="TraderDetail"  >
+                <DataGrid x:Name="dgTraderDetail" Style="{StaticResource GenerateInXaml}" LoadingRow="dgTraderDetail_LoadingRow" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="StartDate" Binding="{Binding StartDateFormat}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="EndDate" Binding="{Binding EndDateFormat}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Trader" Binding="{Binding Trader}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Symbol2" Binding="{Binding Symbol2}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Shares" Binding="{Binding Shares}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Gross" Binding="{Binding Gross, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Comm" Binding="{Binding Comm, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ECN" Binding="{Binding ECN, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Other" Binding="{Binding Other, StringFormat='n2'}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Net" Binding="{Binding Net, StringFormat='n2'}" ></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+
+        <UC:UCLoading x:Name="loading" Grid.RowSpan="3" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,106 @@
+10:57:42   开启扫单线程!
+10:58:00   ZeroMQ Replay接口正常开启，端口：42000。
+10:58:00   ZeroMQ Pub接口正常开启，端口：42001。
+10:59:24   扫单工具CATSInterface关闭完成。
+11:01:01   开启扫单线程!
+11:01:01   ZeroMQ Replay接口正常开启，端口：42000。
+11:01:01   ZeroMQ Pub接口正常开启，端口：42001。
+11:27:39   开始下单操作：
+11:27:40   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+11:27:40   下单结果:0, ClientID: 0
+11:28:17   开始下单操作：
+11:30:59   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+11:30:59   下单结果:1, ClientID: 1
+11:31:05   扫单工具CATSInterface关闭完成。
+11:32:47   开启扫单线程!
+11:32:54   ZeroMQ Replay接口正常开启，端口：42000。
+11:32:55   ZeroMQ Pub接口正常开启，端口：42001。
+11:42:45   开始下单操作：
+11:43:05   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+11:43:06   下单结果:0, ClientID: 0
+11:48:03   开启扫单线程!
+11:48:13   ZeroMQ Replay接口正常开启，端口：42000。
+11:48:13   ZeroMQ Pub接口正常开启，端口：42001。
+11:51:38   开始下单操作：
+11:51:41   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+11:51:41   下单结果:0, ClientID: 0
+11:51:51   开始下单操作：
+11:53:28   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+11:53:28   下单结果:1, ClientID: 1
+11:53:33   扫单工具CATSInterface关闭完成。
+11:54:57   开启扫单线程!
+11:54:59   ZeroMQ Replay接口正常开启，端口：42000。
+11:55:00   ZeroMQ Pub接口正常开启，端口：42001。
+11:55:21   开始下单操作：
+11:57:33   开启扫单线程!
+11:57:37   ZeroMQ Replay接口正常开启，端口：42000。
+11:57:37   ZeroMQ Pub接口正常开启，端口：42001。
+11:58:37   扫单工具CATSInterface关闭完成。
+11:59:45   开启扫单线程!
+11:59:48   ZeroMQ Pub接口正常开启，端口：42001。
+11:59:48   ZeroMQ Replay接口正常开启，端口：42000。
+12:04:28   开始下单操作：
+12:44:01   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+12:44:01   下单结果:1288, ClientID: 1288
+12:44:06   扫单工具CATSInterface关闭完成。
+12:45:57   开启扫单线程!
+12:47:12   ZeroMQ Replay接口正常开启，端口：42000。
+12:47:12   ZeroMQ Pub接口正常开启，端口：42001。
+12:48:44   扫单工具CATSInterface关闭完成。
+12:50:06   开启扫单线程!
+12:50:06   ZeroMQ Pub接口正常开启，端口：42001。
+12:50:06   ZeroMQ Replay接口正常开启，端口：42000。
+12:50:14   扫单工具CATSInterface关闭完成。
+12:51:25   开启扫单线程!
+12:51:25   ZeroMQ Replay接口正常开启，端口：42000。
+12:51:25   ZeroMQ Pub接口正常开启，端口：42001。
+12:53:08   开始下单操作：
+12:53:16   下单结果:1288, ClientID: 1288
+12:53:22   扫单工具CATSInterface关闭完成。
+12:54:24   开启扫单线程!
+12:54:28   ZeroMQ Replay接口正常开启，端口：42000。
+12:54:28   ZeroMQ Pub接口正常开启，端口：42001。
+12:54:35   OrderScanMain Exception, Message:正在中止线程。
+12:54:35   ASSetScanMain Exception, Message:正在中止线程。
+12:54:35   InstructionMain Exception, Message:正在中止线程。
+12:54:38   开启扫单线程!
+13:01:20   开始下单操作：
+13:02:06   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+13:02:07   下单结果:0, ClientID: 0
+13:02:42   扫单工具CATSInterface关闭完成。
+13:04:06   开启扫单线程!
+13:04:06   ZeroMQ Replay接口正常开启，端口：42000。
+13:04:06   ZeroMQ Pub接口正常开启，端口：42001。
+13:05:21   开始下单操作：
+13:06:02   Data type mismatch.   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)   在 System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)   在 System.Data.OleDb.OleDbCommand.ExecuteNonQuery()   在 CATSInterface.OledbAdapter.SetAddInstruction(String client_id, String acct_type, String acct, String symbol, String tradeside, String ord_qty, String ord_price, String ord_type) 位置 g:\githubProject\Tools\CATSInterface\CATSInterface\OledbAdapter.cs:行号 122
+13:06:03   下单结果:0, ClientID: 0
+13:06:14   扫单工具CATSInterface关闭完成。
+13:06:33   开启扫单线程!
+13:06:34   ZeroMQ Replay接口正常开启，端口：42000。
+13:06:34   ZeroMQ Pub接口正常开启，端口：42001。
+13:08:25   扫单工具CATSInterface关闭完成。
+13:09:00   开启扫单线程!
+13:09:00   ZeroMQ Pub接口正常开启，端口：42001。
+13:09:00   ZeroMQ Replay接口正常开启，端口：42000。
+13:10:22   开始下单操作：
+13:10:23   下单结果:0, ClientID: 0
+13:10:46   扫单工具CATSInterface关闭完成。
+13:22:03   开启扫单线程!
+13:22:03   ZeroMQ Replay接口正常开启，端口：42000。
+13:22:03   ZeroMQ Pub接口正常开启，端口：42001。
+13:22:16   扫单工具CATSInterface关闭完成。
+13:57:03   开启扫单线程!
+13:57:06   ZeroMQ Replay接口正常开启，端口：42000。
+13:57:06   ZeroMQ Pub接口正常开启，端口：42001。
+13:58:42   扫单工具CATSInterface关闭完成。
+13:58:59   开启扫单线程!
+13:59:00   ZeroMQ Replay接口正常开启，端口：42000。
+13:59:00   ZeroMQ Pub接口正常开启，端口：42001。
+13:59:32   扫单工具CATSInterface关闭完成。
+13:59:51   开启扫单线程!
+13:59:51   ZeroMQ Pub接口正常开启，端口：42001。
+13:59:51   ZeroMQ Replay接口正常开启，端口：42000。
+14:04:16   开启扫单线程!
+14:04:33   ZeroMQ Replay接口正常开启，端口：42000。
+14:04:33   ZeroMQ Pub接口正常开启，端口：42001。
+14:05:24   扫单工具CATSInterface关闭完成。

@@ -1,0 +1,5 @@
+G:\githubProject\Tools\CATSInterface\Entities\bin\Release\Entities.dll
+G:\githubProject\Tools\CATSInterface\Entities\bin\Release\Entities.pdb
+G:\githubProject\Tools\CATSInterface\Entities\obj\Release\Entities.dll
+G:\githubProject\Tools\CATSInterface\Entities\obj\Release\Entities.pdb
+G:\githubProject\Tools\CATSInterface\Entities\obj\Release\Entities.csprojResolveAssemblyReference.cache

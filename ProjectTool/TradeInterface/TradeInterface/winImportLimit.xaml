@@ -1,0 +1,43 @@
+﻿<Window x:Class="TradeInterface.winImportLimit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ctrl="clr-namespace:TradeInterface.Ctrl"
+        Title="winImportLimit" Height="480" Width="620">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="导入参数" Grid.Row="0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label>文本编码方式</Label>
+                <ComboBox x:Name="cmbEncode" Width="70">
+                    <ComboBoxItem Content="Default" IsSelected="True"></ComboBoxItem>
+                    <ComboBoxItem Content="ASCII"></ComboBoxItem>
+                    <ComboBoxItem Content="UTF8"></ComboBoxItem>
+                    <ComboBoxItem Content="Unicode"></ComboBoxItem>
+                </ComboBox>
+                <Button Click="Import_Click" Width="50" Margin="10,0,10,0">导入</Button>
+            </StackPanel>
+        </GroupBox>
+
+        <DataGrid Grid.Row="1" x:Name="dgImportData" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="True"></DataGrid>
+
+        <GroupBox Header="保存参数" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label>保存类型:</Label>
+                <ComboBox x:Name="cmbDataType" Width="100" >
+                    <ComboBoxItem>券单</ComboBoxItem>
+                    <ComboBoxItem>证券区间数据</ComboBoxItem>
+                </ComboBox>
+
+                <Button Click="btnSave_Click" Width="50" Margin="10,0,10,0" x:Name="btnSave">保存</Button>
+            </StackPanel>
+        </GroupBox>
+        <RichTextBox Grid.Row="3" x:Name="txtMsg"></RichTextBox>
+        
+        <ctrl:Loading x:Name="loading" Grid.RowSpan="4" Visibility="Collapsed"></ctrl:Loading>
+    </Grid>
+</Window>

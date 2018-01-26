@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_DataService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:48080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:48080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:48080/?xsd=xsd2" namespace="http://tempuri.org/JyDataSet.xsd" />
+      <xsd:import schemaLocation="http://localhost:48080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" />
+      <xsd:import schemaLocation="http://localhost:48080/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DataService_SendYJData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendYJData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_SendYJData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendYJDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryYJData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryYJData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryYJData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryYJDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryUserYjData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryUserYjData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryUserYjData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryUserYjDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryGroupYjData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryGroupYjData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryGroupYjData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryGroupYjDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryUserRegionYjData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryUserRegionYjData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryUserRegionYjData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryUserRegionYjDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="DataService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DataService_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_LoginUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUser" />
+  </wsdl:message>
+  <wsdl:message name="DataService_LoginUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_GetAllUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserName" />
+  </wsdl:message>
+  <wsdl:message name="DataService_GetAllUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_SendWTData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendWTData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_SendWTData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendWTDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryWTData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryWTData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_QueryWTData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryWTDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_SendQuotaData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendQuotaData" />
+  </wsdl:message>
+  <wsdl:message name="DataService_SendQuotaData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendQuotaDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DataService">
+    <wsdl:operation name="SendYJData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/SendYJData" message="tns:DataService_SendYJData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/SendYJDataResponse" message="tns:DataService_SendYJData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryYJData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/QueryYJData" message="tns:DataService_QueryYJData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/QueryYJDataResponse" message="tns:DataService_QueryYJData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserYjData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/QueryUserYjData" message="tns:DataService_QueryUserYjData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/QueryUserYjDataResponse" message="tns:DataService_QueryUserYjData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryGroupYjData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/QueryGroupYjData" message="tns:DataService_QueryGroupYjData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/QueryGroupYjDataResponse" message="tns:DataService_QueryGroupYjData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserRegionYjData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/QueryUserRegionYjData" message="tns:DataService_QueryUserRegionYjData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/QueryUserRegionYjDataResponse" message="tns:DataService_QueryUserRegionYjData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/AddUser" message="tns:DataService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/AddUserResponse" message="tns:DataService_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/DeleteUser" message="tns:DataService_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/DeleteUserResponse" message="tns:DataService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/LoginUser" message="tns:DataService_LoginUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/LoginUserResponse" message="tns:DataService_LoginUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/GetAllUserName" message="tns:DataService_GetAllUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/GetAllUserNameResponse" message="tns:DataService_GetAllUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWTData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/SendWTData" message="tns:DataService_SendWTData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/SendWTDataResponse" message="tns:DataService_SendWTData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryWTData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/QueryWTData" message="tns:DataService_QueryWTData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/QueryWTDataResponse" message="tns:DataService_QueryWTData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendQuotaData">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/SendQuotaData" message="tns:DataService_SendQuotaData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/SendQuotaDataResponse" message="tns:DataService_SendQuotaData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_DataService" type="tns:DataService">
+    <wsp:PolicyReference URI="#WSHttpBinding_DataService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendYJData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/SendYJData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryYJData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/QueryYJData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserYjData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/QueryUserYjData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryGroupYjData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/QueryGroupYjData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserRegionYjData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/QueryUserRegionYjData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://tempuri.org/DataService/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://tempuri.org/DataService/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <soap12:operation soapAction="http://tempuri.org/DataService/LoginUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserName">
+      <soap12:operation soapAction="http://tempuri.org/DataService/GetAllUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWTData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/SendWTData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryWTData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/QueryWTData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendQuotaData">
+      <soap12:operation soapAction="http://tempuri.org/DataService/SendQuotaData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataService">
+    <wsdl:port name="WSHttpBinding_DataService" binding="tns:WSHttpBinding_DataService">
+      <soap12:address location="http://localhost:48080/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:48080/</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

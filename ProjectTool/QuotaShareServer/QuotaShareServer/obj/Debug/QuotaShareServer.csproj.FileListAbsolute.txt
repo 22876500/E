@@ -1,0 +1,1 @@
+G:\githubProject\Tools\QuotaShareServer\QuotaShareServer\bin\Debug\QuotaShareServer.exe.config

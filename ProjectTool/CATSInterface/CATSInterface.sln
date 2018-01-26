@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CATSInterface", "CATSInterface\CATSInterface.csproj", "{BBB1D650-B1BF-49F5-B2EE-56AA14146A9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{215D7BEB-8CE7-40B1-A81E-A20EA3A05658}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBB1D650-B1BF-49F5-B2EE-56AA14146A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB1D650-B1BF-49F5-B2EE-56AA14146A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB1D650-B1BF-49F5-B2EE-56AA14146A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB1D650-B1BF-49F5-B2EE-56AA14146A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215D7BEB-8CE7-40B1-A81E-A20EA3A05658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215D7BEB-8CE7-40B1-A81E-A20EA3A05658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215D7BEB-8CE7-40B1-A81E-A20EA3A05658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215D7BEB-8CE7-40B1-A81E-A20EA3A05658}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

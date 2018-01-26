@@ -1,0 +1,5 @@
+G:\githubProject\Tools\AAS\Client\Libraries\bin\Release\Libraries.dll
+G:\githubProject\Tools\AAS\Client\Libraries\bin\Release\Libraries.pdb
+G:\githubProject\Tools\AAS\Client\Libraries\obj\Release\Libraries.csprojResolveAssemblyReference.cache
+G:\githubProject\Tools\AAS\Client\Libraries\obj\Release\Libraries.dll
+G:\githubProject\Tools\AAS\Client\Libraries\obj\Release\Libraries.pdb

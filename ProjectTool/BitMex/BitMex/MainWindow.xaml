@@ -1,0 +1,9 @@
+﻿<Window x:Class="BitMex.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:View="clr-namespace:BitMex.View"
+        Title="MainWindow" Height="500" Width="810">
+    <Grid>
+        <View:SubResultMix></View:SubResultMix>
+    </Grid>
+</Window>

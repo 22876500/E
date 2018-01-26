@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5762B98-7AD5-451B-B54A-A9AE51B09502}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AASDataWService</RootNamespace>
+    <AssemblyName>AASDataWService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ice, Version=3.6.2.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Ice.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZeroMQ, Version=4.1.0.3848, Culture=neutral, PublicKeyToken=4a9630883fd6c563, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\ZeroMQ.4.1.0.15\lib\net40\ZeroMQ.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BaseCommon.cs" />
+    <Compile Include="Common\ByteArrayPool.cs" />
+    <Compile Include="Common\ConfigMain.cs" />
+    <Compile Include="DataModel\MarketData.cs" />
+    <Compile Include="DataModel\MarketTransaction.cs" />
+    <Compile Include="Ice\DataServer\Common.cs" />
+    <Compile Include="Ice\DataServer\DataService.cs" />
+    <Compile Include="Logger\LogHelper.cs" />
+    <Compile Include="Server\IceDataServer.cs" />
+    <Compile Include="Server\IceService\IceDataService.cs" />
+    <Compile Include="Service1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service1.Designer.cs">
+      <DependentUpon>Service1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ice\DataServer\Common.ice" />
+    <None Include="Ice\DataServer\DataService.ice" />
+    <None Include="Ice\DataServer\IceBuilder.command.0.log" />
+    <None Include="Ice\DataServer\IceBuilder.d" />
+    <EmbeddedResource Include="Logger\log.config" />
+    <None Include="packages.config" />
+    <None Include="packages\CsvHelper.2.13.1.0\CsvHelper.2.13.1.0.nupkg" />
+    <None Include="packages\Extended.Wpf.Toolkit.2.4\Extended.Wpf.Toolkit.2.4.nupkg" />
+    <None Include="packages\Extended.Wpf.Toolkit.2.4\Extended.Wpf.Toolkit.2.4.nuspec" />
+    <None Include="packages\Extended.Wpf.Toolkit.2.4\tools\install.ps1" />
+    <None Include="packages\Ice.3.5.1.0\Ice.3.5.1.0.nupkg" />
+    <None Include="packages\Ice.3.5.1.0\Ice.3.5.1.0.nuspec" />
+    <None Include="packages\log4net.2.0.3\log4net.2.0.3.nupkg" />
+    <None Include="packages\Newtonsoft.Json.7.0.1\Newtonsoft.Json.7.0.1.nupkg" />
+    <None Include="packages\Newtonsoft.Json.7.0.1\tools\install.ps1" />
+    <None Include="packages\protobuf-net.2.0.0.668\lib\netcore45\protobuf-net.pri" />
+    <None Include="packages\protobuf-net.2.0.0.668\protobuf-net.2.0.0.668.nupkg" />
+    <None Include="packages\repositories.config" />
+    <None Include="packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.pri" />
+    <None Include="packages\Unity.3.5.1404.0\Unity.3.5.1404.0.nupkg" />
+    <None Include="packages\Unity.3.5.1404.0\Unity.3.5.1404.0.nuspec" />
+    <None Include="packages\Unity.3.5.1404.0\UnityConfiguration30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages\ZeroMQ.4.1.0.15\content\amd64\libsodium.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\content\amd64\libzmq.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\content\i386\libsodium.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\content\i386\libzmq.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\lib\net40\amd64\libsodium.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\lib\net40\amd64\libzmq.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\lib\net40\i386\libsodium.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\lib\net40\i386\libzmq.so" />
+    <None Include="packages\ZeroMQ.4.1.0.15\ZeroMQ.4.1.0.15.nupkg" />
+    <None Include="packages\ZeroMQ.4.1.0.15\ZeroMQ.4.1.0.15.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lib\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net20\CsvHelper.dll" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net20\CsvHelper.pdb" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net20\CsvHelper.xml" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net35-client\CsvHelper.dll" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net35-client\CsvHelper.pdb" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net35-client\CsvHelper.xml" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net40-client\CsvHelper.dll" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net40-client\CsvHelper.pdb" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\net40-client\CsvHelper.xml" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\portable-net40+sl5+win8+wpa+wp8\CsvHelper.dll" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\portable-net40+sl5+win8+wpa+wp8\CsvHelper.pdb" />
+    <Content Include="packages\CsvHelper.2.13.1.0\lib\portable-net40+sl5+win8+wpa+wp8\CsvHelper.xml" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net35\WPFToolkit.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net35\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\de\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\es\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\fr\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\hu\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\it\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\pt-BR\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\ro\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\ru\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\sv\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.DataGrid.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="packages\Extended.Wpf.Toolkit.2.4\lib\net40\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="packages\Ice.3.5.1.0\lib\Ice.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net10-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net10-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.3\lib\net11-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net11-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.3\lib\net20-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net20-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.3\lib\net35-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net35-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.3\lib\net35-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net35-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.3\lib\net40-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net40-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.3\lib\net40-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.3\lib\net40-full\log4net.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net20-cf\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net20-cf\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net20-cf\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net20\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net20\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net20\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net30\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net30\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net30\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net35-cf\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net35-cf\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net35-cf\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net35\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net35\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net35\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net40-cf\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net40-cf\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net40-cf\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\netcore45\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\netcore45\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\netcore45\protobuf-net.XML" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\portable-sl4+net40+wp7+windows8\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\portable-sl4+net40+wp7+windows8\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\portable-sl4+net40+wp7+windows8\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl3-wp\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl3-wp\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl3-wp\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl4-windowsphone71\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl4-windowsphone71\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl4-windowsphone71\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl4\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl4\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\sl4\protobuf-net.xml" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\windowsphone8\protobuf-net.dll" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\windowsphone8\protobuf-net.pdb" />
+    <Content Include="packages\protobuf-net.2.0.0.668\lib\windowsphone8\protobuf-net.xml" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.XML" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.XML" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.xml" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\portable-net45+wp80+win8+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\portable-net45+wp80+win8+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.xml" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.XML" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.xml" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\wp80\Microsoft.Practices.Unity.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\wp80\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\wp80\Microsoft.Practices.Unity.RegistrationByConvention.XML" />
+    <Content Include="packages\Unity.3.5.1404.0\lib\wp80\Microsoft.Practices.Unity.xml" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\content\amd64\libsodium.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\content\amd64\libzmq.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\content\i386\libsodium.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\content\i386\libzmq.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\lib\net40\amd64\libsodium.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\lib\net40\amd64\libzmq.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\lib\net40\i386\libsodium.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\lib\net40\i386\libzmq.dll" />
+    <Content Include="packages\ZeroMQ.4.1.0.15\lib\net40\ZeroMQ.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

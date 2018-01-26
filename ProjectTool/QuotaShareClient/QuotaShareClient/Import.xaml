@@ -1,0 +1,10 @@
+﻿<Window x:Class="QuotaShareClient.Import"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="数据导入" Height="260" Width="420">
+    <Grid>
+        <TextBox x:Name="txtFilePath" HorizontalAlignment="Left" Height="23" Margin="36,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210"/>
+        <Button Content="选择导入" HorizontalAlignment="Left" Margin="278,67,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.253,0.789" Click="Import_Click"/>
+
+    </Grid>
+</Window>

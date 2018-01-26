@@ -1,0 +1,77 @@
+﻿<UserControl xmlns:Controls="clr-namespace:DataComparision.Controls"  x:Class="DataComparision.Controls.TotalInfoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="CenterAlignmentStyle" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="RightAlignmentStyle" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Right"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="Silver" BorderThickness="1" Background="SkyBlue">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" >
+                <Label Content="开始日期："/>
+                <DatePicker x:Name="dpDateStart" Width="110"/>
+
+                <Label Content="结束日期:" Margin="20,0,0,0"/>
+                <DatePicker x:Name="dpDateEnd" Width="110"/>
+                
+                <Label Margin="20,0,0,0" Content="组合号:"/>
+                <ComboBox x:Name="cmbGroup"  Width="60" />
+
+                <CheckBox x:Name="ckbMergeGroup" VerticalAlignment="Center" Margin="10,0,10,0" Content="相同组合号合并" Click="ckbMergeGroup_Click"></CheckBox>
+                
+                <Button Width="50" Margin="10,1,0,1" Click="Button_Search_Click" Content="查询"/>
+
+                <Button Margin="10,1,0,1" Width="50" Click="Button_Calculate_Click">统计</Button>
+            </StackPanel>
+        </Border>
+        
+        <DataGrid Grid.Row="1" x:Name="dgCal" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" AutoGenerateColumns="False" 
+                  LoadingRow="dgCal_LoadingRow" KeyUp="dgCal_KeyUp" IsReadOnly="True" EnableRowVirtualization="True" VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="日期" Binding="{ Binding 日期, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="账户" Binding="{ Binding 账户}"  ElementStyle="{StaticResource CenterAlignmentStyle}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="成交金额汇总" Binding="{ Binding 成交金额}" ElementStyle="{StaticResource RightAlignmentStyle}"  MinWidth="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="发生金额汇总" Binding="{ Binding 发生金额}" ElementStyle="{StaticResource RightAlignmentStyle}"  MinWidth="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="剔除备注" Binding="{ Binding 剔除备注}" Width="*" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="MaxHeight" Value="60"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="导出" Click="dgCalOutput_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        
+        
+        <DataGrid Grid.Row="1" x:Name="dgMerge" Visibility="Collapsed" ClipboardCopyMode="IncludeHeader"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
+                  AutoGenerateColumns="False" LoadingRow="dgMerge_LoadingRow" KeyUp="dgMerge_KeyUp">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="开始日期" Binding="{ Binding 开始日期, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="结束日期" Binding="{ Binding 结束日期, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="账户" Binding="{ Binding 账户}"  ElementStyle="{StaticResource CenterAlignmentStyle}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="成交金额汇总" Binding="{ Binding 成交金额}" ElementStyle="{StaticResource RightAlignmentStyle}"  MinWidth="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="发生金额汇总" Binding="{ Binding 发生金额}" ElementStyle="{StaticResource RightAlignmentStyle}"  MinWidth="140"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Controls:Loading x:Name="loading" Grid.RowSpan="2" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

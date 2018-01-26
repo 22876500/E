@@ -1,0 +1,8 @@
+16:45:16   1.Start Logon
+16:45:18   2.Logon Finished
+16:45:18   3.Start Intialize!
+16:45:19   TdxApi.OpenTdx 开始 
+16:45:19   TdxApi.OpenTdx 结束 
+16:45:19   4.Init Group Info
+16:45:19   5.Group Count 20
+16:45:55   交易接口查询耗时记录, 交易类型 2, 耗时 0.7964162

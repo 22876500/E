@@ -1,0 +1,39 @@
+﻿<Window x:Class="GroupClient.ConfigEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="配置管理" Height="180" Width="240" Icon="Images\RighteousFury.ico">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <!--<RowDefinition />
+            <RowDefinition />-->
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" >开始查询时间：</Label>
+        <Label Grid.Row="2">结束查询时间：</Label>
+
+        <!--<Label Grid.Row="3">管理员账号：</Label>
+        <Label Grid.Row="4">管理密码：</Label>-->
+        
+        <TextBox Grid.Row="1" Grid.Column="1" Text="8:30" VerticalAlignment="Center" HorizontalAlignment="Left"  Width="80" x:Name="txtStartTime"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="15:30"  VerticalAlignment="Center" HorizontalAlignment="Left"  Width="80" x:Name="txtEndTime"/>
+        <!--<TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="80" x:Name="txtAccount"></TextBox>
+        <PasswordBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="80" x:Name="txtPassword"></PasswordBox>-->
+        
+        <Button Grid.Row="3" Width="70" Height="22" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="btnSubmit_Click">确定</Button>
+    </Grid>
+</Window>

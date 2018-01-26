@@ -1,0 +1,55 @@
+﻿<Window x:Class="TradeInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:ctrl="clr-namespace:TradeInterface.Ctrl"
+        Height="650" Width="925" MouseEnter="Window_MouseEnter">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--<RowDefinition Height="Auto"/>-->
+            <!--<RowDefinition Height="40" />-->
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem Header="接口查询">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="40" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1">
+
+                        <Label Content="交易数据" VerticalAlignment="Center"></Label>
+                        <ComboBox Width="80" x:Name="cbTodayType"  GotFocus="cbTodayType_GotFocus">
+                            <ComboBoxItem Content="资金" DataContext="0" IsSelected="True"></ComboBoxItem>
+                            <ComboBoxItem Content="股份" DataContext="1"></ComboBoxItem>
+                            <ComboBoxItem Content="当日委托" DataContext="2"></ComboBoxItem>
+                            <!--<ComboBoxItem Content="当日成交" DataContext="3"></ComboBoxItem>-->
+                            <!--<ComboBoxItem Content="可撤单" DataContext="4"></ComboBoxItem>
+                            <ComboBoxItem Content="股东代码" DataContext="5"></ComboBoxItem>-->
+                            <ComboBoxItem Content="融资余额" DataContext="6"></ComboBoxItem>
+                            <!--<ComboBoxItem Content="融券余额" DataContext="7"></ComboBoxItem>-->
+                            <!--<ComboBoxItem Content="可融证券" DataContext="8"></ComboBoxItem>-->
+                        </ComboBox>
+                        <Label Margin="10,0,0,0">组合号：</Label>
+                        <ComboBox x:Name="cmbGroup" Width="60" GotFocus="cmbGroup_GotFocus"></ComboBox>
+                        <CheckBox x:Name="ckbIsAllColumn" Click="ckbIsAllColumn_Click" Visibility="Collapsed">是否显示所有列</CheckBox>
+                        <CheckBox x:Name="ckbIsCheckPort" Content="是否修正端口号" VerticalAlignment="Center" Margin="10,0,0,0" IsChecked="False" ToolTip="端口为8888的帐号，将修正登录ip及端口号"></CheckBox>
+                        <Button Margin="10,0" Width="80" Click="Button_Search_Click">查询</Button>
+                        <Button x:Name="btnRepay"  Click="btnRepay_Click">信用账户还款</Button>
+
+                    </StackPanel>
+                    <DataGrid x:Name="dgMain" Grid.Row="2" CanUserDeleteRows="False" CanUserAddRows="False" ClipboardCopyMode="IncludeHeader"></DataGrid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="公式计算">
+                <ctrl:FormulaCal />
+            </TabItem>
+        </TabControl>
+
+        <ctrl:Loading  Grid.RowSpan="3" x:Name="loading" Visibility="Collapsed"></ctrl:Loading>
+    </Grid>
+</Window>

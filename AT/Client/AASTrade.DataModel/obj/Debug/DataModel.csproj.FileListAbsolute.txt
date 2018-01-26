@@ -1,0 +1,4 @@
+G:\githubProject\Tools\AAS\Client\AASTrade.DataModel\bin\Debug\DataModel.dll
+G:\githubProject\Tools\AAS\Client\AASTrade.DataModel\bin\Debug\DataModel.pdb
+G:\githubProject\Tools\AAS\Client\AASTrade.DataModel\obj\Debug\DataModel.dll
+G:\githubProject\Tools\AAS\Client\AASTrade.DataModel\obj\Debug\DataModel.pdb

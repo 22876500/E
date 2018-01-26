@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CollectDataServer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="JyDataSet.业绩统计DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.业绩统计DataTable" Namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="业绩统计DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.交易员业绩统计DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.交易员业绩统计DataTable" Namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="交易员业绩统计DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.分帐户业绩统计DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.分帐户业绩统计DataTable" Namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="分帐户业绩统计DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.分组业绩统计DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.分组业绩统计DataTable" Namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="分组业绩统计DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.已发委托DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.已发委托DataTable" Namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="已发委托DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.额度分配DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.额度分配DataTable" Namespace="http://schemas.datacontract.org/2004/07/CollectDataServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="额度分配DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

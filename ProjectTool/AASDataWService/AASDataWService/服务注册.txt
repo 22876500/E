@@ -1,0 +1,1 @@
+sc create AASDataWService binpath= D:\AASDataWService\AASDataWService.exe type= own start= auto 

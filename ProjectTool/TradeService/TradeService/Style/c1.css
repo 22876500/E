@@ -1,0 +1,119 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: Verdana, Arial, '宋体';
+    font-size: 12px;
+}
+
+strong {
+    font-family: '微软雅黑';
+    font-size: 14px;
+    color: #000;
+    font-weight: 800;
+}
+
+h2, h3, h4, h5, h6, em {
+    font-weight: bold;
+}
+
+html {
+    min-width: 966px;
+    background: #f9f9f9;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #f9f9f9;
+}
+
+div#main {
+    margin:2px auto;
+    border: 1px solid silver;
+    padding:10px;
+    background:white;
+    font-family:'Microsoft YaHei';
+    width:1100px;
+}
+
+div#navfirst {
+    height: 55px;
+    width: 1100px;
+    margin: 0 0 0 12px;
+    padding: 0;
+    border: 0;
+    background: #fff;
+}
+
+ul#menu {
+    height: 55px;
+    width: 1100px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+ul#menu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+}
+
+ul#menu li, ul#menu a {
+    display: block;
+    height: 55px;
+    line-height: 55px;
+}
+
+ul#menu li a {
+    overflow: hidden;
+    text-decoration: none;
+    text-align:center;
+    vertical-align: middle;
+    font-size: larger;
+}
+
+a:link, a:visited {
+    text-decoration : underline;
+    color : #900b09;
+    background : transparent; 
+}
+
+a:hover {
+    text-decoration : underline;
+    color: #ff0000;
+    background : transparent; 
+}
+
+a:active {
+    text-decoration : underline;
+    color : #ff0000;
+    background : transparent;  
+}
+
+#h {left:0;width:155px; font-weight:bolder; }
+#b {left:155px;width:157px; font-weight:bolder; }
+#s {left:312px;width:167px; font-weight:bolder; }
+#d {left:479px;width:158px;}
+#x {left:637px;width:101px;}
+#m {left:738px;width:185px;}
+#w {left:923px;width:177px;}
+
+#h a:hover { background: transparent; }
+#b a:hover { background: transparent; }
+#s a:hover { background: transparent; }
+#d a:hover { background: transparent; }
+#x a:hover { background: transparent; }
+#m a:hover { background: transparent; }
+#w a:hover { background: transparent; }
+

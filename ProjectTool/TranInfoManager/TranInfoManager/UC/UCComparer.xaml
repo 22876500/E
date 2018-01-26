@@ -1,0 +1,241 @@
+﻿<UserControl x:Class="TranInfoManager.UC.UCComparer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:uc="clr-namespace:TranInfoManager.UC"
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="Silver" BorderThickness="1" Background="SkyBlue">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" >
+                <Label Content="日期："/>
+                <DatePicker x:Name="dpDate" Width="110"/>
+                <ComboBox x:Name="cmbDate"  Margin="10,0,0,0" Width="150" Height="23" SelectionChanged="cmbDate_SelectionChanged"/>
+                <Button Width="50" Margin="10,1,0,1" Click="Button_Search_Click" Content="查询"/>
+            </StackPanel>
+        </Border>
+
+        <TabControl Grid.Row="1">
+            <TabControl.Resources>
+                <Style TargetType="DataGrid"  x:Key="GenerateInXaml">
+                    <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+                    <Setter Property="CanUserAddRows" Value="False"></Setter>
+                    <Setter Property="CanUserDeleteRows" Value="False"></Setter>
+                    <Setter Property="CanUserResizeRows" Value="False"></Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Result">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgMarketMatched" Style="{StaticResource GenerateInXaml}" LoadingRow="DataGridSoftware_LoadingRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Action " Binding="{ Binding Action }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Customer " Binding="{ Binding Customer }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="TicketID " Binding="{ Binding TicketID }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="ISIN " Binding="{ Binding ISIN }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Symbol2 " Binding="{ Binding Symbol2 }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="ExQuan " Binding="{ Binding ExQuan }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="ExPrice " Binding="{ Binding ExPrice }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="FirstMoney " Binding="{ Binding FirstMoney }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Exchange " Binding="{ Binding Exchange }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="TotalCommission_WithoutFeesAndCharges " Binding="{ Binding TotalCommission_WithoutFeesAndCharges }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="SecFee" Binding="{ Binding SecFee}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="NetMoney " Binding="{ Binding NetMoney }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="NasdTradingActivityFee " Binding="{ Binding NasdTradingActivityFee }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="ExchangeFee " Binding="{ Binding ExchangeFee }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="ECNRebate " Binding="{ Binding ECNRebate }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="NSCCPassThru " Binding="{ Binding NSCCPassThru }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="SIPC " Binding="{ Binding SIPC }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="FTT " Binding="{ Binding FTT }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="TradeDate " Binding="{ Binding TradeDate }" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="SettlementDate " Binding="{ Binding SettlementDate }" ></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GridSplitter Width="5"></GridSplitter>
+                    <DataGrid x:Name="dgTradeMatched"  Style="{StaticResource GenerateInXaml}" Grid.Column="1"  LoadingRow="DataGridSoftware_LoadingRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Time" Binding="{Binding Time}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Sym" Binding="{Binding Sym}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Side" Binding="{Binding Side}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Qty" Binding="{Binding Qty}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Exe_Price" Binding="{Binding Exe_Price}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Acct" Binding="{Binding Acct}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Lvs_Qty" Binding="{Binding Lvs_Qty}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Dest" Binding="{Binding Dest}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Trader" Binding="{Binding Trader}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Sol" Binding="{Binding Sol}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Seq" Binding="{Binding Seq}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Cl_Ord_ID" Binding="{Binding Cl_Ord_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Exch_Cl_Ord_ID" Binding="{Binding Exch_Cl_Ord_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Exch_Ord_ID" Binding="{Binding Exch_Ord_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Exch_Ord_ID_2" Binding="{Binding Exch_Ord_ID_2}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Exch_Exec_ID" Binding="{Binding Exch_Exec_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Clear" Binding="{Binding Clear}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="ECN_Fee" Binding="{Binding ECN_Fee}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Tif" Binding="{Binding Tif}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="AON" Binding="{Binding AON}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="DNR" Binding="{Binding DNR}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="DNI" Binding="{Binding DNI}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Acct_Type" Binding="{Binding Acct_Type}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Specialist" Binding="{Binding Specialist}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Source" Binding="{Binding Source}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Poss_Dupe" Binding="{Binding Poss_Dupe}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Updated" Binding="{Binding Updated}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Order_Date_Str" Binding="{Binding Order_Date_Str}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Order_Time" Binding="{Binding Order_Time}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Ord_Rec_ID" Binding="{Binding Ord_Rec_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Rec_ID" Binding="{Binding Rec_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Attrib" Binding="{Binding Attrib}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Cvr_Qty" Binding="{Binding Cvr_Qty}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Comm" Binding="{Binding Comm}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creator" Binding="{Binding Creator}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Batch_ID" Binding="{Binding Batch_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Strategy" Binding="{Binding Strategy}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Alloc_ID" Binding="{Binding Alloc_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Acronym" Binding="{Binding Acronym}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Expiration" Binding="{Binding Expiration}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Strike" Binding="{Binding Strike}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Call_Put" Binding="{Binding Call_Put}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Underlying" Binding="{Binding Underlying}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Open_Close" Binding="{Binding Open_Close}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Cover_Un" Binding="{Binding Cover_Un}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Currency" Binding="{Binding Currency}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Sett_Cur" Binding="{Binding Sett_Cur}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="FutSettDate" Binding="{Binding FutSettDate}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="SettCurrAmt" Binding="{Binding SettCurrAmt}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Basket_Name" Binding="{Binding Basket_Name}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Basket_ID" Binding="{Binding Basket_ID}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Last_Mkt" Binding="{Binding Last_Mkt}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Inst" Binding="{Binding Inst}" ></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="NotMatched">
+                <DataGrid x:Name="dgNotMatchedMarket" Style="{StaticResource GenerateInXaml}"  LoadingRow="DataGridSoftware_LoadingRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Action " Binding="{ Binding Action }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Customer " Binding="{ Binding Customer }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="TicketID " Binding="{ Binding TicketID }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ISIN " Binding="{ Binding ISIN }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Symbol2 " Binding="{ Binding Symbol2 }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ExQuan " Binding="{ Binding ExQuan }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ExPrice " Binding="{ Binding ExPrice }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="FirstMoney " Binding="{ Binding FirstMoney }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exchange " Binding="{ Binding Exchange }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="TotalCommission_WithoutFeesAndCharges " Binding="{ Binding TotalCommission_WithoutFeesAndCharges }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SecFee" Binding="{ Binding SecFee}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="NetMoney " Binding="{ Binding NetMoney }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="NasdTradingActivityFee " Binding="{ Binding NasdTradingActivityFee }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ExchangeFee " Binding="{ Binding ExchangeFee }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ECNRebate " Binding="{ Binding ECNRebate }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="NSCCPassThru " Binding="{ Binding NSCCPassThru }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SIPC " Binding="{ Binding SIPC }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="FTT " Binding="{ Binding FTT }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="TradeDate " Binding="{ Binding TradeDate }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SettlementDate " Binding="{ Binding SettlementDate }" ></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Market">
+                <DataGrid x:Name="dgMarket" Style="{StaticResource GenerateInXaml}"  LoadingRow="DataGridSoftware_LoadingRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Action " Binding="{ Binding Action }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Customer " Binding="{ Binding Customer }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="TicketID " Binding="{ Binding TicketID }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ISIN " Binding="{ Binding ISIN }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Symbol2 " Binding="{ Binding Symbol2 }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ExQuan " Binding="{ Binding ExQuan }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ExPrice " Binding="{ Binding ExPrice }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="FirstMoney " Binding="{ Binding FirstMoney }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exchange " Binding="{ Binding Exchange }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="TotalCommission_WithoutFeesAndCharges " Binding="{ Binding TotalCommission_WithoutFeesAndCharges }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SecFee" Binding="{ Binding SecFee}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="NetMoney " Binding="{ Binding NetMoney }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="NasdTradingActivityFee " Binding="{ Binding NasdTradingActivityFee }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ExchangeFee " Binding="{ Binding ExchangeFee }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ECNRebate " Binding="{ Binding ECNRebate }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="NSCCPassThru " Binding="{ Binding NSCCPassThru }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SIPC " Binding="{ Binding SIPC }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="FTT " Binding="{ Binding FTT }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="TradeDate " Binding="{ Binding TradeDate }" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SettlementDate " Binding="{ Binding SettlementDate }" ></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Trader">
+                <DataGrid x:Name="dgTrader" Style="{StaticResource GenerateInXaml}" LoadingRow="DataGridSoftware_LoadingRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Time" Binding="{Binding Time}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Sym" Binding="{Binding Sym}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Side" Binding="{Binding Side}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Qty" Binding="{Binding Qty}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exe_Price" Binding="{Binding Exe_Price}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Acct" Binding="{Binding Acct}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Lvs_Qty" Binding="{Binding Lvs_Qty}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Dest" Binding="{Binding Dest}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Trader" Binding="{Binding Trader}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Sol" Binding="{Binding Sol}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Seq" Binding="{Binding Seq}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Cl_Ord_ID" Binding="{Binding Cl_Ord_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exch_Cl_Ord_ID" Binding="{Binding Exch_Cl_Ord_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exch_Ord_ID" Binding="{Binding Exch_Ord_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exch_Ord_ID_2" Binding="{Binding Exch_Ord_ID_2}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Exch_Exec_ID" Binding="{Binding Exch_Exec_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Clear" Binding="{Binding Clear}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="ECN_Fee" Binding="{Binding ECN_Fee}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tif" Binding="{Binding Tif}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="AON" Binding="{Binding AON}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="DNR" Binding="{Binding DNR}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="DNI" Binding="{Binding DNI}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Acct_Type" Binding="{Binding Acct_Type}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Specialist" Binding="{Binding Specialist}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Source" Binding="{Binding Source}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Poss_Dupe" Binding="{Binding Poss_Dupe}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Updated" Binding="{Binding Updated}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Order_Date_Str" Binding="{Binding Order_Date_Str}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Order_Time" Binding="{Binding Order_Time}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ord_Rec_ID" Binding="{Binding Ord_Rec_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Rec_ID" Binding="{Binding Rec_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Attrib" Binding="{Binding Attrib}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Cvr_Qty" Binding="{Binding Cvr_Qty}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Comm" Binding="{Binding Comm}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Creator" Binding="{Binding Creator}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Batch_ID" Binding="{Binding Batch_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Strategy" Binding="{Binding Strategy}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Alloc_ID" Binding="{Binding Alloc_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Acronym" Binding="{Binding Acronym}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Expiration" Binding="{Binding Expiration}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Strike" Binding="{Binding Strike}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Call_Put" Binding="{Binding Call_Put}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Underlying" Binding="{Binding Underlying}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Open_Close" Binding="{Binding Open_Close}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Cover_Un" Binding="{Binding Cover_Un}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Currency" Binding="{Binding Currency}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Sett_Cur" Binding="{Binding Sett_Cur}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="FutSettDate" Binding="{Binding FutSettDate}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="SettCurrAmt" Binding="{Binding SettCurrAmt}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Basket_Name" Binding="{Binding Basket_Name}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Basket_ID" Binding="{Binding Basket_ID}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Last_Mkt" Binding="{Binding Last_Mkt}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Inst" Binding="{Binding Inst}" ></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <uc:UCLoading x:Name="loading" Grid.RowSpan="2" Visibility="Collapsed"></uc:UCLoading>
+    </Grid>
+    
+</UserControl>

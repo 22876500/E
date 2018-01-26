@@ -1,0 +1,33 @@
+﻿<Window x:Class="QuotaShareClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="额度共享客户端" Height="435" Width="732">
+    <Grid VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Menu Height="20" Margin="0,10,0,0" VerticalAlignment="Top">
+            <MenuItem Header="设置"/>
+            <MenuItem Header="导入" Click="OpenImport_Click"/>
+            <MenuItem Header="导出"/>
+        </Menu>
+        <ListView x:Name="listView1" VerticalAlignment="Top" Margin="0,30,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="交易员" DisplayMemberBinding="{Binding Trader}" Width="auto"/>
+                    <GridViewColumn Header="证券代码" DisplayMemberBinding="{Binding Code}" Width="auto"/>
+                    <GridViewColumn Header="组合号" DisplayMemberBinding="{Binding Group}" Width="auto"/>
+                    <GridViewColumn Header="市场" DisplayMemberBinding="{Binding Market}" Width="auto"/>
+                    <GridViewColumn Header="证券名称" DisplayMemberBinding="{Binding CodeName}" Width="auto"/>
+                    <GridViewColumn Header="拼音缩写" DisplayMemberBinding="{Binding PinYin}" Width="auto"/>
+                    <GridViewColumn Header="买模式" DisplayMemberBinding="{Binding BuyType}" Width="auto"/>
+                    <GridViewColumn Header="卖模式" DisplayMemberBinding="{Binding SellType}" Width="auto"/>
+                    <GridViewColumn Header="股数" DisplayMemberBinding="{Binding TradeQuota}" Width="auto"/>
+                    <GridViewColumn Header="手续费率" DisplayMemberBinding="{Binding Rate}" Width="auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

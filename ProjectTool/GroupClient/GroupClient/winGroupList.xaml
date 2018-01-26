@@ -1,0 +1,28 @@
+﻿<Window x:Class="GroupClient.winGroupList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="券商列表" Height="300" Width="520" Icon="Images\RighteousFury.ico">
+    <Grid>
+        <DataGrid x:Name="dgMain" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" ClipboardCopyMode="IncludeHeader" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="名称" Binding="{Binding 名称}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="启用" Binding="{Binding 启用}"  ></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="交易服务器" Binding="{Binding 交易服务器}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="IP" Binding="{Binding IP}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Port" Binding="{Binding Port}"></DataGridTextColumn>
+                <DataGridTextColumn Header="版本号" Binding="{Binding 版本号}"></DataGridTextColumn>
+                <DataGridTextColumn Header="营业部代码" Binding="{Binding 营业部代码}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="操作" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button DataContext="{Binding}" Margin="2,0,2,0" Click="Button_Edit_Click">编辑</Button>
+                                <Button DataContext="{Binding}" Margin="2,0,2,0" Click="Button_Delete_Click">删除</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

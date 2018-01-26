@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A14855D7-1E2E-4591-8CC4-18A8B1AA161B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataComparision</RootNamespace>
+    <AssemblyName>DataComparision</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>G:\bak\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.1</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\ThunderShield.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3E4230B3268A89DD92CC8A4510BBA8BB23DF4922</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DataComparision_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DataComparision.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.14\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\ComparePage.xaml.cs">
+      <DependentUpon>ComparePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DbDataManagement.xaml.cs">
+      <DependentUpon>DbDataManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HisSearch.xaml.cs">
+      <DependentUpon>HisSearch.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAdapter\CSVDataReader.cs" />
+    <Compile Include="Service References\ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupEdit.xaml.cs">
+      <DependentUpon>GroupEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GroupList.xaml.cs">
+      <DependentUpon>GroupList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OutputExcel.xaml.cs">
+      <DependentUpon>OutputExcel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TotalInfoPage.xaml.cs">
+      <DependentUpon>TotalInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WinHeader.xaml.cs">
+      <DependentUpon>WinHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cryptor.cs" />
+    <Compile Include="DataAdapter\DataAdapter.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="TdxApi.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="Utils\ControlUtils.cs" />
+    <Compile Include="Utils\ExcelUtils.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
+    <Compile Include="View\DeliveryEdit.xaml.cs">
+      <DependentUpon>DeliveryEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImportExcel.xaml.cs">
+      <DependentUpon>ImportExcel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SoftwareEdit.xaml.cs">
+      <DependentUpon>SoftwareEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowExtBase.cs" />
+    <Page Include="Controls\ComparePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DbDataManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HisSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GroupEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GroupList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OutputExcel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TotalInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WinHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DeliveryEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataComParisionDataset.cs" />
+    <Compile Include="Entity\DbEntity.cs" />
+    <Compile Include="View\DataShow.xaml.cs">
+      <DependentUpon>DataShow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Controls\ImportExcel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SoftwareEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReference\DataComparision.ServiceReference.CompareToolLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\DataComparision.ServiceReference.GetGroupNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\DataComparision.ServiceReference.GetGroupsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\DataComparision.ServiceReference.LoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\DataComparision.ServiceReference.LogOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\DataComparision.ServiceReference.SaveTradeDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\DataWebService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\button_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Beer.png" />
+    <Resource Include="Images\Blogger.png" />
+    <Resource Include="Images\Book.png" />
+    <Resource Include="Images\Calender.png" />
+    <Resource Include="Images\Camera.png" />
+    <Resource Include="Images\CD.png" />
+    <Resource Include="Images\Chart.png" />
+    <Resource Include="Images\Chat.png" />
+    <Resource Include="Images\Checked.png" />
+    <Resource Include="Images\Coffee.png" />
+    <Resource Include="Images\Contact.png" />
+    <Resource Include="Images\CreditCard_Amex.png" />
+    <Resource Include="Images\CreditCard_Cirrus.png" />
+    <Resource Include="Images\CreditCard_MasterCard.png" />
+    <Resource Include="Images\CreditCard_Visa.png" />
+    <Resource Include="Images\Database.png" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\Delicious.png" />
+    <Resource Include="Images\Digg.png" />
+    <Resource Include="Images\Document.png" />
+    <Resource Include="Images\Download.png" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\Edit_No.png" />
+    <Resource Include="Images\Edit_Yes.png" />
+    <Resource Include="Images\Favorite.png" />
+    <Resource Include="Images\Firefox.png" />
+    <Resource Include="Images\Flickr.png" />
+    <Resource Include="Images\Folder.png" />
+    <Resource Include="Images\Forward.png" />
+    <Resource Include="Images\Furl.png" />
+    <Resource Include="Images\Google.png" />
+    <Resource Include="Images\Google_Chrome.png" />
+    <Resource Include="Images\HDD.png" />
+    <Resource Include="Images\Headphones.png" />
+    <Resource Include="Images\Help.png" />
+    <Resource Include="Images\Home.png" />
+    <Resource Include="Images\Info.png" />
+    <Resource Include="Images\Internet_Explorer.png" />
+    <Resource Include="Images\LinkedIn.png" />
+    <Resource Include="Images\Live_Messenger.png" />
+    <Resource Include="Images\Lock.png" />
+    <Resource Include="Images\Mail.png" />
+    <Resource Include="Images\Mobile.png" />
+    <Resource Include="Images\Movie.png" />
+    <Resource Include="Images\Music.png" />
+    <Resource Include="Images\MySpace.png" />
+    <Resource Include="Images\Notepad.png" />
+    <Resource Include="Images\Opera.png" />
+    <Resource Include="Images\Orkut.png" />
+    <Resource Include="Images\Pause.png" />
+    <Resource Include="Images\Paypal.png" />
+    <Resource Include="Images\Phone.png" />
+    <Resource Include="Images\Photo.png" />
+    <Resource Include="Images\Photo_Album.png" />
+    <Resource Include="Images\Picture.png" />
+    <Resource Include="Images\PieChart.png" />
+    <Resource Include="Images\Play.png" />
+    <Resource Include="Images\Print.png" />
+    <Resource Include="Images\Recycle_Bin_Empty.png" />
+    <Resource Include="Images\Recycle_Bin_Full.png" />
+    <Resource Include="Images\Reddit.png" />
+    <Resource Include="Images\Refresh.png" />
+    <Resource Include="Images\Rewind.png" />
+    <Resource Include="Images\RSS.png" />
+    <Resource Include="Images\Safari.png" />
+    <Resource Include="Images\Search.png" />
+    <Resource Include="Images\Send_Mail.png" />
+    <Resource Include="Images\Settings.png" />
+    <Resource Include="Images\Shopping_Cart.png" />
+    <Resource Include="Images\Shopping_Cart_Add.png" />
+    <Resource Include="Images\Shopping_Cart_Remove.png" />
+    <Resource Include="Images\Skype.png" />
+    <Resource Include="Images\Smiley_Happy.png" />
+    <Resource Include="Images\Smiley_Sad.png" />
+    <Resource Include="Images\Speech_Bubble.png" />
+    <Resource Include="Images\Stop.png" />
+    <Resource Include="Images\StumbleUpon.png" />
+    <Resource Include="Images\Symbol_Back.png" />
+    <Resource Include="Images\Symbol_Down.png" />
+    <Resource Include="Images\Symbol_Right.png" />
+    <Resource Include="Images\Symbol_Up.png" />
+    <Resource Include="Images\Tag.png" />
+    <Resource Include="Images\Tag_add.png" />
+    <Resource Include="Images\Tag_remove.png" />
+    <Resource Include="Images\Tools.png" />
+    <Resource Include="Images\Twitter.png" />
+    <Resource Include="Images\Unlock.png" />
+    <Resource Include="Images\Upload.png" />
+    <Resource Include="Images\USB.png" />
+    <Resource Include="Images\User.png" />
+    <Resource Include="Images\Users_Chat.png" />
+    <Resource Include="Images\Users_Group.png" />
+    <Resource Include="Images\User_add.png" />
+    <Resource Include="Images\User_delete.png" />
+    <Resource Include="Images\Video.png" />
+    <Resource Include="Images\Warning.png" />
+    <Resource Include="Images\Wireless.png" />
+    <Resource Include="Images\ThunderShield.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loading45.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loading36.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\DataWebService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(SolutionDir)Lib\TDX\*.dll $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

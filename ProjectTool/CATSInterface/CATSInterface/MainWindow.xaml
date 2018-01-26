@@ -1,0 +1,105 @@
+﻿<Window x:Class="CATSInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cvt="clr-namespace:CATSInterface.Converter"
+        Title="CATSInterface" Height="550" Width="1102" Closing="Window_Closing">
+    <Grid>
+        <Grid.Resources>
+            <cvt:BoolDataConverter x:Key="cvtBool"></cvt:BoolDataConverter>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" >
+            <MenuItem Header="CATS配置" >
+                <MenuItem Header="路径配置" Click="MenuItem_Path_Click"></MenuItem>
+                <!--<MenuItem Header="时间配置" Click="RunTimeMenuItem_Click"></MenuItem>-->
+            </MenuItem>
+            <MenuItem Header="扫单">
+                <MenuItem Header="开始扫单" Click="StartMenuItem_Click" x:Name="miStartScan" IsEnabled="{Binding IsStarted,  Converter={StaticResource cvtBool}}" ></MenuItem>
+                <MenuItem Header="停止扫单" Click="StopMenuItem_Click" x:Name="miStopScan" IsEnabled="{Binding IsStarted}"></MenuItem>
+            </MenuItem>
+            <!--<MenuItem Header="数据操作">
+                <MenuItem Header="废单删除" Click="MenuItem_DeleteScrapOrder_Click"></MenuItem>
+                <MenuItem Header="手工撤单" Click="MenuItem_CancelOrder_Click"></MenuItem>
+            </MenuItem>-->
+        </Menu>
+        <TabControl Grid.Row="1">
+            <TabItem Header="订单">
+                <DataGrid x:Name="dgOrder" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="True" ClipboardCopyMode="IncludeHeader">
+                    <DataGrid.Columns>
+                        <!--<DataGridTextColumn Binding="{Binding ClientID}" Header="ClientID"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderNo}" Header="委托编号"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderStatus}" Header="委托状态"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding StockCode}" Header="证券代码"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TradeSide}" Header="交易方向"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderQty}" Header="委托数量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderPrice}" Header="委托价格"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FilledQty}" Header="成交数量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FilledPrice}" Header="成交均价"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding CancelQty}" Header="撤单数量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Market}" Header="股票市场"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderTime, StringFormat=yyyy-MM-dd HH:mm:ss}" Header="委托时间"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding ErrMsg}" Header="错误信息" Width="70"></DataGridTextColumn>
+                        <DataGridTemplateColumn Header="操作" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button DataContext="{Binding}" Click="Button_CancelOrder_Click" Width="55" Margin="0,0,5,0">撤单</Button>
+                                        <Button DataContext="{Binding}" Click="Button_SetExceptionOrder_Click" ToolTip="标记后将不参与自成交校验" Width="80">标记为废单</Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <TabItem Header="下单指令">
+                <DataGrid x:Name="dgInstruction" CanUserAddRows="False" IsReadOnly="True" ClipboardCopyMode="IncludeHeader">
+                    
+                </DataGrid>
+            </TabItem>
+            <!--<TabItem Header="撤单指令">
+                <DataGrid x:Name="dgCancelInstruction" CanUserAddRows="False" IsReadOnly="True">
+                    
+                </DataGrid>
+                          
+            </TabItem>-->
+            <TabItem Header="已标记废单" x:Name="tbException">
+                <DataGrid x:Name="dgSignedErrorOrder" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" ClipboardCopyMode="IncludeHeader">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ClientID}" Header="ClientID"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderNo}" Header="委托编号"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderStatus}" Header="委托状态"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding StockCode}" Header="证券代码"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TradeSide}" Header="交易方向"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderQty}" Header="委托数量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderPrice}" Header="委托价格"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FilledQty}" Header="成交数量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FilledPrice}" Header="成交均价"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding CancelQty}" Header="撤单数量"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Market}" Header="股票市场"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding OrderTime, StringFormat=yyyy-MM-dd HH:mm:ss}" Header="委托时间"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding ErrMsg}" Header="错误信息" Width="70"></DataGridTextColumn>
+                        <DataGridTemplateColumn Header="操作" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        
+                                        <Button DataContext="{Binding}" Click="Button_CancelExceptionOrder_Click" Width="80">撤除废单标记</Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="2" Height="60">
+            <RichTextBox IsReadOnly="True" x:Name="rtbMainInfo"></RichTextBox>
+        </Grid>
+    </Grid>
+</Window>

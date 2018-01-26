@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="OKCoinClient.View.TradeIndexView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600" Loaded="TradeIndexView_Loaded">
+    <Grid>
+        <!--xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center">当周升贴水：</Label>
+            <Label VerticalAlignment="Center" Grid.Column="2">次周升贴水：</Label>
+            <Label VerticalAlignment="Center" Grid.Column="4">季度升贴水：</Label>
+
+            <Label VerticalAlignment="Center" Grid.Column="1" Content="{Binding ThisWeekSubResult}"></Label>
+            <Label VerticalAlignment="Center" Grid.Column="3" Content="{Binding NextWeekSubResult}"></Label>
+            <Label VerticalAlignment="Center" Grid.Column="5" Content="{Binding QuarterSubResult}"></Label>
+        </Grid>
+
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <d3:ChartPlotter Margin="7,0,0,0" x:Name="chartThisWeek1">
+                <d3:ChartPlotter.HorizontalAxis>
+                    <d3:HorizontalDateTimeAxis x:Name="Axis_X_ThisWeek1" />
+                </d3:ChartPlotter.HorizontalAxis>
+                <d3:VerticalAxisTitle Content="本周升贴水"/>
+            </d3:ChartPlotter>
+
+            <d3:ChartPlotter Margin="7,0,0,0" x:Name="chartNextWeek1" Grid.Row="1">
+                <d3:ChartPlotter.HorizontalAxis>
+                    <d3:HorizontalDateTimeAxis  x:Name="Axis_X_NextWeek1" />
+                </d3:ChartPlotter.HorizontalAxis>
+                <d3:VerticalAxisTitle Content="次周升贴水"/>
+            </d3:ChartPlotter>
+
+            <d3:ChartPlotter Margin="7,0,0,0" x:Name="chartQuarter1" Grid.Row="2">
+                <d3:ChartPlotter.HorizontalAxis>
+                    <d3:HorizontalDateTimeAxis x:Name="Axis_X_Quarter1"/>
+                </d3:ChartPlotter.HorizontalAxis>
+                <d3:VerticalAxisTitle Content="季度升贴水"/>
+            </d3:ChartPlotter>
+            <d3:ChartPlotter x:Name="chartIndex" Grid.Row="3">
+                <d3:ChartPlotter.HorizontalAxis>
+                    <d3:HorizontalDateTimeAxis />
+                </d3:ChartPlotter.HorizontalAxis>
+                <d3:VerticalAxisTitle Content="指数"/>
+            </d3:ChartPlotter>
+        </Grid>
+
+        <!--<TabControl Grid.Row="1">
+            <TabItem Header="当周">
+                <d3:ChartPlotter x:Name="chartThisWeek">
+                    <d3:ChartPlotter.HorizontalAxis>
+                        <d3:HorizontalDateTimeAxis Name="Axis_X_ThisWeek"/>
+                    </d3:ChartPlotter.HorizontalAxis>
+                    <d3:ChartPlotter.VerticalAxis>
+                        <d3:VerticalIntegerAxis />
+                    </d3:ChartPlotter.VerticalAxis>
+                    <d3:Header Content="本周升贴水时间变化图"/>
+                    <d3:VerticalAxisTitle Content="本周升贴水"/>
+                    <d3:HorizontalAxisTitle Content="时间" />
+                </d3:ChartPlotter>
+            </TabItem>
+            <TabItem Header="次周">
+                <d3:ChartPlotter x:Name="chartNextWeek">
+                    <d3:ChartPlotter.HorizontalAxis>
+                        <d3:HorizontalDateTimeAxis Name="Axis_X_NextWeek"/>
+                    </d3:ChartPlotter.HorizontalAxis>
+                    <d3:Header Content="次周升贴水时间变化图"/>
+                    <d3:VerticalAxisTitle Content="次周升贴水"/>
+                    <d3:HorizontalAxisTitle Content="时间" />
+                </d3:ChartPlotter>
+            </TabItem>
+            <TabItem Header="季度">
+                <d3:ChartPlotter x:Name="chartQuarter">
+                    <d3:ChartPlotter.HorizontalAxis>
+                        <d3:HorizontalDateTimeAxis Name="Axis_X_Quarter"/>
+                    </d3:ChartPlotter.HorizontalAxis>
+                    <d3:Header Content="季度升贴水时间变化图"/>
+                    <d3:VerticalAxisTitle Content="季度升贴水"/>
+                    <d3:HorizontalAxisTitle Content="时间" />
+                </d3:ChartPlotter>
+            </TabItem>
+            <TabItem Header="综合">
+                
+            </TabItem>
+        </TabControl>-->
+    </Grid>
+</UserControl>

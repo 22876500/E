@@ -1,0 +1,40 @@
+﻿<Window x:Class="LimitManagement.StockLimitTotal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StockLimitTotal" Height="300" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="过滤项">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label>组合号:</Label>
+                <TextBox x:Name="txtGroup" Width="50" TextChanged="txtGroup_TextChanged"></TextBox>
+                <ComboBox Width="70" x:Name="cmbGroupFilter" SelectionChanged="cmbGroupFilter_SelectionChanged">
+                    <ComboBoxItem Content="全部"></ComboBoxItem>
+                </ComboBox>
+                <Label  Margin="10,0,0,0">证券代码:</Label>
+                <TextBox x:Name="txtStock" Width="60" TextChanged="txtStock_TextChanged"></TextBox>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid Grid.Row="1" x:Name="dgStocksMain">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="组合号"></DataGridTextColumn>
+                <DataGridTextColumn Header="证券代码"></DataGridTextColumn>
+                <DataGridTextColumn Header="证券名称"></DataGridTextColumn>
+                <DataGridTextColumn Header="总股数"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Button DataContext="{Binding}" Click="Button_Edit_Click">编辑</Button>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

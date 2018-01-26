@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DbDataSet" targetNamespace="http://tempuri.org/DbDataSet.xsd" xmlns:mstns="http://tempuri.org/DbDataSet.xsd" xmlns="http://tempuri.org/DbDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DbDataSet" msprop:Generator_UserDSName="DbDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="已发委托" msprop:Generator_TableClassName="已发委托DataTable" msprop:Generator_TableVarName="table已发委托" msprop:Generator_RowChangedName="已发委托RowChanged" msprop:Generator_TablePropName="已发委托" msprop:Generator_RowDeletingName="已发委托RowDeleting" msprop:Generator_RowChangingName="已发委托RowChanging" msprop:Generator_RowEvHandlerName="已发委托RowChangeEventHandler" msprop:Generator_RowDeletedName="已发委托RowDeleted" msprop:Generator_RowClassName="已发委托Row" msprop:Generator_UserTableName="已发委托" msprop:Generator_RowEvArgName="已发委托RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="日期" msprop:Generator_ColumnVarNameInTable="column日期" msprop:Generator_ColumnPropNameInRow="日期" msprop:Generator_ColumnPropNameInTable="日期Column" msprop:Generator_UserColumnName="日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="委托编号" msprop:Generator_ColumnVarNameInTable="column委托编号" msprop:Generator_ColumnPropNameInRow="委托编号" msprop:Generator_ColumnPropNameInTable="委托编号Column" msprop:Generator_UserColumnName="委托编号" type="xs:string" minOccurs="0" />
+              <xs:element name="交易员" msprop:Generator_ColumnVarNameInTable="column交易员" msprop:Generator_ColumnPropNameInRow="交易员" msprop:Generator_ColumnPropNameInTable="交易员Column" msprop:Generator_UserColumnName="交易员" type="xs:string" minOccurs="0" />
+              <xs:element name="状态说明" msprop:Generator_ColumnVarNameInTable="column状态说明" msprop:Generator_ColumnPropNameInRow="状态说明" msprop:Generator_ColumnPropNameInTable="状态说明Column" msprop:Generator_UserColumnName="状态说明" type="xs:string" minOccurs="0" />
+              <xs:element name="市场代码" msprop:Generator_ColumnVarNameInTable="column市场代码" msprop:Generator_ColumnPropNameInRow="市场代码" msprop:Generator_ColumnPropNameInTable="市场代码Column" msprop:Generator_UserColumnName="市场代码" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="证券代码" msprop:Generator_ColumnVarNameInTable="column证券代码" msprop:Generator_ColumnPropNameInRow="证券代码" msprop:Generator_ColumnPropNameInTable="证券代码Column" msprop:Generator_UserColumnName="证券代码" type="xs:string" minOccurs="0" />
+              <xs:element name="证券名称" msprop:Generator_ColumnVarNameInTable="column证券名称" msprop:Generator_ColumnPropNameInRow="证券名称" msprop:Generator_ColumnPropNameInTable="证券名称Column" msprop:Generator_UserColumnName="证券名称" type="xs:string" minOccurs="0" />
+              <xs:element name="买卖方向" msprop:Generator_ColumnVarNameInTable="column买卖方向" msprop:Generator_ColumnPropNameInRow="买卖方向" msprop:Generator_ColumnPropNameInTable="买卖方向Column" msprop:Generator_UserColumnName="买卖方向" type="xs:int" minOccurs="0" />
+              <xs:element name="成交价格" msprop:Generator_ColumnVarNameInTable="column成交价格" msprop:Generator_ColumnPropNameInRow="成交价格" msprop:Generator_ColumnPropNameInTable="成交价格Column" msprop:Generator_UserColumnName="成交价格" type="xs:decimal" minOccurs="0" />
+              <xs:element name="成交数量" msprop:Generator_ColumnVarNameInTable="column成交数量" msprop:Generator_ColumnPropNameInRow="成交数量" msprop:Generator_ColumnPropNameInTable="成交数量Column" msprop:Generator_UserColumnName="成交数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="委托价格" msprop:Generator_ColumnVarNameInTable="column委托价格" msprop:Generator_ColumnPropNameInRow="委托价格" msprop:Generator_ColumnPropNameInTable="委托价格Column" msprop:Generator_UserColumnName="委托价格" type="xs:decimal" minOccurs="0" />
+              <xs:element name="委托数量" msprop:Generator_ColumnVarNameInTable="column委托数量" msprop:Generator_ColumnPropNameInRow="委托数量" msprop:Generator_ColumnPropNameInTable="委托数量Column" msprop:Generator_UserColumnName="委托数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="撤单数量" msprop:Generator_ColumnVarNameInTable="column撤单数量" msprop:Generator_ColumnPropNameInRow="撤单数量" msprop:Generator_ColumnPropNameInTable="撤单数量Column" msprop:Generator_UserColumnName="撤单数量" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="已处理成交" msprop:Generator_TableClassName="已处理成交DataTable" msprop:Generator_TableVarName="table已处理成交" msprop:Generator_RowChangedName="已处理成交RowChanged" msprop:Generator_TablePropName="已处理成交" msprop:Generator_RowDeletingName="已处理成交RowDeleting" msprop:Generator_RowChangingName="已处理成交RowChanging" msprop:Generator_RowEvHandlerName="已处理成交RowChangeEventHandler" msprop:Generator_RowDeletedName="已处理成交RowDeleted" msprop:Generator_RowClassName="已处理成交Row" msprop:Generator_UserTableName="已处理成交" msprop:Generator_RowEvArgName="已处理成交RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="日期" msprop:Generator_ColumnVarNameInTable="column日期" msprop:Generator_ColumnPropNameInRow="日期" msprop:Generator_ColumnPropNameInTable="日期Column" msprop:Generator_UserColumnName="日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="委托编号" msprop:Generator_ColumnVarNameInTable="column委托编号" msprop:Generator_ColumnPropNameInRow="委托编号" msprop:Generator_ColumnPropNameInTable="委托编号Column" msprop:Generator_UserColumnName="委托编号" type="xs:string" minOccurs="0" />
+              <xs:element name="成交编号" msprop:Generator_ColumnVarNameInTable="column成交编号" msprop:Generator_ColumnPropNameInRow="成交编号" msprop:Generator_ColumnPropNameInTable="成交编号Column" msprop:Generator_UserColumnName="成交编号" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="券商帐户" msprop:Generator_TableClassName="券商帐户DataTable" msprop:Generator_TableVarName="table券商帐户" msprop:Generator_RowChangedName="券商帐户RowChanged" msprop:Generator_TablePropName="券商帐户" msprop:Generator_RowDeletingName="券商帐户RowDeleting" msprop:Generator_RowChangingName="券商帐户RowChanging" msprop:Generator_RowEvHandlerName="券商帐户RowChangeEventHandler" msprop:Generator_RowDeletedName="券商帐户RowDeleted" msprop:Generator_RowClassName="券商帐户Row" msprop:Generator_UserTableName="券商帐户" msprop:Generator_RowEvArgName="券商帐户RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="名称" msprop:Generator_ColumnVarNameInTable="column名称" msprop:Generator_ColumnPropNameInRow="名称" msprop:Generator_ColumnPropNameInTable="名称Column" msprop:Generator_UserColumnName="名称" type="xs:string" minOccurs="0" />
+              <xs:element name="启用" msprop:Generator_ColumnVarNameInTable="column启用" msprop:Generator_ColumnPropNameInRow="启用" msprop:Generator_ColumnPropNameInTable="启用Column" msprop:Generator_UserColumnName="启用" type="xs:boolean" minOccurs="0" />
+              <xs:element name="券商" msprop:Generator_ColumnVarNameInTable="column券商" msprop:Generator_ColumnPropNameInRow="券商" msprop:Generator_ColumnPropNameInTable="券商Column" msprop:Generator_UserColumnName="券商" type="xs:string" minOccurs="0" />
+              <xs:element name="类型" msprop:Generator_ColumnVarNameInTable="column类型" msprop:Generator_ColumnPropNameInRow="类型" msprop:Generator_ColumnPropNameInTable="类型Column" msprop:Generator_UserColumnName="类型" type="xs:string" minOccurs="0" />
+              <xs:element name="交易服务器" msprop:Generator_ColumnVarNameInTable="column交易服务器" msprop:Generator_ColumnPropNameInRow="交易服务器" msprop:Generator_ColumnPropNameInTable="交易服务器Column" msprop:Generator_UserColumnName="交易服务器" type="xs:string" minOccurs="0" />
+              <xs:element name="版本号" msprop:Generator_ColumnVarNameInTable="column版本号" msprop:Generator_ColumnPropNameInRow="版本号" msprop:Generator_ColumnPropNameInTable="版本号Column" msprop:Generator_UserColumnName="版本号" type="xs:string" minOccurs="0" />
+              <xs:element name="营业部代码" msprop:Generator_ColumnVarNameInTable="column营业部代码" msprop:Generator_ColumnPropNameInRow="营业部代码" msprop:Generator_ColumnPropNameInTable="营业部代码Column" msprop:Generator_UserColumnName="营业部代码" type="xs:short" minOccurs="0" />
+              <xs:element name="登录帐号" msprop:Generator_ColumnVarNameInTable="column登录帐号" msprop:Generator_ColumnPropNameInRow="登录帐号" msprop:Generator_ColumnPropNameInTable="登录帐号Column" msprop:Generator_UserColumnName="登录帐号" type="xs:string" minOccurs="0" />
+              <xs:element name="交易帐号" msprop:Generator_ColumnVarNameInTable="column交易帐号" msprop:Generator_ColumnPropNameInRow="交易帐号" msprop:Generator_ColumnPropNameInTable="交易帐号Column" msprop:Generator_UserColumnName="交易帐号" type="xs:string" minOccurs="0" />
+              <xs:element name="交易密码" msprop:Generator_ColumnVarNameInTable="column交易密码" msprop:Generator_ColumnPropNameInRow="交易密码" msprop:Generator_ColumnPropNameInTable="交易密码Column" msprop:Generator_UserColumnName="交易密码" type="xs:string" minOccurs="0" />
+              <xs:element name="通讯密码" msprop:Generator_ColumnVarNameInTable="column通讯密码" msprop:Generator_ColumnPropNameInRow="通讯密码" msprop:Generator_ColumnPropNameInTable="通讯密码Column" msprop:Generator_UserColumnName="通讯密码" type="xs:string" minOccurs="0" />
+              <xs:element name="上海股东代码" msprop:Generator_ColumnVarNameInTable="column上海股东代码" msprop:Generator_ColumnPropNameInRow="上海股东代码" msprop:Generator_ColumnPropNameInTable="上海股东代码Column" msprop:Generator_UserColumnName="上海股东代码" type="xs:string" minOccurs="0" />
+              <xs:element name="深圳股东代码" msprop:Generator_ColumnVarNameInTable="column深圳股东代码" msprop:Generator_ColumnPropNameInRow="深圳股东代码" msprop:Generator_ColumnPropNameInTable="深圳股东代码Column" msprop:Generator_UserColumnName="深圳股东代码" type="xs:string" minOccurs="0" />
+              <xs:element name="查询间隔时间" msprop:Generator_ColumnVarNameInTable="column查询间隔时间" msprop:Generator_ColumnPropNameInRow="查询间隔时间" msprop:Generator_ColumnPropNameInTable="查询间隔时间Column" msprop:Generator_UserColumnName="查询间隔时间" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="订单" msprop:Generator_TableClassName="订单DataTable" msprop:Generator_TableVarName="table订单" msprop:Generator_RowChangedName="订单RowChanged" msprop:Generator_TablePropName="订单" msprop:Generator_RowDeletingName="订单RowDeleting" msprop:Generator_RowChangingName="订单RowChanging" msprop:Generator_RowEvHandlerName="订单RowChangeEventHandler" msprop:Generator_RowDeletedName="订单RowDeleted" msprop:Generator_RowClassName="订单Row" msprop:Generator_UserTableName="订单" msprop:Generator_RowEvArgName="订单RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="交易员" msprop:Generator_ColumnVarNameInTable="column交易员" msprop:Generator_ColumnPropNameInRow="交易员" msprop:Generator_ColumnPropNameInTable="交易员Column" msprop:Generator_UserColumnName="交易员" type="xs:string" minOccurs="0" />
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="证券代码" msprop:Generator_ColumnVarNameInTable="column证券代码" msprop:Generator_ColumnPropNameInRow="证券代码" msprop:Generator_ColumnPropNameInTable="证券代码Column" msprop:Generator_UserColumnName="证券代码" type="xs:string" minOccurs="0" />
+              <xs:element name="证券名称" msprop:Generator_ColumnVarNameInTable="column证券名称" msprop:Generator_ColumnPropNameInRow="证券名称" msprop:Generator_ColumnPropNameInTable="证券名称Column" msprop:Generator_UserColumnName="证券名称" type="xs:string" minOccurs="0" />
+              <xs:element name="开仓类别" msprop:Generator_ColumnVarNameInTable="column开仓类别" msprop:Generator_ColumnPropNameInRow="开仓类别" msprop:Generator_ColumnPropNameInTable="开仓类别Column" msprop:Generator_UserColumnName="开仓类别" type="xs:int" minOccurs="0" />
+              <xs:element name="已开数量" msprop:Generator_ColumnVarNameInTable="column已开数量" msprop:Generator_ColumnPropNameInRow="已开数量" msprop:Generator_ColumnPropNameInTable="已开数量Column" msprop:Generator_UserColumnName="已开数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="已开金额" msprop:Generator_ColumnVarNameInTable="column已开金额" msprop:Generator_ColumnPropNameInRow="已开金额" msprop:Generator_ColumnPropNameInTable="已开金额Column" msprop:Generator_UserColumnName="已开金额" type="xs:decimal" minOccurs="0" />
+              <xs:element name="浮动盈亏" msprop:Generator_ColumnVarNameInTable="column浮动盈亏" msprop:Generator_ColumnPropNameInRow="浮动盈亏" msprop:Generator_ColumnPropNameInTable="浮动盈亏Column" msprop:Generator_UserColumnName="浮动盈亏" type="xs:decimal" minOccurs="0" />
+              <xs:element name="开仓价位" msprop:Generator_ColumnVarNameInTable="column开仓价位" msprop:Generator_ColumnPropNameInRow="开仓价位" msprop:Generator_ColumnPropNameInTable="开仓价位Column" msprop:Generator_UserColumnName="开仓价位" type="xs:decimal" minOccurs="0" />
+              <xs:element name="当前价位" msprop:Generator_ColumnVarNameInTable="column当前价位" msprop:Generator_ColumnPropNameInRow="当前价位" msprop:Generator_ColumnPropNameInTable="当前价位Column" msprop:Generator_UserColumnName="当前价位" type="xs:decimal" minOccurs="0" />
+              <xs:element name="开仓时间" msprop:Generator_ColumnVarNameInTable="column开仓时间" msprop:Generator_ColumnPropNameInRow="开仓时间" msprop:Generator_ColumnPropNameInTable="开仓时间Column" msprop:Generator_UserColumnName="开仓时间" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="平仓时间" msprop:Generator_ColumnVarNameInTable="column平仓时间" msprop:Generator_ColumnPropNameInRow="平仓时间" msprop:Generator_ColumnPropNameInTable="平仓时间Column" msprop:Generator_UserColumnName="平仓时间" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="平仓类别" msprop:Generator_ColumnVarNameInTable="column平仓类别" msprop:Generator_ColumnPropNameInRow="平仓类别" msprop:Generator_ColumnPropNameInTable="平仓类别Column" msprop:Generator_UserColumnName="平仓类别" type="xs:int" minOccurs="0" />
+              <xs:element name="已平数量" msprop:Generator_ColumnVarNameInTable="column已平数量" msprop:Generator_ColumnPropNameInRow="已平数量" msprop:Generator_ColumnPropNameInTable="已平数量Column" msprop:Generator_UserColumnName="已平数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="已平金额" msprop:Generator_ColumnVarNameInTable="column已平金额" msprop:Generator_ColumnPropNameInRow="已平金额" msprop:Generator_ColumnPropNameInTable="已平金额Column" msprop:Generator_UserColumnName="已平金额" type="xs:decimal" minOccurs="0" />
+              <xs:element name="平仓价位" msprop:Generator_ColumnVarNameInTable="column平仓价位" msprop:Generator_ColumnPropNameInRow="平仓价位" msprop:Generator_ColumnPropNameInTable="平仓价位Column" msprop:Generator_UserColumnName="平仓价位" type="xs:decimal" minOccurs="0" />
+              <xs:element name="市场代码" msprop:Generator_ColumnVarNameInTable="column市场代码" msprop:Generator_ColumnPropNameInRow="市场代码" msprop:Generator_ColumnPropNameInTable="市场代码Column" msprop:Generator_UserColumnName="市场代码" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="平台用户" msprop:Generator_TableClassName="平台用户DataTable" msprop:Generator_TableVarName="table平台用户" msprop:Generator_RowChangedName="平台用户RowChanged" msprop:Generator_TablePropName="平台用户" msprop:Generator_RowDeletingName="平台用户RowDeleting" msprop:Generator_RowChangingName="平台用户RowChanging" msprop:Generator_RowEvHandlerName="平台用户RowChangeEventHandler" msprop:Generator_RowDeletedName="平台用户RowDeleted" msprop:Generator_RowClassName="平台用户Row" msprop:Generator_UserTableName="平台用户" msprop:Generator_RowEvArgName="平台用户RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="用户名" msprop:Generator_ColumnVarNameInTable="column用户名" msprop:Generator_ColumnPropNameInRow="用户名" msprop:Generator_ColumnPropNameInTable="用户名Column" msprop:Generator_UserColumnName="用户名" type="xs:string" minOccurs="0" />
+              <xs:element name="密码" msprop:Generator_ColumnVarNameInTable="column密码" msprop:Generator_ColumnPropNameInRow="密码" msprop:Generator_ColumnPropNameInTable="密码Column" msprop:Generator_UserColumnName="密码" type="xs:string" minOccurs="0" />
+              <xs:element name="角色" msprop:Generator_ColumnVarNameInTable="column角色" msprop:Generator_ColumnPropNameInRow="角色" msprop:Generator_ColumnPropNameInTable="角色Column" msprop:Generator_UserColumnName="角色" type="xs:int" minOccurs="0" />
+              <xs:element name="仓位限制" msprop:Generator_ColumnVarNameInTable="column仓位限制" msprop:Generator_ColumnPropNameInRow="仓位限制" msprop:Generator_ColumnPropNameInTable="仓位限制Column" msprop:Generator_UserColumnName="仓位限制" type="xs:decimal" minOccurs="0" />
+              <xs:element name="亏损限制" msprop:Generator_ColumnVarNameInTable="column亏损限制" msprop:Generator_ColumnPropNameInRow="亏损限制" msprop:Generator_ColumnPropNameInTable="亏损限制Column" msprop:Generator_UserColumnName="亏损限制" type="xs:decimal" minOccurs="0" />
+              <xs:element name="手续费率" msprop:Generator_ColumnVarNameInTable="column手续费率" msprop:Generator_ColumnPropNameInRow="手续费率" msprop:Generator_ColumnPropNameInTable="手续费率Column" msprop:Generator_UserColumnName="手续费率" type="xs:decimal" minOccurs="0" />
+              <xs:element name="允许删除碎股订单" msprop:Generator_ColumnVarNameInTable="column允许删除碎股订单" msprop:Generator_ColumnPropNameInRow="允许删除碎股订单" msprop:Generator_ColumnPropNameInTable="允许删除碎股订单Column" msprop:Generator_UserColumnName="允许删除碎股订单" type="xs:boolean" minOccurs="0" />
+              <xs:element name="分组" msprop:Generator_ColumnVarNameInTable="column分组" msprop:Generator_ColumnPropNameInRow="分组" msprop:Generator_ColumnPropNameInTable="分组Column" msprop:Generator_UserColumnName="分组" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MAC地址分配" msprop:Generator_TableClassName="MAC地址分配DataTable" msprop:Generator_TableVarName="tableMAC地址分配" msprop:Generator_RowChangedName="MAC地址分配RowChanged" msprop:Generator_TablePropName="MAC地址分配" msprop:Generator_RowDeletingName="MAC地址分配RowDeleting" msprop:Generator_RowChangingName="MAC地址分配RowChanging" msprop:Generator_RowEvHandlerName="MAC地址分配RowChangeEventHandler" msprop:Generator_RowDeletedName="MAC地址分配RowDeleted" msprop:Generator_RowClassName="MAC地址分配Row" msprop:Generator_UserTableName="MAC地址分配" msprop:Generator_RowEvArgName="MAC地址分配RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="用户名" msprop:Generator_ColumnVarNameInTable="column用户名" msprop:Generator_ColumnPropNameInRow="用户名" msprop:Generator_ColumnPropNameInTable="用户名Column" msprop:Generator_UserColumnName="用户名" type="xs:string" minOccurs="0" />
+              <xs:element name="MAC" msprop:Generator_ColumnVarNameInTable="columnMAC" msprop:Generator_ColumnPropNameInRow="MAC" msprop:Generator_ColumnPropNameInTable="MACColumn" msprop:Generator_UserColumnName="MAC" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="风控分配" msprop:Generator_TableClassName="风控分配DataTable" msprop:Generator_TableVarName="table风控分配" msprop:Generator_RowChangedName="风控分配RowChanged" msprop:Generator_TablePropName="风控分配" msprop:Generator_RowDeletingName="风控分配RowDeleting" msprop:Generator_RowChangingName="风控分配RowChanging" msprop:Generator_RowEvHandlerName="风控分配RowChangeEventHandler" msprop:Generator_RowDeletedName="风控分配RowDeleted" msprop:Generator_RowClassName="风控分配Row" msprop:Generator_UserTableName="风控分配" msprop:Generator_RowEvArgName="风控分配RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="交易员" msprop:Generator_ColumnVarNameInTable="column交易员" msprop:Generator_ColumnPropNameInRow="交易员" msprop:Generator_ColumnPropNameInTable="交易员Column" msprop:Generator_UserColumnName="交易员" type="xs:string" minOccurs="0" />
+              <xs:element name="风控员" msprop:Generator_ColumnVarNameInTable="column风控员" msprop:Generator_ColumnPropNameInRow="风控员" msprop:Generator_ColumnPropNameInTable="风控员Column" msprop:Generator_UserColumnName="风控员" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="已平仓订单" msprop:Generator_TableClassName="已平仓订单DataTable" msprop:Generator_TableVarName="table已平仓订单" msprop:Generator_RowChangedName="已平仓订单RowChanged" msprop:Generator_TablePropName="已平仓订单" msprop:Generator_RowDeletingName="已平仓订单RowDeleting" msprop:Generator_RowChangingName="已平仓订单RowChanging" msprop:Generator_RowEvHandlerName="已平仓订单RowChangeEventHandler" msprop:Generator_RowDeletedName="已平仓订单RowDeleted" msprop:Generator_RowClassName="已平仓订单Row" msprop:Generator_UserTableName="已平仓订单" msprop:Generator_RowEvArgName="已平仓订单RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="交易员" msprop:Generator_ColumnVarNameInTable="column交易员" msprop:Generator_ColumnPropNameInRow="交易员" msprop:Generator_ColumnPropNameInTable="交易员Column" msprop:Generator_UserColumnName="交易员" type="xs:string" minOccurs="0" />
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="证券代码" msprop:Generator_ColumnVarNameInTable="column证券代码" msprop:Generator_ColumnPropNameInRow="证券代码" msprop:Generator_ColumnPropNameInTable="证券代码Column" msprop:Generator_UserColumnName="证券代码" type="xs:string" minOccurs="0" />
+              <xs:element name="证券名称" msprop:Generator_ColumnVarNameInTable="column证券名称" msprop:Generator_ColumnPropNameInRow="证券名称" msprop:Generator_ColumnPropNameInTable="证券名称Column" msprop:Generator_UserColumnName="证券名称" type="xs:string" minOccurs="0" />
+              <xs:element name="毛利" msprop:Generator_ColumnVarNameInTable="column毛利" msprop:Generator_ColumnPropNameInRow="毛利" msprop:Generator_ColumnPropNameInTable="毛利Column" msprop:Generator_UserColumnName="毛利" type="xs:decimal" minOccurs="0" />
+              <xs:element name="开仓类别" msprop:Generator_ColumnVarNameInTable="column开仓类别" msprop:Generator_ColumnPropNameInRow="开仓类别" msprop:Generator_ColumnPropNameInTable="开仓类别Column" msprop:Generator_UserColumnName="开仓类别" type="xs:int" minOccurs="0" />
+              <xs:element name="已开数量" msprop:Generator_ColumnVarNameInTable="column已开数量" msprop:Generator_ColumnPropNameInRow="已开数量" msprop:Generator_ColumnPropNameInTable="已开数量Column" msprop:Generator_UserColumnName="已开数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="已开金额" msprop:Generator_ColumnVarNameInTable="column已开金额" msprop:Generator_ColumnPropNameInRow="已开金额" msprop:Generator_ColumnPropNameInTable="已开金额Column" msprop:Generator_UserColumnName="已开金额" type="xs:decimal" minOccurs="0" />
+              <xs:element name="开仓价位" msprop:Generator_ColumnVarNameInTable="column开仓价位" msprop:Generator_ColumnPropNameInRow="开仓价位" msprop:Generator_ColumnPropNameInTable="开仓价位Column" msprop:Generator_UserColumnName="开仓价位" type="xs:decimal" minOccurs="0" />
+              <xs:element name="平仓类别" msprop:Generator_ColumnVarNameInTable="column平仓类别" msprop:Generator_ColumnPropNameInRow="平仓类别" msprop:Generator_ColumnPropNameInTable="平仓类别Column" msprop:Generator_UserColumnName="平仓类别" type="xs:int" minOccurs="0" />
+              <xs:element name="已平数量" msprop:Generator_ColumnVarNameInTable="column已平数量" msprop:Generator_ColumnPropNameInRow="已平数量" msprop:Generator_ColumnPropNameInTable="已平数量Column" msprop:Generator_UserColumnName="已平数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="已平金额" msprop:Generator_ColumnVarNameInTable="column已平金额" msprop:Generator_ColumnPropNameInRow="已平金额" msprop:Generator_ColumnPropNameInTable="已平金额Column" msprop:Generator_UserColumnName="已平金额" type="xs:decimal" minOccurs="0" />
+              <xs:element name="平仓价位" msprop:Generator_ColumnVarNameInTable="column平仓价位" msprop:Generator_ColumnPropNameInRow="平仓价位" msprop:Generator_ColumnPropNameInTable="平仓价位Column" msprop:Generator_UserColumnName="平仓价位" type="xs:decimal" minOccurs="0" />
+              <xs:element name="开仓时间" msprop:Generator_ColumnVarNameInTable="column开仓时间" msprop:Generator_ColumnPropNameInRow="开仓时间" msprop:Generator_ColumnPropNameInTable="开仓时间Column" msprop:Generator_UserColumnName="开仓时间" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="平仓时间" msprop:Generator_ColumnVarNameInTable="column平仓时间" msprop:Generator_ColumnPropNameInRow="平仓时间" msprop:Generator_ColumnPropNameInTable="平仓时间Column" msprop:Generator_UserColumnName="平仓时间" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="交易日志" msprop:Generator_TableClassName="交易日志DataTable" msprop:Generator_TableVarName="table交易日志" msprop:Generator_RowChangedName="交易日志RowChanged" msprop:Generator_TablePropName="交易日志" msprop:Generator_RowDeletingName="交易日志RowDeleting" msprop:Generator_RowChangingName="交易日志RowChanging" msprop:Generator_RowEvHandlerName="交易日志RowChangeEventHandler" msprop:Generator_RowDeletedName="交易日志RowDeleted" msprop:Generator_RowClassName="交易日志Row" msprop:Generator_UserTableName="交易日志" msprop:Generator_RowEvArgName="交易日志RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="日期" msprop:Generator_ColumnVarNameInTable="column日期" msprop:Generator_ColumnPropNameInRow="日期" msprop:Generator_ColumnPropNameInTable="日期Column" msprop:Generator_UserColumnName="日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="交易员" msprop:Generator_ColumnVarNameInTable="column交易员" msprop:Generator_ColumnPropNameInRow="交易员" msprop:Generator_ColumnPropNameInTable="交易员Column" msprop:Generator_UserColumnName="交易员" type="xs:string" minOccurs="0" />
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="证券代码" msprop:Generator_ColumnVarNameInTable="column证券代码" msprop:Generator_ColumnPropNameInRow="证券代码" msprop:Generator_ColumnPropNameInTable="证券代码Column" msprop:Generator_UserColumnName="证券代码" type="xs:string" minOccurs="0" />
+              <xs:element name="证券名称" msprop:Generator_ColumnVarNameInTable="column证券名称" msprop:Generator_ColumnPropNameInRow="证券名称" msprop:Generator_ColumnPropNameInTable="证券名称Column" msprop:Generator_UserColumnName="证券名称" type="xs:string" minOccurs="0" />
+              <xs:element name="委托编号" msprop:Generator_ColumnVarNameInTable="column委托编号" msprop:Generator_ColumnPropNameInRow="委托编号" msprop:Generator_ColumnPropNameInTable="委托编号Column" msprop:Generator_UserColumnName="委托编号" type="xs:string" minOccurs="0" />
+              <xs:element name="信息" msprop:Generator_ColumnVarNameInTable="column信息" msprop:Generator_ColumnPropNameInRow="信息" msprop:Generator_ColumnPropNameInTable="信息Column" msprop:Generator_UserColumnName="信息" type="xs:string" minOccurs="0" />
+              <xs:element name="委托数量" msprop:Generator_ColumnVarNameInTable="column委托数量" msprop:Generator_ColumnPropNameInRow="委托数量" msprop:Generator_ColumnPropNameInTable="委托数量Column" msprop:Generator_UserColumnName="委托数量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="委托价格" msprop:Generator_ColumnVarNameInTable="column委托价格" msprop:Generator_ColumnPropNameInRow="委托价格" msprop:Generator_ColumnPropNameInTable="委托价格Column" msprop:Generator_UserColumnName="委托价格" type="xs:decimal" minOccurs="0" />
+              <xs:element name="买卖方向" msprop:Generator_ColumnVarNameInTable="column买卖方向" msprop:Generator_ColumnPropNameInRow="买卖方向" msprop:Generator_ColumnPropNameInTable="买卖方向Column" msprop:Generator_UserColumnName="买卖方向" type="xs:int" minOccurs="0" />
+              <xs:element name="时间" msprop:Generator_ColumnVarNameInTable="column时间" msprop:Generator_ColumnPropNameInRow="时间" msprop:Generator_ColumnPropNameInTable="时间Column" msprop:Generator_UserColumnName="时间" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="额度分配" msprop:Generator_TableClassName="额度分配DataTable" msprop:Generator_TableVarName="table额度分配" msprop:Generator_RowChangedName="额度分配RowChanged" msprop:Generator_TablePropName="额度分配" msprop:Generator_RowDeletingName="额度分配RowDeleting" msprop:Generator_RowChangingName="额度分配RowChanging" msprop:Generator_RowEvHandlerName="额度分配RowChangeEventHandler" msprop:Generator_RowDeletedName="额度分配RowDeleted" msprop:Generator_RowClassName="额度分配Row" msprop:Generator_UserTableName="额度分配" msprop:Generator_RowEvArgName="额度分配RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="交易员" msprop:Generator_ColumnVarNameInTable="column交易员" msprop:Generator_ColumnPropNameInRow="交易员" msprop:Generator_ColumnPropNameInTable="交易员Column" msprop:Generator_UserColumnName="交易员" type="xs:string" minOccurs="0" />
+              <xs:element name="证券代码" msprop:Generator_ColumnVarNameInTable="column证券代码" msprop:Generator_ColumnPropNameInRow="证券代码" msprop:Generator_ColumnPropNameInTable="证券代码Column" msprop:Generator_UserColumnName="证券代码" type="xs:string" minOccurs="0" />
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="市场" msprop:Generator_ColumnVarNameInTable="column市场" msprop:Generator_ColumnPropNameInRow="市场" msprop:Generator_ColumnPropNameInTable="市场Column" msprop:Generator_UserColumnName="市场" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="证券名称" msprop:Generator_ColumnVarNameInTable="column证券名称" msprop:Generator_ColumnPropNameInRow="证券名称" msprop:Generator_ColumnPropNameInTable="证券名称Column" msprop:Generator_UserColumnName="证券名称" type="xs:string" minOccurs="0" />
+              <xs:element name="拼音缩写" msprop:Generator_ColumnVarNameInTable="column拼音缩写" msprop:Generator_ColumnPropNameInRow="拼音缩写" msprop:Generator_ColumnPropNameInTable="拼音缩写Column" msprop:Generator_UserColumnName="拼音缩写" type="xs:string" minOccurs="0" />
+              <xs:element name="买模式" msprop:Generator_ColumnVarNameInTable="column买模式" msprop:Generator_ColumnPropNameInRow="买模式" msprop:Generator_ColumnPropNameInTable="买模式Column" msprop:Generator_UserColumnName="买模式" type="xs:int" minOccurs="0" />
+              <xs:element name="卖模式" msprop:Generator_ColumnVarNameInTable="column卖模式" msprop:Generator_ColumnPropNameInRow="卖模式" msprop:Generator_ColumnPropNameInTable="卖模式Column" msprop:Generator_UserColumnName="卖模式" type="xs:int" minOccurs="0" />
+              <xs:element name="交易额度" msprop:Generator_ColumnVarNameInTable="column交易额度" msprop:Generator_ColumnPropNameInRow="交易额度" msprop:Generator_ColumnPropNameInTable="交易额度Column" msprop:Generator_UserColumnName="交易额度" type="xs:decimal" minOccurs="0" />
+              <xs:element name="手续费率" msprop:Generator_ColumnVarNameInTable="column手续费率" msprop:Generator_ColumnPropNameInRow="手续费率" msprop:Generator_ColumnPropNameInTable="手续费率Column" msprop:Generator_UserColumnName="手续费率" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="恒生帐户" msprop:Generator_TableClassName="恒生帐户DataTable" msprop:Generator_TableVarName="table恒生帐户" msprop:Generator_RowChangedName="恒生帐户RowChanged" msprop:Generator_TablePropName="恒生帐户" msprop:Generator_RowDeletingName="恒生帐户RowDeleting" msprop:Generator_RowChangingName="恒生帐户RowChanging" msprop:Generator_RowEvHandlerName="恒生帐户RowChangeEventHandler" msprop:Generator_RowDeletedName="恒生帐户RowDeleted" msprop:Generator_RowClassName="恒生帐户Row" msprop:Generator_UserTableName="恒生帐户" msprop:Generator_RowEvArgName="恒生帐户RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="名称" msprop:Generator_ColumnVarNameInTable="column名称" msprop:Generator_ColumnPropNameInRow="名称" msprop:Generator_ColumnPropNameInTable="名称Column" msprop:Generator_UserColumnName="名称" type="xs:string" minOccurs="0" />
+              <xs:element name="启用" msprop:Generator_ColumnVarNameInTable="column启用" msprop:Generator_ColumnPropNameInRow="启用" msprop:Generator_ColumnPropNameInTable="启用Column" msprop:Generator_UserColumnName="启用" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IP" msprop:Generator_ColumnVarNameInTable="columnIP" msprop:Generator_ColumnPropNameInRow="IP" msprop:Generator_ColumnPropNameInTable="IPColumn" msprop:Generator_UserColumnName="IP" type="xs:string" minOccurs="0" />
+              <xs:element name="端口" msprop:Generator_ColumnVarNameInTable="column端口" msprop:Generator_ColumnPropNameInRow="端口" msprop:Generator_ColumnPropNameInTable="端口Column" msprop:Generator_UserColumnName="端口" type="xs:short" minOccurs="0" />
+              <xs:element name="基金编码" msprop:Generator_ColumnVarNameInTable="column基金编码" msprop:Generator_ColumnPropNameInRow="基金编码" msprop:Generator_ColumnPropNameInTable="基金编码Column" msprop:Generator_UserColumnName="基金编码" type="xs:string" minOccurs="0" />
+              <xs:element name="资产单元编号" msprop:Generator_ColumnVarNameInTable="column资产单元编号" msprop:Generator_ColumnPropNameInRow="资产单元编号" msprop:Generator_ColumnPropNameInTable="资产单元编号Column" msprop:Generator_UserColumnName="资产单元编号" type="xs:string" minOccurs="0" />
+              <xs:element name="组合编号" msprop:Generator_ColumnVarNameInTable="column组合编号" msprop:Generator_ColumnPropNameInRow="组合编号" msprop:Generator_ColumnPropNameInTable="组合编号Column" msprop:Generator_UserColumnName="组合编号" type="xs:string" minOccurs="0" />
+              <xs:element name="操作员用户名" msprop:Generator_ColumnVarNameInTable="column操作员用户名" msprop:Generator_ColumnPropNameInRow="操作员用户名" msprop:Generator_ColumnPropNameInTable="操作员用户名Column" msprop:Generator_UserColumnName="操作员用户名" type="xs:string" minOccurs="0" />
+              <xs:element name="操作员密码" msprop:Generator_ColumnVarNameInTable="column操作员密码" msprop:Generator_ColumnPropNameInRow="操作员密码" msprop:Generator_ColumnPropNameInTable="操作员密码Column" msprop:Generator_UserColumnName="操作员密码" type="xs:string" minOccurs="0" />
+              <xs:element name="登录IP" msprop:Generator_ColumnVarNameInTable="column登录IP" msprop:Generator_ColumnPropNameInRow="登录IP" msprop:Generator_ColumnPropNameInTable="登录IPColumn" msprop:Generator_UserColumnName="登录IP" type="xs:string" minOccurs="0" />
+              <xs:element name="MAC" msprop:Generator_ColumnVarNameInTable="columnMAC" msprop:Generator_ColumnPropNameInRow="MAC" msprop:Generator_ColumnPropNameInTable="MACColumn" msprop:Generator_UserColumnName="MAC" type="xs:string" minOccurs="0" />
+              <xs:element name="HDD" msprop:Generator_ColumnVarNameInTable="columnHDD" msprop:Generator_ColumnPropNameInRow="HDD" msprop:Generator_ColumnPropNameInTable="HDDColumn" msprop:Generator_UserColumnName="HDD" type="xs:string" minOccurs="0" />
+              <xs:element name="查询间隔时间" msprop:Generator_ColumnVarNameInTable="column查询间隔时间" msprop:Generator_ColumnPropNameInRow="查询间隔时间" msprop:Generator_ColumnPropNameInTable="查询间隔时间Column" msprop:Generator_UserColumnName="查询间隔时间" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="顶点账户" msprop:Generator_TableClassName="顶点账户DataTable" msprop:Generator_TableVarName="table顶点账户" msprop:Generator_RowChangedName="顶点账户RowChanged" msprop:Generator_TablePropName="顶点账户" msprop:Generator_RowDeletingName="顶点账户RowDeleting" msprop:Generator_RowChangingName="顶点账户RowChanging" msprop:Generator_RowEvHandlerName="顶点账户RowChangeEventHandler" msprop:Generator_RowDeletedName="顶点账户RowDeleted" msprop:Generator_RowClassName="顶点账户Row" msprop:Generator_UserTableName="顶点账户" msprop:Generator_RowEvArgName="顶点账户RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="名称" msprop:Generator_ColumnVarNameInTable="column名称" msprop:Generator_ColumnPropNameInRow="名称" msprop:Generator_ColumnPropNameInTable="名称Column" msprop:Generator_UserColumnName="名称" type="xs:string" minOccurs="0" />
+              <xs:element name="启用" msprop:Generator_ColumnVarNameInTable="column启用" msprop:Generator_ColumnPropNameInRow="启用" msprop:Generator_ColumnPropNameInTable="启用Column" msprop:Generator_UserColumnName="启用" type="xs:string" minOccurs="0" />
+              <xs:element name="资金帐号" msprop:Generator_ColumnVarNameInTable="column资金帐号" msprop:Generator_ColumnPropNameInRow="资金帐号" msprop:Generator_ColumnPropNameInTable="资金帐号Column" msprop:Generator_UserColumnName="资金帐号" type="xs:string" minOccurs="0" />
+              <xs:element name="沪市股东代码" msprop:Generator_ColumnVarNameInTable="column沪市股东代码" msprop:Generator_ColumnPropNameInRow="沪市股东代码" msprop:Generator_ColumnPropNameInTable="沪市股东代码Column" msprop:Generator_UserColumnName="沪市股东代码" type="xs:string" minOccurs="0" />
+              <xs:element name="深市股东代码" msprop:Generator_ColumnVarNameInTable="column深市股东代码" msprop:Generator_ColumnPropNameInRow="深市股东代码" msprop:Generator_ColumnPropNameInTable="深市股东代码Column" msprop:Generator_UserColumnName="深市股东代码" type="xs:string" minOccurs="0" />
+              <xs:element name="交易密码" msprop:Generator_ColumnVarNameInTable="column交易密码" msprop:Generator_ColumnPropNameInRow="交易密码" msprop:Generator_ColumnPropNameInTable="交易密码Column" msprop:Generator_UserColumnName="交易密码" type="xs:string" minOccurs="0" />
+              <xs:element name="通讯密码" msprop:Generator_ColumnVarNameInTable="column通讯密码" msprop:Generator_ColumnPropNameInRow="通讯密码" msprop:Generator_ColumnPropNameInTable="通讯密码Column" msprop:Generator_UserColumnName="通讯密码" type="xs:string" minOccurs="0" />
+              <xs:element name="类型" msprop:Generator_ColumnVarNameInTable="column类型" msprop:Generator_ColumnPropNameInRow="类型" msprop:Generator_ColumnPropNameInTable="类型Column" msprop:Generator_UserColumnName="类型" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

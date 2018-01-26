@@ -1,0 +1,50 @@
+﻿<Window x:Class="TranInfoManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:TranInfoManager.UC"
+        Title="美股数据统计" Height="800" Width="1200" FontSize="12" FontFamily="Microsoft YaHei" Icon="Image/ico.ico" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="AliceBlue">
+            <Grid Width="Auto" HorizontalAlignment="Left" x:Name="gdHeader">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style x:Key="lblLink" TargetType="Label">
+                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="Width" Value="70"></Setter>
+                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                        <Setter Property="Foreground" Value="#2b86ca"></Setter>
+                        <Setter Property="Cursor" Value="Hand"></Setter>
+                        <EventSetter Event="MouseMove" Handler="lblLink_MouseMove"></EventSetter>
+                        <EventSetter Event="MouseLeave" Handler="lblLink_MouseLeave"></EventSetter>
+                        <EventSetter Event="MouseLeftButtonUp" Handler="Label_MouseLeftButtonUp"></EventSetter>
+                    </Style>
+                </Grid.Resources>
+                <Label Style="{StaticResource lblLink}" Background="SkyBlue" x:Name="navImport">
+                    <TextBlock>导入</TextBlock>
+                </Label>
+                <Label Style="{StaticResource lblLink}" Grid.Column="1" x:Name="navCompare">
+                    <TextBlock>比较</TextBlock>
+                </Label>
+                <Label Style="{StaticResource lblLink}" Grid.Column="2" x:Name="navSelect">
+                    <TextBlock> 查询</TextBlock>
+                </Label>
+            </Grid>
+        </Border>
+        <Grid x:Name="gridContent" Grid.Row="2">
+            <uc:UCImport x:Name="Importer" Grid.Row="2"></uc:UCImport>
+            <uc:UCComparer x:Name="Comparer" Grid.Row="2" Visibility="Collapsed"></uc:UCComparer>
+            <uc:UCCompareResult x:Name="SelecteResult" Visibility="Collapsed"/>
+        </Grid>
+        
+    </Grid>
+</Window>
