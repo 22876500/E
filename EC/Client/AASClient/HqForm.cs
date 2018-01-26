@@ -198,7 +198,7 @@ namespace AASClient
                 this.comboBox代码.Text = text;
                 Program.accountDataSet.参数.SetParaValue("证券代码" + this.index.ToString(), text);
                 CompletionByWhiteSpace(0);
-                MarketAdapter.BinanceAdapter.Instance.Subscribe(text.ToLower());
+                Task.Run(()=> { MarketAdapter.BinanceAdapter.Instance.Subscribe(text.ToLower()); });
             }
         }
 
@@ -729,11 +729,11 @@ namespace AASClient
             {
                 Program.logger.LogInfo(string.Format("下单价格{0}与价格最小单位{1}余数为{2},请修正后再下单!", numericUpDown价格.Value, priceMin, numericUpDown价格.Value % priceMin));
             }
-            //if ((numericUpDown数量.Value * numericUpDown价格.Value) % notionMin > 0)
-            //{
-            //    Program.logger.LogInfo(string.Format("价格与数量乘积与金额最小值余数不为0,价格{0}* 数量{1} = {2},金额最小值{3}",
-            //        numericUpDown价格.Value, numericUpDown数量.Value, numericUpDown价格.Value * numericUpDown数量.Value, notionMin));
-            //}
+            if ((numericUpDown数量.Value * numericUpDown价格.Value)  < notionMin)
+            {
+                Program.logger.LogInfo(string.Format("价格与数量乘积小于金额最小值,价格{0} * 数量{1} = {2},金额最小值{3}",
+                    numericUpDown价格.Value, numericUpDown数量.Value, numericUpDown价格.Value * numericUpDown数量.Value, notionMin));
+            }
             if (this.btnSendOrder.Enabled)
             {
                 lock (sync)

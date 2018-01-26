@@ -136,7 +136,9 @@ namespace Server.Adapter
                 var st = DateTime.Now;
                 lock (sync)
                 {
+                    //Program.logger.LogInfoDetail("开始下单, coin {0}, qty {1} price {2}, bsflag {3} ", symbol, qty, price, bsFlag);
                     var order = binanceClient.PostNewOrder(symbol, qty, price, bsFlag == 0 ? OrderSide.BUY : OrderSide.SELL).Result;
+                    //Program.logger.LogInfoDetail("下单结果, 委托编号 {0}, 详细信息{1}",order.OrderId, order.ToJson());
                     if (order != null && order.OrderId > 0)
                     {
                         if (queueOrder.FirstOrDefault(_ => _.Orderid == order.OrderId) == null)
@@ -156,6 +158,7 @@ namespace Server.Adapter
                         }
                         orderID = order.OrderId.ToString();
                     }
+                    
                     Sleep(st);
                 }
             }
@@ -215,7 +218,7 @@ namespace Server.Adapter
                     var qtyFilter = filter.Filters.FirstOrDefault(_ => _.FilterType == "LOT_SIZE");
                     if (qtyFilter != null && (decimal.Parse(qtyFilter.MaxQty) < qty || decimal.Parse(qtyFilter.MinQty) > qty))
                     {
-                        errInfo = string.Format("{0}数量最大值 {1}, 最小值 {2},输入值 {3}不在允许范围内", symbol, qtyFilter.MaxQty, qtyFilter.MinQty, price);
+                        errInfo = string.Format("{0}数量最大值 {1}, 最小值 {2},输入值 {3}不在允许范围内", symbol, qtyFilter.MaxQty, qtyFilter.MinQty, qty);
                         return false;
                     }
 

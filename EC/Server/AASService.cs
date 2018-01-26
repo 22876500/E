@@ -1035,27 +1035,26 @@ namespace Server
             lock (userSync)
             {
                 #region 仓位验证
-                var dtNotFinished = Program.db.已发委托.GetNotFinished已发委托(DateTime.Today, accountName, UserName, 买卖方向);
-
-                var kv = CommonUtils.GetBinanceCoinInfo(证券代码);
-                if (买卖方向 == 0)
-                {
-                    var countCoinBasic = Program.db.可用资金.Get可用资金(UserName, kv.Value); //买入则验证资金币种是否足够
-                    var basicCoinOccupied = dtNotFinished.Where(_ => _.证券代码.EndsWith(kv.Value)).Sum(_=> _.委托价格 * (_.委托数量 - _.成交数量 - _.撤单数量));
-                    if ((countCoinBasic - basicCoinOccupied) < 委托数量 * 委托价格)
-                    {
-                        return string.Format("|币种{0}现有数量{0}, 尚未成交委托占用数量{1}, 欲使用{2}*{3}={4} 超出限制，仓位验证失败!", kv.Value, basicCoinOccupied, 委托价格, 委托数量, 委托价格 * 委托数量);
-                    }
-                }
-                else
-                {
-                    var countCoinTrade = Program.db.可用资金.Get可用资金(UserName, kv.Key);//卖出则验证本币种是否足够
-                    var coinTradeOccupied = dtNotFinished.Where(_ => _.证券代码.EndsWith(kv.Key)).Sum(_=> _.委托数量);
-                    if ((countCoinTrade - coinTradeOccupied) < 委托数量)
-                    {
-                        return string.Format("|币种{0}现有数量{0}, 未成交卖单占用数{1}, 欲卖出{2} 超出限制，仓位验证失败!", kv.Key, coinTradeOccupied, 委托数量);
-                    }
-                }
+                //var dtNotFinished = Program.db.已发委托.GetNotFinished已发委托(DateTime.Today, accountName, UserName, 买卖方向);
+                //var kv = CommonUtils.GetBinanceCoinInfo(证券代码);
+                //if (买卖方向 == 0)
+                //{
+                //    var countCoinBasic = Program.db.可用资金.Get可用资金(UserName, kv.Value); //买入则验证资金币种是否足够
+                //    var basicCoinOccupied = dtNotFinished == null ? 0 : dtNotFinished.Where(_ => _.证券代码.EndsWith(kv.Value)).Sum(_=> _.委托价格 * (_.委托数量 - _.成交数量 - _.撤单数量));
+                //    if ((countCoinBasic - basicCoinOccupied) < 委托数量 * 委托价格)
+                //    {
+                //        return string.Format("|币种{0}现有数量{0}, 尚未成交委托占用数量{1}, 欲使用{2}*{3}={4} 超出限制，仓位验证失败!", kv.Value, basicCoinOccupied, 委托价格, 委托数量, 委托价格 * 委托数量);
+                //    }
+                //}
+                //else
+                //{
+                //    var countCoinTrade = Program.db.可用资金.Get可用资金(UserName, kv.Key);//卖出则验证本币种是否足够
+                //    var coinTradeOccupied = dtNotFinished == null ? 0 : dtNotFinished.Where(_ => _.证券代码.EndsWith(kv.Key)).Sum(_=> _.委托数量);
+                //    if ((countCoinTrade - coinTradeOccupied) < 委托数量)
+                //    {
+                //        return string.Format("|币种{0}现有数量{0}, 未成交卖单占用数{1}, 欲卖出{2} 超出限制，仓位验证失败!", kv.Key, coinTradeOccupied, 委托数量);
+                //    }
+                //}
                 #endregion
                 
                 string sender = OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name;

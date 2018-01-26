@@ -623,15 +623,18 @@ namespace AASClient
                     coins.Add(kv.Key);
                 }
 
-                var arrResult = Program.AASServiceClient.QueryAccountCoin(Program.Current平台用户.用户名, coins.Distinct().ToArray());
-                if (arrResult != null && arrResult.Length > 0)
+                try
                 {
-                    foreach (var item in arrResult)
+                    var arrResult = Program.AASServiceClient.QueryAccountCoin(Program.Current平台用户.用户名, coins.Distinct().ToArray());
+                    if (arrResult != null && arrResult.Length > 0)
                     {
-                        dictAccountCoin[item.Assetk__BackingField] = item;
+                        foreach (var item in arrResult)
+                        {
+                            dictAccountCoin[item.Assetk__BackingField] = item;
+                        }
                     }
                 }
-                
+                catch (Exception) { }
                 isQueryCoin = false;
             });
         }
