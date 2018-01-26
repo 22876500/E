@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/DbDataSet.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/DbDataSet.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/DbDataSet.xsd" id="DbDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="DbDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="已发委托">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="日期" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="状态说明" type="xs:string" />
+              <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
+              <xs:element minOccurs="0" name="成交价格" type="xs:decimal" />
+              <xs:element minOccurs="0" name="成交数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="委托价格" type="xs:decimal" />
+              <xs:element minOccurs="0" name="委托数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="撤单数量" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="已处理成交">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="日期" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
+              <xs:element minOccurs="0" name="成交编号" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="券商帐户">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="名称" type="xs:string" />
+              <xs:element minOccurs="0" name="启用" type="xs:boolean" />
+              <xs:element minOccurs="0" name="券商" type="xs:string" />
+              <xs:element minOccurs="0" name="类型" type="xs:string" />
+              <xs:element minOccurs="0" name="交易服务器" type="xs:string" />
+              <xs:element minOccurs="0" name="版本号" type="xs:string" />
+              <xs:element minOccurs="0" name="营业部代码" type="xs:short" />
+              <xs:element minOccurs="0" name="登录帐号" type="xs:string" />
+              <xs:element minOccurs="0" name="交易帐号" type="xs:string" />
+              <xs:element minOccurs="0" name="交易密码" type="xs:string" />
+              <xs:element minOccurs="0" name="通讯密码" type="xs:string" />
+              <xs:element minOccurs="0" name="上海股东代码" type="xs:string" />
+              <xs:element minOccurs="0" name="深圳股东代码" type="xs:string" />
+              <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="订单">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="开仓类别" type="xs:int" />
+              <xs:element minOccurs="0" name="已开数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="已开金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="浮动盈亏" type="xs:decimal" />
+              <xs:element minOccurs="0" name="开仓价位" type="xs:decimal" />
+              <xs:element minOccurs="0" name="当前价位" type="xs:decimal" />
+              <xs:element minOccurs="0" name="开仓时间" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="平仓时间" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="平仓类别" type="xs:int" />
+              <xs:element minOccurs="0" name="已平数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="已平金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="平仓价位" type="xs:decimal" />
+              <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="平台用户">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="用户名" type="xs:string" />
+              <xs:element minOccurs="0" name="密码" type="xs:string" />
+              <xs:element minOccurs="0" name="角色" type="xs:int" />
+              <xs:element minOccurs="0" name="仓位限制" type="xs:decimal" />
+              <xs:element minOccurs="0" name="亏损限制" type="xs:decimal" />
+              <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
+              <xs:element minOccurs="0" name="允许删除碎股订单" type="xs:boolean" />
+              <xs:element minOccurs="0" name="分组" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MAC地址分配">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="用户名" type="xs:string" />
+              <xs:element minOccurs="0" name="MAC" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="风控分配">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="风控员" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="已平仓订单">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="毛利" type="xs:decimal" />
+              <xs:element minOccurs="0" name="开仓类别" type="xs:int" />
+              <xs:element minOccurs="0" name="已开数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="已开金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="开仓价位" type="xs:decimal" />
+              <xs:element minOccurs="0" name="平仓类别" type="xs:int" />
+              <xs:element minOccurs="0" name="已平数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="已平金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="平仓价位" type="xs:decimal" />
+              <xs:element minOccurs="0" name="开仓时间" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="平仓时间" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="交易日志">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="日期" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
+              <xs:element minOccurs="0" name="信息" type="xs:string" />
+              <xs:element minOccurs="0" name="委托数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="委托价格" type="xs:decimal" />
+              <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
+              <xs:element minOccurs="0" name="时间" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="额度分配">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="市场" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="拼音缩写" type="xs:string" />
+              <xs:element minOccurs="0" name="买模式" type="xs:int" />
+              <xs:element minOccurs="0" name="卖模式" type="xs:int" />
+              <xs:element minOccurs="0" name="交易额度" type="xs:decimal" />
+              <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="电子币帐户">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="名称" type="xs:string" />
+              <xs:element minOccurs="0" name="启用" type="xs:boolean" />
+              <xs:element minOccurs="0" name="交易平台" type="xs:string" />
+              <xs:element minOccurs="0" name="登录帐号" type="xs:string" />
+              <xs:element minOccurs="0" name="ApiKey" type="xs:string" />
+              <xs:element minOccurs="0" name="SecretKey" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="可用资金">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="币种" type="xs:string" />
+              <xs:element minOccurs="0" name="可用数量" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="交易账户关联">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="电子币账户" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
