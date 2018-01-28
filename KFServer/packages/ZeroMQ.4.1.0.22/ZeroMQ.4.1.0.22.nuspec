@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ZeroMQ</id>
+    <version>4.1.0.22</version>
+    <title>ZeroMQ</title>
+    <authors>metadings, Pieter Hintjens, Martin Sustrik</authors>
+    <owners>metadings, Pieter Hintjens, Martin Sustrik</owners>
+    <licenseUrl>https://raw.githubusercontent.com/zeromq/clrzmq4/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/zeromq/clrzmq4/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/zeromq/clrzmq4/master/ZeroMQ.ico</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ZeroMQ C# CLR namespace (.NET and mono, Windows and Linux, x86 and amd64)</description>
+    <summary />
+    <copyright>ZeroMQ</copyright>
+    <tags>clrzmq4 ZeroMQ ZMQ 0MQ ØMQ Messaging</tags>
+    <references>
+      <reference file="ZeroMQ.dll" />
+    </references>
+  </metadata>
+</package>

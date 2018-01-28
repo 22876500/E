@@ -13,9 +13,9 @@ namespace AASServer
     public enum 数据表 { 成交, 委托, 平台用户, 券商帐户, 额度分配, 已发委托, 已处理成交, 订单, 已平仓订单, 风控分配, 交易日志, MAC地址分配 };
 
 
-    public enum 买模式 {现金买入 = 0, 融资买入 = 1, 买券还券 = 2, 担保品买入 = 3 }
+    public enum 买模式 { 现金买入 = 0, 融资买入 = 1, 买券还券 = 2, 担保品买入 = 3 }
 
-    public enum 卖模式 {现券卖出 = 0, 融券卖出 = 1, 卖券还款 = 2,  担保品卖出 = 3}
+    public enum 卖模式 { 现券卖出 = 0, 融券卖出 = 1, 卖券还款 = 2, 担保品卖出 = 3 }
 
     public class AASUserConfiguration : EntityTypeConfiguration<平台用户>
     {
@@ -32,10 +32,16 @@ namespace AASServer
         {
             Property(t => t.手续费率).HasPrecision(18, 6);
         }
-        
+
     }
 
-
+    public class AASOrderConfig : EntityTypeConfiguration<已发委托>
+    {
+        public AASOrderConfig()
+        {
+            Property(t => t.成交价格).HasPrecision(18, 4);
+        }
+    }
 
     class AASDbContext : DbContext
     {
@@ -56,6 +62,7 @@ namespace AASServer
            //注册配置
             modelBuilder.Configurations.Add(new AASUserConfiguration());
             modelBuilder.Configurations.Add(new AASTraderLimitConfiguration());
+            modelBuilder.Configurations.Add(new AASOrderConfig());
             base.OnModelCreating(modelBuilder);
         }
 
