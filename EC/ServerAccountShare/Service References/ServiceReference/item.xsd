@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GroupClient" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GroupClient" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GroupService.Queryinfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Other" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Other2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GroupService.Queryinfo" nillable="true" type="tns:GroupService.Queryinfo" />
+  <xs:complexType name="GroupService.QueryDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SearchOperatorError" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchOperatorResult" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchTradeErrInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchTradeResult" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GroupService.QueryDataObj" nillable="true" type="tns:GroupService.QueryDataObj" />
+</xs:schema>
