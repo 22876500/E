@@ -23,11 +23,11 @@ namespace AASClient
     {
         Dictionary<string, string> ServerIPDict = new Dictionary<string, string>();
 
-        bool isSelectServer = true;
+        bool isSelectServer = false;
         Configuration AppConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         
         //110.86.28.229 西安登录的固定ip, 210.13.212.206上海登录的固定ip 
-        readonly string serverIP = "";
+        readonly string serverIP = "39.104.93.151";
         const string pubServerName = "分发服务器";
         string pubServerIPCache = string.Empty;
 

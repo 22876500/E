@@ -1551,21 +1551,28 @@ namespace AASServer
                 {
 
                     StringBuilder ErrInfo = new StringBuilder(256);
+                    
+                    KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
+                    KFapiInstance.RegistEvent(ConnectBackFunc, KFapi.MsgType.ON_CONNECTED);
+                }
+                Thread.Sleep(1000);
+                return "等待登录返回";
+            }
 
-                    KFapiInstance.Connect("LiLai", "ws://180.169.135.246:23333/socket.io/?EIO=2&transport=websocket", 5);
+            private void ConnectBackFunc(object sender, EventArgs e)
+            {
+                var rtn = (e as WebsocketIO.WebsocketIO.msgEventArgs);
+                if (rtn.msgHead < 0)
+                {
+                    Program.logger.LogInfoDetail("登录失败，返回值 Header {0}, Detail {1}" + rtn, rtn.msgDetail);
+                }
+                else
+                {
                     KFapiInstance.RegistEvent(OrderCallBackFunc, KFapi.MsgType.ON_RTN_ORDER);
                     KFapiInstance.RegistEvent(TradeCallBackFunc, KFapi.MsgType.ON_RTN_TRADE);
                     this.ClientID = 0;
-                    // connect 是否成功，最好有返回值，否则不知道是否应该重新连接。
-                    if (ErrInfo.ToString() != string.Empty)
-                    {
-                        return "登录失败:" + ErrInfo.ToString();
-                    }
-                    else
-                    {
-                        return "登录成功";
-                    }
                 }
+                
             }
 
             private void OrderCallBackFunc(object sender, EventArgs e)
@@ -1589,10 +1596,13 @@ namespace AASServer
 
             public void Logoff()
             {
-                KFapiInstance.disconnect(this.交易帐号);
+                try
+                {
+                    KFapiInstance.disconnect(this.交易帐号);
+                }
+                catch (Exception) { }
+                
                 this.ClientID = -1;
-
-
             }
 
             double lastTimeCost = 0;
@@ -1690,40 +1700,6 @@ namespace AASServer
                         i++;
                     }
                 }
-                //DataTable 查到的成交Result = null;
-                //string 查到的成交ErrInfo = null;
-
-                //DataTable 查到的委托Result = null;
-                //string 查到的委托ErrInfo = null;
-                //QueryDataLocal(ref timeCost, ref 查到的成交Result, ref 查到的成交ErrInfo, ref 查到的委托Result, ref 查到的委托ErrInfo);
-
-                //DateTime dtMid = DateTime.Now;
-
-
-                //if (查到的成交ErrInfo == string.Empty)
-                //{
-                //    if (查到的成交Result != null && 查到的成交Result.Rows.Count > 0)
-                //    {
-                //        this.帐户成交DataTable = this.Get规范成交(查到的成交Result);
-                //    }
-                //}
-                //else if (lastTimeCost != timeCost)
-                //{
-                //    Program.logger.LogInfo("券商帐户 {0} 查询成交时出错:{1}", this.名称, 查到的成交ErrInfo);
-                //}
-
-
-                //if (查到的委托ErrInfo == string.Empty)
-                //{
-                //    if (查到的委托Result != null && 查到的委托Result.Rows.Count > 0)
-                //    {
-                //        this.帐户委托DataTable = this.Get规范委托(查到的委托Result);
-                //    }
-                //}
-                //else if (lastTimeCost != timeCost)
-                //{
-                //    Program.logger.LogInfo("券商帐户 {0} 查询委托时出错:{1}", this.名称, 查到的委托ErrInfo);
-                //}
 
                 lastTimeCost = timeCost;
 
@@ -1770,18 +1746,18 @@ namespace AASServer
 
             public void SendOrder(int Category, byte Market, string Zqdm, decimal Price, decimal Quantity, OrderCacheEntity orderCacheObj, out string Result, out string ErrInfo, out bool hasOrderNo)
             {
-                char directory = Category % 2 == 0 ? '0' : '1';
-                string market = Market == 0 ? "SSE" : "SZE";
+                char directory = Category % 2 == 0 ? KFapi.DirectionType.BUY : KFapi.DirectionType.SELL;
+                string market = Market == 0 ? "SZE"  : "SSE" ;
 
                 orderCacheObj.GroupName = this.名称;
                 orderCacheObj.Market = Market;
                 hasOrderNo = true;//只有CATS接口会用到这个参数，用于区别普通A股下单。因为此接口返回的是客户端自己生成的id，在一段事件后才会有接口生成的id。
-                if (!Tool.IsSendOrderTimeFit())
-                {
-                    ErrInfo = string.Format("下单时限为9:00-15:00, 当前时间{0}超出下单时限", DateTime.Now);
-                    Result = string.Empty;
-                    return;
-                }
+                //if (!Tool.IsSendOrderTimeFit())
+                //{
+                //    ErrInfo = string.Format("下单时限为9:00-15:00, 当前时间{0}超出下单时限", DateTime.Now);
+                //    Result = string.Empty;
+                //    return;
+                //}
 
                 Result = string.Empty;
                 ErrInfo = string.Empty;
@@ -1794,19 +1770,31 @@ namespace AASServer
 
                 lock (this.SendOrderObject)
                 {
-                    Result = string.Empty;
-                    ErrInfo = string.Empty;
+                    try
+                    {
+                        Result = string.Empty;
+                        ErrInfo = string.Empty;
 
-                    if (this.ClientID == -1)
-                    {
-                        ErrInfo = string.Format("{0}未登录到券商交易服务器", this.名称);
-                        return;
+                        if (this.ClientID == -1)
+                        {
+                            ErrInfo = string.Format("{0}未登录到券商交易服务器", this.名称);
+                            return;
+                        }
+                        int rtn = KFapiInstance.InsertOrder(this.交易帐号, Zqdm, market, Math.Round((double)Price, 2), (int)Quantity, directory, KFapi.OffsetFlagType.OPEN, KFapi.OrdType.MARKET_ORDER);
+                        if (rtn > 0)
+                        {
+                            Result = rtn.ToString();
+                        }
+                        else
+                        {
+                            ErrInfo = "返回值为 " + rtn; ;
+                        }
                     }
-                    int orderID = KFapiInstance.InsertOrder(this.交易帐号, Zqdm, market, Math.Round((double)Price, 2), (int)Quantity, directory, KFapi.OffsetFlagType.OPEN, KFapi.OrdType.MARKET_ORDER);
-                    if (orderID > 0)
+                    catch (Exception ex)
                     {
-                        Result = orderID.ToString();
+                        ErrInfo = "下单异常 " + ex.Message;
                     }
+
                 }
 
             }
@@ -1821,19 +1809,14 @@ namespace AASServer
                     ErrInfo = string.Format("{0}未登录到券商交易服务器", this.名称);
                     return;
                 }
-
-                StringBuilder Result1 = new StringBuilder(1024 * 1024);
-                StringBuilder ErrInfo1 = new StringBuilder(256);
-
-                KFapiInstance.InsertOrder(this.交易帐号, Zqdm, hth, 0, 0, '0', '', KFapi.OrdType.MARKET_ORDER);
-                //KFapiInstance.CancelOrder(int.Parse(hth));
-                if (ErrInfo == string.Empty)
+                try
                 {
+                    KFapiInstance.CancelOrder(this.交易帐号, int.Parse(hth));
                     Result = "撤单成功";
                 }
-                else
+                catch (Exception ex)
                 {
-                    Result = string.Empty;
+                    ErrInfo = string.Format("CancelOrder异常 {0}", (ex.InnerException ?? ex).Message);
                 }
             }
 
