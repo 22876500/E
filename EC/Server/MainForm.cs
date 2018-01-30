@@ -205,9 +205,7 @@ namespace Server
                     }
                     #endregion
 
-                    AddNewestConsignment();
                     Tool.SendNotifyToClient();  //通知交易客户端和风控客户端
-                    RemoveAddedConsignment();
                     Program.IsServiceUpdating = false;
 
                     Thread.Sleep(100);
@@ -232,107 +230,8 @@ namespace Server
 
         List<已发委托> lstOrderSending = new List<已发委托>();
         List<已发委托> lstOrderSended = new List<已发委托>();
-        private void AddNewestConsignment()
-        {
-            try
-            {
-                if (Program.QueueConsignmentCache.Count > 0)
-                {
-                    已发委托 wt;
-                    while (true)
-                    {
-                        if (Program.QueueConsignmentCache.Count > 0 && Program.QueueConsignmentCache.TryDequeue(out wt) && wt != null)
-                        {
-                            lstOrderSending.Add(wt);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
 
-                if (lstOrderSending.Count > 0)
-                {
-                    DateTime dt = DateTime.Now;
-                    List<已发委托> lstOutTimeOrder = new List<已发委托>();
-                    foreach (var item in lstOrderSending)
-                    {
-                        if (item == null)
-                        {
-                            continue;
-                        }
-                        if ((dt - item.日期).TotalSeconds < 50)
-                        {
-                            if (Program.交易员委托DataTable.ContainsKey(item.交易员))
-                            {
-                                if (Program.交易员委托DataTable[item.交易员] == null)
-                                {
-                                    Program.交易员委托DataTable[item.交易员] = new JyDataSet.委托DataTable();
-                                    Program.交易员委托DataTable[item.交易员].Add委托Row(item.交易员, item.组合号, item.证券代码, item.证券名称, item.买卖方向, item.委托价格, item.委托数量, item.成交价格, item.成交数量, item.撤单数量, item.状态说明, item.委托编号, item.市场代码, item.日期.ToString("yyyy-MM-dd HH:mm:ss"));
-                                    if (!lstOrderSended.Contains(item)) Program.委托表Changed[item.交易员] = true;
-                                }
-                                else if (Program.交易员委托DataTable[item.交易员].FirstOrDefault(_ => _.组合号 == item.组合号 && _.委托编号 == item.委托编号) == null)
-                                {
-                                    Program.交易员委托DataTable[item.交易员].Add委托Row(item.交易员, item.组合号, item.证券代码, item.证券名称, item.买卖方向, item.委托价格, item.委托数量, item.成交价格, item.成交数量, item.撤单数量, item.状态说明, item.委托编号, item.市场代码, item.日期.ToString("yyyy-MM-dd HH:mm:ss"));
-                                    if (!lstOrderSended.Contains(item)) Program.委托表Changed[item.交易员] = true;
-                                }
-                                else
-                                {
-                                    lstOutTimeOrder.Add(item);
-                                }
-                                if (!lstOrderSended.Contains(item) && !lstOutTimeOrder.Contains(item)) lstOrderSended.Add(item);
-                            }
-                            else
-                            {
-                                Program.交易员委托DataTable[item.交易员] = new JyDataSet.委托DataTable();
-                                Program.交易员委托DataTable[item.交易员].Add委托Row(item.交易员, item.组合号, item.证券代码, item.证券名称, item.买卖方向, item.委托价格, item.委托数量, item.成交价格, item.成交数量, item.撤单数量, item.状态说明, item.委托编号, item.市场代码, item.日期.ToString("yyyy-MM-dd HH:mm:ss"));
-                                Program.委托表Changed[item.交易员] = true;
-                            }
-                        }
-                        else
-                        {
-                            lstOutTimeOrder.Add(item);
-                        }
-                    }
-                    lstOrderSending = lstOrderSending.Except(lstOutTimeOrder).ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                Program.logger.LogInfo("委托缓存修正异常：{0}", ex.Message, ex.StackTrace);
-            }
-            
-        }
 
-        private void RemoveAddedConsignment()
-        {
-            if (lstOrderSending.Count > 0)
-            {
-                foreach (var item in lstOrderSending)
-                {
-                    if (item == null)
-                    {
-                        continue;
-                    }
-                    try
-                    {
-                        if (Program.交易员委托DataTable.ContainsKey(item.交易员))
-                        {
-                            var wt = Program.交易员委托DataTable[item.交易员].FirstOrDefault(_ => _.组合号 == item.组合号 && _.委托编号 == item.委托编号);
-                            if (wt != null)
-                            {
-                                Program.交易员委托DataTable[item.交易员].Remove委托Row(wt);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Program.logger.LogInfoDetail("移除委托缓存对象出错, {0}", ex.Message);
-                    }
-                }
-            }
-        }
 
         private ServiceHost RunService()
         {
@@ -355,9 +254,6 @@ namespace Server
             NetTcpBinding1.MaxReceivedMessageSize = 2147483647;
             NetTcpBinding1.SendTimeout = new TimeSpan(0, 0, 5);
             NetTcpBinding1.ReceiveTimeout = new TimeSpan(4, 0, 0);
-            //NetTcpBinding1.ReliableSession.InactivityTimeout = new TimeSpan(0, 0, 5);
-            //NetTcpBinding1.ReliableSession.Enabled = true;
-            //NetTcpBinding1.ReliableSession.InactivityTimeout = TimeSpan.FromHours(4);
             NetTcpBinding1.ReaderQuotas.MaxStringContentLength = 0xfffffff;
             NetTcpBinding1.ReaderQuotas.MaxArrayLength = 0xfffffff;
             NetTcpBinding1.ReaderQuotas.MaxBytesPerRead = 0xfffffff;
@@ -409,6 +305,7 @@ namespace Server
             //Program.logger.LogInfo("3.证书设置开始");
             #region Credentials
             ServiceHost1.Credentials.ServiceCertificate.Certificate = new X509Certificate2("AAS.pfx", "mima1234");
+            //ServiceHost1.Credentials.ServiceCertificate.Certificate = new X509Certificate2("AAS18.pfx", "mima1234");
             ServiceHost1.Credentials.ClientCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.None;
 
             //用户名密码认证认证  角色授权

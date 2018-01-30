@@ -780,7 +780,7 @@ namespace Server
                     string Msg = OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name == UserName ? "下单成功" : string.Format("风控员{0}下单成功", OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
                     Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), UserName, TradeLimit1.组合号, 证券代码, zqName, 委托编号, 买卖方向, 委托数量, 委托价格, Msg);
 
-                    Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, 委托编号, TradeLimit1.组合号, zqName, TradeLimit1.市场);
+                    
 
 
                     if (OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name != UserName)
@@ -982,9 +982,6 @@ namespace Server
                     string Msg = OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name == UserName ? "下单成功" : string.Format("风控员{0}下单成功", OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
                     Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), UserName, TradeLimit1.组合号, 证券代码, zqName, 委托编号, 买卖方向, 委托数量, 委托价格, Msg);
 
-                    Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, 委托编号, TradeLimit1.组合号, zqName, TradeLimit1.市场);
-
-
                     if (OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name != UserName)
                     {
                         风控操作 风控操作1 = new 风控操作();
@@ -1033,30 +1030,7 @@ namespace Server
 
             object userSync = Program.db.平台用户.GetSendOrderSyncObj(UserName);
             lock (userSync)
-            {
-                #region 仓位验证
-                //var dtNotFinished = Program.db.已发委托.GetNotFinished已发委托(DateTime.Today, accountName, UserName, 买卖方向);
-                //var kv = CommonUtils.GetBinanceCoinInfo(证券代码);
-                //if (买卖方向 == 0)
-                //{
-                //    var countCoinBasic = Program.db.可用资金.Get可用资金(UserName, kv.Value); //买入则验证资金币种是否足够
-                //    var basicCoinOccupied = dtNotFinished == null ? 0 : dtNotFinished.Where(_ => _.证券代码.EndsWith(kv.Value)).Sum(_=> _.委托价格 * (_.委托数量 - _.成交数量 - _.撤单数量));
-                //    if ((countCoinBasic - basicCoinOccupied) < 委托数量 * 委托价格)
-                //    {
-                //        return string.Format("|币种{0}现有数量{0}, 尚未成交委托占用数量{1}, 欲使用{2}*{3}={4} 超出限制，仓位验证失败!", kv.Value, basicCoinOccupied, 委托价格, 委托数量, 委托价格 * 委托数量);
-                //    }
-                //}
-                //else
-                //{
-                //    var countCoinTrade = Program.db.可用资金.Get可用资金(UserName, kv.Key);//卖出则验证本币种是否足够
-                //    var coinTradeOccupied = dtNotFinished == null ? 0 : dtNotFinished.Where(_ => _.证券代码.EndsWith(kv.Key)).Sum(_=> _.委托数量);
-                //    if ((countCoinTrade - coinTradeOccupied) < 委托数量)
-                //    {
-                //        return string.Format("|币种{0}现有数量{0}, 未成交卖单占用数{1}, 欲卖出{2} 超出限制，仓位验证失败!", kv.Key, coinTradeOccupied, 委托数量);
-                //    }
-                //}
-                #endregion
-                
+            {   
                 string sender = OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name;
                 OrderCacheEntity orderCacheObj = AddCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, accountName, sender);
 
@@ -1078,9 +1052,7 @@ namespace Server
 
                     Program.db.已发委托.Add(DateTime.Today, accountName, OrderID, UserName, "委托成功", 0, 证券代码, 证券代码, 买卖方向, 0m, 0m, 委托价格, (decimal)委托数量, 0m);
                     logMsg = sender == UserName ? "下单成功" : string.Format("风控员{0}下单成功", sender);
-                    
-                    Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, OrderID, accountName, 证券代码, 0);
-                    
+
                     if (sender != UserName)
                     {
                         风控操作 风控操作1 = new 风控操作();

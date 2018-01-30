@@ -779,10 +779,6 @@ namespace Server
                     Program.db.已发委托.Add(DateTime.Today, TradeLimit1.组合号, 委托编号, UserName, "委托成功", TradeLimit1.市场, 证券代码, zqName, 买卖方向, 0m, 0m, 委托价格, (decimal)委托数量, 0m);
                     string Msg = OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name == UserName ? "下单成功" : string.Format("风控员{0}下单成功", OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
                     Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), UserName, TradeLimit1.组合号, 证券代码, zqName, 委托编号, 买卖方向, 委托数量, 委托价格, Msg);
-
-                    Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, 委托编号, TradeLimit1.组合号, zqName, TradeLimit1.市场);
-
-
                     if (OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name != UserName)
                     {
                         风控操作 风控操作1 = new 风控操作
@@ -982,9 +978,6 @@ namespace Server
                     string Msg = OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name == UserName ? "下单成功" : string.Format("风控员{0}下单成功", OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
                     Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), UserName, TradeLimit1.组合号, 证券代码, zqName, 委托编号, 买卖方向, 委托数量, 委托价格, Msg);
 
-                    Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, 委托编号, TradeLimit1.组合号, zqName, TradeLimit1.市场);
-
-
                     if (OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name != UserName)
                     {
                         风控操作 风控操作1 = new 风控操作();
@@ -1078,9 +1071,6 @@ namespace Server
 
                     Program.db.已发委托.Add(DateTime.Today, accountName, OrderID, UserName, "委托成功", 0, 证券代码, 证券代码, 买卖方向, 0m, 0m, 委托价格, (decimal)委托数量, 0m);
                     logMsg = sender == UserName ? "下单成功" : string.Format("风控员{0}下单成功", sender);
-                    
-                    Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, OrderID, accountName, 证券代码, 0);
-                    
                     if (sender != UserName)
                     {
                         风控操作 风控操作1 = new 风控操作();

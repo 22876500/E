@@ -670,8 +670,6 @@ namespace Server
                     if (hasOrderNo)
                     {
                         orderCacheObj.OrderID = 委托编号;
-
-                        Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, 委托编号, TradeLimit1.组合号, TradeLimit1.证券名称, TradeLimit1.市场);
                         Program.db.已发委托.Add(DateTime.Today, TradeLimit1.组合号, 委托编号, UserName, "程序自动委托下单成功", TradeLimit1.市场, 证券代码, TradeLimit1.证券名称, 买卖方向, 0m, 0m, (decimal)委托价格, (decimal)委托数量, 0m);
                         string Msg = UserName + " 程序自动下单成功";
                         Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), UserName, TradeLimit1.组合号, 证券代码, TradeLimit1.证券名称, 委托编号, 买卖方向, 委托数量, 委托价格, Msg);
@@ -845,7 +843,6 @@ namespace Server
                         if (hasOrderNo)
                         {
                             orderCacheObj.OrderID = 委托编号;
-                            Program.AddConsignmentCache(UserName, 证券代码, 买卖方向, 委托数量, 委托价格, 委托编号, limitItem.GroupAccount, limitItem.StockName, market);
                             Program.db.已发委托.Add(DateTime.Today, limitItem.GroupAccount, 委托编号, UserName, "程序自动委托下单成功", market, 证券代码, limitItem.StockName, 买卖方向, 0m, 0m, (decimal)委托价格, (decimal)委托数量, 0m);
                             string Msg = UserName + " 程序自动下单成功";
                             Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), UserName, limitItem.GroupAccount, 证券代码, limitItem.StockName, 委托编号, 买卖方向, 委托数量, 委托价格, Msg);

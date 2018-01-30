@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AccountDataSet" targetNamespace="http://tempuri.org/AccountDataSet.xsd" xmlns:mstns="http://tempuri.org/AccountDataSet.xsd" xmlns="http://tempuri.org/AccountDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AccountDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AccountDataSet" msprop:Generator_UserDSName="AccountDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="参数" msprop:Generator_TableClassName="参数DataTable" msprop:Generator_TableVarName="table参数" msprop:Generator_TablePropName="参数" msprop:Generator_RowDeletingName="参数RowDeleting" msprop:Generator_RowChangingName="参数RowChanging" msprop:Generator_RowEvHandlerName="参数RowChangeEventHandler" msprop:Generator_RowDeletedName="参数RowDeleted" msprop:Generator_UserTableName="参数" msprop:Generator_RowChangedName="参数RowChanged" msprop:Generator_RowEvArgName="参数RowChangeEvent" msprop:Generator_RowClassName="参数Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="项" msprop:Generator_ColumnVarNameInTable="column项" msprop:Generator_ColumnPropNameInRow="项" msprop:Generator_ColumnPropNameInTable="项Column" msprop:Generator_UserColumnName="项" type="xs:string" minOccurs="0" />
+              <xs:element name="值" msprop:Generator_ColumnVarNameInTable="column值" msprop:Generator_ColumnPropNameInRow="值" msprop:Generator_ColumnPropNameInTable="值Column" msprop:Generator_UserColumnName="值" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="快捷键" msprop:Generator_TableClassName="快捷键DataTable" msprop:Generator_TableVarName="table快捷键" msprop:Generator_RowChangedName="快捷键RowChanged" msprop:Generator_TablePropName="快捷键" msprop:Generator_RowDeletingName="快捷键RowDeleting" msprop:Generator_RowChangingName="快捷键RowChanging" msprop:Generator_RowEvHandlerName="快捷键RowChangeEventHandler" msprop:Generator_RowDeletedName="快捷键RowDeleted" msprop:Generator_RowClassName="快捷键Row" msprop:Generator_UserTableName="快捷键" msprop:Generator_RowEvArgName="快捷键RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="键名" msprop:Generator_ColumnVarNameInTable="column键名" msprop:Generator_ColumnPropNameInRow="键名" msprop:Generator_ColumnPropNameInTable="键名Column" msprop:Generator_UserColumnName="键名" type="xs:string" minOccurs="0" />
+              <xs:element name="方向" msprop:Generator_ColumnVarNameInTable="column方向" msprop:Generator_ColumnPropNameInRow="方向" msprop:Generator_ColumnPropNameInTable="方向Column" msprop:Generator_UserColumnName="方向" type="xs:int" minOccurs="0" />
+              <xs:element name="价格模式" msprop:Generator_ColumnVarNameInTable="column价格模式" msprop:Generator_ColumnPropNameInRow="价格模式" msprop:Generator_ColumnPropNameInTable="价格模式Column" msprop:Generator_UserColumnName="价格模式" type="xs:int" minOccurs="0" />
+              <xs:element name="价差模式" msprop:Generator_ColumnVarNameInTable="column价差模式" msprop:Generator_ColumnPropNameInRow="价差模式" msprop:Generator_ColumnPropNameInTable="价差模式Column" msprop:Generator_UserColumnName="价差模式" type="xs:int" minOccurs="0" />
+              <xs:element name="价差数值" msprop:Generator_ColumnVarNameInTable="column价差数值" msprop:Generator_ColumnPropNameInRow="价差数值" msprop:Generator_ColumnPropNameInTable="价差数值Column" msprop:Generator_UserColumnName="价差数值" type="xs:decimal" minOccurs="0" />
+              <xs:element name="股数模式" msprop:Generator_ColumnVarNameInTable="column股数模式" msprop:Generator_ColumnPropNameInRow="股数模式" msprop:Generator_ColumnPropNameInTable="股数模式Column" msprop:Generator_UserColumnName="股数模式" type="xs:int" minOccurs="0" />
+              <xs:element name="股数数值" msprop:Generator_ColumnVarNameInTable="column股数数值" msprop:Generator_ColumnPropNameInRow="股数数值" msprop:Generator_ColumnPropNameInTable="股数数值Column" msprop:Generator_UserColumnName="股数数值" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="价格提示" msprop:Generator_TableClassName="价格提示DataTable" msprop:Generator_TableVarName="table价格提示" msprop:Generator_TablePropName="价格提示" msprop:Generator_RowDeletingName="价格提示RowDeleting" msprop:Generator_RowChangingName="价格提示RowChanging" msprop:Generator_RowEvHandlerName="价格提示RowChangeEventHandler" msprop:Generator_RowDeletedName="价格提示RowDeleted" msprop:Generator_UserTableName="价格提示" msprop:Generator_RowChangedName="价格提示RowChanged" msprop:Generator_RowEvArgName="价格提示RowChangeEvent" msprop:Generator_RowClassName="价格提示Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="证券代码" msprop:Generator_ColumnVarNameInTable="column证券代码" msprop:Generator_ColumnPropNameInRow="证券代码" msprop:Generator_ColumnPropNameInTable="证券代码Column" msprop:Generator_UserColumnName="证券代码" type="xs:string" minOccurs="0" />
+              <xs:element name="证券名称" msprop:Generator_ColumnVarNameInTable="column证券名称" msprop:Generator_ColumnPropNameInRow="证券名称" msprop:Generator_ColumnPropNameInTable="证券名称Column" msprop:Generator_UserColumnName="证券名称" type="xs:string" minOccurs="0" />
+              <xs:element name="提示类型" msprop:Generator_ColumnVarNameInTable="column提示类型" msprop:Generator_ColumnPropNameInRow="提示类型" msprop:Generator_ColumnPropNameInTable="提示类型Column" msprop:Generator_UserColumnName="提示类型" type="xs:int" minOccurs="0" />
+              <xs:element name="提示价格" msprop:Generator_ColumnVarNameInTable="column提示价格" msprop:Generator_ColumnPropNameInRow="提示价格" msprop:Generator_ColumnPropNameInTable="提示价格Column" msprop:Generator_UserColumnName="提示价格" type="xs:decimal" minOccurs="0" />
+              <xs:element name="提示等级" msprop:Generator_ColumnVarNameInTable="column提示等级" msprop:Generator_ColumnPropNameInRow="提示等级" msprop:Generator_ColumnPropNameInTable="提示等级Column" msprop:Generator_UserColumnName="提示等级" type="xs:int" minOccurs="0" />
+              <xs:element name="启用" msprop:Generator_ColumnVarNameInTable="column启用" msprop:Generator_ColumnPropNameInRow="启用" msprop:Generator_ColumnPropNameInTable="启用Column" msprop:Generator_UserColumnName="启用" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D05EA7EF-8E28-46F5-BF1A-B820F0DA0DB8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AASClient</RootNamespace>
+    <AssemblyName>ECoinClient</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>s.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Binance.API.Csharp.Client">
+      <HintPath>..\Libraries\Binance.API.Csharp.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Binance.API.Csharp.Client.Domain">
+      <HintPath>..\Libraries\Binance.API.Csharp.Client.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Binance.API.Csharp.Client.Models">
+      <HintPath>..\Libraries\Binance.API.Csharp.Client.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Ice">
+      <HintPath>..\Libraries\Ice.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp">
+      <HintPath>..\Libraries\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Libraries\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="ZeroMQ">
+      <HintPath>..\Libraries\ZeroMQ.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountDataSet.cs">
+      <DependentUpon>AccountDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AccountDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AddMACForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMACForm.Designer.cs">
+      <DependentUpon>AddMACForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddQSAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddQSAccountForm.Designer.cs">
+      <DependentUpon>AddQSAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddRemindForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRemindForm.Designer.cs">
+      <DependentUpon>AddRemindForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddShortcutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddShortcutForm.Designer.cs">
+      <DependentUpon>AddShortcutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTradeLimitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTradeLimitForm.Designer.cs">
+      <DependentUpon>AddTradeLimitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECoinAccountRelation\AddTradeAccountRelation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECoinAccountRelation\AddTradeAccountRelation.Designer.cs">
+      <DependentUpon>AddTradeAccountRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECoinAccountRelation\TraderRelationAccountList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECoinAccountRelation\TraderRelationAccountList.Designer.cs">
+      <DependentUpon>TraderRelationAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECoinAccount\AddECoinAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECoinAccount\AddECoinAccount.Designer.cs">
+      <DependentUpon>AddECoinAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECoinAccount\ECoinAccountList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECoinAccount\ECoinAccountList.Designer.cs">
+      <DependentUpon>ECoinAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketAdapter\BinanceAdapter.cs" />
+    <Compile Include="MarketAdapter\BinanceUtils.cs" />
+    <Compile Include="MarketAdapter\IAdapter.cs" />
+    <Compile Include="PrewarningShowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrewarningShowForm.Designer.cs">
+      <DependentUpon>PrewarningShowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CancelWTForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelWTForm.Designer.cs">
+      <DependentUpon>CancelWTForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CJForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CJForm.Designer.cs">
+      <DependentUpon>CJForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\DataServerClient.cs" />
+    <Compile Include="Client\IClient.cs" />
+    <Compile Include="ClosedTradeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClosedTradeForm.Designer.cs">
+      <DependentUpon>ClosedTradeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CloseOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CloseOrderForm.Designer.cs">
+      <DependentUpon>CloseOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cryptor.cs" />
+    <Compile Include="DataGridViewAutoFilterColumnHeaderCell.cs" />
+    <Compile Include="DataGridViewAutoFilterTextBoxColumn.cs" />
+    <Compile Include="HqForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HqForm.Designer.cs">
+      <DependentUpon>HqForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ice\DataServer\Common.cs" />
+    <Compile Include="Ice\DataServer\DataService.cs" />
+    <Compile Include="L2Api.cs" />
+    <Compile Include="ListViewNF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.cs" />
+    <Compile Include="Manager\ClientManager.cs" />
+    <Compile Include="Manager\IManager.cs" />
+    <Compile Include="Manager\StockCodeManager.cs" />
+    <Compile Include="Model\AbstractModel.cs" />
+    <Compile Include="Model\Entities.cs" />
+    <Compile Include="Model\DataModel\StockCode.cs" />
+    <Compile Include="Model\Enums.cs" />
+    <Compile Include="Model\Interfaces.cs" />
+    <Compile Include="ModifyPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyPasswordForm.Designer.cs">
+      <DependentUpon>ModifyPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyShortcutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyShortcutForm.Designer.cs">
+      <DependentUpon>ModifyShortcutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpenTradeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenTradeForm.Designer.cs">
+      <DependentUpon>OpenTradeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartialClass.cs" />
+    <Compile Include="PopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm.Designer.cs">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrewarningAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrewarningAddForm.Designer.cs">
+      <DependentUpon>PrewarningAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReadWriteLock.cs" />
+    <Compile Include="RemindPriceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemindPriceForm.Designer.cs">
+      <DependentUpon>RemindPriceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrewarningListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrewarningListForm.Designer.cs">
+      <DependentUpon>PrewarningListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SendOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendOrderForm.Designer.cs">
+      <DependentUpon>SendOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerCallback.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainForm.Designer.cs">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyQSAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyQSAccountForm.Designer.cs">
+      <DependentUpon>ModifyQSAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyTradeLimitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyTradeLimitForm.Designer.cs">
+      <DependentUpon>ModifyTradeLimitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyUserForm.Designer.cs">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiskControlMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RiskControlMainForm.Designer.cs">
+      <DependentUpon>RiskControlMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AASServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SetDefaultQuantityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetDefaultQuantityForm.Designer.cs">
+      <DependentUpon>SetDefaultQuantityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetHqFormCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetHqFormCount.Designer.cs">
+      <DependentUpon>SetHqFormCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetHqServerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetHqServerForm.Designer.cs">
+      <DependentUpon>SetHqServerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetShortcutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetShortcutForm.Designer.cs">
+      <DependentUpon>SetShortcutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharedLimitEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharedLimitEdit.Designer.cs">
+      <DependentUpon>SharedLimitEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareLimitListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareLimitListForm.Designer.cs">
+      <DependentUpon>ShareLimitListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareLimitStockItemEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareLimitStockItemEdit.Designer.cs">
+      <DependentUpon>ShareLimitStockItemEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubConfigForm.Designer.cs">
+      <DependentUpon>SubConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommonUtils.cs" />
+    <Compile Include="TDFData\DataCache.cs" />
+    <Compile Include="TDFData\ByteArrayPool.cs" />
+    <Compile Include="TDFData\DataSourceConfig.cs" />
+    <Compile Include="Tool.cs" />
+    <Compile Include="TradeLimitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeLimitForm.Designer.cs">
+      <DependentUpon>TradeLimitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeMainForm.Designer.cs">
+      <DependentUpon>TradeMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UIDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UISettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UISettingForm.Designer.cs">
+      <DependentUpon>UISettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateOrderForm.Designer.cs">
+      <DependentUpon>UpdateOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCoins\UserCoinEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserCoins\UserCoinEdit.Designer.cs">
+      <DependentUpon>UserCoinEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCoins\UserCoinsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserCoins\UserCoinsList.Designer.cs">
+      <DependentUpon>UserCoinsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WTForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WTForm.Designer.cs">
+      <DependentUpon>WTForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="业绩统计Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="业绩统计Form.Designer.cs">
+      <DependentUpon>业绩统计Form.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddMACForm.resx">
+      <DependentUpon>AddMACForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddQSAccountForm.resx">
+      <DependentUpon>AddQSAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddRemindForm.resx">
+      <DependentUpon>AddRemindForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddShortcutForm.resx">
+      <DependentUpon>AddShortcutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTradeLimitForm.resx">
+      <DependentUpon>AddTradeLimitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUserForm.resx">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECoinAccountRelation\AddTradeAccountRelation.resx">
+      <DependentUpon>AddTradeAccountRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECoinAccountRelation\TraderRelationAccountList.resx">
+      <DependentUpon>TraderRelationAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECoinAccount\AddECoinAccount.resx">
+      <DependentUpon>AddECoinAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECoinAccount\ECoinAccountList.resx">
+      <DependentUpon>ECoinAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrewarningAddForm.resx">
+      <DependentUpon>PrewarningAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrewarningShowForm.resx">
+      <DependentUpon>PrewarningShowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CancelWTForm.resx">
+      <DependentUpon>CancelWTForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CJForm.resx">
+      <DependentUpon>CJForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClosedTradeForm.resx">
+      <DependentUpon>ClosedTradeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CloseOrderForm.resx">
+      <DependentUpon>CloseOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HqForm.resx">
+      <DependentUpon>HqForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMainForm.resx">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyPasswordForm.resx">
+      <DependentUpon>ModifyPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyQSAccountForm.resx">
+      <DependentUpon>ModifyQSAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyShortcutForm.resx">
+      <DependentUpon>ModifyShortcutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyTradeLimitForm.resx">
+      <DependentUpon>ModifyTradeLimitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyUserForm.resx">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenTradeForm.resx">
+      <DependentUpon>OpenTradeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm.resx">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RemindPriceForm.resx">
+      <DependentUpon>RemindPriceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrewarningListForm.resx">
+      <DependentUpon>PrewarningListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RiskControlMainForm.resx">
+      <DependentUpon>RiskControlMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendOrderForm.resx">
+      <DependentUpon>SendOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetDefaultQuantityForm.resx">
+      <DependentUpon>SetDefaultQuantityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetHqFormCount.resx">
+      <DependentUpon>SetHqFormCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetHqServerForm.resx">
+      <DependentUpon>SetHqServerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetShortcutForm.resx">
+      <DependentUpon>SetShortcutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedLimitEdit.resx">
+      <DependentUpon>SharedLimitEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareLimitListForm.resx">
+      <DependentUpon>ShareLimitListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareLimitStockItemEdit.resx">
+      <DependentUpon>ShareLimitStockItemEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubConfigForm.resx">
+      <DependentUpon>SubConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeLimitForm.resx">
+      <DependentUpon>TradeLimitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeMainForm.resx">
+      <DependentUpon>TradeMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UISettingForm.resx">
+      <DependentUpon>UISettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateOrderForm.resx">
+      <DependentUpon>UpdateOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCoins\UserCoinEdit.resx">
+      <DependentUpon>UserCoinEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCoins\UserCoinsList.resx">
+      <DependentUpon>UserCoinsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WTForm.resx">
+      <DependentUpon>WTForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="业绩统计Form.resx">
+      <DependentUpon>业绩统计Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="AccountDataSet.xsc">
+      <DependentUpon>AccountDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AccountDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AccountDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AccountDataSet.xss">
+      <DependentUpon>AccountDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Ice\DataServer\Common.ice" />
+    <None Include="Ice\DataServer\DataService.ice" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AccounCoin1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AccountRepayResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddAccountRelationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddECoinQSAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddHsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddMACResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddQSAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddTradeLimitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddTraderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddTraderToRCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Add可用资金Response1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AyersFeeConfig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.CancelAyersOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.CancelECoinOrderResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.CancelOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.CloseOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DbDataSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DecryptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteAccountRelationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteECoinQSAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteHsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteMACResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteQSAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteTradeLimitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteTraderFromRCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.DeleteUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Delete可用资金Response1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.EnableECoinQSAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.EnableHsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.EnableQSAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.FectchAllTableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.GetAyersAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.GetAyersFeeConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.GetDataServerIPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.GetHkMarketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.GetHkTranResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.GetOrderIDByReferenceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Get交易服务器Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Get行情服务器Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.HKMarketData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.JyDataSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.KeepAliveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.LimitTrader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryAccountCoinResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryAccountRelationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryAll可用资金Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryClientIPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryCoinQtyResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryECoinQsAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryFKResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryHsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryJyBelongFKResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryJyLogBelongFKResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryJyNotBelongFKResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryJYResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryMACBelongUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryNotGroupedTraderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryPubStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryQsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QuerySingleUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryTradeLimitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query业绩BelongFKResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query可用资金Response1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query普通用户Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.RefreshOrderTableResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.RemoveGroupTraderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.RemoveStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.ResetPasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendAyersOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendECoinOrderResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendHKOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendPubStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SetAyersFeeConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SetFeeConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.ShareGroupQueryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.ShareLimitDocumentQueryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.ShareLimitGroupItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.TestExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.TestHsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.TestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateAccountRelationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateAyersAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateAyersOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateECoinQSAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateHsAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateQSAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateTradeLimitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.UpdateUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Update可用资金Response1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASService1.wsdl" />
+    <None Include="Service References\AASServiceReference\DbDataSet1.xsd" />
+    <None Include="Service References\AASServiceReference\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\item9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AASServiceReference\JyDataSet1.xsd" />
+    <None Include="UIDataSet.xsc">
+      <DependentUpon>UIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UIDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UIDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UIDataSet.xss">
+      <DependentUpon>UIDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="amd64\libsodium.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="amd64\libzmq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="i386\libsodium.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="i386\libzmq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\AASServiceReference\item1.disco" />
+    <None Include="Resources\next.png" />
+    <None Include="Resources\previous.png" />
+    <Content Include="s.ico" />
+    <None Include="Service References\AASServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AASServiceReference\configuration.svcinfo" />
+    <None Include="Service References\AASServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AASServiceReference\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AASTrade.DataModel\DataModel.csproj">
+      <Project>{e715689b-2d33-4eb6-8b38-49de99ebd378}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

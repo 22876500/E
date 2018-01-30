@@ -1668,12 +1668,17 @@ namespace AASServer
                             else
                             {
                                 var relatedTrade = 帐户成交DataTable.Rows[i] as JyDataSet.成交Row;
-                                if (relatedTrade != null)
+                                if(relatedTrade == null)
+                                {
+                                    relatedTrade = 帐户成交DataTable.FirstOrDefault(_=> _.委托编号 == item.order_id.ToString());
+                                }
+                                if (relatedTrade != null && relatedTrade.委托编号 == item.order_id.ToString())
                                 {
                                     relatedTrade.成交数量 = item.volume;
                                     relatedTrade.成交价格 = (decimal)item.price;
                                     relatedTrade.成交金额 = (decimal)item.volume * (decimal)item.price;
                                 }
+                                
                             }
                         }
                         catch (Exception ex)
@@ -1820,7 +1825,7 @@ namespace AASServer
                 StringBuilder Result1 = new StringBuilder(1024 * 1024);
                 StringBuilder ErrInfo1 = new StringBuilder(256);
 
-
+                KFapiInstance.InsertOrder(this.交易帐号, Zqdm, hth, 0, 0, '0', '', KFapi.OrdType.MARKET_ORDER);
                 //KFapiInstance.CancelOrder(int.Parse(hth));
                 if (ErrInfo == string.Empty)
                 {

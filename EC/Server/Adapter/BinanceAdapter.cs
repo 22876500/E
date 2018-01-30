@@ -136,9 +136,7 @@ namespace Server.Adapter
                 var st = DateTime.Now;
                 lock (sync)
                 {
-                    //Program.logger.LogInfoDetail("开始下单, coin {0}, qty {1} price {2}, bsflag {3} ", symbol, qty, price, bsFlag);
                     var order = binanceClient.PostNewOrder(symbol, qty, price, bsFlag == 0 ? OrderSide.BUY : OrderSide.SELL).Result;
-                    //Program.logger.LogInfoDetail("下单结果, 委托编号 {0}, 详细信息{1}",order.OrderId, order.ToJson());
                     if (order != null && order.OrderId > 0)
                     {
                         if (queueOrder.FirstOrDefault(_ => _.Orderid == order.OrderId) == null)
@@ -670,17 +668,18 @@ namespace Server.Adapter
             }
             try
             {
-
                 var serverTime = GetDateTime(binanceClient.GetServerTime().Result.ServerTime);
-                Thread.Sleep(300);
                 if ((DateTime.Now - serverTime).TotalSeconds >= 0.5)
                 {
-                    Program.logger.LogInfo("Binance接口获取时间比本地时间慢超过0.5秒，建议调慢当前机器时间，或进行时间同步，否则主动查询接口可能异常!");
+                    Program.logger.LogInfo("Binance接口获取时间比本地时间慢超过0.5秒，本地时间{0}, Server时间{1}");
+                    SetSystemDateTime.SetLocalTimeByStr(serverTime.ToString());
+                    Program.logger.LogInfo("自动修正后本地时间{0}", DateTime.Now);
                 }
                 else
                 {
                     Program.logger.LogInfo("Binance接口获取时间{1}，本地时间{2}，时间验证正常。", AccountName, serverTime.ToString("HH:mm:ss fff"), DateTime.Now.ToString("HH:mm:ss fff"));
                 }
+                Thread.Sleep(stopMiniSeconds);
             }
             catch (Exception ex)
             {

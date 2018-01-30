@@ -90,3 +90,6 @@ D:\Ghoul\韬睿\AASServer\obj\Release\AASServer.Properties.Resources.resources
 D:\Ghoul\韬睿\AASServer\obj\Release\AASServer.csproj.GenerateResource.Cache
 D:\Ghoul\韬睿\AASServer\obj\Release\AASServer.csprojResolveAssemblyReference.cache
 D:\Ghoul\韬睿\AASServer\bin\Release\KFapi.dll
+D:\GitHub\E\KFServer\bin\Release\AASServer.exe.config
+D:\GitHub\E\KFServer\obj\Release\AASServer.exe
+D:\GitHub\E\KFServer\obj\Release\AASServer.pdb

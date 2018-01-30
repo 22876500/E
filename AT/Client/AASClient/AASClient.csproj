@@ -147,7 +147,6 @@
     <Compile Include="AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calculator.cs" />
     <Compile Include="L2HkApi.cs" />
     <Compile Include="L2MultiApi.cs" />
     <Compile Include="PrewarningShowForm.cs">

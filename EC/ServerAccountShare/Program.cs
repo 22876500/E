@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Server
@@ -75,11 +71,6 @@ namespace Server
 
         public static ConcurrentDictionary<IClient, string> ClientUserName = new ConcurrentDictionary<IClient, string>();
 
-        /// <summary>
-        /// 委托信息缓存，用于修正已获取委托编号，未获取委托详情时，向客户端回发。
-        /// </summary>
-        public static ConcurrentQueue<已发委托> QueueConsignmentCache = new ConcurrentQueue<已发委托>();
-
         public static MainForm mainForm;
 
         /// <summary>
@@ -147,95 +138,6 @@ namespace Server
             }
         }
 
-        /// <summary>
-        /// 缓存下单信息，在获取到委托号但查询不到详细订单状态时，修正客户端订单信息显示。
-        /// </summary>
-        /// <param name="UserName"></param>
-        /// <param name="证券代码"></param>
-        /// <param name="买卖方向"></param>
-        /// <param name="委托数量"></param>
-        /// <param name="委托价格"></param>
-        /// <param name="委托编号"></param>
-        /// <param name="组合号"></param>
-        /// <param name="证券名称"></param>
-        /// <param name="市场"></param>
-        public static void AddConsignmentCache(string UserName, string 证券代码, int 买卖方向, decimal 委托数量, decimal 委托价格, string 委托编号, string 组合号, string 证券名称, byte 市场)
-        {
-            if (!string.IsNullOrEmpty(委托编号))
-            {
-                try
-                {
-                    QueueConsignmentCache.Enqueue(new 已发委托()
-                    {
-                        交易员 = UserName,
-                        组合号 = 组合号,
-                        证券代码 = 证券代码,
-                        证券名称 = 证券名称,
-                        买卖方向 = 买卖方向,
-                        委托价格 = 委托价格,
-                        委托数量 = 委托数量,
-                        撤单数量 = 0,
-                        成交价格 = 0,
-                        成交数量 = 0,
-                        状态说明 = "已报",
-                        委托编号 = 委托编号,
-                        市场代码 = 市场,
-                        日期 = DateTime.Now
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Program.logger.LogInfo("下单完成后自动加入缓存异常\r\n  Message:{0}\r\n  StackTrace:{1}", ex.Message, ex.StackTrace);
-                }
-            }
-        }
     }
-
-    public class PublicStockOrder
-    {
-        public DateTime TradeTime { get; set; }
-
-        public string Trader { get; set; }
-
-        public string StockCode { get; set; }
-
-        public string StockName { get; set; }
-
-        public string OrderID { get; set; }
-
-        /// <summary>
-        /// 市场（0 深圳，1 沪市）
-        /// </summary>
-        public byte Market { get; set; }
-
-        /// <summary>
-        /// 买卖方向
-        /// </summary>
-        public int Side { get; set; }
-
-        /// <summary>
-        /// 委托价格
-        /// </summary>
-        public decimal OrderPrice { get; set; }
-
-        /// <summary>
-        /// 委托数量
-        /// </summary>
-        public decimal OrderQuantity { get; set; }
-
-        /// <summary>
-        /// 成交价格
-        /// </summary>
-        public decimal KnockDownPrice { get; set; }
-
-        /// <summary>
-        /// 成交数量
-        /// </summary>
-        public decimal KnockDownQuantity { get; set; }
-
-        /// <summary>
-        /// 撤单数量
-        /// </summary>
-        public decimal CancelQuantity { get; set; }
-    }
+    
 }

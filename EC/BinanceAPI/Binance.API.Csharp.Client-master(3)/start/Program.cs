@@ -58,20 +58,24 @@ namespace start
             //logger.Init();
             try
             {
+                ApiClient apiClient = new ApiClient("", "");
                 //TQ2CjjiiMOGcaVflu9vq0wWIBIPiZzVVRyV6BSIlfyhzSOpxTpNLyYlGefa5dZQ8,pGTCCylx4Yb2WFTPyNueFlxkgZCrqQm0ueS605TrEsLbHh3ygve0xka5HBHJCOHD
-                ApiClient apiClient = new ApiClient("TQ2CjjiiMOGcaVflu9vq0wWIBIPiZzVVRyV6BSIlfyhzSOpxTpNLyYlGefa5dZQ8", "pGTCCylx4Yb2WFTPyNueFlxkgZCrqQm0ueS605TrEsLbHh3ygve0xka5HBHJCOHD");
+                //ApiClient apiClient = new ApiClient("TQ2CjjiiMOGcaVflu9vq0wWIBIPiZzVVRyV6BSIlfyhzSOpxTpNLyYlGefa5dZQ8", "pGTCCylx4Yb2WFTPyNueFlxkgZCrqQm0ueS605TrEsLbHh3ygve0xka5HBHJCOHD");
                 //ApiClient apiClient = new ApiClient("6xsi2bJRs2walo2wdGACHA77SiXcYOhsC7uv2Y6vJOf6XyrIWtNqT5fho7HvfOAD", "VgSHN3IB8Ss8BIfB9CfKm96uvV6oDTUWdoEIT5hgqXZixw3MNj2MZXipv8R6QIZO");
                 Console.WriteLine("Init client finish");
                 //"@37m9DafnGbTZXEeSkwEw4MI5WrJ3H9lLNW42zdS8bHVeFFfeNA0gauGn7baukCRp", "@2x10SdNLY1K9oLvZHwPCWNeZEhRnlAuM9d281At8pCofHkGMfPQPh4qe3NhwR7jh");
                 BinanceClient binanceClient = new BinanceClient(apiClient, false);
 
-
+                var serverTime = binanceClient.GetServerTime().Result;
+                Console.WriteLine("Server Time {0}, Client Time {1}", GetTime(serverTime.ServerTime), DateTime.Now.ToString("HH:mm:ss fff"));
+                SetSystemDateTime.SetLocalTimeByStr(DateTime.Now.ToString());
+                Console.WriteLine(DateTime.Now.ToString("HH:mm:ss fff"));
                 //var accountInfo = binanceClient.GetAccountInfo().Result;
                 //Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(accountInfo));
-                var allOrders = binanceClient.GetAllOrders("trxbtc", 21293338).Result;
+                //var allOrders = binanceClient.GetAllOrders("trxbtc", 21293338).Result;
 
-                var order = allOrders.First(_ => _.OrderId == 21293338);
-                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(order));
+                //var order = allOrders.First(_ => _.OrderId == 21293338);
+                //Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(order));
                 //Console.WriteLine(" orderID:{0}, time {1}", order.OrderId, GetTIme(order.Time));
                 //var trades = binanceClient.GetTradeList("trxbtc").Result;
                 //var list = trades.ToList();
@@ -181,7 +185,7 @@ namespace start
             }
         }
 
-        private static string GetTIme(long s)
+        private static string GetTime(long s)
         {
             return  (new DateTime(1970, 1, 1, 8, 0, 0)).AddMilliseconds(s).ToString("HH:mm:ss fff");
         }

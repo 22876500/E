@@ -223,64 +223,65 @@ namespace AASClient
                 //DataCache.GetInstance().SubTrans();
                 DataCache.GetInstance().UpdateMarketData += InsertMarketData;
                 DataCache.GetInstance().UpdateTransaction += InsertTransData;
-                TDFSourceRefreshRun();
+                //TDFSourceRefreshRun();
             }
         }
 
-        private void TDFSourceRefreshRun()
-        {
-            if (_refreshPageThread == null)
-            {
-                lock (sync)
-                {
-                    if (_refreshPageThread == null)
-                    {
-                        _refreshPageThread = new System.Threading.Thread(new ThreadStart(UpdateFormData)) { IsBackground = true };
-                        _refreshPageThread.Start();
-                    }
-                }
-            }
-        }
+        //private void TDFSourceRefreshRun()
+        //{
+        //    if (_refreshPageThread == null)
+        //    {
+        //        lock (sync)
+        //        {
+        //            if (_refreshPageThread == null)
+        //            {
+        //                _refreshPageThread = new System.Threading.Thread(new ThreadStart(UpdateFormData)) { IsBackground = true };
+        //                _refreshPageThread.Start();
+        //            }
+        //        }
+        //    }
+        //}
 
-        private void UpdateFormData()
-        {
-            while (true)
-            {
-                try
-                {
-                    if (marketQueue.Count > 0)
-                    {
-                        MarketData md = null;
-                        foreach (var item in marketQueue)
-                        {
-                            if (marketQueue.TryDequeue(out md))
-                                UpdateMarketData(md);
-                        }
-                    }
-                    if (transQueue.Count > 0)
-                    {
-                        MarketTransaction mt = null;
-                        foreach (var item in transQueue)
-                        {
-                            if (transQueue.TryDequeue(out mt))
-                                UpdateTransaction(mt);
-                        }
-                    }
+        //private void UpdateFormData()
+        //{
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            if (marketQueue.Count > 0)
+        //            {
+        //                MarketData md = null;
+        //                foreach (var item in marketQueue)
+        //                {
+        //                    if (marketQueue.TryDequeue(out md))
+        //                        UpdateMarketData(md);
+        //                }
+        //            }
+        //            if (transQueue.Count > 0)
+        //            {
+        //                MarketTransaction mt = null;
+        //                foreach (var item in transQueue)
+        //                {
+        //                    if (transQueue.TryDequeue(out mt))
+        //                        UpdateTransaction(mt);
+        //                }
+        //            }
 
-                }
-                catch (Exception ex)
-                {
-                    Program.logger.LogRunning("TDF数据源更新出错：{0}", ex.Message);
-                }
-                System.Threading.Thread.Sleep(50);
-            }
-        }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Program.logger.LogRunning("TDF数据源更新出错：{0}", ex.Message);
+        //        }
+        //        System.Threading.Thread.Sleep(50);
+        //    }
+        //}
 
         private void InsertTransData(MarketTransaction obj)
         {
             if (obj.Code == this.Zqdm)
             {
-                transQueue.Enqueue(obj);
+                //transQueue.Enqueue(obj);\
+                UpdateTransaction(obj);
             }
         }
 
@@ -288,7 +289,8 @@ namespace AASClient
         {
             if (obj.Code == this.Zqdm)
             {
-                marketQueue.Enqueue(obj);
+                //marketQueue.Enqueue(obj);
+                UpdateMarketData(obj);
             }
         }
         #endregion

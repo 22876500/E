@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/JyDataSet.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/JyDataSet.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/JyDataSet.xsd" id="JyDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="JyDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="成交">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
+              <xs:element minOccurs="0" name="成交价格" type="xs:decimal" />
+              <xs:element minOccurs="0" name="成交数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="成交金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="成交编号" type="xs:string" />
+              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
+              <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="成交时间" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="委托">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
+              <xs:element minOccurs="0" name="委托价格" type="xs:decimal" />
+              <xs:element minOccurs="0" name="委托数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="成交价格" type="xs:decimal" />
+              <xs:element minOccurs="0" name="成交数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="撤单数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="状态说明" type="xs:string" />
+              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
+              <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="委托时间" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="业绩统计">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="交易员" type="xs:string" />
+              <xs:element minOccurs="0" name="组合号" type="xs:string" />
+              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
+              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
+              <xs:element minOccurs="0" name="毛利" type="xs:decimal" />
+              <xs:element minOccurs="0" name="交易费用" type="xs:decimal" />
+              <xs:element minOccurs="0" name="净利润" type="xs:decimal" />
+              <xs:element minOccurs="0" name="买入数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="买入金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="买入均价" type="xs:decimal" />
+              <xs:element minOccurs="0" name="卖出数量" type="xs:decimal" />
+              <xs:element minOccurs="0" name="卖出金额" type="xs:decimal" />
+              <xs:element minOccurs="0" name="卖出均价" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
