@@ -36,14 +36,10 @@ namespace AASServer
             {
                 if (_port < 1)
                 {
-                    var strPort = CommonUtils.GetConfig("LimitManagePort");
-                    //if (!string.IsNullOrEmpty(strPort) && Regex.IsMatch(strPort, "^[0-9]+$"))
-                    //    _port = int.Parse(strPort);
-                    //else
-                    //    CommonUtils.SetConfig("LimitManagePort", "58000");
+                    var strPort = Program.appConfig.GetValue("LimitManagePort", "");
                     if (string.IsNullOrEmpty(strPort))
                     {
-                        CommonUtils.SetConfig("LimitManagePort", "58000");
+                        Program.appConfig.SetValue("LimitManagePort", "58000");
                         _port = 58000;
                     }
                     else
@@ -79,11 +75,11 @@ namespace AASServer
                 try
                 {
                     socket.Bind(string.Format("tcp://*:{0}", Port));
-                    Program.logger.LogInfoDetail("额度管理通讯接口正常开启，端口：{0}。", Port);
+                    Program.logger.LogInfoDetail("额度管理接口开启，Port {0}。", Port);
                 }
                 catch (Exception ex)
                 {
-                    Program.logger.LogInfoDetail("额度管理通讯接口 Binding Exception:\r\n  bind info: {0}\r\n  Exception Message: {1}\r\n  StackTrace:{2}", Port, ex.Message, ex.StackTrace);
+                    Program.logger.LogInfoDetail("额度管理接口 绑定异常:\r\n  bind info: {0}\r\n  Exception Message: {1}", Port, ex.Message);
                     return;
                 }
 
@@ -97,7 +93,6 @@ namespace AASServer
                         if (msgReceive != null)
                         {
                             strReceive = msgReceive[0].ReadString();
-                            //Program.logger.LogInfoDetail("3.额度管理通讯接口收到新消息，内容{0}", strReceive);
                             SwitchMessage(zMsgReply, strReceive);
                             msgReceive.Dispose();
                         }

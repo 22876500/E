@@ -52,7 +52,6 @@ D:\GitHub\E\AT\AASServer\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\GitHub\E\AT\AASServer\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.csprojResolveAssemblyReference.cache
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.AddUserForm.resources
-D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.GroupConfigForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.LoginForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.MainForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.Properties.Resources.resources

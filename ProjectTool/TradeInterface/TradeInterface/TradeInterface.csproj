@@ -217,7 +217,7 @@
     <None Include="Service References\GroupServiceReference\TradeInterface.GroupServiceReference.GroupServiceQueryinfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\DataWebService1.wsdl" />
+    <None Include="Service References\ServiceReference\DataWebService.wsdl" />
     <None Include="Service References\ServiceReference\TradeInterface.ServiceReference.CompareToolLoginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -243,6 +243,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ServiceReference\DataWebService.disco" />
     <None Include="Service References\GroupServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -250,7 +251,6 @@
     <None Include="Service References\GroupServiceReference\configuration.svcinfo" />
     <None Include="Service References\GroupServiceReference\configuration91.svcinfo" />
     <None Include="Service References\GroupServiceReference\item.disco" />
-    <None Include="Service References\ServiceReference\DataWebService1.disco" />
     <None Include="Service References\ServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

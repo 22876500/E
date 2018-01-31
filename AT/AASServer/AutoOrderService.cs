@@ -121,11 +121,11 @@ namespace AASServer
                 try
                 {
                     socket.Bind(string.Format("tcp://*:{0}", RepPort));
-                    Program.logger.LogInfoDetail("ZeroMQ Replay接口正常开启，端口：{0}。", RepPort);
+                    Program.logger.LogInfo("策略下单 Rep接口开启，Port {0}。", RepPort);
                 }
                 catch (Exception ex)
                 {
-                    Program.logger.LogInfoDetail("REP Binding Exception:\r\n  bind info: {0}\r\n  Exception Message: {1}\r\n  StackTrace:{2}", RepPort, ex.Message, ex.StackTrace);
+                    Program.logger.LogInfo("策略下单 REP Binding 异常:\r\n  bind info: {0}\r\n  Exception Message: {1}", RepPort, ex.Message);
                     return;
                 }
                 
@@ -163,7 +163,6 @@ namespace AASServer
                     catch (Exception ex)
                     {
                         zMsgReply.Add(new ZFrame(string.Format("4|自动下单功能异常, Message:{0}， Exception {1}", message, ex.Message)));
-                        //Program.logger.LogInfoDetail("自动下单功能异常：\r\n  ZMessage:{0}\r\n  Message:{1}\r\n  StackTrace:{2}", msg[0].ReadString(), ex.Message, ex.StackTrace);
                     }
 
                     socket.Send(zMsgReply);
@@ -367,11 +366,11 @@ namespace AASServer
                 try
                 {
                     socket.Bind(string.Format("tcp://*:{0}", PubPort));
-                    Program.logger.LogInfoDetail("ZeroMQ Pub接口正常开启，端口：{0}。", PubPort);
+                    Program.logger.LogInfo("策略下单 Pub接口启动，Port {0}。", PubPort);
                 }
                 catch (Exception ex)
                 {
-                    Program.logger.LogInfoDetail("REP Binding Exception:\r\n  bind info: {0}\r\n  Exception Message: {1}\r\n  StackTrace:{2}", PubPort, ex.Message, ex.StackTrace);
+                    Program.logger.LogInfo("REP Binding Exception:\r\n  bind info: {0}\r\n  Exception Message: {1}", PubPort, ex.Message);
                     return;
                 }
 
@@ -397,7 +396,7 @@ namespace AASServer
                     }
                     catch (Exception ex)
                     {
-                        Program.logger.LogInfoDetail("自动下单功能pub线程异常： \r\n  Message:{0}\r\n  StackTrace:{1}", ex.Message, ex.StackTrace);
+                        Program.logger.LogInfoDetail("自动下单功能pub线程异常： \r\n  Message:{0}", ex.Message);
                     }
                     Thread.Sleep(20);
                 }

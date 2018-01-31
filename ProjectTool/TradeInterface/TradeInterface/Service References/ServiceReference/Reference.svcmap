@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://110.86.28.229:88/DataWebService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://39.104.93.151:80/DataWebService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DataWebService1.disco" MetadataType="Disco" ID="860ffc48-16ea-499f-95b7-5bffdc923194" SourceId="1" SourceUrl="http://110.86.28.229:88/DataWebService.asmx?disco" />
-    <MetadataFile FileName="DataWebService1.wsdl" MetadataType="Wsdl" ID="825813f3-43a5-45df-b171-58829c5d8619" SourceId="1" SourceUrl="http://110.86.28.229:88/DataWebService.asmx?wsdl" />
+    <MetadataFile FileName="DataWebService.disco" MetadataType="Disco" ID="6c408c8b-8bab-4ff2-a225-8d922befa499" SourceId="1" SourceUrl="http://39.104.93.151/DataWebService.asmx?disco" />
+    <MetadataFile FileName="DataWebService.wsdl" MetadataType="Wsdl" ID="4a5a4941-0db6-4c1e-a652-9e9d100ee125" SourceId="1" SourceUrl="http://39.104.93.151/DataWebService.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

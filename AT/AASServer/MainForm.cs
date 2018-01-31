@@ -180,7 +180,7 @@ namespace AASServer
 
             AyersMessageAdapter.Instance.Start();
 
-            //LimitManageService.Instance.Start();
+            LimitManageService.Instance.Start();
 
             if (!Program.db.平台用户.ExistsRole(角色.超级管理员))
             {
@@ -190,10 +190,10 @@ namespace AASServer
 
             #region 初始化服务
             ServiceHost TradeServiceHost = RunService();
-            Program.logger.LogInfo("交易服务已启动");
+            
 
             ServiceHost GroupServiceHost = InitGroupService();
-            Program.logger.LogInfo("发送端服务已启动");
+            
             #endregion
 
             
@@ -339,9 +339,13 @@ namespace AASServer
 
             //TdxHqApi.Instance.Stop();
 
-            //LimitManageService.Instance.Stop();
+            LimitManageService.Instance.Stop();
 
-            GroupServiceHost.Close();
+            if (GroupServiceHost != null)
+            {
+                GroupServiceHost.Close();
+            }
+            
 
             TradeServiceHost.Close();
 
@@ -552,7 +556,7 @@ namespace AASServer
             //Program.logger.LogInfo("5.ServiceOpen开始");
 
             ServiceHost1.Open();
-            
+            Program.logger.LogInfo("交易端服务已启动，Port {0}。", servicePort);
             return ServiceHost1;
         }
 
@@ -680,10 +684,7 @@ namespace AASServer
                                 {
                                     cell.Value = "停用";
                                 }
-                                Program.db.券商帐户.EnableQSAccount(groupName, !groupItem.启用);
-                                //Program.logger.LogInfoDetail(groupItem.启用.ToString());
-                                Thread.Sleep(200);
-                               
+                                Program.db.券商帐户.EnableQSAccount(groupName, !groupItem.启用);                               
                             }
                         }
                        
@@ -699,20 +700,15 @@ namespace AASServer
 
         private ServiceHost InitGroupService()
         {
+            if (ConfigCache.OpenGroupService != "1")
+            {
+                return null;
+            }
             #region 初始化服务
-            var port = CommonUtils.GetConfig("GroupServicePort");
-            if (string.IsNullOrEmpty(port))
-            {
-                port = "80";
-            }
-
-            string ip = CommonUtils.GetConfig("GroupServiceBindIp");
-            if (string.IsNullOrEmpty(ip))
-            {
-                ip = "localhost";
-            }
-
+            string port = Program.appConfig.GetValue("GroupServicePort", "80");
+            string ip = Program.appConfig.GetValue("GroupServiceBindIp", "localhost");
             string uri = string.Format("http://{0}:{1}/", ip, port);
+
             var GroupServiceHost = new ServiceHost(typeof(GroupClient.GroupService), new Uri(uri));
 
             System.ServiceModel.Channels.Binding binding = GeWStHttpBinding(GroupServiceHost, ip, port);
@@ -735,7 +731,7 @@ namespace AASServer
             #endregion
 
             GroupServiceHost.Open();
-            
+            Program.logger.LogInfo("发送端服务已启动，Port {0}。", port);
             #endregion
             return GroupServiceHost;
         }

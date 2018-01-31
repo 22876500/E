@@ -77,5 +77,22 @@ namespace AASServer
                 return _useAyersInterface;
             }
         }
+
+        private static string _openGroupService;
+        public static string OpenGroupService
+        {
+            get
+            {
+                if (_openGroupService == null)
+                {
+                    _openGroupService = Program.appConfig.GetValue("OpenGroupService", "");
+                    if (_openGroupService == "")
+                    {
+                        Program.appConfig.SetValue("OpenGroupService", "0");
+                    }
+                }
+                return _openGroupService;
+            }
+        }
     }
 }

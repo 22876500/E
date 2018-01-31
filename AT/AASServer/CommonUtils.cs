@@ -359,10 +359,9 @@ namespace AASServer
         static string _mac;
         private static string GetMacAddress()
         {
-            var configMac = GetConfig("LocalMac");
+            var configMac = Program.appConfig.GetValue("LocalMac", "");
             try
             {
-                
                 string strMac = " ";
                 ManagementClass ManagementClass1 = new ManagementClass("Win32_NetworkAdapterConfiguration");
                 foreach (ManagementObject ManagementObject1 in ManagementClass1.GetInstances())
@@ -378,7 +377,7 @@ namespace AASServer
                 }
                 if (configMac != strMac)
                 {
-                    SetConfig("LocalMac", strMac);
+                    Program.appConfig.SetValue("LocalMac", strMac);
                 }
                 return strMac.ToString().Replace(":", "").ToUpper();
             }

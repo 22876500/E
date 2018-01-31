@@ -265,10 +265,10 @@
   </wsdl:binding>
   <wsdl:service name="DataWebService">
     <wsdl:port name="DataWebServiceSoap" binding="tns:DataWebServiceSoap">
-      <soap:address location="http://110.86.28.229:88/DataWebService.asmx" />
+      <soap:address location="http://39.104.93.151/DataWebService.asmx" />
     </wsdl:port>
     <wsdl:port name="DataWebServiceSoap12" binding="tns:DataWebServiceSoap12">
-      <soap12:address location="http://110.86.28.229:88/DataWebService.asmx" />
+      <soap12:address location="http://39.104.93.151/DataWebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

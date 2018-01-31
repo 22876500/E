@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="http://110.86.28.229:88/DataWebService.asmx?wsdl" docRef="http://110.86.28.229:88/DataWebService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="http://110.86.28.229:88/DataWebService.asmx" xmlns:q1="http://tempuri.org/" binding="q1:DataWebServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="http://110.86.28.229:88/DataWebService.asmx" xmlns:q2="http://tempuri.org/" binding="q2:DataWebServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-</discovery>

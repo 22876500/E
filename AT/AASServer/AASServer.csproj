@@ -159,12 +159,6 @@
       <DependentUpon>DbDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FixApi.cs" />
-    <Compile Include="GroupConfigForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GroupConfigForm.Designer.cs">
-      <DependentUpon>GroupConfigForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="GroupService.cs" />
     <Compile Include="HsClient.cs" />
     <Compile Include="JyDataSet.cs">
@@ -217,9 +211,6 @@
     <Compile Include="风控操作.cs" />
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GroupConfigForm.resx">
-      <DependentUpon>GroupConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

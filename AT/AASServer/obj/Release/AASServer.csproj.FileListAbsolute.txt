@@ -21,7 +21,6 @@ D:\GitHub\E\AT\AASServer\bin\Release\ZeroMQ.xml
 D:\GitHub\E\AT\AASServer\bin\Release\zh-Hans\EntityFramework.resources.dll
 D:\GitHub\E\AT\AASServer\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.AddUserForm.resources
-D:\GitHub\E\AT\AASServer\obj\Release\AASServer.GroupConfigForm.resources
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.LoginForm.resources
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.MainForm.resources
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.Properties.Resources.resources
@@ -29,3 +28,4 @@ D:\GitHub\E\AT\AASServer\obj\Release\AASServer.csproj.GenerateResource.Cache
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.exe
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.pdb
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.csprojResolveAssemblyReference.cache
+D:\GitHub\E\AT\AASServer\obj\Release\AASServer.csproj.CoreCompileInputs.cache

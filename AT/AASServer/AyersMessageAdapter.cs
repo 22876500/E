@@ -1587,9 +1587,8 @@ namespace AASServer
         {
             using (var db = new AASDbContext())
             {
-                var today = DateTime.Today;
-                var lstWT = db.已发委托.Where(_ => _.日期 == today && _.组合号 == "Ayers").ToList();
-                var lstCJ = db.已处理成交.Where(_ => _.日期 == today && _.组合号 == "Ayers").ToList();
+                var lstWT = db.已发委托.Where(_ => _.日期 == DateTime.Today && _.组合号 == "Ayers").ToList();
+                var lstCJ = db.已处理成交.Where(_ => _.日期 == DateTime.Today && _.组合号 == "Ayers").ToList();
 
                 var wtDataTable = new JyDataSet.委托DataTable();
                 foreach (var wtRow in lstWT)

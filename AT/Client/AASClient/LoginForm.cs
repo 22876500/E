@@ -247,7 +247,7 @@ namespace AASClient
                 }
                 if (AASClient.TDFData.DataCache.ServerIP == string.Empty)
                 {
-                    MessageBox.Show("行情服务器IP为空！");
+                    //MessageBox.Show("行情服务器IP为空！");
                     TDFData.DataSourceConfig.IsUseTDFData = false;
                 }
 

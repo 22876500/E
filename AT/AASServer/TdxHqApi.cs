@@ -80,7 +80,7 @@ namespace AASServer
 
         public bool Start()
         {
-            if (CommonUtils.GetConfig("UseTdxHKData") == "1")
+            if (Program.appConfig.GetValue("UseTdxHKData", "0") == "1")
             {
                 if (!IsOpened)
                 {

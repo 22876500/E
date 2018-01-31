@@ -14,7 +14,7 @@ namespace AASClient
 {
     static class Program
     {
-        public static bool IsSinglePoint = true;
+        public static bool IsSinglePoint = false;
         private static System.Threading.Mutex mutex;
         public static bool IsRestart { get; set; }
 
