@@ -1,8 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:82/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AASServer" />
   <xs:import schemaLocation="http://localhost:82/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:82/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AASServer" />
   <xs:import schemaLocation="http://localhost:82/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" />
+  <xs:element name="AddHsAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="启用" type="xs:boolean" />
+        <xs:element minOccurs="0" name="名称" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="端口" type="xs:short" />
+        <xs:element minOccurs="0" name="基金编码" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="资产单元编号" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="组合编号" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="操作员用户名" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="操作员密码" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="登录IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MAC" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HDD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddHsAccountResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHsAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="名称" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="端口" type="xs:short" />
+        <xs:element minOccurs="0" name="基金编码" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="资产单元编号" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="组合编号" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="操作员用户名" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="操作员密码" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="登录IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MAC" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HDD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHsAccountResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteHsAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteHsAccountResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareLimitDocumentQuery">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareLimitDocumentQueryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ShareLimitDocumentQueryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareGroupQuery">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareGroupQueryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="ShareGroupQueryResult" nillable="true" type="q1:ArrayOfShareLimitGroupItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTrader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="trader" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTraderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddTraderResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveGroupTrader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="trader" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveGroupTraderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveGroupTraderResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="limitItem" nillable="true" type="q2:StockLimitItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddStockResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="stockLimit" nillable="true" type="q3:StockLimitItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateStockResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveStock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="stockID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveStockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveStockResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryNotGroupedTrader">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryNotGroupedTraderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="QueryNotGroupedTraderResult" nillable="true" type="q4:ArrayOfLimitTrader" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="QuerySingleUser">
     <xs:complexType>
       <xs:sequence>
@@ -55,7 +225,7 @@
   <xs:element name="Get交易服务器Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Get交易服务器Result" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Get交易服务器Result" nillable="true" type="q5:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -67,7 +237,7 @@
   <xs:element name="Get行情服务器Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Get行情服务器Result" nillable="true" type="q2:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Get行情服务器Result" nillable="true" type="q6:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -139,12 +309,12 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="Role" type="q3:角色" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="Role" type="q7:角色" />
         <xs:element minOccurs="0" name="仓位限制" type="xs:decimal" />
         <xs:element minOccurs="0" name="亏损限制" type="xs:decimal" />
         <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
         <xs:element minOccurs="0" name="允许删除碎股订单" type="xs:boolean" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="Region" type="q4:分组" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="Region" type="q8:分组" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -161,7 +331,7 @@
         <xs:element minOccurs="0" name="亏损限制" type="xs:decimal" />
         <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
         <xs:element minOccurs="0" name="允许删除碎股订单" type="xs:boolean" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="分组1" type="q5:分组" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="分组1" type="q9:分组" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -268,7 +438,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="RC" nillable="true" type="xs:string" />
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Traders" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Traders" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -281,7 +451,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="RC" nillable="true" type="xs:string" />
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Traders" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Traders" nillable="true" type="q11:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -426,6 +596,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AccountRepay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AccountRepayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AccountRepayResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="QueryJY">
     <xs:complexType>
       <xs:sequence />
@@ -487,8 +672,8 @@
         <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
         <xs:element minOccurs="0" name="证券名称" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="拼音缩写" nillable="true" type="xs:string" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="买模式1" type="q8:买模式" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="卖模式1" type="q9:卖模式" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="买模式1" type="q12:买模式" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="卖模式1" type="q13:卖模式" />
         <xs:element minOccurs="0" name="交易额度" type="xs:decimal" />
         <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
       </xs:sequence>
@@ -508,8 +693,8 @@
         <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
         <xs:element minOccurs="0" name="证券名称" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="拼音缩写" nillable="true" type="xs:string" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="买模式1" type="q10:买模式" />
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="卖模式1" type="q11:卖模式" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="买模式1" type="q14:买模式" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="卖模式1" type="q15:卖模式" />
         <xs:element minOccurs="0" name="交易额度" type="xs:decimal" />
         <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
       </xs:sequence>
@@ -775,21 +960,21 @@
   <xs:element name="GetHkMarket">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q12:ArrayOfstring" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q16:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetHkMarketResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="GetHkMarketResult" nillable="true" type="q13:ArrayOfHKMarketData" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="GetHkMarketResult" nillable="true" type="q17:ArrayOfHKMarketData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetHkTran">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q14:ArrayOfstring" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q18:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -803,7 +988,7 @@
   <xs:element name="KeepAlive">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q15:ArrayOfstring" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q19:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -812,22 +997,87 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendHKOrder">
+  <xs:element name="Query委托">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="证券代码" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="证券名称" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
-        <xs:element minOccurs="0" name="委托数量" type="xs:decimal" />
-        <xs:element minOccurs="0" name="委托价格" type="xs:decimal" />
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendHKOrderResponse">
+  <xs:element name="Query委托Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SendHKOrderResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Query委托Result" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="JyDataSet.委托DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+            <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+            <xs:attribute fixed="委托DataTable" name="tableTypeName" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Query成交">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Query成交Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Query成交Result" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="JyDataSet.成交DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+            <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+            <xs:attribute fixed="成交DataTable" name="tableTypeName" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Query订单">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Query订单Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Query订单Result" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DbDataSet.订单DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+            <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+            <xs:attribute fixed="订单DataTable" name="tableTypeName" />
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -935,7 +1185,7 @@
   <xs:element name="GetAyersFeeConfigResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" minOccurs="0" name="GetAyersFeeConfigResult" nillable="true" type="q16:AyersFeeConfig" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" minOccurs="0" name="GetAyersFeeConfigResult" nillable="true" type="q20:AyersFeeConfig" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1055,176 +1305,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="TestHsAccountResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddHsAccount">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="启用" type="xs:boolean" />
-        <xs:element minOccurs="0" name="名称" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="端口" type="xs:short" />
-        <xs:element minOccurs="0" name="基金编码" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="资产单元编号" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="组合编号" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="操作员用户名" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="操作员密码" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="登录IP" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="MAC" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="HDD" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddHsAccountResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateHsAccount">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="名称" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="端口" type="xs:short" />
-        <xs:element minOccurs="0" name="基金编码" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="资产单元编号" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="组合编号" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="操作员用户名" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="操作员密码" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="登录IP" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="MAC" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="HDD" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateHsAccountResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteHsAccount">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteHsAccountResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShareLimitDocumentQuery">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShareLimitDocumentQueryResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ShareLimitDocumentQueryResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShareGroupQuery">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShareGroupQueryResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="ShareGroupQueryResult" nillable="true" type="q17:ArrayOfShareLimitGroupItem" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddTrader">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="trader" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddTraderResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AddTraderResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveGroupTrader">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="trader" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveGroupTraderResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="RemoveGroupTraderResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddStock">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="limitItem" nillable="true" type="q18:StockLimitItem" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddStockResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AddStockResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateStock">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="stockLimit" nillable="true" type="q19:StockLimitItem" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateStockResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateStockResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveStock">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="group" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="stockID" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveStockResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="RemoveStockResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="QueryNotGroupedTrader">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="QueryNotGroupedTraderResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AASServer" minOccurs="0" name="QueryNotGroupedTraderResult" nillable="true" type="q20:ArrayOfLimitTrader" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

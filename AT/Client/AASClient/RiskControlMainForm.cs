@@ -756,10 +756,6 @@ namespace AASClient
                     string HqServerString = Program.HqServer[HqServerIndex];
                     string[] HqServerInfo = HqServerString.Split(new char[] { ':' });
 
-                    //if (CommonUtils.EnableHKMarket)
-                    //{
-                    //    IsConnected = L2MultiApi.Instance.Connect("111.111.111.111", 7727, Result, ErrInfo);
-                    //}
                     if (isOpen)
                     {
                         IsConnected = L2Api.TdxL2Hq_Connect(HqServerInfo[1], int.Parse(HqServerInfo[2]), Result, ErrInfo);
@@ -771,10 +767,6 @@ namespace AASClient
                         Program.logger.LogRunning("连接到{0}失败:{1}", HqServerString, ErrInfo);
 
                         HqServerIndex = (HqServerIndex + 1) % Program.HqServer.Length;
-                        //if (HqServerIndex == (Program.HqServer.Length - 1))
-                        //{
-                        //    break;
-                        //}
                     }
                     else
                     {
@@ -788,16 +780,15 @@ namespace AASClient
                     #region 获取证券代码
                     List<string> 十档证券代码 = new List<string>();
 
-                    this.Invoke((Action)delegate()
+                    try
                     {
-                        foreach (AASClient.AASServiceReference.DbDataSet.订单Row 订单Row1 in Program.serverDb.订单)
+                        var positions = Program.serverDb.订单.Select(_ => _.证券代码).ToList();
+                        if (positions.Count > 0)
                         {
-                            if (!十档证券代码.Contains(订单Row1.证券代码))
-                            {
-                                十档证券代码.Add(订单Row1.证券代码);
-                            }
+                            positions.ForEach(_ => { if (!十档证券代码.Contains(_)) 十档证券代码.Add(_); });
                         }
-                    });
+                    }
+                    catch { }
 
                     if (Program.TempZqdm != null)
                     {

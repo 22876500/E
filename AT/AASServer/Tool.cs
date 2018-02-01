@@ -433,28 +433,44 @@ namespace AASServer
         {
             foreach (IClient IClient1 in Program.ClientUserName.Keys)
             {
-                if (Program.ClientUserName[IClient1] == TradeName)
+                try
                 {
-                    IClient1.成交DataTableChanged(TradeName, DataTable1);
+                    if (Program.ClientUserName[IClient1] == TradeName)
+                    {
+                        IClient1.成交DataTableChanged(TradeName, DataTable1);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("成交变更通知员工出错,员工：{0}; 出错信息：{1}", TradeName, ex.Message);
+                }
+                
             }
 
 
             foreach (IClient IClient1 in Program.ClientUserName.Keys)
             {
-                //向普通风控员发送
-                string ClientUserName = Program.ClientUserName[IClient1];
-                if (Program.db.风控分配.Exists(TradeName, ClientUserName))
+                try
                 {
+                    //向普通风控员发送
+                    string ClientUserName = Program.ClientUserName[IClient1];
+                    if (Program.db.风控分配.Exists(TradeName, ClientUserName))
+                    {
 
-                    IClient1.成交DataTableChanged(TradeName, DataTable1);
+                        IClient1.成交DataTableChanged(TradeName, DataTable1);
+                    }
+
+                    //向超级风控发送
+                    if (Program.db.平台用户.ExistsUserRole(ClientUserName, 角色.超级风控员))
+                    {
+                        IClient1.成交DataTableChanged(TradeName, DataTable1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("成交变更通知员工出错,员工：{0}; 出错信息：{1}", TradeName, ex.Message);
                 }
 
-                //向超级风控发送
-                if (Program.db.平台用户.ExistsUserRole(ClientUserName, 角色.超级风控员))
-                {
-                    IClient1.成交DataTableChanged(TradeName, DataTable1);
-                }
             }
 
         }
@@ -462,51 +478,40 @@ namespace AASServer
         {
             foreach (IClient IClient1 in Program.ClientUserName.Keys)
             {
-                if (Program.ClientUserName[IClient1] == TradeName)
+                try
                 {
-                    try
+                    if (Program.ClientUserName[IClient1] == TradeName)
                     {
                         IClient1.委托DataTableChanged(TradeName, DataTable1);
                     }
-                    catch (Exception ex)
-                    {
-                        Program.logger.LogInfoDetail("委托变更通知员工出错,员工：{0}; 出错信息：{1}", TradeName, ex.Message);
-                    }
-
                 }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("委托变更通知员工出错,员工：{0}; 出错信息：{1}", TradeName, ex.Message);
+                }
+
             }
 
 
             foreach (IClient IClient1 in Program.ClientUserName.Keys)
             {
-                //向普通风控员发送
-                string ClientUserName = Program.ClientUserName[IClient1];
-                if (Program.db.风控分配.Exists(TradeName, ClientUserName))
+                try
                 {
-                    try
+                    //向普通风控员发送
+                    if (Program.db.风控分配.Exists(TradeName, Program.ClientUserName[IClient1]))
                     {
                         IClient1.委托DataTableChanged(TradeName, DataTable1);
                     }
-                    catch (Exception ex)
-                    {
-                        Program.logger.LogInfoDetail("委托变更通知风控出错,风控：{0}; 出错信息：{1}", ClientUserName, ex.Message);
-                    }
 
+                    //向超级风控发送
+                    if (Program.db.平台用户.ExistsUserRole(Program.ClientUserName[IClient1], 角色.超级风控员))
+                    {
+                        IClient1.委托DataTableChanged(TradeName, DataTable1);
+                    }
                 }
-
-                //向超级风控发送
-                if (Program.db.平台用户.ExistsUserRole(ClientUserName, 角色.超级风控员))
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        IClient1.委托DataTableChanged(TradeName, DataTable1);
-                    }
-                    catch (Exception ex)
-                    {
-                        Program.logger.LogInfoDetail("委托变更通知超级管理员时出错,超级管理员：{0}; 出错信息：{1}", ClientUserName, ex.Message);
-                    }
-
-
+                    Program.logger.LogInfoDetail("委托变更通知风控及管理员出错, 出错信息：{0}",  ex.Message);
                 }
             }
 

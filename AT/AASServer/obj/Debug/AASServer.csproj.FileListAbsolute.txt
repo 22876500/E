@@ -56,6 +56,5 @@ D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.LoginForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.MainForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.Properties.Resources.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.csproj.GenerateResource.Cache
-D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.csproj.CoreCompileInputs.cache
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.exe
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.pdb

@@ -169,15 +169,9 @@ namespace GroupClient
                     }
                     else
                     {
-                        Program.logger.LogInfo("开始下单：Group {0}, 证券代码 {1}, 价格 {2}, 下单机器mac {3}", GroupName, Zqdm, Price, Mac);
                         Program.db.券商帐户.SendOrderLocal(GroupName, Category, Gddm, Zqdm, Price, Quantity, Mac, out result, out errInfo);
-                        //if (string.IsNullOrEmpty(errInfo))
-                        //{
-                        //    dictMacOrderList[Mac].Add(result);
-                        //}
                         response.Error = errInfo;
                         response.Result = result;
-                        Program.logger.LogInfoDetail("下单结果 {0}, 错误信息 {1}", result, errInfo);
                     }
                     
                 }

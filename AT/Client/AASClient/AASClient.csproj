@@ -589,6 +589,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AccountRepayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.AddHsAccountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -739,7 +742,16 @@
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query业绩BelongFKResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query委托Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query成交Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query普通用户Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.Query订单Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.RemoveGroupTraderResponse.datasource">
@@ -752,9 +764,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendAyersOrderResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendHKOrderResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.SendOrderResponse.datasource">

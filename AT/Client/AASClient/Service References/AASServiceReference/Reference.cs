@@ -15,6 +15,94 @@ namespace AASClient.AASServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AASServiceReference.AASService", CallbackContract=typeof(AASClient.AASServiceReference.AASServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface AASService {
         
+        // CODEGEN: 参数“名称”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddHsAccount", ReplyAction="http://tempuri.org/AASService/AddHsAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.AddHsAccountResponse AddHsAccount(AASClient.AASServiceReference.AddHsAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddHsAccount", ReplyAction="http://tempuri.org/AASService/AddHsAccountResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddHsAccountResponse> AddHsAccountAsync(AASClient.AASServiceReference.AddHsAccountRequest request);
+        
+        // CODEGEN: 参数“名称”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateHsAccount", ReplyAction="http://tempuri.org/AASService/UpdateHsAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.UpdateHsAccountResponse UpdateHsAccount(AASClient.AASServiceReference.UpdateHsAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateHsAccount", ReplyAction="http://tempuri.org/AASService/UpdateHsAccountResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateHsAccountResponse> UpdateHsAccountAsync(AASClient.AASServiceReference.UpdateHsAccountRequest request);
+        
+        // CODEGEN: 参数“Name”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/DeleteHsAccount", ReplyAction="http://tempuri.org/AASService/DeleteHsAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.DeleteHsAccountResponse DeleteHsAccount(AASClient.AASServiceReference.DeleteHsAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/DeleteHsAccount", ReplyAction="http://tempuri.org/AASService/DeleteHsAccountResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.DeleteHsAccountResponse> DeleteHsAccountAsync(AASClient.AASServiceReference.DeleteHsAccountRequest request);
+        
+        // CODEGEN: 参数“ShareLimitDocumentQueryResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareLimitDocumentQuery", ReplyAction="http://tempuri.org/AASService/ShareLimitDocumentQueryResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.ShareLimitDocumentQueryResponse ShareLimitDocumentQuery(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareLimitDocumentQuery", ReplyAction="http://tempuri.org/AASService/ShareLimitDocumentQueryResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareLimitDocumentQueryResponse> ShareLimitDocumentQueryAsync(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request);
+        
+        // CODEGEN: 参数“ShareGroupQueryResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlArrayAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareGroupQuery", ReplyAction="http://tempuri.org/AASService/ShareGroupQueryResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.ShareGroupQueryResponse ShareGroupQuery(AASClient.AASServiceReference.ShareGroupQueryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareGroupQuery", ReplyAction="http://tempuri.org/AASService/ShareGroupQueryResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareGroupQueryResponse> ShareGroupQueryAsync(AASClient.AASServiceReference.ShareGroupQueryRequest request);
+        
+        // CODEGEN: 参数“AddTraderResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddTrader", ReplyAction="http://tempuri.org/AASService/AddTraderResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.AddTraderResponse AddTrader(AASClient.AASServiceReference.AddTraderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddTrader", ReplyAction="http://tempuri.org/AASService/AddTraderResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddTraderResponse> AddTraderAsync(AASClient.AASServiceReference.AddTraderRequest request);
+        
+        // CODEGEN: 参数“group”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveGroupTrader", ReplyAction="http://tempuri.org/AASService/RemoveGroupTraderResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.RemoveGroupTraderResponse RemoveGroupTrader(AASClient.AASServiceReference.RemoveGroupTraderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveGroupTrader", ReplyAction="http://tempuri.org/AASService/RemoveGroupTraderResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveGroupTraderResponse> RemoveGroupTraderAsync(AASClient.AASServiceReference.RemoveGroupTraderRequest request);
+        
+        // CODEGEN: 参数“AddStockResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddStock", ReplyAction="http://tempuri.org/AASService/AddStockResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.AddStockResponse AddStock(AASClient.AASServiceReference.AddStockRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddStock", ReplyAction="http://tempuri.org/AASService/AddStockResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddStockResponse> AddStockAsync(AASClient.AASServiceReference.AddStockRequest request);
+        
+        // CODEGEN: 参数“UpdateStockResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateStock", ReplyAction="http://tempuri.org/AASService/UpdateStockResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.UpdateStockResponse UpdateStock(AASClient.AASServiceReference.UpdateStockRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateStock", ReplyAction="http://tempuri.org/AASService/UpdateStockResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateStockResponse> UpdateStockAsync(AASClient.AASServiceReference.UpdateStockRequest request);
+        
+        // CODEGEN: 参数“RemoveStockResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveStock", ReplyAction="http://tempuri.org/AASService/RemoveStockResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.RemoveStockResponse RemoveStock(AASClient.AASServiceReference.RemoveStockRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveStock", ReplyAction="http://tempuri.org/AASService/RemoveStockResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveStockResponse> RemoveStockAsync(AASClient.AASServiceReference.RemoveStockRequest request);
+        
+        // CODEGEN: 参数“QueryNotGroupedTraderResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlArrayAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryNotGroupedTrader", ReplyAction="http://tempuri.org/AASService/QueryNotGroupedTraderResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.QueryNotGroupedTraderResponse QueryNotGroupedTrader(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryNotGroupedTrader", ReplyAction="http://tempuri.org/AASService/QueryNotGroupedTraderResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryNotGroupedTraderResponse> QueryNotGroupedTraderAsync(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request);
+        
         // CODEGEN: 参数“QuerySingleUserResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QuerySingleUser", ReplyAction="http://tempuri.org/AASService/QuerySingleUserResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -199,6 +287,14 @@ namespace AASClient.AASServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/TestEx", ReplyAction="http://tempuri.org/AASService/TestExResponse")]
         System.Threading.Tasks.Task<AASClient.AASServiceReference.TestExResponse> TestExAsync(AASClient.AASServiceReference.TestExRequest request);
         
+        // CODEGEN: 参数“AccountRepayResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AccountRepay", ReplyAction="http://tempuri.org/AASService/AccountRepayResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.AccountRepayResponse AccountRepay(AASClient.AASServiceReference.AccountRepayRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AccountRepay", ReplyAction="http://tempuri.org/AASService/AccountRepayResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AccountRepayResponse> AccountRepayAsync(AASClient.AASServiceReference.AccountRepayRequest request);
+        
         // CODEGEN: 参数“QueryJYResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryJY", ReplyAction="http://tempuri.org/AASService/QueryJYResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -367,13 +463,29 @@ namespace AASClient.AASServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/KeepAlive", ReplyAction="http://tempuri.org/AASService/KeepAliveResponse")]
         System.Threading.Tasks.Task<AASClient.AASServiceReference.KeepAliveResponse> KeepAliveAsync(AASClient.AASServiceReference.KeepAliveRequest request);
         
-        // CODEGEN: 参数“SendHKOrderResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/SendHKOrder", ReplyAction="http://tempuri.org/AASService/SendHKOrderResponse")]
+        // CODEGEN: 参数“Query委托Result”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query委托", ReplyAction="http://tempuri.org/AASService/Query委托Response")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.SendHKOrderResponse SendHKOrder(AASClient.AASServiceReference.SendHKOrderRequest request);
+        AASClient.AASServiceReference.Query委托Response Query委托(AASClient.AASServiceReference.Query委托Request request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/SendHKOrder", ReplyAction="http://tempuri.org/AASService/SendHKOrderResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.SendHKOrderResponse> SendHKOrderAsync(AASClient.AASServiceReference.SendHKOrderRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query委托", ReplyAction="http://tempuri.org/AASService/Query委托Response")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.Query委托Response> Query委托Async(AASClient.AASServiceReference.Query委托Request request);
+        
+        // CODEGEN: 参数“Query成交Result”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query成交", ReplyAction="http://tempuri.org/AASService/Query成交Response")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.Query成交Response Query成交(AASClient.AASServiceReference.Query成交Request request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query成交", ReplyAction="http://tempuri.org/AASService/Query成交Response")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.Query成交Response> Query成交Async(AASClient.AASServiceReference.Query成交Request request);
+        
+        // CODEGEN: 参数“Query订单Result”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query订单", ReplyAction="http://tempuri.org/AASService/Query订单Response")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.Query订单Response Query订单(AASClient.AASServiceReference.Query订单Request request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query订单", ReplyAction="http://tempuri.org/AASService/Query订单Response")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.Query订单Response> Query订单Async(AASClient.AASServiceReference.Query订单Request request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Fectch名下交易员Table", ReplyAction="http://tempuri.org/AASService/Fectch名下交易员TableResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -469,94 +581,6 @@ namespace AASClient.AASServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/TestHsAccount", ReplyAction="http://tempuri.org/AASService/TestHsAccountResponse")]
         System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> TestHsAccountAsync(AASClient.AASServiceReference.TestHsAccountRequest request);
-        
-        // CODEGEN: 参数“名称”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddHsAccount", ReplyAction="http://tempuri.org/AASService/AddHsAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.AddHsAccountResponse AddHsAccount(AASClient.AASServiceReference.AddHsAccountRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddHsAccount", ReplyAction="http://tempuri.org/AASService/AddHsAccountResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddHsAccountResponse> AddHsAccountAsync(AASClient.AASServiceReference.AddHsAccountRequest request);
-        
-        // CODEGEN: 参数“名称”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateHsAccount", ReplyAction="http://tempuri.org/AASService/UpdateHsAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.UpdateHsAccountResponse UpdateHsAccount(AASClient.AASServiceReference.UpdateHsAccountRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateHsAccount", ReplyAction="http://tempuri.org/AASService/UpdateHsAccountResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateHsAccountResponse> UpdateHsAccountAsync(AASClient.AASServiceReference.UpdateHsAccountRequest request);
-        
-        // CODEGEN: 参数“Name”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/DeleteHsAccount", ReplyAction="http://tempuri.org/AASService/DeleteHsAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.DeleteHsAccountResponse DeleteHsAccount(AASClient.AASServiceReference.DeleteHsAccountRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/DeleteHsAccount", ReplyAction="http://tempuri.org/AASService/DeleteHsAccountResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.DeleteHsAccountResponse> DeleteHsAccountAsync(AASClient.AASServiceReference.DeleteHsAccountRequest request);
-        
-        // CODEGEN: 参数“ShareLimitDocumentQueryResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareLimitDocumentQuery", ReplyAction="http://tempuri.org/AASService/ShareLimitDocumentQueryResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.ShareLimitDocumentQueryResponse ShareLimitDocumentQuery(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareLimitDocumentQuery", ReplyAction="http://tempuri.org/AASService/ShareLimitDocumentQueryResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareLimitDocumentQueryResponse> ShareLimitDocumentQueryAsync(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request);
-        
-        // CODEGEN: 参数“ShareGroupQueryResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlArrayAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareGroupQuery", ReplyAction="http://tempuri.org/AASService/ShareGroupQueryResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.ShareGroupQueryResponse ShareGroupQuery(AASClient.AASServiceReference.ShareGroupQueryRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/ShareGroupQuery", ReplyAction="http://tempuri.org/AASService/ShareGroupQueryResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareGroupQueryResponse> ShareGroupQueryAsync(AASClient.AASServiceReference.ShareGroupQueryRequest request);
-        
-        // CODEGEN: 参数“AddTraderResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddTrader", ReplyAction="http://tempuri.org/AASService/AddTraderResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.AddTraderResponse AddTrader(AASClient.AASServiceReference.AddTraderRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddTrader", ReplyAction="http://tempuri.org/AASService/AddTraderResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddTraderResponse> AddTraderAsync(AASClient.AASServiceReference.AddTraderRequest request);
-        
-        // CODEGEN: 参数“group”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveGroupTrader", ReplyAction="http://tempuri.org/AASService/RemoveGroupTraderResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.RemoveGroupTraderResponse RemoveGroupTrader(AASClient.AASServiceReference.RemoveGroupTraderRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveGroupTrader", ReplyAction="http://tempuri.org/AASService/RemoveGroupTraderResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveGroupTraderResponse> RemoveGroupTraderAsync(AASClient.AASServiceReference.RemoveGroupTraderRequest request);
-        
-        // CODEGEN: 参数“AddStockResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddStock", ReplyAction="http://tempuri.org/AASService/AddStockResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.AddStockResponse AddStock(AASClient.AASServiceReference.AddStockRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddStock", ReplyAction="http://tempuri.org/AASService/AddStockResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddStockResponse> AddStockAsync(AASClient.AASServiceReference.AddStockRequest request);
-        
-        // CODEGEN: 参数“UpdateStockResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateStock", ReplyAction="http://tempuri.org/AASService/UpdateStockResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.UpdateStockResponse UpdateStock(AASClient.AASServiceReference.UpdateStockRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/UpdateStock", ReplyAction="http://tempuri.org/AASService/UpdateStockResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateStockResponse> UpdateStockAsync(AASClient.AASServiceReference.UpdateStockRequest request);
-        
-        // CODEGEN: 参数“RemoveStockResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveStock", ReplyAction="http://tempuri.org/AASService/RemoveStockResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.RemoveStockResponse RemoveStock(AASClient.AASServiceReference.RemoveStockRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/RemoveStock", ReplyAction="http://tempuri.org/AASService/RemoveStockResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveStockResponse> RemoveStockAsync(AASClient.AASServiceReference.RemoveStockRequest request);
-        
-        // CODEGEN: 参数“QueryNotGroupedTraderResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlArrayAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryNotGroupedTrader", ReplyAction="http://tempuri.org/AASService/QueryNotGroupedTraderResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.QueryNotGroupedTraderResponse QueryNotGroupedTrader(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryNotGroupedTrader", ReplyAction="http://tempuri.org/AASService/QueryNotGroupedTraderResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryNotGroupedTraderResponse> QueryNotGroupedTraderAsync(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -605,6 +629,1130 @@ namespace AASClient.AASServiceReference {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/AASService/Close")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         void Close();
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddHsAccountRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool 启用;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 名称;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string IP;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public short 端口;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 基金编码;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 资产单元编号;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 组合编号;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 操作员用户名;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 操作员密码;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 登录IP;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string MAC;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string HDD;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=12)]
+        public int 查询间隔时间;
+        
+        public AddHsAccountRequest() {
+        }
+        
+        public AddHsAccountRequest(bool 启用, string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
+            this.启用 = 启用;
+            this.名称 = 名称;
+            this.IP = IP;
+            this.端口 = 端口;
+            this.基金编码 = 基金编码;
+            this.资产单元编号 = 资产单元编号;
+            this.组合编号 = 组合编号;
+            this.操作员用户名 = 操作员用户名;
+            this.操作员密码 = 操作员密码;
+            this.登录IP = 登录IP;
+            this.MAC = MAC;
+            this.HDD = HDD;
+            this.查询间隔时间 = 查询间隔时间;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddHsAccountResponse {
+        
+        public AddHsAccountResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UpdateHsAccountRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 名称;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string IP;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public short 端口;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 基金编码;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 资产单元编号;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 组合编号;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 操作员用户名;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 操作员密码;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 登录IP;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string MAC;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string HDD;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=11)]
+        public int 查询间隔时间;
+        
+        public UpdateHsAccountRequest() {
+        }
+        
+        public UpdateHsAccountRequest(string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
+            this.名称 = 名称;
+            this.IP = IP;
+            this.端口 = 端口;
+            this.基金编码 = 基金编码;
+            this.资产单元编号 = 资产单元编号;
+            this.组合编号 = 组合编号;
+            this.操作员用户名 = 操作员用户名;
+            this.操作员密码 = 操作员密码;
+            this.登录IP = 登录IP;
+            this.MAC = MAC;
+            this.HDD = HDD;
+            this.查询间隔时间 = 查询间隔时间;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UpdateHsAccountResponse {
+        
+        public UpdateHsAccountResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DeleteHsAccountRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Name;
+        
+        public DeleteHsAccountRequest() {
+        }
+        
+        public DeleteHsAccountRequest(string Name) {
+            this.Name = Name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DeleteHsAccountResponse {
+        
+        public DeleteHsAccountResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareLimitDocumentQuery", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ShareLimitDocumentQueryRequest {
+        
+        public ShareLimitDocumentQueryRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareLimitDocumentQueryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ShareLimitDocumentQueryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string ShareLimitDocumentQueryResult;
+        
+        public ShareLimitDocumentQueryResponse() {
+        }
+        
+        public ShareLimitDocumentQueryResponse(string ShareLimitDocumentQueryResult) {
+            this.ShareLimitDocumentQueryResult = ShareLimitDocumentQueryResult;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
+    public partial class ShareLimitGroupItem : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string groupNameField;
+        
+        private StockLimitItem[] groupStockListField;
+        
+        private LimitTrader[] groupTraderListField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string GroupName {
+            get {
+                return this.groupNameField;
+            }
+            set {
+                this.groupNameField = value;
+                this.RaisePropertyChanged("GroupName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
+        public StockLimitItem[] GroupStockList {
+            get {
+                return this.groupStockListField;
+            }
+            set {
+                this.groupStockListField = value;
+                this.RaisePropertyChanged("GroupStockList");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
+        public LimitTrader[] GroupTraderList {
+            get {
+                return this.groupTraderListField;
+            }
+            set {
+                this.groupTraderListField = value;
+                this.RaisePropertyChanged("GroupTraderList");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
+    public partial class StockLimitItem : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string buyTypeField;
+        
+        private string commissionField;
+        
+        private string groupAccountField;
+        
+        private string limitCountField;
+        
+        private string saleTypeField;
+        
+        private string stockIDField;
+        
+        private string stockNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string BuyType {
+            get {
+                return this.buyTypeField;
+            }
+            set {
+                this.buyTypeField = value;
+                this.RaisePropertyChanged("BuyType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Commission {
+            get {
+                return this.commissionField;
+            }
+            set {
+                this.commissionField = value;
+                this.RaisePropertyChanged("Commission");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string GroupAccount {
+            get {
+                return this.groupAccountField;
+            }
+            set {
+                this.groupAccountField = value;
+                this.RaisePropertyChanged("GroupAccount");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public string LimitCount {
+            get {
+                return this.limitCountField;
+            }
+            set {
+                this.limitCountField = value;
+                this.RaisePropertyChanged("LimitCount");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public string SaleType {
+            get {
+                return this.saleTypeField;
+            }
+            set {
+                this.saleTypeField = value;
+                this.RaisePropertyChanged("SaleType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public string StockID {
+            get {
+                return this.stockIDField;
+            }
+            set {
+                this.stockIDField = value;
+                this.RaisePropertyChanged("StockID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
+        public string StockName {
+            get {
+                return this.stockNameField;
+            }
+            set {
+                this.stockNameField = value;
+                this.RaisePropertyChanged("StockName");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity")]
+    public partial class AyersFeeConfig : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private decimal commissionField;
+        
+        private bool commissionFieldSpecified;
+        
+        private decimal commissionMinField;
+        
+        private bool commissionMinFieldSpecified;
+        
+        private decimal stampTaxField;
+        
+        private bool stampTaxFieldSpecified;
+        
+        private decimal tradingFeeField;
+        
+        private bool tradingFeeFieldSpecified;
+        
+        private decimal transactionLevyField;
+        
+        private bool transactionLevyFieldSpecified;
+        
+        private decimal transferFeeField;
+        
+        private bool transferFeeFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public decimal Commission {
+            get {
+                return this.commissionField;
+            }
+            set {
+                this.commissionField = value;
+                this.RaisePropertyChanged("Commission");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool CommissionSpecified {
+            get {
+                return this.commissionFieldSpecified;
+            }
+            set {
+                this.commissionFieldSpecified = value;
+                this.RaisePropertyChanged("CommissionSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public decimal CommissionMin {
+            get {
+                return this.commissionMinField;
+            }
+            set {
+                this.commissionMinField = value;
+                this.RaisePropertyChanged("CommissionMin");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool CommissionMinSpecified {
+            get {
+                return this.commissionMinFieldSpecified;
+            }
+            set {
+                this.commissionMinFieldSpecified = value;
+                this.RaisePropertyChanged("CommissionMinSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public decimal StampTax {
+            get {
+                return this.stampTaxField;
+            }
+            set {
+                this.stampTaxField = value;
+                this.RaisePropertyChanged("StampTax");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool StampTaxSpecified {
+            get {
+                return this.stampTaxFieldSpecified;
+            }
+            set {
+                this.stampTaxFieldSpecified = value;
+                this.RaisePropertyChanged("StampTaxSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public decimal TradingFee {
+            get {
+                return this.tradingFeeField;
+            }
+            set {
+                this.tradingFeeField = value;
+                this.RaisePropertyChanged("TradingFee");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TradingFeeSpecified {
+            get {
+                return this.tradingFeeFieldSpecified;
+            }
+            set {
+                this.tradingFeeFieldSpecified = value;
+                this.RaisePropertyChanged("TradingFeeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public decimal TransactionLevy {
+            get {
+                return this.transactionLevyField;
+            }
+            set {
+                this.transactionLevyField = value;
+                this.RaisePropertyChanged("TransactionLevy");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TransactionLevySpecified {
+            get {
+                return this.transactionLevyFieldSpecified;
+            }
+            set {
+                this.transactionLevyFieldSpecified = value;
+                this.RaisePropertyChanged("TransactionLevySpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public decimal TransferFee {
+            get {
+                return this.transferFeeField;
+            }
+            set {
+                this.transferFeeField = value;
+                this.RaisePropertyChanged("TransferFee");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TransferFeeSpecified {
+            get {
+                return this.transferFeeFieldSpecified;
+            }
+            set {
+                this.transferFeeFieldSpecified = value;
+                this.RaisePropertyChanged("TransferFeeSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
+    public partial class HKMarketData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string codeField;
+        
+        private string dateField;
+        
+        private decimal highestField;
+        
+        private bool highestFieldSpecified;
+        
+        private decimal lowestField;
+        
+        private bool lowestFieldSpecified;
+        
+        private decimal priceField;
+        
+        private bool priceFieldSpecified;
+        
+        private decimal[] priceBField;
+        
+        private decimal pricePREField;
+        
+        private bool pricePREFieldSpecified;
+        
+        private decimal[] priceSField;
+        
+        private decimal[] qtyBField;
+        
+        private decimal qtyPermitField;
+        
+        private bool qtyPermitFieldSpecified;
+        
+        private decimal[] qtySField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+                this.RaisePropertyChanged("Date");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public decimal Highest {
+            get {
+                return this.highestField;
+            }
+            set {
+                this.highestField = value;
+                this.RaisePropertyChanged("Highest");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool HighestSpecified {
+            get {
+                return this.highestFieldSpecified;
+            }
+            set {
+                this.highestFieldSpecified = value;
+                this.RaisePropertyChanged("HighestSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public decimal Lowest {
+            get {
+                return this.lowestField;
+            }
+            set {
+                this.lowestField = value;
+                this.RaisePropertyChanged("Lowest");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool LowestSpecified {
+            get {
+                return this.lowestFieldSpecified;
+            }
+            set {
+                this.lowestFieldSpecified = value;
+                this.RaisePropertyChanged("LowestSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public decimal Price {
+            get {
+                return this.priceField;
+            }
+            set {
+                this.priceField = value;
+                this.RaisePropertyChanged("Price");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PriceSpecified {
+            get {
+                return this.priceFieldSpecified;
+            }
+            set {
+                this.priceFieldSpecified = value;
+                this.RaisePropertyChanged("PriceSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public decimal[] PriceB {
+            get {
+                return this.priceBField;
+            }
+            set {
+                this.priceBField = value;
+                this.RaisePropertyChanged("PriceB");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public decimal PricePRE {
+            get {
+                return this.pricePREField;
+            }
+            set {
+                this.pricePREField = value;
+                this.RaisePropertyChanged("PricePRE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PricePRESpecified {
+            get {
+                return this.pricePREFieldSpecified;
+            }
+            set {
+                this.pricePREFieldSpecified = value;
+                this.RaisePropertyChanged("PricePRESpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=7)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public decimal[] PriceS {
+            get {
+                return this.priceSField;
+            }
+            set {
+                this.priceSField = value;
+                this.RaisePropertyChanged("PriceS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=8)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public decimal[] QtyB {
+            get {
+                return this.qtyBField;
+            }
+            set {
+                this.qtyBField = value;
+                this.RaisePropertyChanged("QtyB");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public decimal QtyPermit {
+            get {
+                return this.qtyPermitField;
+            }
+            set {
+                this.qtyPermitField = value;
+                this.RaisePropertyChanged("QtyPermit");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool QtyPermitSpecified {
+            get {
+                return this.qtyPermitFieldSpecified;
+            }
+            set {
+                this.qtyPermitFieldSpecified = value;
+                this.RaisePropertyChanged("QtyPermitSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=10)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public decimal[] QtyS {
+            get {
+                return this.qtySField;
+            }
+            set {
+                this.qtySField = value;
+                this.RaisePropertyChanged("QtyS");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
+    public partial class LimitTrader : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string traderAccountField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string TraderAccount {
+            get {
+                return this.traderAccountField;
+            }
+            set {
+                this.traderAccountField = value;
+                this.RaisePropertyChanged("TraderAccount");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareGroupQuery", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ShareGroupQueryRequest {
+        
+        public ShareGroupQueryRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareGroupQueryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ShareGroupQueryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
+        public AASClient.AASServiceReference.ShareLimitGroupItem[] ShareGroupQueryResult;
+        
+        public ShareGroupQueryResponse() {
+        }
+        
+        public ShareGroupQueryResponse(AASClient.AASServiceReference.ShareLimitGroupItem[] ShareGroupQueryResult) {
+            this.ShareGroupQueryResult = ShareGroupQueryResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddTrader", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddTraderRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string group;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string trader;
+        
+        public AddTraderRequest() {
+        }
+        
+        public AddTraderRequest(string group, string trader) {
+            this.group = group;
+            this.trader = trader;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddTraderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddTraderResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AddTraderResult;
+        
+        public AddTraderResponse() {
+        }
+        
+        public AddTraderResponse(string AddTraderResult) {
+            this.AddTraderResult = AddTraderResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveGroupTrader", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RemoveGroupTraderRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string group;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string trader;
+        
+        public RemoveGroupTraderRequest() {
+        }
+        
+        public RemoveGroupTraderRequest(string group, string trader) {
+            this.group = group;
+            this.trader = trader;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveGroupTraderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RemoveGroupTraderResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool RemoveGroupTraderResult;
+        
+        public RemoveGroupTraderResponse() {
+        }
+        
+        public RemoveGroupTraderResponse(bool RemoveGroupTraderResult) {
+            this.RemoveGroupTraderResult = RemoveGroupTraderResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddStock", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddStockRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string group;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public AASClient.AASServiceReference.StockLimitItem limitItem;
+        
+        public AddStockRequest() {
+        }
+        
+        public AddStockRequest(string group, AASClient.AASServiceReference.StockLimitItem limitItem) {
+            this.group = group;
+            this.limitItem = limitItem;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddStockResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddStockResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AddStockResult;
+        
+        public AddStockResponse() {
+        }
+        
+        public AddStockResponse(string AddStockResult) {
+            this.AddStockResult = AddStockResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateStock", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UpdateStockRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string group;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public AASClient.AASServiceReference.StockLimitItem stockLimit;
+        
+        public UpdateStockRequest() {
+        }
+        
+        public UpdateStockRequest(string group, AASClient.AASServiceReference.StockLimitItem stockLimit) {
+            this.group = group;
+            this.stockLimit = stockLimit;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateStockResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UpdateStockResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string UpdateStockResult;
+        
+        public UpdateStockResponse() {
+        }
+        
+        public UpdateStockResponse(string UpdateStockResult) {
+            this.UpdateStockResult = UpdateStockResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveStock", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RemoveStockRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string group;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string stockID;
+        
+        public RemoveStockRequest() {
+        }
+        
+        public RemoveStockRequest(string group, string stockID) {
+            this.group = group;
+            this.stockID = stockID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveStockResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RemoveStockResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string RemoveStockResult;
+        
+        public RemoveStockResponse() {
+        }
+        
+        public RemoveStockResponse(string RemoveStockResult) {
+            this.RemoveStockResult = RemoveStockResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryNotGroupedTrader", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryNotGroupedTraderRequest {
+        
+        public QueryNotGroupedTraderRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryNotGroupedTraderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryNotGroupedTraderResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
+        public AASClient.AASServiceReference.LimitTrader[] QueryNotGroupedTraderResult;
+        
+        public QueryNotGroupedTraderResponse() {
+        }
+        
+        public QueryNotGroupedTraderResponse(AASClient.AASServiceReference.LimitTrader[] QueryNotGroupedTraderResult) {
+            this.QueryNotGroupedTraderResult = QueryNotGroupedTraderResult;
+        }
     }
     
     /// <summary>
@@ -9866,7 +11014,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 角色 {
@@ -9888,7 +11036,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 分组 {
@@ -10601,6 +11749,46 @@ namespace AASClient.AASServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AccountRepay", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AccountRepayRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string group;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public decimal amount;
+        
+        public AccountRepayRequest() {
+        }
+        
+        public AccountRepayRequest(string group, decimal amount) {
+            this.group = group;
+            this.amount = amount;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AccountRepayResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AccountRepayResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AccountRepayResult;
+        
+        public AccountRepayResponse() {
+        }
+        
+        public AccountRepayResponse(string AccountRepayResult) {
+            this.AccountRepayResult = AccountRepayResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="QueryJY", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class QueryJYRequest {
         
@@ -10655,7 +11843,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 买模式 {
@@ -10674,7 +11862,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 卖模式 {
@@ -11462,646 +12650,6 @@ namespace AASClient.AASServiceReference {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
-    public partial class HKMarketData : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string codeField;
-        
-        private string dateField;
-        
-        private decimal highestField;
-        
-        private bool highestFieldSpecified;
-        
-        private decimal lowestField;
-        
-        private bool lowestFieldSpecified;
-        
-        private decimal priceField;
-        
-        private bool priceFieldSpecified;
-        
-        private decimal[] priceBField;
-        
-        private decimal pricePREField;
-        
-        private bool pricePREFieldSpecified;
-        
-        private decimal[] priceSField;
-        
-        private decimal[] qtyBField;
-        
-        private decimal qtyPermitField;
-        
-        private bool qtyPermitFieldSpecified;
-        
-        private decimal[] qtySField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Date {
-            get {
-                return this.dateField;
-            }
-            set {
-                this.dateField = value;
-                this.RaisePropertyChanged("Date");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public decimal Highest {
-            get {
-                return this.highestField;
-            }
-            set {
-                this.highestField = value;
-                this.RaisePropertyChanged("Highest");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool HighestSpecified {
-            get {
-                return this.highestFieldSpecified;
-            }
-            set {
-                this.highestFieldSpecified = value;
-                this.RaisePropertyChanged("HighestSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public decimal Lowest {
-            get {
-                return this.lowestField;
-            }
-            set {
-                this.lowestField = value;
-                this.RaisePropertyChanged("Lowest");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool LowestSpecified {
-            get {
-                return this.lowestFieldSpecified;
-            }
-            set {
-                this.lowestFieldSpecified = value;
-                this.RaisePropertyChanged("LowestSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public decimal Price {
-            get {
-                return this.priceField;
-            }
-            set {
-                this.priceField = value;
-                this.RaisePropertyChanged("Price");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PriceSpecified {
-            get {
-                return this.priceFieldSpecified;
-            }
-            set {
-                this.priceFieldSpecified = value;
-                this.RaisePropertyChanged("PriceSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public decimal[] PriceB {
-            get {
-                return this.priceBField;
-            }
-            set {
-                this.priceBField = value;
-                this.RaisePropertyChanged("PriceB");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public decimal PricePRE {
-            get {
-                return this.pricePREField;
-            }
-            set {
-                this.pricePREField = value;
-                this.RaisePropertyChanged("PricePRE");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PricePRESpecified {
-            get {
-                return this.pricePREFieldSpecified;
-            }
-            set {
-                this.pricePREFieldSpecified = value;
-                this.RaisePropertyChanged("PricePRESpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=7)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public decimal[] PriceS {
-            get {
-                return this.priceSField;
-            }
-            set {
-                this.priceSField = value;
-                this.RaisePropertyChanged("PriceS");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=8)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public decimal[] QtyB {
-            get {
-                return this.qtyBField;
-            }
-            set {
-                this.qtyBField = value;
-                this.RaisePropertyChanged("QtyB");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
-        public decimal QtyPermit {
-            get {
-                return this.qtyPermitField;
-            }
-            set {
-                this.qtyPermitField = value;
-                this.RaisePropertyChanged("QtyPermit");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool QtyPermitSpecified {
-            get {
-                return this.qtyPermitFieldSpecified;
-            }
-            set {
-                this.qtyPermitFieldSpecified = value;
-                this.RaisePropertyChanged("QtyPermitSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=10)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public decimal[] QtyS {
-            get {
-                return this.qtySField;
-            }
-            set {
-                this.qtySField = value;
-                this.RaisePropertyChanged("QtyS");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
-    public partial class LimitTrader : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string traderAccountField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string TraderAccount {
-            get {
-                return this.traderAccountField;
-            }
-            set {
-                this.traderAccountField = value;
-                this.RaisePropertyChanged("TraderAccount");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
-    public partial class StockLimitItem : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string buyTypeField;
-        
-        private string commissionField;
-        
-        private string groupAccountField;
-        
-        private string limitCountField;
-        
-        private string saleTypeField;
-        
-        private string stockIDField;
-        
-        private string stockNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string BuyType {
-            get {
-                return this.buyTypeField;
-            }
-            set {
-                this.buyTypeField = value;
-                this.RaisePropertyChanged("BuyType");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Commission {
-            get {
-                return this.commissionField;
-            }
-            set {
-                this.commissionField = value;
-                this.RaisePropertyChanged("Commission");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string GroupAccount {
-            get {
-                return this.groupAccountField;
-            }
-            set {
-                this.groupAccountField = value;
-                this.RaisePropertyChanged("GroupAccount");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public string LimitCount {
-            get {
-                return this.limitCountField;
-            }
-            set {
-                this.limitCountField = value;
-                this.RaisePropertyChanged("LimitCount");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
-        public string SaleType {
-            get {
-                return this.saleTypeField;
-            }
-            set {
-                this.saleTypeField = value;
-                this.RaisePropertyChanged("SaleType");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
-        public string StockID {
-            get {
-                return this.stockIDField;
-            }
-            set {
-                this.stockIDField = value;
-                this.RaisePropertyChanged("StockID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
-        public string StockName {
-            get {
-                return this.stockNameField;
-            }
-            set {
-                this.stockNameField = value;
-                this.RaisePropertyChanged("StockName");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
-    public partial class ShareLimitGroupItem : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string groupNameField;
-        
-        private StockLimitItem[] groupStockListField;
-        
-        private LimitTrader[] groupTraderListField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string GroupName {
-            get {
-                return this.groupNameField;
-            }
-            set {
-                this.groupNameField = value;
-                this.RaisePropertyChanged("GroupName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=1)]
-        public StockLimitItem[] GroupStockList {
-            get {
-                return this.groupStockListField;
-            }
-            set {
-                this.groupStockListField = value;
-                this.RaisePropertyChanged("GroupStockList");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=2)]
-        public LimitTrader[] GroupTraderList {
-            get {
-                return this.groupTraderListField;
-            }
-            set {
-                this.groupTraderListField = value;
-                this.RaisePropertyChanged("GroupTraderList");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity")]
-    public partial class AyersFeeConfig : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private decimal commissionField;
-        
-        private bool commissionFieldSpecified;
-        
-        private decimal commissionMinField;
-        
-        private bool commissionMinFieldSpecified;
-        
-        private decimal stampTaxField;
-        
-        private bool stampTaxFieldSpecified;
-        
-        private decimal tradingFeeField;
-        
-        private bool tradingFeeFieldSpecified;
-        
-        private decimal transactionLevyField;
-        
-        private bool transactionLevyFieldSpecified;
-        
-        private decimal transferFeeField;
-        
-        private bool transferFeeFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public decimal Commission {
-            get {
-                return this.commissionField;
-            }
-            set {
-                this.commissionField = value;
-                this.RaisePropertyChanged("Commission");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CommissionSpecified {
-            get {
-                return this.commissionFieldSpecified;
-            }
-            set {
-                this.commissionFieldSpecified = value;
-                this.RaisePropertyChanged("CommissionSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public decimal CommissionMin {
-            get {
-                return this.commissionMinField;
-            }
-            set {
-                this.commissionMinField = value;
-                this.RaisePropertyChanged("CommissionMin");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CommissionMinSpecified {
-            get {
-                return this.commissionMinFieldSpecified;
-            }
-            set {
-                this.commissionMinFieldSpecified = value;
-                this.RaisePropertyChanged("CommissionMinSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public decimal StampTax {
-            get {
-                return this.stampTaxField;
-            }
-            set {
-                this.stampTaxField = value;
-                this.RaisePropertyChanged("StampTax");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool StampTaxSpecified {
-            get {
-                return this.stampTaxFieldSpecified;
-            }
-            set {
-                this.stampTaxFieldSpecified = value;
-                this.RaisePropertyChanged("StampTaxSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public decimal TradingFee {
-            get {
-                return this.tradingFeeField;
-            }
-            set {
-                this.tradingFeeField = value;
-                this.RaisePropertyChanged("TradingFee");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TradingFeeSpecified {
-            get {
-                return this.tradingFeeFieldSpecified;
-            }
-            set {
-                this.tradingFeeFieldSpecified = value;
-                this.RaisePropertyChanged("TradingFeeSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public decimal TransactionLevy {
-            get {
-                return this.transactionLevyField;
-            }
-            set {
-                this.transactionLevyField = value;
-                this.RaisePropertyChanged("TransactionLevy");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TransactionLevySpecified {
-            get {
-                return this.transactionLevyFieldSpecified;
-            }
-            set {
-                this.transactionLevyFieldSpecified = value;
-                this.RaisePropertyChanged("TransactionLevySpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public decimal TransferFee {
-            get {
-                return this.transferFeeField;
-            }
-            set {
-                this.transferFeeField = value;
-                this.RaisePropertyChanged("TransferFee");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TransferFeeSpecified {
-            get {
-                return this.transferFeeFieldSpecified;
-            }
-            set {
-                this.transferFeeFieldSpecified = value;
-                this.RaisePropertyChanged("TransferFeeSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -12203,146 +12751,6 @@ namespace AASClient.AASServiceReference {
     public partial class KeepAliveResponse {
         
         public KeepAliveResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SendHKOrder", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class SendHKOrderRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string UserName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 证券代码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 证券名称;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        public int 买卖方向;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        public decimal 委托数量;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
-        public decimal 委托价格;
-        
-        public SendHKOrderRequest() {
-        }
-        
-        public SendHKOrderRequest(string UserName, string 证券代码, string 证券名称, int 买卖方向, decimal 委托数量, decimal 委托价格) {
-            this.UserName = UserName;
-            this.证券代码 = 证券代码;
-            this.证券名称 = 证券名称;
-            this.买卖方向 = 买卖方向;
-            this.委托数量 = 委托数量;
-            this.委托价格 = 委托价格;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SendHKOrderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class SendHKOrderResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string SendHKOrderResult;
-        
-        public SendHKOrderResponse() {
-        }
-        
-        public SendHKOrderResponse(string SendHKOrderResult) {
-            this.SendHKOrderResult = SendHKOrderResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CloseOrder", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class CloseOrderRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 交易员;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 组合号;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 证券代码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        public decimal 平仓数量;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        public decimal 平仓价格;
-        
-        public CloseOrderRequest() {
-        }
-        
-        public CloseOrderRequest(string 交易员, string 组合号, string 证券代码, decimal 平仓数量, decimal 平仓价格) {
-            this.交易员 = 交易员;
-            this.组合号 = 组合号;
-            this.证券代码 = 证券代码;
-            this.平仓数量 = 平仓数量;
-            this.平仓价格 = 平仓价格;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CloseOrderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class CloseOrderResponse {
-        
-        public CloseOrderResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryJyLogBelongFK", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class QueryJyLogBelongFKRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string UserName;
-        
-        public QueryJyLogBelongFKRequest() {
-        }
-        
-        public QueryJyLogBelongFKRequest(string UserName) {
-            this.UserName = UserName;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryJyLogBelongFKResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class QueryJyLogBelongFKResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public DbDataSet.交易日志DataTable QueryJyLogBelongFKResult;
-        
-        public QueryJyLogBelongFKResponse() {
-        }
-        
-        public QueryJyLogBelongFKResponse(DbDataSet.交易日志DataTable QueryJyLogBelongFKResult) {
-            this.QueryJyLogBelongFKResult = QueryJyLogBelongFKResult;
         }
     }
     
@@ -15164,6 +15572,196 @@ namespace AASClient.AASServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Query委托", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Query委托Request {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string user;
+        
+        public Query委托Request() {
+        }
+        
+        public Query委托Request(string user) {
+            this.user = user;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Query委托Response", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Query委托Response {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public JyDataSet.委托DataTable Query委托Result;
+        
+        public Query委托Response() {
+        }
+        
+        public Query委托Response(JyDataSet.委托DataTable Query委托Result) {
+            this.Query委托Result = Query委托Result;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Query成交", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Query成交Request {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string user;
+        
+        public Query成交Request() {
+        }
+        
+        public Query成交Request(string user) {
+            this.user = user;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Query成交Response", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Query成交Response {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public JyDataSet.成交DataTable Query成交Result;
+        
+        public Query成交Response() {
+        }
+        
+        public Query成交Response(JyDataSet.成交DataTable Query成交Result) {
+            this.Query成交Result = Query成交Result;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Query订单", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Query订单Request {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string user;
+        
+        public Query订单Request() {
+        }
+        
+        public Query订单Request(string user) {
+            this.user = user;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Query订单Response", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Query订单Response {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public DbDataSet.订单DataTable Query订单Result;
+        
+        public Query订单Response() {
+        }
+        
+        public Query订单Response(DbDataSet.订单DataTable Query订单Result) {
+            this.Query订单Result = Query订单Result;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CloseOrder", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CloseOrderRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 交易员;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 组合号;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 证券代码;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public decimal 平仓数量;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public decimal 平仓价格;
+        
+        public CloseOrderRequest() {
+        }
+        
+        public CloseOrderRequest(string 交易员, string 组合号, string 证券代码, decimal 平仓数量, decimal 平仓价格) {
+            this.交易员 = 交易员;
+            this.组合号 = 组合号;
+            this.证券代码 = 证券代码;
+            this.平仓数量 = 平仓数量;
+            this.平仓价格 = 平仓价格;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CloseOrderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CloseOrderResponse {
+        
+        public CloseOrderResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryJyLogBelongFK", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryJyLogBelongFKRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string UserName;
+        
+        public QueryJyLogBelongFKRequest() {
+        }
+        
+        public QueryJyLogBelongFKRequest(string UserName) {
+            this.UserName = UserName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryJyLogBelongFKResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryJyLogBelongFKResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public DbDataSet.交易日志DataTable QueryJyLogBelongFKResult;
+        
+        public QueryJyLogBelongFKResponse() {
+        }
+        
+        public QueryJyLogBelongFKResponse(DbDataSet.交易日志DataTable QueryJyLogBelongFKResult) {
+            this.QueryJyLogBelongFKResult = QueryJyLogBelongFKResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="Query业绩BelongFK", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class Query业绩BelongFKRequest {
         
@@ -15595,490 +16193,6 @@ namespace AASClient.AASServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddHsAccountRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public bool 启用;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 名称;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string IP;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        public short 端口;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 基金编码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 资产单元编号;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 组合编号;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 操作员用户名;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 操作员密码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 登录IP;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=10)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string MAC;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=11)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string HDD;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=12)]
-        public int 查询间隔时间;
-        
-        public AddHsAccountRequest() {
-        }
-        
-        public AddHsAccountRequest(bool 启用, string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
-            this.启用 = 启用;
-            this.名称 = 名称;
-            this.IP = IP;
-            this.端口 = 端口;
-            this.基金编码 = 基金编码;
-            this.资产单元编号 = 资产单元编号;
-            this.组合编号 = 组合编号;
-            this.操作员用户名 = 操作员用户名;
-            this.操作员密码 = 操作员密码;
-            this.登录IP = 登录IP;
-            this.MAC = MAC;
-            this.HDD = HDD;
-            this.查询间隔时间 = 查询间隔时间;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddHsAccountResponse {
-        
-        public AddHsAccountResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class UpdateHsAccountRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 名称;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string IP;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        public short 端口;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 基金编码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 资产单元编号;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 组合编号;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 操作员用户名;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 操作员密码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 登录IP;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string MAC;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=10)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string HDD;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=11)]
-        public int 查询间隔时间;
-        
-        public UpdateHsAccountRequest() {
-        }
-        
-        public UpdateHsAccountRequest(string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
-            this.名称 = 名称;
-            this.IP = IP;
-            this.端口 = 端口;
-            this.基金编码 = 基金编码;
-            this.资产单元编号 = 资产单元编号;
-            this.组合编号 = 组合编号;
-            this.操作员用户名 = 操作员用户名;
-            this.操作员密码 = 操作员密码;
-            this.登录IP = 登录IP;
-            this.MAC = MAC;
-            this.HDD = HDD;
-            this.查询间隔时间 = 查询间隔时间;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class UpdateHsAccountResponse {
-        
-        public UpdateHsAccountResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class DeleteHsAccountRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Name;
-        
-        public DeleteHsAccountRequest() {
-        }
-        
-        public DeleteHsAccountRequest(string Name) {
-            this.Name = Name;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class DeleteHsAccountResponse {
-        
-        public DeleteHsAccountResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareLimitDocumentQuery", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class ShareLimitDocumentQueryRequest {
-        
-        public ShareLimitDocumentQueryRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareLimitDocumentQueryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class ShareLimitDocumentQueryResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string ShareLimitDocumentQueryResult;
-        
-        public ShareLimitDocumentQueryResponse() {
-        }
-        
-        public ShareLimitDocumentQueryResponse(string ShareLimitDocumentQueryResult) {
-            this.ShareLimitDocumentQueryResult = ShareLimitDocumentQueryResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareGroupQuery", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class ShareGroupQueryRequest {
-        
-        public ShareGroupQueryRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ShareGroupQueryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class ShareGroupQueryResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
-        public AASClient.AASServiceReference.ShareLimitGroupItem[] ShareGroupQueryResult;
-        
-        public ShareGroupQueryResponse() {
-        }
-        
-        public ShareGroupQueryResponse(AASClient.AASServiceReference.ShareLimitGroupItem[] ShareGroupQueryResult) {
-            this.ShareGroupQueryResult = ShareGroupQueryResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddTrader", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddTraderRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string group;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string trader;
-        
-        public AddTraderRequest() {
-        }
-        
-        public AddTraderRequest(string group, string trader) {
-            this.group = group;
-            this.trader = trader;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddTraderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddTraderResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AddTraderResult;
-        
-        public AddTraderResponse() {
-        }
-        
-        public AddTraderResponse(string AddTraderResult) {
-            this.AddTraderResult = AddTraderResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveGroupTrader", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class RemoveGroupTraderRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string group;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string trader;
-        
-        public RemoveGroupTraderRequest() {
-        }
-        
-        public RemoveGroupTraderRequest(string group, string trader) {
-            this.group = group;
-            this.trader = trader;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveGroupTraderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class RemoveGroupTraderResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public bool RemoveGroupTraderResult;
-        
-        public RemoveGroupTraderResponse() {
-        }
-        
-        public RemoveGroupTraderResponse(bool RemoveGroupTraderResult) {
-            this.RemoveGroupTraderResult = RemoveGroupTraderResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddStock", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddStockRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string group;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public AASClient.AASServiceReference.StockLimitItem limitItem;
-        
-        public AddStockRequest() {
-        }
-        
-        public AddStockRequest(string group, AASClient.AASServiceReference.StockLimitItem limitItem) {
-            this.group = group;
-            this.limitItem = limitItem;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddStockResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddStockResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AddStockResult;
-        
-        public AddStockResponse() {
-        }
-        
-        public AddStockResponse(string AddStockResult) {
-            this.AddStockResult = AddStockResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateStock", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class UpdateStockRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string group;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public AASClient.AASServiceReference.StockLimitItem stockLimit;
-        
-        public UpdateStockRequest() {
-        }
-        
-        public UpdateStockRequest(string group, AASClient.AASServiceReference.StockLimitItem stockLimit) {
-            this.group = group;
-            this.stockLimit = stockLimit;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateStockResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class UpdateStockResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string UpdateStockResult;
-        
-        public UpdateStockResponse() {
-        }
-        
-        public UpdateStockResponse(string UpdateStockResult) {
-            this.UpdateStockResult = UpdateStockResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveStock", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class RemoveStockRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string group;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string stockID;
-        
-        public RemoveStockRequest() {
-        }
-        
-        public RemoveStockRequest(string group, string stockID) {
-            this.group = group;
-            this.stockID = stockID;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveStockResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class RemoveStockResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string RemoveStockResult;
-        
-        public RemoveStockResponse() {
-        }
-        
-        public RemoveStockResponse(string RemoveStockResult) {
-            this.RemoveStockResult = RemoveStockResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryNotGroupedTrader", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class QueryNotGroupedTraderRequest {
-        
-        public QueryNotGroupedTraderRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryNotGroupedTraderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class QueryNotGroupedTraderResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
-        public AASClient.AASServiceReference.LimitTrader[] QueryNotGroupedTraderResult;
-        
-        public QueryNotGroupedTraderResponse() {
-        }
-        
-        public QueryNotGroupedTraderResponse(AASClient.AASServiceReference.LimitTrader[] QueryNotGroupedTraderResult) {
-            this.QueryNotGroupedTraderResult = QueryNotGroupedTraderResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="Notify", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class Notify {
         
@@ -16308,6 +16422,306 @@ namespace AASClient.AASServiceReference {
         
         public AASServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.AddHsAccountResponse AASClient.AASServiceReference.AASService.AddHsAccount(AASClient.AASServiceReference.AddHsAccountRequest request) {
+            return base.Channel.AddHsAccount(request);
+        }
+        
+        public void AddHsAccount(bool 启用, string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
+            AASClient.AASServiceReference.AddHsAccountRequest inValue = new AASClient.AASServiceReference.AddHsAccountRequest();
+            inValue.启用 = 启用;
+            inValue.名称 = 名称;
+            inValue.IP = IP;
+            inValue.端口 = 端口;
+            inValue.基金编码 = 基金编码;
+            inValue.资产单元编号 = 资产单元编号;
+            inValue.组合编号 = 组合编号;
+            inValue.操作员用户名 = 操作员用户名;
+            inValue.操作员密码 = 操作员密码;
+            inValue.登录IP = 登录IP;
+            inValue.MAC = MAC;
+            inValue.HDD = HDD;
+            inValue.查询间隔时间 = 查询间隔时间;
+            AASClient.AASServiceReference.AddHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AddHsAccount(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddHsAccountResponse> AASClient.AASServiceReference.AASService.AddHsAccountAsync(AASClient.AASServiceReference.AddHsAccountRequest request) {
+            return base.Channel.AddHsAccountAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AddHsAccountResponse> AddHsAccountAsync(bool 启用, string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
+            AASClient.AASServiceReference.AddHsAccountRequest inValue = new AASClient.AASServiceReference.AddHsAccountRequest();
+            inValue.启用 = 启用;
+            inValue.名称 = 名称;
+            inValue.IP = IP;
+            inValue.端口 = 端口;
+            inValue.基金编码 = 基金编码;
+            inValue.资产单元编号 = 资产单元编号;
+            inValue.组合编号 = 组合编号;
+            inValue.操作员用户名 = 操作员用户名;
+            inValue.操作员密码 = 操作员密码;
+            inValue.登录IP = 登录IP;
+            inValue.MAC = MAC;
+            inValue.HDD = HDD;
+            inValue.查询间隔时间 = 查询间隔时间;
+            return ((AASClient.AASServiceReference.AASService)(this)).AddHsAccountAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.UpdateHsAccountResponse AASClient.AASServiceReference.AASService.UpdateHsAccount(AASClient.AASServiceReference.UpdateHsAccountRequest request) {
+            return base.Channel.UpdateHsAccount(request);
+        }
+        
+        public void UpdateHsAccount(string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
+            AASClient.AASServiceReference.UpdateHsAccountRequest inValue = new AASClient.AASServiceReference.UpdateHsAccountRequest();
+            inValue.名称 = 名称;
+            inValue.IP = IP;
+            inValue.端口 = 端口;
+            inValue.基金编码 = 基金编码;
+            inValue.资产单元编号 = 资产单元编号;
+            inValue.组合编号 = 组合编号;
+            inValue.操作员用户名 = 操作员用户名;
+            inValue.操作员密码 = 操作员密码;
+            inValue.登录IP = 登录IP;
+            inValue.MAC = MAC;
+            inValue.HDD = HDD;
+            inValue.查询间隔时间 = 查询间隔时间;
+            AASClient.AASServiceReference.UpdateHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).UpdateHsAccount(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateHsAccountResponse> AASClient.AASServiceReference.AASService.UpdateHsAccountAsync(AASClient.AASServiceReference.UpdateHsAccountRequest request) {
+            return base.Channel.UpdateHsAccountAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateHsAccountResponse> UpdateHsAccountAsync(string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
+            AASClient.AASServiceReference.UpdateHsAccountRequest inValue = new AASClient.AASServiceReference.UpdateHsAccountRequest();
+            inValue.名称 = 名称;
+            inValue.IP = IP;
+            inValue.端口 = 端口;
+            inValue.基金编码 = 基金编码;
+            inValue.资产单元编号 = 资产单元编号;
+            inValue.组合编号 = 组合编号;
+            inValue.操作员用户名 = 操作员用户名;
+            inValue.操作员密码 = 操作员密码;
+            inValue.登录IP = 登录IP;
+            inValue.MAC = MAC;
+            inValue.HDD = HDD;
+            inValue.查询间隔时间 = 查询间隔时间;
+            return ((AASClient.AASServiceReference.AASService)(this)).UpdateHsAccountAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.DeleteHsAccountResponse AASClient.AASServiceReference.AASService.DeleteHsAccount(AASClient.AASServiceReference.DeleteHsAccountRequest request) {
+            return base.Channel.DeleteHsAccount(request);
+        }
+        
+        public void DeleteHsAccount(string Name) {
+            AASClient.AASServiceReference.DeleteHsAccountRequest inValue = new AASClient.AASServiceReference.DeleteHsAccountRequest();
+            inValue.Name = Name;
+            AASClient.AASServiceReference.DeleteHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).DeleteHsAccount(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.DeleteHsAccountResponse> AASClient.AASServiceReference.AASService.DeleteHsAccountAsync(AASClient.AASServiceReference.DeleteHsAccountRequest request) {
+            return base.Channel.DeleteHsAccountAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.DeleteHsAccountResponse> DeleteHsAccountAsync(string Name) {
+            AASClient.AASServiceReference.DeleteHsAccountRequest inValue = new AASClient.AASServiceReference.DeleteHsAccountRequest();
+            inValue.Name = Name;
+            return ((AASClient.AASServiceReference.AASService)(this)).DeleteHsAccountAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.ShareLimitDocumentQueryResponse AASClient.AASServiceReference.AASService.ShareLimitDocumentQuery(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request) {
+            return base.Channel.ShareLimitDocumentQuery(request);
+        }
+        
+        public string ShareLimitDocumentQuery() {
+            AASClient.AASServiceReference.ShareLimitDocumentQueryRequest inValue = new AASClient.AASServiceReference.ShareLimitDocumentQueryRequest();
+            AASClient.AASServiceReference.ShareLimitDocumentQueryResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).ShareLimitDocumentQuery(inValue);
+            return retVal.ShareLimitDocumentQueryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareLimitDocumentQueryResponse> AASClient.AASServiceReference.AASService.ShareLimitDocumentQueryAsync(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request) {
+            return base.Channel.ShareLimitDocumentQueryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareLimitDocumentQueryResponse> ShareLimitDocumentQueryAsync() {
+            AASClient.AASServiceReference.ShareLimitDocumentQueryRequest inValue = new AASClient.AASServiceReference.ShareLimitDocumentQueryRequest();
+            return ((AASClient.AASServiceReference.AASService)(this)).ShareLimitDocumentQueryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.ShareGroupQueryResponse AASClient.AASServiceReference.AASService.ShareGroupQuery(AASClient.AASServiceReference.ShareGroupQueryRequest request) {
+            return base.Channel.ShareGroupQuery(request);
+        }
+        
+        public AASClient.AASServiceReference.ShareLimitGroupItem[] ShareGroupQuery() {
+            AASClient.AASServiceReference.ShareGroupQueryRequest inValue = new AASClient.AASServiceReference.ShareGroupQueryRequest();
+            AASClient.AASServiceReference.ShareGroupQueryResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).ShareGroupQuery(inValue);
+            return retVal.ShareGroupQueryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareGroupQueryResponse> AASClient.AASServiceReference.AASService.ShareGroupQueryAsync(AASClient.AASServiceReference.ShareGroupQueryRequest request) {
+            return base.Channel.ShareGroupQueryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareGroupQueryResponse> ShareGroupQueryAsync() {
+            AASClient.AASServiceReference.ShareGroupQueryRequest inValue = new AASClient.AASServiceReference.ShareGroupQueryRequest();
+            return ((AASClient.AASServiceReference.AASService)(this)).ShareGroupQueryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.AddTraderResponse AASClient.AASServiceReference.AASService.AddTrader(AASClient.AASServiceReference.AddTraderRequest request) {
+            return base.Channel.AddTrader(request);
+        }
+        
+        public string AddTrader(string group, string trader) {
+            AASClient.AASServiceReference.AddTraderRequest inValue = new AASClient.AASServiceReference.AddTraderRequest();
+            inValue.group = group;
+            inValue.trader = trader;
+            AASClient.AASServiceReference.AddTraderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AddTrader(inValue);
+            return retVal.AddTraderResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddTraderResponse> AASClient.AASServiceReference.AASService.AddTraderAsync(AASClient.AASServiceReference.AddTraderRequest request) {
+            return base.Channel.AddTraderAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AddTraderResponse> AddTraderAsync(string group, string trader) {
+            AASClient.AASServiceReference.AddTraderRequest inValue = new AASClient.AASServiceReference.AddTraderRequest();
+            inValue.group = group;
+            inValue.trader = trader;
+            return ((AASClient.AASServiceReference.AASService)(this)).AddTraderAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.RemoveGroupTraderResponse AASClient.AASServiceReference.AASService.RemoveGroupTrader(AASClient.AASServiceReference.RemoveGroupTraderRequest request) {
+            return base.Channel.RemoveGroupTrader(request);
+        }
+        
+        public bool RemoveGroupTrader(string group, string trader) {
+            AASClient.AASServiceReference.RemoveGroupTraderRequest inValue = new AASClient.AASServiceReference.RemoveGroupTraderRequest();
+            inValue.group = group;
+            inValue.trader = trader;
+            AASClient.AASServiceReference.RemoveGroupTraderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).RemoveGroupTrader(inValue);
+            return retVal.RemoveGroupTraderResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveGroupTraderResponse> AASClient.AASServiceReference.AASService.RemoveGroupTraderAsync(AASClient.AASServiceReference.RemoveGroupTraderRequest request) {
+            return base.Channel.RemoveGroupTraderAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveGroupTraderResponse> RemoveGroupTraderAsync(string group, string trader) {
+            AASClient.AASServiceReference.RemoveGroupTraderRequest inValue = new AASClient.AASServiceReference.RemoveGroupTraderRequest();
+            inValue.group = group;
+            inValue.trader = trader;
+            return ((AASClient.AASServiceReference.AASService)(this)).RemoveGroupTraderAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.AddStockResponse AASClient.AASServiceReference.AASService.AddStock(AASClient.AASServiceReference.AddStockRequest request) {
+            return base.Channel.AddStock(request);
+        }
+        
+        public string AddStock(string group, AASClient.AASServiceReference.StockLimitItem limitItem) {
+            AASClient.AASServiceReference.AddStockRequest inValue = new AASClient.AASServiceReference.AddStockRequest();
+            inValue.group = group;
+            inValue.limitItem = limitItem;
+            AASClient.AASServiceReference.AddStockResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AddStock(inValue);
+            return retVal.AddStockResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddStockResponse> AASClient.AASServiceReference.AASService.AddStockAsync(AASClient.AASServiceReference.AddStockRequest request) {
+            return base.Channel.AddStockAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AddStockResponse> AddStockAsync(string group, AASClient.AASServiceReference.StockLimitItem limitItem) {
+            AASClient.AASServiceReference.AddStockRequest inValue = new AASClient.AASServiceReference.AddStockRequest();
+            inValue.group = group;
+            inValue.limitItem = limitItem;
+            return ((AASClient.AASServiceReference.AASService)(this)).AddStockAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.UpdateStockResponse AASClient.AASServiceReference.AASService.UpdateStock(AASClient.AASServiceReference.UpdateStockRequest request) {
+            return base.Channel.UpdateStock(request);
+        }
+        
+        public string UpdateStock(string group, AASClient.AASServiceReference.StockLimitItem stockLimit) {
+            AASClient.AASServiceReference.UpdateStockRequest inValue = new AASClient.AASServiceReference.UpdateStockRequest();
+            inValue.group = group;
+            inValue.stockLimit = stockLimit;
+            AASClient.AASServiceReference.UpdateStockResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).UpdateStock(inValue);
+            return retVal.UpdateStockResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateStockResponse> AASClient.AASServiceReference.AASService.UpdateStockAsync(AASClient.AASServiceReference.UpdateStockRequest request) {
+            return base.Channel.UpdateStockAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateStockResponse> UpdateStockAsync(string group, AASClient.AASServiceReference.StockLimitItem stockLimit) {
+            AASClient.AASServiceReference.UpdateStockRequest inValue = new AASClient.AASServiceReference.UpdateStockRequest();
+            inValue.group = group;
+            inValue.stockLimit = stockLimit;
+            return ((AASClient.AASServiceReference.AASService)(this)).UpdateStockAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.RemoveStockResponse AASClient.AASServiceReference.AASService.RemoveStock(AASClient.AASServiceReference.RemoveStockRequest request) {
+            return base.Channel.RemoveStock(request);
+        }
+        
+        public string RemoveStock(string group, string stockID) {
+            AASClient.AASServiceReference.RemoveStockRequest inValue = new AASClient.AASServiceReference.RemoveStockRequest();
+            inValue.group = group;
+            inValue.stockID = stockID;
+            AASClient.AASServiceReference.RemoveStockResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).RemoveStock(inValue);
+            return retVal.RemoveStockResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveStockResponse> AASClient.AASServiceReference.AASService.RemoveStockAsync(AASClient.AASServiceReference.RemoveStockRequest request) {
+            return base.Channel.RemoveStockAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveStockResponse> RemoveStockAsync(string group, string stockID) {
+            AASClient.AASServiceReference.RemoveStockRequest inValue = new AASClient.AASServiceReference.RemoveStockRequest();
+            inValue.group = group;
+            inValue.stockID = stockID;
+            return ((AASClient.AASServiceReference.AASService)(this)).RemoveStockAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.QueryNotGroupedTraderResponse AASClient.AASServiceReference.AASService.QueryNotGroupedTrader(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request) {
+            return base.Channel.QueryNotGroupedTrader(request);
+        }
+        
+        public AASClient.AASServiceReference.LimitTrader[] QueryNotGroupedTrader() {
+            AASClient.AASServiceReference.QueryNotGroupedTraderRequest inValue = new AASClient.AASServiceReference.QueryNotGroupedTraderRequest();
+            AASClient.AASServiceReference.QueryNotGroupedTraderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).QueryNotGroupedTrader(inValue);
+            return retVal.QueryNotGroupedTraderResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryNotGroupedTraderResponse> AASClient.AASServiceReference.AASService.QueryNotGroupedTraderAsync(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request) {
+            return base.Channel.QueryNotGroupedTraderAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryNotGroupedTraderResponse> QueryNotGroupedTraderAsync() {
+            AASClient.AASServiceReference.QueryNotGroupedTraderRequest inValue = new AASClient.AASServiceReference.QueryNotGroupedTraderRequest();
+            return ((AASClient.AASServiceReference.AASService)(this)).QueryNotGroupedTraderAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -16916,6 +17330,31 @@ namespace AASClient.AASServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.AccountRepayResponse AASClient.AASServiceReference.AASService.AccountRepay(AASClient.AASServiceReference.AccountRepayRequest request) {
+            return base.Channel.AccountRepay(request);
+        }
+        
+        public string AccountRepay(string group, decimal amount) {
+            AASClient.AASServiceReference.AccountRepayRequest inValue = new AASClient.AASServiceReference.AccountRepayRequest();
+            inValue.group = group;
+            inValue.amount = amount;
+            AASClient.AASServiceReference.AccountRepayResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AccountRepay(inValue);
+            return retVal.AccountRepayResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.AccountRepayResponse> AASClient.AASServiceReference.AASService.AccountRepayAsync(AASClient.AASServiceReference.AccountRepayRequest request) {
+            return base.Channel.AccountRepayAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AccountRepayResponse> AccountRepayAsync(string group, decimal amount) {
+            AASClient.AASServiceReference.AccountRepayRequest inValue = new AASClient.AASServiceReference.AccountRepayRequest();
+            inValue.group = group;
+            inValue.amount = amount;
+            return ((AASClient.AASServiceReference.AASService)(this)).AccountRepayAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         AASClient.AASServiceReference.QueryJYResponse AASClient.AASServiceReference.AASService.QueryJY(AASClient.AASServiceReference.QueryJYRequest request) {
             return base.Channel.QueryJY(request);
         }
@@ -17498,36 +17937,72 @@ namespace AASClient.AASServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.SendHKOrderResponse AASClient.AASServiceReference.AASService.SendHKOrder(AASClient.AASServiceReference.SendHKOrderRequest request) {
-            return base.Channel.SendHKOrder(request);
+        AASClient.AASServiceReference.Query委托Response AASClient.AASServiceReference.AASService.Query委托(AASClient.AASServiceReference.Query委托Request request) {
+            return base.Channel.Query委托(request);
         }
         
-        public string SendHKOrder(string UserName, string 证券代码, string 证券名称, int 买卖方向, decimal 委托数量, decimal 委托价格) {
-            AASClient.AASServiceReference.SendHKOrderRequest inValue = new AASClient.AASServiceReference.SendHKOrderRequest();
-            inValue.UserName = UserName;
-            inValue.证券代码 = 证券代码;
-            inValue.证券名称 = 证券名称;
-            inValue.买卖方向 = 买卖方向;
-            inValue.委托数量 = 委托数量;
-            inValue.委托价格 = 委托价格;
-            AASClient.AASServiceReference.SendHKOrderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).SendHKOrder(inValue);
-            return retVal.SendHKOrderResult;
+        public JyDataSet.委托DataTable Query委托(string user) {
+            AASClient.AASServiceReference.Query委托Request inValue = new AASClient.AASServiceReference.Query委托Request();
+            inValue.user = user;
+            AASClient.AASServiceReference.Query委托Response retVal = ((AASClient.AASServiceReference.AASService)(this)).Query委托(inValue);
+            return retVal.Query委托Result;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.SendHKOrderResponse> AASClient.AASServiceReference.AASService.SendHKOrderAsync(AASClient.AASServiceReference.SendHKOrderRequest request) {
-            return base.Channel.SendHKOrderAsync(request);
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.Query委托Response> AASClient.AASServiceReference.AASService.Query委托Async(AASClient.AASServiceReference.Query委托Request request) {
+            return base.Channel.Query委托Async(request);
         }
         
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.SendHKOrderResponse> SendHKOrderAsync(string UserName, string 证券代码, string 证券名称, int 买卖方向, decimal 委托数量, decimal 委托价格) {
-            AASClient.AASServiceReference.SendHKOrderRequest inValue = new AASClient.AASServiceReference.SendHKOrderRequest();
-            inValue.UserName = UserName;
-            inValue.证券代码 = 证券代码;
-            inValue.证券名称 = 证券名称;
-            inValue.买卖方向 = 买卖方向;
-            inValue.委托数量 = 委托数量;
-            inValue.委托价格 = 委托价格;
-            return ((AASClient.AASServiceReference.AASService)(this)).SendHKOrderAsync(inValue);
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.Query委托Response> Query委托Async(string user) {
+            AASClient.AASServiceReference.Query委托Request inValue = new AASClient.AASServiceReference.Query委托Request();
+            inValue.user = user;
+            return ((AASClient.AASServiceReference.AASService)(this)).Query委托Async(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.Query成交Response AASClient.AASServiceReference.AASService.Query成交(AASClient.AASServiceReference.Query成交Request request) {
+            return base.Channel.Query成交(request);
+        }
+        
+        public JyDataSet.成交DataTable Query成交(string user) {
+            AASClient.AASServiceReference.Query成交Request inValue = new AASClient.AASServiceReference.Query成交Request();
+            inValue.user = user;
+            AASClient.AASServiceReference.Query成交Response retVal = ((AASClient.AASServiceReference.AASService)(this)).Query成交(inValue);
+            return retVal.Query成交Result;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.Query成交Response> AASClient.AASServiceReference.AASService.Query成交Async(AASClient.AASServiceReference.Query成交Request request) {
+            return base.Channel.Query成交Async(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.Query成交Response> Query成交Async(string user) {
+            AASClient.AASServiceReference.Query成交Request inValue = new AASClient.AASServiceReference.Query成交Request();
+            inValue.user = user;
+            return ((AASClient.AASServiceReference.AASService)(this)).Query成交Async(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.Query订单Response AASClient.AASServiceReference.AASService.Query订单(AASClient.AASServiceReference.Query订单Request request) {
+            return base.Channel.Query订单(request);
+        }
+        
+        public DbDataSet.订单DataTable Query订单(string user) {
+            AASClient.AASServiceReference.Query订单Request inValue = new AASClient.AASServiceReference.Query订单Request();
+            inValue.user = user;
+            AASClient.AASServiceReference.Query订单Response retVal = ((AASClient.AASServiceReference.AASService)(this)).Query订单(inValue);
+            return retVal.Query订单Result;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.Query订单Response> AASClient.AASServiceReference.AASService.Query订单Async(AASClient.AASServiceReference.Query订单Request request) {
+            return base.Channel.Query订单Async(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.Query订单Response> Query订单Async(string user) {
+            AASClient.AASServiceReference.Query订单Request inValue = new AASClient.AASServiceReference.Query订单Request();
+            inValue.user = user;
+            return ((AASClient.AASServiceReference.AASService)(this)).Query订单Async(inValue);
         }
         
         public void Fectch名下交易员Table() {
@@ -17878,306 +18353,6 @@ namespace AASClient.AASServiceReference {
             inValue.MAC = MAC;
             inValue.HDD = HDD;
             return ((AASClient.AASServiceReference.AASService)(this)).TestHsAccountAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.AddHsAccountResponse AASClient.AASServiceReference.AASService.AddHsAccount(AASClient.AASServiceReference.AddHsAccountRequest request) {
-            return base.Channel.AddHsAccount(request);
-        }
-        
-        public void AddHsAccount(bool 启用, string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
-            AASClient.AASServiceReference.AddHsAccountRequest inValue = new AASClient.AASServiceReference.AddHsAccountRequest();
-            inValue.启用 = 启用;
-            inValue.名称 = 名称;
-            inValue.IP = IP;
-            inValue.端口 = 端口;
-            inValue.基金编码 = 基金编码;
-            inValue.资产单元编号 = 资产单元编号;
-            inValue.组合编号 = 组合编号;
-            inValue.操作员用户名 = 操作员用户名;
-            inValue.操作员密码 = 操作员密码;
-            inValue.登录IP = 登录IP;
-            inValue.MAC = MAC;
-            inValue.HDD = HDD;
-            inValue.查询间隔时间 = 查询间隔时间;
-            AASClient.AASServiceReference.AddHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AddHsAccount(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddHsAccountResponse> AASClient.AASServiceReference.AASService.AddHsAccountAsync(AASClient.AASServiceReference.AddHsAccountRequest request) {
-            return base.Channel.AddHsAccountAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AddHsAccountResponse> AddHsAccountAsync(bool 启用, string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
-            AASClient.AASServiceReference.AddHsAccountRequest inValue = new AASClient.AASServiceReference.AddHsAccountRequest();
-            inValue.启用 = 启用;
-            inValue.名称 = 名称;
-            inValue.IP = IP;
-            inValue.端口 = 端口;
-            inValue.基金编码 = 基金编码;
-            inValue.资产单元编号 = 资产单元编号;
-            inValue.组合编号 = 组合编号;
-            inValue.操作员用户名 = 操作员用户名;
-            inValue.操作员密码 = 操作员密码;
-            inValue.登录IP = 登录IP;
-            inValue.MAC = MAC;
-            inValue.HDD = HDD;
-            inValue.查询间隔时间 = 查询间隔时间;
-            return ((AASClient.AASServiceReference.AASService)(this)).AddHsAccountAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.UpdateHsAccountResponse AASClient.AASServiceReference.AASService.UpdateHsAccount(AASClient.AASServiceReference.UpdateHsAccountRequest request) {
-            return base.Channel.UpdateHsAccount(request);
-        }
-        
-        public void UpdateHsAccount(string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
-            AASClient.AASServiceReference.UpdateHsAccountRequest inValue = new AASClient.AASServiceReference.UpdateHsAccountRequest();
-            inValue.名称 = 名称;
-            inValue.IP = IP;
-            inValue.端口 = 端口;
-            inValue.基金编码 = 基金编码;
-            inValue.资产单元编号 = 资产单元编号;
-            inValue.组合编号 = 组合编号;
-            inValue.操作员用户名 = 操作员用户名;
-            inValue.操作员密码 = 操作员密码;
-            inValue.登录IP = 登录IP;
-            inValue.MAC = MAC;
-            inValue.HDD = HDD;
-            inValue.查询间隔时间 = 查询间隔时间;
-            AASClient.AASServiceReference.UpdateHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).UpdateHsAccount(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateHsAccountResponse> AASClient.AASServiceReference.AASService.UpdateHsAccountAsync(AASClient.AASServiceReference.UpdateHsAccountRequest request) {
-            return base.Channel.UpdateHsAccountAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateHsAccountResponse> UpdateHsAccountAsync(string 名称, string IP, short 端口, string 基金编码, string 资产单元编号, string 组合编号, string 操作员用户名, string 操作员密码, string 登录IP, string MAC, string HDD, int 查询间隔时间) {
-            AASClient.AASServiceReference.UpdateHsAccountRequest inValue = new AASClient.AASServiceReference.UpdateHsAccountRequest();
-            inValue.名称 = 名称;
-            inValue.IP = IP;
-            inValue.端口 = 端口;
-            inValue.基金编码 = 基金编码;
-            inValue.资产单元编号 = 资产单元编号;
-            inValue.组合编号 = 组合编号;
-            inValue.操作员用户名 = 操作员用户名;
-            inValue.操作员密码 = 操作员密码;
-            inValue.登录IP = 登录IP;
-            inValue.MAC = MAC;
-            inValue.HDD = HDD;
-            inValue.查询间隔时间 = 查询间隔时间;
-            return ((AASClient.AASServiceReference.AASService)(this)).UpdateHsAccountAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.DeleteHsAccountResponse AASClient.AASServiceReference.AASService.DeleteHsAccount(AASClient.AASServiceReference.DeleteHsAccountRequest request) {
-            return base.Channel.DeleteHsAccount(request);
-        }
-        
-        public void DeleteHsAccount(string Name) {
-            AASClient.AASServiceReference.DeleteHsAccountRequest inValue = new AASClient.AASServiceReference.DeleteHsAccountRequest();
-            inValue.Name = Name;
-            AASClient.AASServiceReference.DeleteHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).DeleteHsAccount(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.DeleteHsAccountResponse> AASClient.AASServiceReference.AASService.DeleteHsAccountAsync(AASClient.AASServiceReference.DeleteHsAccountRequest request) {
-            return base.Channel.DeleteHsAccountAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.DeleteHsAccountResponse> DeleteHsAccountAsync(string Name) {
-            AASClient.AASServiceReference.DeleteHsAccountRequest inValue = new AASClient.AASServiceReference.DeleteHsAccountRequest();
-            inValue.Name = Name;
-            return ((AASClient.AASServiceReference.AASService)(this)).DeleteHsAccountAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.ShareLimitDocumentQueryResponse AASClient.AASServiceReference.AASService.ShareLimitDocumentQuery(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request) {
-            return base.Channel.ShareLimitDocumentQuery(request);
-        }
-        
-        public string ShareLimitDocumentQuery() {
-            AASClient.AASServiceReference.ShareLimitDocumentQueryRequest inValue = new AASClient.AASServiceReference.ShareLimitDocumentQueryRequest();
-            AASClient.AASServiceReference.ShareLimitDocumentQueryResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).ShareLimitDocumentQuery(inValue);
-            return retVal.ShareLimitDocumentQueryResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareLimitDocumentQueryResponse> AASClient.AASServiceReference.AASService.ShareLimitDocumentQueryAsync(AASClient.AASServiceReference.ShareLimitDocumentQueryRequest request) {
-            return base.Channel.ShareLimitDocumentQueryAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareLimitDocumentQueryResponse> ShareLimitDocumentQueryAsync() {
-            AASClient.AASServiceReference.ShareLimitDocumentQueryRequest inValue = new AASClient.AASServiceReference.ShareLimitDocumentQueryRequest();
-            return ((AASClient.AASServiceReference.AASService)(this)).ShareLimitDocumentQueryAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.ShareGroupQueryResponse AASClient.AASServiceReference.AASService.ShareGroupQuery(AASClient.AASServiceReference.ShareGroupQueryRequest request) {
-            return base.Channel.ShareGroupQuery(request);
-        }
-        
-        public AASClient.AASServiceReference.ShareLimitGroupItem[] ShareGroupQuery() {
-            AASClient.AASServiceReference.ShareGroupQueryRequest inValue = new AASClient.AASServiceReference.ShareGroupQueryRequest();
-            AASClient.AASServiceReference.ShareGroupQueryResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).ShareGroupQuery(inValue);
-            return retVal.ShareGroupQueryResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareGroupQueryResponse> AASClient.AASServiceReference.AASService.ShareGroupQueryAsync(AASClient.AASServiceReference.ShareGroupQueryRequest request) {
-            return base.Channel.ShareGroupQueryAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.ShareGroupQueryResponse> ShareGroupQueryAsync() {
-            AASClient.AASServiceReference.ShareGroupQueryRequest inValue = new AASClient.AASServiceReference.ShareGroupQueryRequest();
-            return ((AASClient.AASServiceReference.AASService)(this)).ShareGroupQueryAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.AddTraderResponse AASClient.AASServiceReference.AASService.AddTrader(AASClient.AASServiceReference.AddTraderRequest request) {
-            return base.Channel.AddTrader(request);
-        }
-        
-        public string AddTrader(string group, string trader) {
-            AASClient.AASServiceReference.AddTraderRequest inValue = new AASClient.AASServiceReference.AddTraderRequest();
-            inValue.group = group;
-            inValue.trader = trader;
-            AASClient.AASServiceReference.AddTraderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AddTrader(inValue);
-            return retVal.AddTraderResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddTraderResponse> AASClient.AASServiceReference.AASService.AddTraderAsync(AASClient.AASServiceReference.AddTraderRequest request) {
-            return base.Channel.AddTraderAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AddTraderResponse> AddTraderAsync(string group, string trader) {
-            AASClient.AASServiceReference.AddTraderRequest inValue = new AASClient.AASServiceReference.AddTraderRequest();
-            inValue.group = group;
-            inValue.trader = trader;
-            return ((AASClient.AASServiceReference.AASService)(this)).AddTraderAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.RemoveGroupTraderResponse AASClient.AASServiceReference.AASService.RemoveGroupTrader(AASClient.AASServiceReference.RemoveGroupTraderRequest request) {
-            return base.Channel.RemoveGroupTrader(request);
-        }
-        
-        public bool RemoveGroupTrader(string group, string trader) {
-            AASClient.AASServiceReference.RemoveGroupTraderRequest inValue = new AASClient.AASServiceReference.RemoveGroupTraderRequest();
-            inValue.group = group;
-            inValue.trader = trader;
-            AASClient.AASServiceReference.RemoveGroupTraderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).RemoveGroupTrader(inValue);
-            return retVal.RemoveGroupTraderResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveGroupTraderResponse> AASClient.AASServiceReference.AASService.RemoveGroupTraderAsync(AASClient.AASServiceReference.RemoveGroupTraderRequest request) {
-            return base.Channel.RemoveGroupTraderAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveGroupTraderResponse> RemoveGroupTraderAsync(string group, string trader) {
-            AASClient.AASServiceReference.RemoveGroupTraderRequest inValue = new AASClient.AASServiceReference.RemoveGroupTraderRequest();
-            inValue.group = group;
-            inValue.trader = trader;
-            return ((AASClient.AASServiceReference.AASService)(this)).RemoveGroupTraderAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.AddStockResponse AASClient.AASServiceReference.AASService.AddStock(AASClient.AASServiceReference.AddStockRequest request) {
-            return base.Channel.AddStock(request);
-        }
-        
-        public string AddStock(string group, AASClient.AASServiceReference.StockLimitItem limitItem) {
-            AASClient.AASServiceReference.AddStockRequest inValue = new AASClient.AASServiceReference.AddStockRequest();
-            inValue.group = group;
-            inValue.limitItem = limitItem;
-            AASClient.AASServiceReference.AddStockResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).AddStock(inValue);
-            return retVal.AddStockResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.AddStockResponse> AASClient.AASServiceReference.AASService.AddStockAsync(AASClient.AASServiceReference.AddStockRequest request) {
-            return base.Channel.AddStockAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.AddStockResponse> AddStockAsync(string group, AASClient.AASServiceReference.StockLimitItem limitItem) {
-            AASClient.AASServiceReference.AddStockRequest inValue = new AASClient.AASServiceReference.AddStockRequest();
-            inValue.group = group;
-            inValue.limitItem = limitItem;
-            return ((AASClient.AASServiceReference.AASService)(this)).AddStockAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.UpdateStockResponse AASClient.AASServiceReference.AASService.UpdateStock(AASClient.AASServiceReference.UpdateStockRequest request) {
-            return base.Channel.UpdateStock(request);
-        }
-        
-        public string UpdateStock(string group, AASClient.AASServiceReference.StockLimitItem stockLimit) {
-            AASClient.AASServiceReference.UpdateStockRequest inValue = new AASClient.AASServiceReference.UpdateStockRequest();
-            inValue.group = group;
-            inValue.stockLimit = stockLimit;
-            AASClient.AASServiceReference.UpdateStockResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).UpdateStock(inValue);
-            return retVal.UpdateStockResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateStockResponse> AASClient.AASServiceReference.AASService.UpdateStockAsync(AASClient.AASServiceReference.UpdateStockRequest request) {
-            return base.Channel.UpdateStockAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.UpdateStockResponse> UpdateStockAsync(string group, AASClient.AASServiceReference.StockLimitItem stockLimit) {
-            AASClient.AASServiceReference.UpdateStockRequest inValue = new AASClient.AASServiceReference.UpdateStockRequest();
-            inValue.group = group;
-            inValue.stockLimit = stockLimit;
-            return ((AASClient.AASServiceReference.AASService)(this)).UpdateStockAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.RemoveStockResponse AASClient.AASServiceReference.AASService.RemoveStock(AASClient.AASServiceReference.RemoveStockRequest request) {
-            return base.Channel.RemoveStock(request);
-        }
-        
-        public string RemoveStock(string group, string stockID) {
-            AASClient.AASServiceReference.RemoveStockRequest inValue = new AASClient.AASServiceReference.RemoveStockRequest();
-            inValue.group = group;
-            inValue.stockID = stockID;
-            AASClient.AASServiceReference.RemoveStockResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).RemoveStock(inValue);
-            return retVal.RemoveStockResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveStockResponse> AASClient.AASServiceReference.AASService.RemoveStockAsync(AASClient.AASServiceReference.RemoveStockRequest request) {
-            return base.Channel.RemoveStockAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.RemoveStockResponse> RemoveStockAsync(string group, string stockID) {
-            AASClient.AASServiceReference.RemoveStockRequest inValue = new AASClient.AASServiceReference.RemoveStockRequest();
-            inValue.group = group;
-            inValue.stockID = stockID;
-            return ((AASClient.AASServiceReference.AASService)(this)).RemoveStockAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.QueryNotGroupedTraderResponse AASClient.AASServiceReference.AASService.QueryNotGroupedTrader(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request) {
-            return base.Channel.QueryNotGroupedTrader(request);
-        }
-        
-        public AASClient.AASServiceReference.LimitTrader[] QueryNotGroupedTrader() {
-            AASClient.AASServiceReference.QueryNotGroupedTraderRequest inValue = new AASClient.AASServiceReference.QueryNotGroupedTraderRequest();
-            AASClient.AASServiceReference.QueryNotGroupedTraderResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).QueryNotGroupedTrader(inValue);
-            return retVal.QueryNotGroupedTraderResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryNotGroupedTraderResponse> AASClient.AASServiceReference.AASService.QueryNotGroupedTraderAsync(AASClient.AASServiceReference.QueryNotGroupedTraderRequest request) {
-            return base.Channel.QueryNotGroupedTraderAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryNotGroupedTraderResponse> QueryNotGroupedTraderAsync() {
-            AASClient.AASServiceReference.QueryNotGroupedTraderRequest inValue = new AASClient.AASServiceReference.QueryNotGroupedTraderRequest();
-            return ((AASClient.AASServiceReference.AASService)(this)).QueryNotGroupedTraderAsync(inValue);
         }
     }
 }

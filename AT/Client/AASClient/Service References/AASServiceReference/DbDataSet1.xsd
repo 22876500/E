@@ -1,199 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns="http://tempuri.org/DbDataSet.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/DbDataSet.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/DbDataSet.xsd" id="DbDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="DbDataSet">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AASServer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:82/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfShareLimitGroupItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShareLimitGroupItem" nillable="true" type="tns:ShareLimitGroupItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShareLimitGroupItem" nillable="true" type="tns:ArrayOfShareLimitGroupItem" />
+  <xs:complexType name="ShareLimitGroupItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupStockList" nillable="true" type="tns:ArrayOfStockLimitItem" />
+      <xs:element minOccurs="0" name="GroupTraderList" nillable="true" type="tns:ArrayOfLimitTrader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShareLimitGroupItem" nillable="true" type="tns:ShareLimitGroupItem" />
+  <xs:complexType name="ArrayOfStockLimitItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StockLimitItem" nillable="true" type="tns:StockLimitItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStockLimitItem" nillable="true" type="tns:ArrayOfStockLimitItem" />
+  <xs:complexType name="StockLimitItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuyType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Commission" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LimitCount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaleType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StockID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StockName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StockLimitItem" nillable="true" type="tns:StockLimitItem" />
+  <xs:complexType name="ArrayOfLimitTrader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitTrader" nillable="true" type="tns:LimitTrader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLimitTrader" nillable="true" type="tns:ArrayOfLimitTrader" />
+  <xs:complexType name="LimitTrader">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TraderAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LimitTrader" nillable="true" type="tns:LimitTrader" />
+  <xs:element name="DbDataSet.平台用户DataTable" nillable="true">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="已发委托">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="日期" type="xs:dateTime" />
-              <xs:element minOccurs="0" name="组合号" type="xs:string" />
-              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
-              <xs:element minOccurs="0" name="交易员" type="xs:string" />
-              <xs:element minOccurs="0" name="状态说明" type="xs:string" />
-              <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
-              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
-              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
-              <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
-              <xs:element minOccurs="0" name="成交价格" type="xs:decimal" />
-              <xs:element minOccurs="0" name="成交数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="委托价格" type="xs:decimal" />
-              <xs:element minOccurs="0" name="委托数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="撤单数量" type="xs:decimal" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="已处理成交">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="日期" type="xs:dateTime" />
-              <xs:element minOccurs="0" name="组合号" type="xs:string" />
-              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
-              <xs:element minOccurs="0" name="成交编号" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="券商帐户">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="名称" type="xs:string" />
-              <xs:element minOccurs="0" name="启用" type="xs:boolean" />
-              <xs:element minOccurs="0" name="券商" type="xs:string" />
-              <xs:element minOccurs="0" name="类型" type="xs:string" />
-              <xs:element minOccurs="0" name="交易服务器" type="xs:string" />
-              <xs:element minOccurs="0" name="版本号" type="xs:string" />
-              <xs:element minOccurs="0" name="营业部代码" type="xs:short" />
-              <xs:element minOccurs="0" name="登录帐号" type="xs:string" />
-              <xs:element minOccurs="0" name="交易帐号" type="xs:string" />
-              <xs:element minOccurs="0" name="交易密码" type="xs:string" />
-              <xs:element minOccurs="0" name="通讯密码" type="xs:string" />
-              <xs:element minOccurs="0" name="上海股东代码" type="xs:string" />
-              <xs:element minOccurs="0" name="深圳股东代码" type="xs:string" />
-              <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="订单">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="交易员" type="xs:string" />
-              <xs:element minOccurs="0" name="组合号" type="xs:string" />
-              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
-              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
-              <xs:element minOccurs="0" name="开仓类别" type="xs:int" />
-              <xs:element minOccurs="0" name="已开数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="已开金额" type="xs:decimal" />
-              <xs:element minOccurs="0" name="浮动盈亏" type="xs:decimal" />
-              <xs:element minOccurs="0" name="开仓价位" type="xs:decimal" />
-              <xs:element minOccurs="0" name="当前价位" type="xs:decimal" />
-              <xs:element minOccurs="0" name="开仓时间" type="xs:dateTime" />
-              <xs:element minOccurs="0" name="平仓时间" type="xs:dateTime" />
-              <xs:element minOccurs="0" name="平仓类别" type="xs:int" />
-              <xs:element minOccurs="0" name="已平数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="已平金额" type="xs:decimal" />
-              <xs:element minOccurs="0" name="平仓价位" type="xs:decimal" />
-              <xs:element minOccurs="0" name="市场代码" type="xs:unsignedByte" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="平台用户">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="用户名" type="xs:string" />
-              <xs:element minOccurs="0" name="密码" type="xs:string" />
-              <xs:element minOccurs="0" name="角色" type="xs:int" />
-              <xs:element minOccurs="0" name="仓位限制" type="xs:decimal" />
-              <xs:element minOccurs="0" name="亏损限制" type="xs:decimal" />
-              <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
-              <xs:element minOccurs="0" name="允许删除碎股订单" type="xs:boolean" />
-              <xs:element minOccurs="0" name="分组" type="xs:int" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="MAC地址分配">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="用户名" type="xs:string" />
-              <xs:element minOccurs="0" name="MAC" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="风控分配">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="交易员" type="xs:string" />
-              <xs:element minOccurs="0" name="风控员" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="已平仓订单">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="交易员" type="xs:string" />
-              <xs:element minOccurs="0" name="组合号" type="xs:string" />
-              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
-              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
-              <xs:element minOccurs="0" name="毛利" type="xs:decimal" />
-              <xs:element minOccurs="0" name="开仓类别" type="xs:int" />
-              <xs:element minOccurs="0" name="已开数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="已开金额" type="xs:decimal" />
-              <xs:element minOccurs="0" name="开仓价位" type="xs:decimal" />
-              <xs:element minOccurs="0" name="平仓类别" type="xs:int" />
-              <xs:element minOccurs="0" name="已平数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="已平金额" type="xs:decimal" />
-              <xs:element minOccurs="0" name="平仓价位" type="xs:decimal" />
-              <xs:element minOccurs="0" name="开仓时间" type="xs:dateTime" />
-              <xs:element minOccurs="0" name="平仓时间" type="xs:dateTime" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="交易日志">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="日期" type="xs:dateTime" />
-              <xs:element minOccurs="0" name="交易员" type="xs:string" />
-              <xs:element minOccurs="0" name="组合号" type="xs:string" />
-              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
-              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
-              <xs:element minOccurs="0" name="委托编号" type="xs:string" />
-              <xs:element minOccurs="0" name="信息" type="xs:string" />
-              <xs:element minOccurs="0" name="委托数量" type="xs:decimal" />
-              <xs:element minOccurs="0" name="委托价格" type="xs:decimal" />
-              <xs:element minOccurs="0" name="买卖方向" type="xs:int" />
-              <xs:element minOccurs="0" name="时间" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="额度分配">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="交易员" type="xs:string" />
-              <xs:element minOccurs="0" name="证券代码" type="xs:string" />
-              <xs:element minOccurs="0" name="组合号" type="xs:string" />
-              <xs:element minOccurs="0" name="市场" type="xs:unsignedByte" />
-              <xs:element minOccurs="0" name="证券名称" type="xs:string" />
-              <xs:element minOccurs="0" name="拼音缩写" type="xs:string" />
-              <xs:element minOccurs="0" name="买模式" type="xs:int" />
-              <xs:element minOccurs="0" name="卖模式" type="xs:int" />
-              <xs:element minOccurs="0" name="交易额度" type="xs:decimal" />
-              <xs:element minOccurs="0" name="手续费率" type="xs:decimal" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="恒生帐户">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="名称" type="xs:string" />
-              <xs:element minOccurs="0" name="启用" type="xs:boolean" />
-              <xs:element minOccurs="0" name="IP" type="xs:string" />
-              <xs:element minOccurs="0" name="端口" type="xs:short" />
-              <xs:element minOccurs="0" name="基金编码" type="xs:string" />
-              <xs:element minOccurs="0" name="资产单元编号" type="xs:string" />
-              <xs:element minOccurs="0" name="组合编号" type="xs:string" />
-              <xs:element minOccurs="0" name="操作员用户名" type="xs:string" />
-              <xs:element minOccurs="0" name="操作员密码" type="xs:string" />
-              <xs:element minOccurs="0" name="登录IP" type="xs:string" />
-              <xs:element minOccurs="0" name="MAC" type="xs:string" />
-              <xs:element minOccurs="0" name="HDD" type="xs:string" />
-              <xs:element minOccurs="0" name="查询间隔时间" type="xs:int" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="顶点账户">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" name="名称" type="xs:string" />
-              <xs:element minOccurs="0" name="启用" type="xs:string" />
-              <xs:element minOccurs="0" name="资金帐号" type="xs:string" />
-              <xs:element minOccurs="0" name="沪市股东代码" type="xs:string" />
-              <xs:element minOccurs="0" name="深市股东代码" type="xs:string" />
-              <xs:element minOccurs="0" name="交易密码" type="xs:string" />
-              <xs:element minOccurs="0" name="通讯密码" type="xs:string" />
-              <xs:element minOccurs="0" name="类型" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:choice>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.平台用户DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="平台用户DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="角色">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="超级管理员" />
+      <xs:enumeration value="普通管理员" />
+      <xs:enumeration value="超级风控员" />
+      <xs:enumeration value="普通风控员" />
+      <xs:enumeration value="交易员" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="角色" nillable="true" type="tns:角色" />
+  <xs:simpleType name="分组">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL" />
+      <xs:enumeration value="XM" />
+      <xs:enumeration value="CQ" />
+      <xs:enumeration value="XA" />
+      <xs:enumeration value="SH" />
+      <xs:enumeration value="T1" />
+      <xs:enumeration value="BY1" />
+      <xs:enumeration value="BY2" />
+      <xs:enumeration value="FK" />
+      <xs:enumeration value="NB" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="分组" nillable="true" type="tns:分组" />
+  <xs:element name="DbDataSet.券商帐户DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.券商帐户DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="券商帐户DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.额度分配DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.额度分配DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="额度分配DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="买模式">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="现金买入" />
+      <xs:enumeration value="融资买入" />
+      <xs:enumeration value="买券还券" />
+      <xs:enumeration value="担保品买入" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="买模式" nillable="true" type="tns:买模式" />
+  <xs:simpleType name="卖模式">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="现券卖出" />
+      <xs:enumeration value="融券卖出" />
+      <xs:enumeration value="卖券还款" />
+      <xs:enumeration value="担保品卖出" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="卖模式" nillable="true" type="tns:卖模式" />
+  <xs:element name="DbDataSet.MAC地址分配DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.MAC地址分配DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="MAC地址分配DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfHKMarketData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HKMarketData" nillable="true" type="tns:HKMarketData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHKMarketData" nillable="true" type="tns:ArrayOfHKMarketData" />
+  <xs:complexType name="HKMarketData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Highest" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Lowest" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PriceB" nillable="true" type="q1:ArrayOfdecimal" />
+      <xs:element minOccurs="0" name="PricePRE" type="xs:decimal" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PriceS" nillable="true" type="q2:ArrayOfdecimal" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="QtyB" nillable="true" type="q3:ArrayOfdecimal" />
+      <xs:element minOccurs="0" name="QtyPermit" type="xs:decimal" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="QtyS" nillable="true" type="q4:ArrayOfdecimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HKMarketData" nillable="true" type="tns:HKMarketData" />
+  <xs:element name="JyDataSet.委托DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.委托DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="委托DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.成交DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.成交DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="成交DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.订单DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.订单DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="订单DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.交易日志DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.交易日志DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="交易日志DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.业绩统计DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.业绩统计DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="业绩统计DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.恒生帐户DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.恒生帐户DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="恒生帐户DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.已平仓订单DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.已平仓订单DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="已平仓订单DataTable" name="tableTypeName" />
     </xs:complexType>
   </xs:element>
 </xs:schema>

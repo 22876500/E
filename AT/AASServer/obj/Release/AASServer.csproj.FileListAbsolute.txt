@@ -28,4 +28,3 @@ D:\GitHub\E\AT\AASServer\obj\Release\AASServer.csproj.GenerateResource.Cache
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.exe
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.pdb
 D:\GitHub\E\AT\AASServer\obj\Release\AASServer.csprojResolveAssemblyReference.cache
-D:\GitHub\E\AT\AASServer\obj\Release\AASServer.csproj.CoreCompileInputs.cache

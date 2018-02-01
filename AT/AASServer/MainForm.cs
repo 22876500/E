@@ -37,8 +37,6 @@ namespace AASServer
             CatchLostOrder();
 
             TimerSendYjData();
-
-            startTime = DateTime.Now;
         }
         private void TimerSendYjData()
         {
@@ -618,28 +616,6 @@ namespace AASServer
         private void 组合号配置重置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CommonUtils.ResetGroupConfig();
-        }
-
-
-        static object Sync = new object();
-
-        DateTime startTime = DateTime.MinValue;
-        DateTime lastClearTime = DateTime.Today;
-        private void timerCheck_Tick(object sender, EventArgs e)
-        {
-            if (startTime.Date < DateTime.Today && DateTime.Now.Hour == 0 && lastClearTime.Date < DateTime.Today)
-            {
-                lock (Sync)
-                {
-                    lastClearTime = DateTime.Now;
-                    Program.帐户成交DataTable.Clear();
-                    Program.帐户委托DataTable.Clear();
-
-                    Program.交易员委托DataTable.Clear();
-                    Program.交易员成交DataTable.Clear();
-                    //Process.Start(Application.ExecutablePath, "");
-                }
-            }
         }
 
         private void 连接即时查询ToolStripMenuItem_Click(object sender, EventArgs e)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AASService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AASService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="NetTcpBinding_AASService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -103,6 +103,424 @@
         </sp:Trust10>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
         <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddHsAccount_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddHsAccount_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateHsAccount_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateHsAccount_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_DeleteHsAccount_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_DeleteHsAccount_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareLimitDocumentQuery_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareLimitDocumentQuery_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareGroupQuery_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareGroupQuery_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddTrader_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddTrader_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveGroupTrader_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveGroupTrader_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddStock_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddStock_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateStock_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateStock_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveStock_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveStock_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_QueryNotGroupedTrader_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_QueryNotGroupedTrader_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
@@ -980,6 +1398,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AccountRepay_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AccountRepay_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_AASService_QueryJY_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -1778,7 +2234,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_SendHKOrder_Input_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_Query委托_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1797,7 +2253,83 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_SendHKOrder_output_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_Query委托_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_Query成交_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_Query成交_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_Query订单_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_AASService_Query订单_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -2272,424 +2804,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddHsAccount_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddHsAccount_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateHsAccount_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateHsAccount_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_DeleteHsAccount_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_DeleteHsAccount_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareLimitDocumentQuery_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareLimitDocumentQuery_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareGroupQuery_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_ShareGroupQuery_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddTrader_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddTrader_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveGroupTrader_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveGroupTrader_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddStock_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_AddStock_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateStock_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_UpdateStock_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveStock_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_RemoveStock_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_QueryNotGroupedTrader_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_AASService_QueryNotGroupedTrader_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_AASService_Notify_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -2865,13 +2979,79 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:82/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:82/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:82/?xsd=xsd2" namespace="http://tempuri.org/DbDataSet.xsd" />
-      <xsd:import schemaLocation="http://localhost:82/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AASServer" />
+      <xsd:import schemaLocation="http://localhost:82/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AASServer" />
+      <xsd:import schemaLocation="http://localhost:82/?xsd=xsd3" namespace="http://tempuri.org/DbDataSet.xsd" />
       <xsd:import schemaLocation="http://localhost:82/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import schemaLocation="http://localhost:82/?xsd=xsd5" namespace="http://tempuri.org/JyDataSet.xsd" />
       <xsd:import schemaLocation="http://localhost:82/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="AASService_AddHsAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddHsAccount" />
+  </wsdl:message>
+  <wsdl:message name="AASService_AddHsAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddHsAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_UpdateHsAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHsAccount" />
+  </wsdl:message>
+  <wsdl:message name="AASService_UpdateHsAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHsAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_DeleteHsAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteHsAccount" />
+  </wsdl:message>
+  <wsdl:message name="AASService_DeleteHsAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteHsAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_ShareLimitDocumentQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShareLimitDocumentQuery" />
+  </wsdl:message>
+  <wsdl:message name="AASService_ShareLimitDocumentQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShareLimitDocumentQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_ShareGroupQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShareGroupQuery" />
+  </wsdl:message>
+  <wsdl:message name="AASService_ShareGroupQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShareGroupQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_AddTrader_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTrader" />
+  </wsdl:message>
+  <wsdl:message name="AASService_AddTrader_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTraderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_RemoveGroupTrader_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveGroupTrader" />
+  </wsdl:message>
+  <wsdl:message name="AASService_RemoveGroupTrader_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveGroupTraderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_AddStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStock" />
+  </wsdl:message>
+  <wsdl:message name="AASService_AddStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_UpdateStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStock" />
+  </wsdl:message>
+  <wsdl:message name="AASService_UpdateStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_RemoveStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveStock" />
+  </wsdl:message>
+  <wsdl:message name="AASService_RemoveStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="AASService_QueryNotGroupedTrader_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryNotGroupedTrader" />
+  </wsdl:message>
+  <wsdl:message name="AASService_QueryNotGroupedTrader_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryNotGroupedTraderResponse" />
+  </wsdl:message>
   <wsdl:message name="AASService_QuerySingleUser_InputMessage">
     <wsdl:part name="parameters" element="tns:QuerySingleUser" />
   </wsdl:message>
@@ -3010,6 +3190,12 @@
   <wsdl:message name="AASService_TestEx_OutputMessage">
     <wsdl:part name="parameters" element="tns:TestExResponse" />
   </wsdl:message>
+  <wsdl:message name="AASService_AccountRepay_InputMessage">
+    <wsdl:part name="parameters" element="tns:AccountRepay" />
+  </wsdl:message>
+  <wsdl:message name="AASService_AccountRepay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AccountRepayResponse" />
+  </wsdl:message>
   <wsdl:message name="AASService_QueryJY_InputMessage">
     <wsdl:part name="parameters" element="tns:QueryJY" />
   </wsdl:message>
@@ -3136,11 +3322,23 @@
   <wsdl:message name="AASService_KeepAlive_OutputMessage">
     <wsdl:part name="parameters" element="tns:KeepAliveResponse" />
   </wsdl:message>
-  <wsdl:message name="AASService_SendHKOrder_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendHKOrder" />
+  <wsdl:message name="AASService_Query委托_InputMessage">
+    <wsdl:part name="parameters" element="tns:Query委托" />
   </wsdl:message>
-  <wsdl:message name="AASService_SendHKOrder_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendHKOrderResponse" />
+  <wsdl:message name="AASService_Query委托_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Query委托Response" />
+  </wsdl:message>
+  <wsdl:message name="AASService_Query成交_InputMessage">
+    <wsdl:part name="parameters" element="tns:Query成交" />
+  </wsdl:message>
+  <wsdl:message name="AASService_Query成交_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Query成交Response" />
+  </wsdl:message>
+  <wsdl:message name="AASService_Query订单_InputMessage">
+    <wsdl:part name="parameters" element="tns:Query订单" />
+  </wsdl:message>
+  <wsdl:message name="AASService_Query订单_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Query订单Response" />
   </wsdl:message>
   <wsdl:message name="AASService_Fectch名下交易员Table_InputMessage">
     <wsdl:part name="parameters" element="tns:Fectch名下交易员Table" />
@@ -3214,72 +3412,6 @@
   <wsdl:message name="AASService_TestHsAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:TestHsAccountResponse" />
   </wsdl:message>
-  <wsdl:message name="AASService_AddHsAccount_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddHsAccount" />
-  </wsdl:message>
-  <wsdl:message name="AASService_AddHsAccount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddHsAccountResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_UpdateHsAccount_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateHsAccount" />
-  </wsdl:message>
-  <wsdl:message name="AASService_UpdateHsAccount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateHsAccountResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_DeleteHsAccount_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteHsAccount" />
-  </wsdl:message>
-  <wsdl:message name="AASService_DeleteHsAccount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteHsAccountResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_ShareLimitDocumentQuery_InputMessage">
-    <wsdl:part name="parameters" element="tns:ShareLimitDocumentQuery" />
-  </wsdl:message>
-  <wsdl:message name="AASService_ShareLimitDocumentQuery_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ShareLimitDocumentQueryResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_ShareGroupQuery_InputMessage">
-    <wsdl:part name="parameters" element="tns:ShareGroupQuery" />
-  </wsdl:message>
-  <wsdl:message name="AASService_ShareGroupQuery_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ShareGroupQueryResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_AddTrader_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddTrader" />
-  </wsdl:message>
-  <wsdl:message name="AASService_AddTrader_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddTraderResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_RemoveGroupTrader_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveGroupTrader" />
-  </wsdl:message>
-  <wsdl:message name="AASService_RemoveGroupTrader_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveGroupTraderResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_AddStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddStock" />
-  </wsdl:message>
-  <wsdl:message name="AASService_AddStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddStockResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_UpdateStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateStock" />
-  </wsdl:message>
-  <wsdl:message name="AASService_UpdateStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateStockResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_RemoveStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveStock" />
-  </wsdl:message>
-  <wsdl:message name="AASService_RemoveStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveStockResponse" />
-  </wsdl:message>
-  <wsdl:message name="AASService_QueryNotGroupedTrader_InputMessage">
-    <wsdl:part name="parameters" element="tns:QueryNotGroupedTrader" />
-  </wsdl:message>
-  <wsdl:message name="AASService_QueryNotGroupedTrader_OutputMessage">
-    <wsdl:part name="parameters" element="tns:QueryNotGroupedTraderResponse" />
-  </wsdl:message>
   <wsdl:message name="AASService_Notify_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:Notify" />
   </wsdl:message>
@@ -3308,6 +3440,50 @@
     <wsdl:part name="parameters" element="tns:Close" />
   </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="AASService">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddHsAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AddHsAccount" message="tns:AASService_AddHsAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AddHsAccountResponse" message="tns:AASService_AddHsAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateHsAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/UpdateHsAccount" message="tns:AASService_UpdateHsAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/UpdateHsAccountResponse" message="tns:AASService_UpdateHsAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeleteHsAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/DeleteHsAccount" message="tns:AASService_DeleteHsAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/DeleteHsAccountResponse" message="tns:AASService_DeleteHsAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ShareLimitDocumentQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/ShareLimitDocumentQuery" message="tns:AASService_ShareLimitDocumentQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/ShareLimitDocumentQueryResponse" message="tns:AASService_ShareLimitDocumentQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ShareGroupQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/ShareGroupQuery" message="tns:AASService_ShareGroupQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/ShareGroupQueryResponse" message="tns:AASService_ShareGroupQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddTrader">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AddTrader" message="tns:AASService_AddTrader_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AddTraderResponse" message="tns:AASService_AddTrader_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RemoveGroupTrader">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/RemoveGroupTrader" message="tns:AASService_RemoveGroupTrader_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/RemoveGroupTraderResponse" message="tns:AASService_RemoveGroupTrader_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AddStock" message="tns:AASService_AddStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AddStockResponse" message="tns:AASService_AddStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/UpdateStock" message="tns:AASService_UpdateStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/UpdateStockResponse" message="tns:AASService_UpdateStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RemoveStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/RemoveStock" message="tns:AASService_RemoveStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/RemoveStockResponse" message="tns:AASService_RemoveStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QueryNotGroupedTrader">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/QueryNotGroupedTrader" message="tns:AASService_QueryNotGroupedTrader_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/QueryNotGroupedTraderResponse" message="tns:AASService_QueryNotGroupedTrader_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QuerySingleUser">
       <wsdl:input wsaw:Action="http://tempuri.org/AASService/QuerySingleUser" message="tns:AASService_QuerySingleUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AASService/QuerySingleUserResponse" message="tns:AASService_QuerySingleUser_OutputMessage" />
@@ -3400,6 +3576,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/AASService/TestEx" message="tns:AASService_TestEx_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AASService/TestExResponse" message="tns:AASService_TestEx_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AccountRepay">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AccountRepay" message="tns:AASService_AccountRepay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AccountRepayResponse" message="tns:AASService_AccountRepay_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QueryJY">
       <wsdl:input wsaw:Action="http://tempuri.org/AASService/QueryJY" message="tns:AASService_QueryJY_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AASService/QueryJYResponse" message="tns:AASService_QueryJY_OutputMessage" />
@@ -3484,9 +3664,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/AASService/KeepAlive" message="tns:AASService_KeepAlive_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AASService/KeepAliveResponse" message="tns:AASService_KeepAlive_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendHKOrder">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/SendHKOrder" message="tns:AASService_SendHKOrder_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/SendHKOrderResponse" message="tns:AASService_SendHKOrder_OutputMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Query委托">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/Query委托" message="tns:AASService_Query委托_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/Query委托Response" message="tns:AASService_Query委托_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Query成交">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/Query成交" message="tns:AASService_Query成交_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/Query成交Response" message="tns:AASService_Query成交_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Query订单">
+      <wsdl:input wsaw:Action="http://tempuri.org/AASService/Query订单" message="tns:AASService_Query订单_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AASService/Query订单Response" message="tns:AASService_Query订单_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Fectch名下交易员Table">
       <wsdl:input wsaw:Action="http://tempuri.org/AASService/Fectch名下交易员Table" message="tns:AASService_Fectch名下交易员Table_InputMessage" />
@@ -3536,50 +3724,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/AASService/TestHsAccount" message="tns:AASService_TestHsAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AASService/TestHsAccountResponse" message="tns:AASService_TestHsAccount_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddHsAccount">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AddHsAccount" message="tns:AASService_AddHsAccount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AddHsAccountResponse" message="tns:AASService_AddHsAccount_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateHsAccount">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/UpdateHsAccount" message="tns:AASService_UpdateHsAccount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/UpdateHsAccountResponse" message="tns:AASService_UpdateHsAccount_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeleteHsAccount">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/DeleteHsAccount" message="tns:AASService_DeleteHsAccount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/DeleteHsAccountResponse" message="tns:AASService_DeleteHsAccount_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ShareLimitDocumentQuery">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/ShareLimitDocumentQuery" message="tns:AASService_ShareLimitDocumentQuery_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/ShareLimitDocumentQueryResponse" message="tns:AASService_ShareLimitDocumentQuery_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ShareGroupQuery">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/ShareGroupQuery" message="tns:AASService_ShareGroupQuery_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/ShareGroupQueryResponse" message="tns:AASService_ShareGroupQuery_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddTrader">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AddTrader" message="tns:AASService_AddTrader_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AddTraderResponse" message="tns:AASService_AddTrader_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RemoveGroupTrader">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/RemoveGroupTrader" message="tns:AASService_RemoveGroupTrader_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/RemoveGroupTraderResponse" message="tns:AASService_RemoveGroupTrader_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/AddStock" message="tns:AASService_AddStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/AddStockResponse" message="tns:AASService_AddStock_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/UpdateStock" message="tns:AASService_UpdateStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/UpdateStockResponse" message="tns:AASService_UpdateStock_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RemoveStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/RemoveStock" message="tns:AASService_RemoveStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/RemoveStockResponse" message="tns:AASService_RemoveStock_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QueryNotGroupedTrader">
-      <wsdl:input wsaw:Action="http://tempuri.org/AASService/QueryNotGroupedTrader" message="tns:AASService_QueryNotGroupedTrader_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AASService/QueryNotGroupedTraderResponse" message="tns:AASService_QueryNotGroupedTrader_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Notify">
       <wsdl:output wsaw:Action="http://tempuri.org/AASService/Notify" message="tns:AASService_Notify_OutputCallbackMessage" />
     </wsdl:operation>
@@ -3611,6 +3755,127 @@
   <wsdl:binding name="NetTcpBinding_AASService" type="tns:AASService">
     <wsp:PolicyReference URI="#NetTcpBinding_AASService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="AddHsAccount">
+      <soap12:operation soapAction="http://tempuri.org/AASService/AddHsAccount" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddHsAccount_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddHsAccount_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHsAccount">
+      <soap12:operation soapAction="http://tempuri.org/AASService/UpdateHsAccount" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateHsAccount_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateHsAccount_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHsAccount">
+      <soap12:operation soapAction="http://tempuri.org/AASService/DeleteHsAccount" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_DeleteHsAccount_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_DeleteHsAccount_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareLimitDocumentQuery">
+      <soap12:operation soapAction="http://tempuri.org/AASService/ShareLimitDocumentQuery" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareLimitDocumentQuery_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareLimitDocumentQuery_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareGroupQuery">
+      <soap12:operation soapAction="http://tempuri.org/AASService/ShareGroupQuery" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareGroupQuery_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareGroupQuery_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTrader">
+      <soap12:operation soapAction="http://tempuri.org/AASService/AddTrader" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddTrader_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddTrader_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGroupTrader">
+      <soap12:operation soapAction="http://tempuri.org/AASService/RemoveGroupTrader" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveGroupTrader_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveGroupTrader_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStock">
+      <soap12:operation soapAction="http://tempuri.org/AASService/AddStock" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddStock_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddStock_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStock">
+      <soap12:operation soapAction="http://tempuri.org/AASService/UpdateStock" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateStock_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateStock_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStock">
+      <soap12:operation soapAction="http://tempuri.org/AASService/RemoveStock" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveStock_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveStock_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryNotGroupedTrader">
+      <soap12:operation soapAction="http://tempuri.org/AASService/QueryNotGroupedTrader" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_QueryNotGroupedTrader_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_QueryNotGroupedTrader_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="QuerySingleUser">
       <soap12:operation soapAction="http://tempuri.org/AASService/QuerySingleUser" style="document" />
       <wsdl:input>
@@ -3864,6 +4129,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AccountRepay">
+      <soap12:operation soapAction="http://tempuri.org/AASService/AccountRepay" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AccountRepay_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AccountRepay_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="QueryJY">
       <soap12:operation soapAction="http://tempuri.org/AASService/QueryJY" style="document" />
       <wsdl:input>
@@ -4095,14 +4371,36 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SendHKOrder">
-      <soap12:operation soapAction="http://tempuri.org/AASService/SendHKOrder" style="document" />
+    <wsdl:operation name="Query委托">
+      <soap12:operation soapAction="http://tempuri.org/AASService/Query委托" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_SendHKOrder_Input_policy" />
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_Query委托_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_SendHKOrder_output_policy" />
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_Query委托_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query成交">
+      <soap12:operation soapAction="http://tempuri.org/AASService/Query成交" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_Query成交_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_Query成交_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query订单">
+      <soap12:operation soapAction="http://tempuri.org/AASService/Query订单" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_Query订单_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#NetTcpBinding_AASService_Query订单_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -4235,127 +4533,6 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#NetTcpBinding_AASService_TestHsAccount_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddHsAccount">
-      <soap12:operation soapAction="http://tempuri.org/AASService/AddHsAccount" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddHsAccount_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddHsAccount_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateHsAccount">
-      <soap12:operation soapAction="http://tempuri.org/AASService/UpdateHsAccount" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateHsAccount_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateHsAccount_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteHsAccount">
-      <soap12:operation soapAction="http://tempuri.org/AASService/DeleteHsAccount" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_DeleteHsAccount_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_DeleteHsAccount_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ShareLimitDocumentQuery">
-      <soap12:operation soapAction="http://tempuri.org/AASService/ShareLimitDocumentQuery" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareLimitDocumentQuery_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareLimitDocumentQuery_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ShareGroupQuery">
-      <soap12:operation soapAction="http://tempuri.org/AASService/ShareGroupQuery" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareGroupQuery_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_ShareGroupQuery_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddTrader">
-      <soap12:operation soapAction="http://tempuri.org/AASService/AddTrader" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddTrader_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddTrader_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveGroupTrader">
-      <soap12:operation soapAction="http://tempuri.org/AASService/RemoveGroupTrader" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveGroupTrader_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveGroupTrader_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddStock">
-      <soap12:operation soapAction="http://tempuri.org/AASService/AddStock" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddStock_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_AddStock_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateStock">
-      <soap12:operation soapAction="http://tempuri.org/AASService/UpdateStock" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateStock_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_UpdateStock_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveStock">
-      <soap12:operation soapAction="http://tempuri.org/AASService/RemoveStock" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveStock_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_RemoveStock_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryNotGroupedTrader">
-      <soap12:operation soapAction="http://tempuri.org/AASService/QueryNotGroupedTrader" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_QueryNotGroupedTrader_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#NetTcpBinding_AASService_QueryNotGroupedTrader_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

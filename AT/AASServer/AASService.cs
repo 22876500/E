@@ -683,7 +683,7 @@ namespace AASServer
             }
             catch (Exception ex)
             {
-                Program.logger.LogInfo("服务器下单异常:{0} {1}", ex.Message, ex.StackTrace);
+                Program.logger.LogInfo("服务器下单异常,  交易员{0}, 证券代码{1}, 错误信息{2}", UserName, 证券代码, ex.Message);
 
                 return string.Format("|{0}", ex.Message);
             }
@@ -1456,6 +1456,39 @@ namespace AASServer
             }
         } 
         #endregion
+
+        [OperationContract]
+        [PrincipalPermission(SecurityAction.Demand, Role = "交易员")]
+        public JyDataSet.委托DataTable Query委托(string user)
+        {
+            if (Program.db.平台用户.ExistsUserRole(user, 角色.交易员) && Program.交易员委托DataTable.ContainsKey(user))
+            {
+                return Program.交易员委托DataTable[user];
+            }
+            return null;
+        }
+
+        [OperationContract]
+        [PrincipalPermission(SecurityAction.Demand, Role = "交易员")]
+        public JyDataSet.成交DataTable Query成交(string user)
+        {
+            if (Program.db.平台用户.ExistsUserRole(user, 角色.交易员) && Program.交易员成交DataTable.ContainsKey(user))
+            {
+                return Program.交易员成交DataTable[user];
+            }
+            return null;
+        }
+
+        [OperationContract]
+        [PrincipalPermission(SecurityAction.Demand, Role = "交易员")]
+        public DbDataSet.订单DataTable Query订单(string user)
+        {
+            if (Program.db.平台用户.ExistsUserRole(user, 角色.交易员))
+            {
+                return Program.db.订单.Query订单BelongJy(user);
+            }
+            return null;
+        }
         #endregion
 
         //[OperationContract]

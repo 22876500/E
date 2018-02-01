@@ -2922,20 +2922,26 @@ namespace AASServer
                 {
                     this.SendOrderLocal(Category, 股东代码, Zqdm, Price, Quantity, out Result, out ErrInfo);
                     DataTable DataTable1 = Tool.ChangeDataStringToTable(Result);
-                    if (this.券商 == "银河证券" && this.类型 == "信用")
+                    if (DataTable1 != null)
                     {
-                        Result = DataTable1.Rows[0]["合同编号"] as string;
+                        if (this.券商 == "银河证券" && this.类型 == "信用")
+                        {
+                            Result = DataTable1.Rows[0]["合同编号"] as string;
+                        }
+                        else
+                        {
+                            Result = DataTable1.Rows[0]["委托编号"] as string;
+                        }
                     }
-                    else
+                    else if(ErrInfo.Length > 0)
                     {
-                        Result = DataTable1.Rows[0]["委托编号"] as string;
+                        Program.logger.LogInfo("下单错误 组合号{0}, 交易员{1}, 证券代码{2}, 错误信息 {3}", this.名称, orderCacheObj.Trader, Zqdm, ErrInfo);
                     }
-                    return;
                 }
-
-
-
-                SendOrderClient(Category, 股东代码, Zqdm, Price, Quantity, ref Result, ref ErrInfo);
+                else
+                {
+                    SendOrderClient(Category, 股东代码, Zqdm, Price, Quantity, ref Result, ref ErrInfo);
+                }
 
             }
 
@@ -3537,6 +3543,7 @@ namespace AASServer
                     return this.DataSet as DbDataSet;
                 }
             }
+
         }
 
         partial class 订单Row

@@ -1549,11 +1549,16 @@ namespace AASServer
                 }
                 using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Read))
                 {
-
-                    StringBuilder ErrInfo = new StringBuilder(256);
+                    try
+                    {
+                        KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
+                        KFapiInstance.RegistEvent(ConnectBackFunc, KFapi.MsgType.ON_CONNECTED);
+                    }
+                    catch (Exception ex)
+                    {
+                        Program.logger.LogInfoDetail("KFapi Logon Exception", ex.Message);
+                    }
                     
-                    KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
-                    KFapiInstance.RegistEvent(ConnectBackFunc, KFapi.MsgType.ON_CONNECTED);
                 }
                 Thread.Sleep(1000);
                 return "等待登录返回";
@@ -1561,18 +1566,19 @@ namespace AASServer
 
             private void ConnectBackFunc(object sender, EventArgs e)
             {
-                var rtn = (e as WebsocketIO.WebsocketIO.msgEventArgs);
-                if (rtn.msgHead < 0)
-                {
-                    Program.logger.LogInfoDetail("登录失败，返回值 Header {0}, Detail {1}" + rtn, rtn.msgDetail);
-                }
-                else
-                {
-                    KFapiInstance.RegistEvent(OrderCallBackFunc, KFapi.MsgType.ON_RTN_ORDER);
-                    KFapiInstance.RegistEvent(TradeCallBackFunc, KFapi.MsgType.ON_RTN_TRADE);
-                    this.ClientID = 0;
-                }
-                
+                //var rtn = (e as WebsocketIO.WebsocketIO.msgEventArgs);
+                //if (rtn.msgHead < 0)
+                //{
+                //    Program.logger.LogInfoDetail("登录失败，返回值 Header {0}, Detail {1}" + rtn, rtn.msgDetail);
+                //}
+                //else
+                //{
+                    
+                    
+                //}
+                KFapiInstance.RegistEvent(OrderCallBackFunc, KFapi.MsgType.ON_RTN_ORDER);
+                KFapiInstance.RegistEvent(TradeCallBackFunc, KFapi.MsgType.ON_RTN_TRADE);
+                this.ClientID = 0;
             }
 
             private void OrderCallBackFunc(object sender, EventArgs e)

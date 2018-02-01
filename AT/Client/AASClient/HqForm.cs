@@ -1486,19 +1486,19 @@ namespace AASClient
                 else
                 {
                     int qty = -1;//如果长度为5，且下单数量非一手整数倍，则提示
-                    if (this.Zqdm.Length == 5 && L2HkApi.Instance.GetQty(this.Zqdm, out qty) && qty > 0 && numericUpDown数量.Value % qty != 0)
-                    {
-                        MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
-                    }
-                    else if (!string.IsNullOrWhiteSpace(label涨停价.Text) && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
-                    {
-                        MessageBox.Show(string.Format("欲挂单价格{0}高于涨停价{1}", numericUpDown价格.Value.ToString(), label涨停价.Text));
-                    }
-                    else if (!string.IsNullOrWhiteSpace(label跌停价.Text) && numericUpDown价格.Value < decimal.Parse(label跌停价.Text))
-                    {
-                        MessageBox.Show(string.Format("欲挂单价格{0}低于跌停价{1}", numericUpDown价格.Value.ToString(), label跌停价.Text));
-                    }
-                    else
+                    //if (this.Zqdm.Length == 5 && L2HkApi.Instance.GetQty(this.Zqdm, out qty) && qty > 0 && numericUpDown数量.Value % qty != 0)
+                    //{
+                    //    MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
+                    //}
+                    //else if (!string.IsNullOrWhiteSpace(label涨停价.Text) && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
+                    //{
+                    //    MessageBox.Show(string.Format("欲挂单价格{0}高于涨停价{1}", numericUpDown价格.Value.ToString(), label涨停价.Text));
+                    //}
+                    //else if (!string.IsNullOrWhiteSpace(label跌停价.Text) && numericUpDown价格.Value < decimal.Parse(label跌停价.Text))
+                    //{
+                    //    MessageBox.Show(string.Format("欲挂单价格{0}低于跌停价{1}", numericUpDown价格.Value.ToString(), label跌停价.Text));
+                    //}
+                    //else
                     {
                         SendOrder();
                     }
