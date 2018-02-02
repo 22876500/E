@@ -15,6 +15,14 @@ namespace AASClient.AASServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AASServiceReference.AASService", CallbackContract=typeof(AASClient.AASServiceReference.AASServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface AASService {
         
+        // CODEGEN: 参数“TestHsAccountResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/TestHsAccount", ReplyAction="http://tempuri.org/AASService/TestHsAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.TestHsAccountResponse TestHsAccount(AASClient.AASServiceReference.TestHsAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/TestHsAccount", ReplyAction="http://tempuri.org/AASService/TestHsAccountResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> TestHsAccountAsync(AASClient.AASServiceReference.TestHsAccountRequest request);
+        
         // CODEGEN: 参数“名称”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/AddHsAccount", ReplyAction="http://tempuri.org/AASService/AddHsAccountResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -487,6 +495,14 @@ namespace AASClient.AASServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Query订单", ReplyAction="http://tempuri.org/AASService/Query订单Response")]
         System.Threading.Tasks.Task<AASClient.AASServiceReference.Query订单Response> Query订单Async(AASClient.AASServiceReference.Query订单Request request);
         
+        // CODEGEN: 参数“QueryDataStatusResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryDataStatus", ReplyAction="http://tempuri.org/AASService/QueryDataStatusResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        AASClient.AASServiceReference.QueryDataStatusResponse QueryDataStatus(AASClient.AASServiceReference.QueryDataStatusRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/QueryDataStatus", ReplyAction="http://tempuri.org/AASService/QueryDataStatusResponse")]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryDataStatusResponse> QueryDataStatusAsync(AASClient.AASServiceReference.QueryDataStatusRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/Fectch名下交易员Table", ReplyAction="http://tempuri.org/AASService/Fectch名下交易员TableResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         void Fectch名下交易员Table();
@@ -573,14 +589,6 @@ namespace AASClient.AASServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/EnableHsAccount", ReplyAction="http://tempuri.org/AASService/EnableHsAccountResponse")]
         System.Threading.Tasks.Task<AASClient.AASServiceReference.EnableHsAccountResponse> EnableHsAccountAsync(AASClient.AASServiceReference.EnableHsAccountRequest request);
-        
-        // CODEGEN: 参数“TestHsAccountResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/TestHsAccount", ReplyAction="http://tempuri.org/AASService/TestHsAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        AASClient.AASServiceReference.TestHsAccountResponse TestHsAccount(AASClient.AASServiceReference.TestHsAccountRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AASService/TestHsAccount", ReplyAction="http://tempuri.org/AASService/TestHsAccountResponse")]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> TestHsAccountAsync(AASClient.AASServiceReference.TestHsAccountRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -629,6 +637,71 @@ namespace AASClient.AASServiceReference {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/AASService/Close")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         void Close();
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TestHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class TestHsAccountRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string IP;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public short Port;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 操作员帐户;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 操作员密码;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string 登录IP;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string MAC;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string HDD;
+        
+        public TestHsAccountRequest() {
+        }
+        
+        public TestHsAccountRequest(string IP, short Port, string 操作员帐户, string 操作员密码, string 登录IP, string MAC, string HDD) {
+            this.IP = IP;
+            this.Port = Port;
+            this.操作员帐户 = 操作员帐户;
+            this.操作员密码 = 操作员密码;
+            this.登录IP = 登录IP;
+            this.MAC = MAC;
+            this.HDD = HDD;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TestHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class TestHsAccountResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string TestHsAccountResult;
+        
+        public TestHsAccountResponse() {
+        }
+        
+        public TestHsAccountResponse(string TestHsAccountResult) {
+            this.TestHsAccountResult = TestHsAccountResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -854,7 +927,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -914,7 +987,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1030,7 +1103,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1216,7 +1289,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1462,7 +1535,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11014,7 +11087,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 角色 {
@@ -11036,7 +11109,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 分组 {
@@ -11843,7 +11916,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 买模式 {
@@ -11862,7 +11935,7 @@ namespace AASClient.AASServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/AASServer")]
     public enum 卖模式 {
@@ -15680,6 +15753,42 @@ namespace AASClient.AASServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryDataStatus", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryDataStatusRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string user;
+        
+        public QueryDataStatusRequest() {
+        }
+        
+        public QueryDataStatusRequest(string user) {
+            this.user = user;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryDataStatusResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryDataStatusResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string QueryDataStatusResult;
+        
+        public QueryDataStatusResponse() {
+        }
+        
+        public QueryDataStatusResponse(string QueryDataStatusResult) {
+            this.QueryDataStatusResult = QueryDataStatusResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CloseOrder", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class CloseOrderRequest {
         
@@ -16128,71 +16237,6 @@ namespace AASClient.AASServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="TestHsAccount", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class TestHsAccountRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string IP;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public short Port;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 操作员帐户;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 操作员密码;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string 登录IP;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string MAC;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string HDD;
-        
-        public TestHsAccountRequest() {
-        }
-        
-        public TestHsAccountRequest(string IP, short Port, string 操作员帐户, string 操作员密码, string 登录IP, string MAC, string HDD) {
-            this.IP = IP;
-            this.Port = Port;
-            this.操作员帐户 = 操作员帐户;
-            this.操作员密码 = 操作员密码;
-            this.登录IP = 登录IP;
-            this.MAC = MAC;
-            this.HDD = HDD;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="TestHsAccountResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class TestHsAccountResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string TestHsAccountResult;
-        
-        public TestHsAccountResponse() {
-        }
-        
-        public TestHsAccountResponse(string TestHsAccountResult) {
-            this.TestHsAccountResult = TestHsAccountResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="Notify", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class Notify {
         
@@ -16422,6 +16466,41 @@ namespace AASClient.AASServiceReference {
         
         public AASServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.TestHsAccountResponse AASClient.AASServiceReference.AASService.TestHsAccount(AASClient.AASServiceReference.TestHsAccountRequest request) {
+            return base.Channel.TestHsAccount(request);
+        }
+        
+        public string TestHsAccount(string IP, short Port, string 操作员帐户, string 操作员密码, string 登录IP, string MAC, string HDD) {
+            AASClient.AASServiceReference.TestHsAccountRequest inValue = new AASClient.AASServiceReference.TestHsAccountRequest();
+            inValue.IP = IP;
+            inValue.Port = Port;
+            inValue.操作员帐户 = 操作员帐户;
+            inValue.操作员密码 = 操作员密码;
+            inValue.登录IP = 登录IP;
+            inValue.MAC = MAC;
+            inValue.HDD = HDD;
+            AASClient.AASServiceReference.TestHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).TestHsAccount(inValue);
+            return retVal.TestHsAccountResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> AASClient.AASServiceReference.AASService.TestHsAccountAsync(AASClient.AASServiceReference.TestHsAccountRequest request) {
+            return base.Channel.TestHsAccountAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> TestHsAccountAsync(string IP, short Port, string 操作员帐户, string 操作员密码, string 登录IP, string MAC, string HDD) {
+            AASClient.AASServiceReference.TestHsAccountRequest inValue = new AASClient.AASServiceReference.TestHsAccountRequest();
+            inValue.IP = IP;
+            inValue.Port = Port;
+            inValue.操作员帐户 = 操作员帐户;
+            inValue.操作员密码 = 操作员密码;
+            inValue.登录IP = 登录IP;
+            inValue.MAC = MAC;
+            inValue.HDD = HDD;
+            return ((AASClient.AASServiceReference.AASService)(this)).TestHsAccountAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18005,6 +18084,29 @@ namespace AASClient.AASServiceReference {
             return ((AASClient.AASServiceReference.AASService)(this)).Query订单Async(inValue);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AASClient.AASServiceReference.QueryDataStatusResponse AASClient.AASServiceReference.AASService.QueryDataStatus(AASClient.AASServiceReference.QueryDataStatusRequest request) {
+            return base.Channel.QueryDataStatus(request);
+        }
+        
+        public string QueryDataStatus(string user) {
+            AASClient.AASServiceReference.QueryDataStatusRequest inValue = new AASClient.AASServiceReference.QueryDataStatusRequest();
+            inValue.user = user;
+            AASClient.AASServiceReference.QueryDataStatusResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).QueryDataStatus(inValue);
+            return retVal.QueryDataStatusResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryDataStatusResponse> AASClient.AASServiceReference.AASService.QueryDataStatusAsync(AASClient.AASServiceReference.QueryDataStatusRequest request) {
+            return base.Channel.QueryDataStatusAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AASClient.AASServiceReference.QueryDataStatusResponse> QueryDataStatusAsync(string user) {
+            AASClient.AASServiceReference.QueryDataStatusRequest inValue = new AASClient.AASServiceReference.QueryDataStatusRequest();
+            inValue.user = user;
+            return ((AASClient.AASServiceReference.AASService)(this)).QueryDataStatusAsync(inValue);
+        }
+        
         public void Fectch名下交易员Table() {
             base.Channel.Fectch名下交易员Table();
         }
@@ -18318,41 +18420,6 @@ namespace AASClient.AASServiceReference {
             inValue.Name = Name;
             inValue.Enabled = Enabled;
             return ((AASClient.AASServiceReference.AASService)(this)).EnableHsAccountAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AASClient.AASServiceReference.TestHsAccountResponse AASClient.AASServiceReference.AASService.TestHsAccount(AASClient.AASServiceReference.TestHsAccountRequest request) {
-            return base.Channel.TestHsAccount(request);
-        }
-        
-        public string TestHsAccount(string IP, short Port, string 操作员帐户, string 操作员密码, string 登录IP, string MAC, string HDD) {
-            AASClient.AASServiceReference.TestHsAccountRequest inValue = new AASClient.AASServiceReference.TestHsAccountRequest();
-            inValue.IP = IP;
-            inValue.Port = Port;
-            inValue.操作员帐户 = 操作员帐户;
-            inValue.操作员密码 = 操作员密码;
-            inValue.登录IP = 登录IP;
-            inValue.MAC = MAC;
-            inValue.HDD = HDD;
-            AASClient.AASServiceReference.TestHsAccountResponse retVal = ((AASClient.AASServiceReference.AASService)(this)).TestHsAccount(inValue);
-            return retVal.TestHsAccountResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> AASClient.AASServiceReference.AASService.TestHsAccountAsync(AASClient.AASServiceReference.TestHsAccountRequest request) {
-            return base.Channel.TestHsAccountAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<AASClient.AASServiceReference.TestHsAccountResponse> TestHsAccountAsync(string IP, short Port, string 操作员帐户, string 操作员密码, string 登录IP, string MAC, string HDD) {
-            AASClient.AASServiceReference.TestHsAccountRequest inValue = new AASClient.AASServiceReference.TestHsAccountRequest();
-            inValue.IP = IP;
-            inValue.Port = Port;
-            inValue.操作员帐户 = 操作员帐户;
-            inValue.操作员密码 = 操作员密码;
-            inValue.登录IP = 登录IP;
-            inValue.MAC = MAC;
-            inValue.HDD = HDD;
-            return ((AASClient.AASServiceReference.AASService)(this)).TestHsAccountAsync(inValue);
         }
     }
 }

@@ -92,7 +92,8 @@
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="KFapi">
+    <Reference Include="KFapi, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\KFapi.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
@@ -146,7 +147,6 @@
     <Compile Include="Cryptor.cs" />
     <Compile Include="DbDataSet.cs">
       <DependentUpon>DbDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,7 +156,6 @@
     <Compile Include="HsClient.cs" />
     <Compile Include="JyDataSet.cs">
       <DependentUpon>JyDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="JyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

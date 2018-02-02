@@ -3,6 +3,26 @@
   <xs:import schemaLocation="http://localhost:82/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AASServer" />
   <xs:import schemaLocation="http://localhost:82/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:82/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" />
+  <xs:element name="TestHsAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Port" type="xs:short" />
+        <xs:element minOccurs="0" name="操作员帐户" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="操作员密码" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="登录IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MAC" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HDD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestHsAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestHsAccountResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddHsAccount">
     <xs:complexType>
       <xs:sequence>
@@ -1081,6 +1101,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="QueryDataStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryDataStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryDataStatusResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Fectch名下交易员Table">
     <xs:complexType>
       <xs:sequence />
@@ -1286,26 +1320,6 @@
   <xs:element name="EnableHsAccountResponse">
     <xs:complexType>
       <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TestHsAccount">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Port" type="xs:short" />
-        <xs:element minOccurs="0" name="操作员帐户" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="操作员密码" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="登录IP" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="MAC" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="HDD" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TestHsAccountResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TestHsAccountResult" nillable="true" type="xs:string" />
-      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Notify">

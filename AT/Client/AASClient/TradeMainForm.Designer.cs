@@ -333,7 +333,6 @@
             // 
             // timerTestConnect
             // 
-            this.timerTestConnect.Enabled = true;
             this.timerTestConnect.Interval = 2000;
             this.timerTestConnect.Tick += new System.EventHandler(this.timerTestConnect_Tick);
             // 

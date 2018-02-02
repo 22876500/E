@@ -1489,6 +1489,23 @@ namespace AASServer
             }
             return null;
         }
+
+        [OperationContract]
+        [PrincipalPermission(SecurityAction.Demand, Role = "交易员")]
+        public string QueryDataStatus(string user)
+        {
+            try
+            {
+                var wtResult = Program.委托表Changed[user] ? 1 : 0;
+                var cjResult = Program.成交表Changed[user] ? 1 : 0;
+                var ddResult = Program.订单表Changed[user] ? 1 : 0;
+                return string.Format("1|{0}|{1}|{2}", wtResult, cjResult, ddResult);
+            }
+            catch (Exception ex)
+            {
+                return string.Format("0|{0}", ex.Message);
+            }
+        }
         #endregion
 
         //[OperationContract]

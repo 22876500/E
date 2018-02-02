@@ -1546,9 +1546,6 @@ namespace AASServer
                 if (KFapiInstance == null)
                 {
                     KFapiInstance = new KFapi.KFapi();
-                }
-                using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Read))
-                {
                     try
                     {
                         KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
@@ -1556,29 +1553,43 @@ namespace AASServer
                     }
                     catch (Exception ex)
                     {
-                        Program.logger.LogInfoDetail("KFapi Logon Exception", ex.Message);
+                        Program.logger.LogInfoDetail("KFapi Logon Exception {0}", ex.Message);
                     }
-                    
+                    Thread.Sleep(1000);
+                    return "等待登录返回";
                 }
-                Thread.Sleep(1000);
-                return "等待登录返回";
+                else
+                {
+                    Thread.Sleep(1000);
+                    return "等待登录返回";
+                }
+                
+                
             }
 
             private void ConnectBackFunc(object sender, EventArgs e)
             {
-                //var rtn = (e as WebsocketIO.WebsocketIO.msgEventArgs);
-                //if (rtn.msgHead < 0)
-                //{
-                //    Program.logger.LogInfoDetail("登录失败，返回值 Header {0}, Detail {1}" + rtn, rtn.msgDetail);
-                //}
-                //else
-                //{
-                    
-                    
-                //}
+                KFapiInstance.RegistEvent(DisconnnectBackFunc, KFapi.MsgType.ON_DISCONNECTED);
                 KFapiInstance.RegistEvent(OrderCallBackFunc, KFapi.MsgType.ON_RTN_ORDER);
                 KFapiInstance.RegistEvent(TradeCallBackFunc, KFapi.MsgType.ON_RTN_TRADE);
                 this.ClientID = 0;
+            }
+
+            private void DisconnnectBackFunc(object sender, EventArgs e)
+            {
+                if (this.Safe启用 && this.ClientID > -1)
+                {
+                    try
+                    {
+                        KFapiInstance = new KFapi.KFapi();
+                        KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
+                        KFapiInstance.RegistEvent(ConnectBackFunc, KFapi.MsgType.ON_CONNECTED);
+                    }
+                    catch (Exception ex)
+                    {
+                        Program.logger.LogInfoDetail("KFapi reCoonnect Exception {0}", ex.Message);
+                    }
+                }
             }
 
             private void OrderCallBackFunc(object sender, EventArgs e)
@@ -1637,6 +1648,10 @@ namespace AASServer
                                 orderCache.委托编号 = wt.OrderID;
                                 orderCache.市场代码 = wt.Market;
                                 orderCache.买卖方向 = wt.Category;
+                                orderCache.成交价格 = 0;
+                                orderCache.成交数量 = 0;
+                                orderCache.撤单数量 = 0;
+                                orderCache.状态说明 = "已报";
                                 this.帐户委托DataTable.Add委托Row(orderCache);
                             }
                         }
@@ -1650,6 +1665,10 @@ namespace AASServer
                             if (trades.Count() > 0)
                             {
                                 orderCache.成交价格 = trades.Sum(_ => _.成交价格 * _.成交数量) / trades.Sum(_ => _.成交数量);
+                            }
+                            if (IsFinishedStatus(order.status))
+                            {
+                                orderCache.撤单数量 = order.volume_remain;
                             }
                         }
                     }
@@ -1720,6 +1739,8 @@ namespace AASServer
             {
                 switch (s)
                 {
+                    case '-':
+                        return "已报";
                     case '0':
                         return "成交";
                     case '1':
@@ -1748,6 +1769,31 @@ namespace AASServer
                     default:
                         return "未知";
                 }
+            }
+
+            private bool IsFinishedStatus(char status)
+            {
+                switch (status)
+                {
+                    case '0': //"成交";
+                    case '2': //"部撤";
+                    case '4': // "拒绝";
+                    case '5': //"撤单";
+                    case 'b': //"未触发";
+                    case 'c': //"已触发";
+                    case 'd': //"废单";
+                        return true;
+                    case '-': //"已报";
+                    case '1': //"部成";
+                    case '3': //"未成";
+                    case '6': //"订单已报入交易所未应答";
+                    case 'i': //"已写入";
+                    case 'j': //"前置已接受";
+                    case 'a':
+                    default:
+                        return false;
+                }
+                
             }
 
             public void SendOrder(int Category, byte Market, string Zqdm, decimal Price, decimal Quantity, OrderCacheEntity orderCacheObj, out string Result, out string ErrInfo, out bool hasOrderNo)
@@ -1786,7 +1832,7 @@ namespace AASServer
                             ErrInfo = string.Format("{0}未登录到券商交易服务器", this.名称);
                             return;
                         }
-                        int rtn = KFapiInstance.InsertOrder(this.交易帐号, Zqdm, market, Math.Round((double)Price, 2), (int)Quantity, directory, KFapi.OffsetFlagType.OPEN, KFapi.OrdType.MARKET_ORDER);
+                        int rtn = KFapiInstance.InsertOrder(this.交易帐号, Zqdm, market, Math.Round((double)Price, 2), (int)Quantity, directory, KFapi.OffsetFlagType.OPEN, KFapi.OrdType.LIMIT_ORDER);
                         if (rtn > 0)
                         {
                             Result = rtn.ToString();

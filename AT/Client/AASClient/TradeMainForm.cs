@@ -28,7 +28,7 @@ namespace AASClient
         string uiFile;
         int hqFormIndex = 0;
 
-        
+        Thread queryDataThread;
         public LogForm logForm = new LogForm();
 
         CancelWTForm cancelWTForm = new CancelWTForm();
@@ -87,6 +87,48 @@ namespace AASClient
 
             this.FormClosing += TradeMainForm_FormClosing;
             this.FormClosed += TradeMainForm_FormClosed;
+
+            queryDataThread = new Thread(new ThreadStart(QueryDataMain)) { IsBackground = true };
+            queryDataThread.Start();
+        }
+
+        private void QueryDataMain()
+        {
+            while (true)
+            {
+                try
+                {
+                    var info = Program.AASServiceClient.QueryDataStatus(Program.Current平台用户.用户名);
+                    if (info != null && info.StartsWith("1|"))
+                    {
+                        var changes = info.Split('|');
+                        var wtChange = changes[1] == "1";
+                        var cjChange = changes[2] == "1";
+                        var ddChange = changes[3] == "1";
+                        if (wtChange)
+                        {
+                            var dt = Program.AASServiceClient.Query委托(Program.Current平台用户.用户名);
+                            Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, dt, new string[] { "组合号", "委托编号" });
+                        }
+                        if (cjChange)
+                        {
+                            var dt = Program.AASServiceClient.Query成交(Program.Current平台用户.用户名);
+                            Tool.RefreshDrcjDataTable(Program.jyDataSet.成交, dt, new string[] { "组合号", "委托编号", "成交编号" });
+                        }
+                        if (ddChange)
+                        {
+                            var dt = Program.AASServiceClient.Query订单(Program.Current平台用户.用户名);
+                            Tool.RefreshDrcjDataTable(Program.serverDb.订单, dt, new string[] { "组合号", "证券代码" });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfo("QueryDataMain Exception");
+                }
+                
+                Thread.Sleep(500);
+            }
         }
 
         private void TdxHKDataSubmit(List<string> codesHK)
@@ -1109,43 +1151,45 @@ namespace AASClient
             }
         }
 
+
         DateTime ErrorTime;
         private void timerTestConnect_Tick(object sender, EventArgs e)
         {
-            var task = new Task(() => {
-                try
-                {
-                    string status = "";
+            //var task = new Task(() =>
+            //{
+            //    try
+            //    {
+            //        string status = "";
 
-                    if (Program.AASServiceClient.State == CommunicationState.Opened && Program.AASServiceClient.QuerySingleUser(Program.Version) != null)
-                    {
-                        status = "连接状态：已连接";
-                        ErrorTime = DateTime.MinValue;
-                    }
-                    else if (Program.AASServiceClient.State == CommunicationState.Created)
-                    {
-                        ErrorTime = DateTime.MinValue;
-                        status = "连接状态：已连接";
-                        Program.Current平台用户 = Program.AASServiceClient.QuerySingleUser(Program.Version)[0];
-                    }
-                    else
-                    {
-                        status = "连接状态：未连接";
-                        Program.AutoReLogin();
-                    }
-                    this.Invoke(new FlushClient(() => { toolStripStatusLabelConnect.Text = status; }));
-                    
-                }
-                catch (Exception ex)
-                {
-                    if (!this.IsDisposed)
-                    {
-                        Program.logger.LogRunning("连接出错，出错信息：{0}", ex.Message);
-                        this.Invoke(new FlushClient(() => { toolStripStatusLabelConnect.Text = "连接状态：连接出错"; }));
-                    }
-                }
-            });
-            task.Start();
+            //        if (Program.AASServiceClient.State == CommunicationState.Opened && Program.AASServiceClient.QuerySingleUser(Program.Version) != null)
+            //        {
+            //            status = "连接状态：已连接";
+            //            ErrorTime = DateTime.MinValue;
+            //        }
+            //        else if (Program.AASServiceClient.State == CommunicationState.Created)
+            //        {
+            //            ErrorTime = DateTime.MinValue;
+            //            status = "连接状态：已连接";
+            //            Program.Current平台用户 = Program.AASServiceClient.QuerySingleUser(Program.Version)[0];
+            //        }
+            //        else
+            //        {
+            //            status = "连接状态：未连接";
+            //            Program.AutoReLogin();
+            //        }
+            //        this.Invoke(new FlushClient(() => { toolStripStatusLabelConnect.Text = status; }));
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        if (!this.IsDisposed)
+            //        {
+            //            Program.logger.LogRunning("连接出错，出错信息：{0}", ex.Message);
+            //            this.Invoke(new FlushClient(() => { toolStripStatusLabelConnect.Text = "连接状态：连接出错"; }));
+            //        }
+            //    }
+            //});
+            //task.Start();
         }
 
         private void 共享额度ToolStripMenuItem_Click(object sender, EventArgs e)

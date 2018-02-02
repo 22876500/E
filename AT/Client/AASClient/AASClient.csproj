@@ -324,7 +324,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SetDefaultQuantityForm.cs">
       <SubType>Form</SubType>
@@ -698,6 +697,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryClientIPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryDataStatusResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AASServiceReference\AASClient.AASServiceReference.QueryFKResponse.datasource">

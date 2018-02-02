@@ -27,7 +27,7 @@ namespace AASClient
         Configuration AppConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         
         //110.86.28.229 西安登录的固定ip, 210.13.212.206上海登录的固定ip 
-        readonly string serverIP = "39.104.93.151";
+        readonly string serverIP = "";//"39.104.93.151";
         const string pubServerName = "分发服务器";
         string pubServerIPCache = string.Empty;
 
@@ -35,10 +35,10 @@ namespace AASClient
         public LoginForm()
         {
             InitializeComponent();
-            ServerIPDict.Add("252", "厦门252 110.86.28.227");
-            ServerIPDict.Add("65", "65 110.86.28.229");
-            ServerIPDict.Add("策略正式", "策略正式 110.86.28.230");
-            ServerIPDict.Add("策略测试", "策略测试 110.86.28.228");
+            //ServerIPDict.Add("252", "厦门252 110.86.28.227");
+            //ServerIPDict.Add("65", "65 110.86.28.229");
+            //ServerIPDict.Add("策略正式", "策略正式 110.86.28.230");
+            //ServerIPDict.Add("策略测试", "策略测试 110.86.28.228");
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
