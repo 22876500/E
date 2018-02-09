@@ -71,10 +71,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\XmlOp.cs" />
+    <Compile Include="DbDataSet.cs">
+      <DependentUpon>DbDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QSDBContext.cs" />
     <Compile Include="QuotaShareDataRoleProvider.cs" />
     <Compile Include="QuotaShareDataServiceAuthorizationManager.cs" />
     <Compile Include="QuotaShareDataUserNamePasswordValidator.cs" />
+    <Compile Include="ReadWriteLock.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,6 +121,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DbDataSet.xsc">
+      <DependentUpon>DbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DbDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DbDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DbDataSet.xss">
+      <DependentUpon>DbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Logger\log.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -122,7 +143,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\log4net.dll" />
   </ItemGroup>

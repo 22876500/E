@@ -57,3 +57,4 @@ G:\github22876500\E\AT\AASServer\obj\Release\AASServer.LoginForm.resources
 G:\github22876500\E\AT\AASServer\obj\Release\AASServer.MainForm.resources
 G:\github22876500\E\AT\AASServer\obj\Release\AASServer.Properties.Resources.resources
 G:\github22876500\E\AT\AASServer\obj\Release\AASServer.csproj.GenerateResource.Cache
+G:\github22876500\E\AT\AASServer\obj\Release\AASServer.csprojResolveAssemblyReference.cache

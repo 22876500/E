@@ -141,10 +141,15 @@ namespace AASServer
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            WaitClose();
+        }
+
+        private void WaitClose()
+        {
             Program.logger.LogInfo("停止服务中...");
 
             this.backgroundWorker1.CancelAsync();
-            while(this.backgroundWorker1.IsBusy)
+            while (this.backgroundWorker1.IsBusy)
             {
                 Application.DoEvents();
                 Thread.Sleep(100);
@@ -733,6 +738,19 @@ namespace AASServer
 
             host.AddServiceEndpoint(typeof(GroupClient.GroupService), Binding, string.Format("http://{0}:{1}/", ip, port));
             return Binding;
+        }
+
+        DateTime startTime = DateTime.Now;
+        private void timerCheckClose_Tick(object sender, EventArgs e)
+        {
+            if (startTime.Date < DateTime.Today && DateTime.Now.Hour == 0)
+            {
+                timerCheckClose.Stop();
+                WaitClose();
+                Thread.Sleep(15000);
+                Process.Start(Application.ExecutablePath, "");
+                this.Close();
+            }
         }
     }   
 }

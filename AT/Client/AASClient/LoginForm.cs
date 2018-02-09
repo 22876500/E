@@ -35,10 +35,8 @@ namespace AASClient
         public LoginForm()
         {
             InitializeComponent();
-            //ServerIPDict.Add("252", "厦门252 110.86.28.227");
-            //ServerIPDict.Add("65", "65 110.86.28.229");
-            //ServerIPDict.Add("策略正式", "策略正式 110.86.28.230");
-            //ServerIPDict.Add("策略测试", "策略测试 110.86.28.228");
+            //ServerIPDict.Add("云服务器", "云 39.104.93.151");
+            //ServerIPDict.Add("65", "65 192.168.1.65");
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

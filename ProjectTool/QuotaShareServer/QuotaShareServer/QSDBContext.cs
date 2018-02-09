@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuotaShareServer
 {
-    public enum BuyMode { 现金买入 = 0, 融资买入 = 1, 买券还券 = 2, 担保品买入 = 3 }
+    public enum BuySMode { 现金买入 = 0, 融资买入 = 1, 买券还券 = 2, 担保品买入 = 3 }
 
     public enum SaleMode { 现券卖出 = 0, 融券卖出 = 1, 卖券还款 = 2, 担保品卖出 = 3 }
 
@@ -18,8 +18,8 @@ namespace QuotaShareServer
         public QSDBContext()
             : base("Data Source=.\\SQLEXPRESS;Initial Catalog=QuotaShareDB;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFrameworkMUE")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<QSDBContext>());//模型发生变化则drop后生成新的模型
-            //Database.SetInitializer(new CreateDatabaseIfNotExists<QSDBContext>());//如果模型不存在则创建。
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<QSDBContext>());//模型发生变化则drop后生成新的模型
+            Database.SetInitializer(new CreateDatabaseIfNotExists<QSDBContext>());//如果模型不存在则创建。
         }
 
         public DbSet<StockLimit> StockLimit { get; set; }
@@ -42,7 +42,7 @@ namespace QuotaShareServer
         /// <summary>
         /// 证券名称
         /// </summary>
-        [MinLength(1), MaxLength(10)]
+        [MaxLength(10)]
         public string StockName { get; set; }
 
         /// <summary>
@@ -50,16 +50,11 @@ namespace QuotaShareServer
         /// </summary>
         public byte Market { get; set; }
 
-        /// <summary>
-        /// 简写(拼音首字母)
-        /// </summary>
-        [MinLength(1), MaxLength(10)]
-        public string StockShortName { get; set; }
 
         /// <summary>
         /// 买模式
         /// </summary>
-        public BuyMode BuyType { get; set; }
+        public BuySMode BuyType { get; set; }
 
         /// <summary>
         /// 卖模式
@@ -69,7 +64,7 @@ namespace QuotaShareServer
         /// <summary>
         /// 总额度
         /// </summary>
-        public decimal QtyCanUse { get; set; }
+        public int QtyCanUse { get; set; }
 
         /// <summary>
         /// 手续费率
@@ -77,18 +72,6 @@ namespace QuotaShareServer
         public decimal CommissionCharge { get; set; }
     }
 
-    public class AccountConfig
-    {
-        public string Account { get; set; }
 
-        /// <summary>
-        /// 对应发送端的IP
-        /// </summary>
-        public string IP { get; set; }
-
-        public int Port { get; set; }
-
-
-    }
 
 }

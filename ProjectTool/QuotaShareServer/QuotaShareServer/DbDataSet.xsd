@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DbDataSet" targetNamespace="http://tempuri.org/DbDataSet.xsd" xmlns:mstns="http://tempuri.org/DbDataSet.xsd" xmlns="http://tempuri.org/DbDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DbDataSet" msprop:Generator_UserDSName="DbDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StockLimit" msprop:Generator_TableClassName="StockLimitDataTable" msprop:Generator_TableVarName="tableStockLimit" msprop:Generator_RowChangedName="StockLimitRowChanged" msprop:Generator_TablePropName="StockLimit" msprop:Generator_RowDeletingName="StockLimitRowDeleting" msprop:Generator_RowChangingName="StockLimitRowChanging" msprop:Generator_RowEvHandlerName="StockLimitRowChangeEventHandler" msprop:Generator_RowDeletedName="StockLimitRowDeleted" msprop:Generator_RowClassName="StockLimitRow" msprop:Generator_UserTableName="StockLimit" msprop:Generator_RowEvArgName="StockLimitRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Account" msprop:Generator_ColumnVarNameInTable="columnAccount" msprop:Generator_ColumnPropNameInRow="Account" msprop:Generator_ColumnPropNameInTable="AccountColumn" msprop:Generator_UserColumnName="Account" type="xs:string" minOccurs="0" />
+              <xs:element name="StockID" msprop:Generator_ColumnVarNameInTable="columnStockID" msprop:Generator_ColumnPropNameInRow="StockID" msprop:Generator_ColumnPropNameInTable="StockIDColumn" msprop:Generator_UserColumnName="StockID" type="xs:string" minOccurs="0" />
+              <xs:element name="StockName" msprop:Generator_ColumnVarNameInTable="columnStockName" msprop:Generator_ColumnPropNameInRow="StockName" msprop:Generator_ColumnPropNameInTable="StockNameColumn" msprop:Generator_UserColumnName="StockName" type="xs:string" minOccurs="0" />
+              <xs:element name="Market" msprop:Generator_ColumnVarNameInTable="columnMarket" msprop:Generator_ColumnPropNameInRow="Market" msprop:Generator_ColumnPropNameInTable="MarketColumn" msprop:Generator_UserColumnName="Market" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="BuyType" msprop:Generator_ColumnVarNameInTable="columnBuyType" msprop:Generator_ColumnPropNameInRow="BuyType" msprop:Generator_ColumnPropNameInTable="BuyTypeColumn" msprop:Generator_UserColumnName="BuyType" type="xs:int" minOccurs="0" />
+              <xs:element name="SaleType" msprop:Generator_ColumnVarNameInTable="columnSaleType" msprop:Generator_ColumnPropNameInRow="SaleType" msprop:Generator_ColumnPropNameInTable="SaleTypeColumn" msprop:Generator_UserColumnName="SaleType" type="xs:int" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="QtyCanUse" msprop:Generator_ColumnVarNameInTable="columnQtyCanUse" msprop:Generator_ColumnPropNameInRow="QtyCanUse" msprop:Generator_ColumnPropNameInTable="QtyCanUseColumn" msprop:Generator_UserColumnName="QtyCanUse" type="xs:int" minOccurs="0" />
+              <xs:element name="QtyUsed" msprop:Generator_ColumnVarNameInTable="columnQtyUsed" msprop:Generator_ColumnPropNameInRow="QtyUsed" msprop:Generator_ColumnPropNameInTable="QtyUsedColumn" msprop:Generator_UserColumnName="QtyUsed" type="xs:int" minOccurs="0" />
+              <xs:element name="CommissionCharge" msprop:Generator_ColumnVarNameInTable="columnCommissionCharge" msprop:Generator_ColumnPropNameInRow="CommissionCharge" msprop:Generator_ColumnPropNameInTable="CommissionChargeColumn" msprop:Generator_UserColumnName="CommissionCharge" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -280,17 +280,17 @@ namespace AASClient
         {
             if (obj.Code == this.Zqdm)
             {
-                //transQueue.Enqueue(obj);\
                 UpdateTransaction(obj);
             }
         }
 
+        DateTime MarketUpdateTime = DateTime.Now;
         private void InsertMarketData(MarketData obj)
         {
             if (obj.Code == this.Zqdm)
             {
-                //marketQueue.Enqueue(obj);
-                UpdateMarketData(obj);
+                lastTdfMarket = obj;
+                MarketUpdateTime = DateTime.Now;
             }
         }
         #endregion
@@ -585,48 +585,40 @@ namespace AASClient
 
         private void UpdateTransaction(MarketTransaction obj)
         {
-            if (this.IsHandleCreated)
+            try
             {
-                try
+                this.BeginInvoke((MethodInvoker)delegate()
                 {
-                    this.BeginInvoke((MethodInvoker)delegate()
+                    decimal Price = (decimal)obj.Price / 10000;
+                    decimal Volumn = Math.Round((decimal)obj.Volume / 100, 2);
+                    string Time = obj.Time.DateTimeFormat();
+                    string BS = ((char)obj.Flag).ToString();
+                    Color c = GetTransColor(BS);
+
+                    this.listView逐笔成交.Items.RemoveAt(listView逐笔成交.Items.Count - 1);
+
+                    ListViewItem listViewItemAdded = new ListViewItem(new string[] { Price.ToString("#0.00"), Volumn.ToString("#0"), Time });
+                    this.listView逐笔成交.Items.Insert(0, listViewItemAdded);
+
+                    listViewItemAdded.SubItems[0].ForeColor = c;
+                    listViewItemAdded.SubItems[1].ForeColor = c;
+                    listViewItemAdded.SubItems[2].ForeColor = c;
+
+                    if (ValidateVolumnLimit(Volumn))
                     {
-                        decimal Price = (decimal)obj.Price / 10000;
-                        decimal Volumn = Math.Round((decimal)obj.Volume / 100, 2);
-                        string Time = obj.Time.DateTimeFormat();
-                        string BS = ((char)obj.Flag).ToString();
-                        Color c = GetTransColor(BS);
-
-                        this.listView逐笔成交.Items.RemoveAt(listView逐笔成交.Items.Count - 1);
-
-                        ListViewItem listViewItemAdded = new ListViewItem(new string[] { Price.ToString("#0.00"), Volumn.ToString("#0"), Time });
-                        this.listView逐笔成交.Items.Insert(0, listViewItemAdded);
-
-                        listViewItemAdded.SubItems[0].ForeColor = c;
-                        listViewItemAdded.SubItems[1].ForeColor = c;
-                        listViewItemAdded.SubItems[2].ForeColor = c;
-
-                        if (ValidateVolumnLimit(Volumn))
-                        {
-                            listView逐笔成交Filte.Items.RemoveAt(listView逐笔成交.Items.Count - 1);
-                            var filterItem = new ListViewItem(new string[] { Price.ToString("#0.00"), Volumn.ToString("#0"), Time });
-                            this.listView逐笔成交Filte.Items.Insert(0, filterItem);
-                            filterItem.SubItems[0].ForeColor = c;
-                            filterItem.SubItems[1].ForeColor = c;
-                            filterItem.SubItems[2].ForeColor = c;
-
-                            //transCache.Insert(0, obj);
-                            //if (transCache.Count >= 100)
-                            //    transCache = transCache.GetRange(0, 50);
-                        }
-                        lastTran = obj;
-                    });
-
-                }
-                catch (Exception ex)
-                {
-                    Program.logger.LogRunning("错误信息：{0}", ex.Message);
-                }
+                        listView逐笔成交Filte.Items.RemoveAt(listView逐笔成交.Items.Count - 1);
+                        var filterItem = new ListViewItem(new string[] { Price.ToString("#0.00"), Volumn.ToString("#0"), Time });
+                        this.listView逐笔成交Filte.Items.Insert(0, filterItem);
+                        filterItem.SubItems[0].ForeColor = c;
+                        filterItem.SubItems[1].ForeColor = c;
+                        filterItem.SubItems[2].ForeColor = c;
+                    }
+                    lastTran = obj;
+                });
+            }
+            catch (Exception ex)
+            {
+                Program.logger.LogRunning("UpdateTransaction 错误信息：{0}", ex.Message);
             }
         }
 
@@ -663,6 +655,7 @@ namespace AASClient
                 {
                     if ((DateTime.Now - MarketUpdateTime).TotalSeconds < 10)
                     {
+                        RefreshMarketBuyTDF();
                         return;
                     }
                 }
@@ -899,106 +892,106 @@ namespace AASClient
             }
         }
 
-        DateTime MarketUpdateTime = DateTime.Now;
-        private void UpdateMarketData(MarketData obj)
+        
+
+
+        private void RefreshMarketBuyTDF()
         {
             try
             {
-                this.BeginInvoke((MethodInvoker)delegate()
+                MarketData obj = lastTdfMarket;
+
+
+                var len = Math.Min(10, obj.AskPrice.Length);
+
+                for (int i = 0; i < len; i++)
                 {
-                    MarketUpdateTime = DateTime.Now;
-                    var len = Math.Min(10, obj.AskPrice.Length);
+                    #region 刷新十档行情
+                    decimal BJW = (decimal)obj.BidPrice[i] / 10000;
+                    string BSL = Math.Ceiling((decimal)obj.BidVol[i] / 100).ToString();
 
-                    for (int i = 0; i < len; i++)
+                    decimal SJW = (decimal)obj.AskPrice[i] / 10000;
+                    string SSL = Math.Round((decimal)obj.AskVol[i] / 100).ToString();
+
+                    var ZS = (decimal)obj.PreClose / 10000;
+                    decimal XJ = (decimal)obj.Match / 10000;
+                    string ZF = (XJ == 0 ? "0.00%" : ((XJ - ZS) / ZS).ToString("P"));
+
+                    string ZT = Math.Round(ZS * (1 + 0.1m), L2Api.Get精度(this.Zqdm), MidpointRounding.AwayFromZero).ToString();
+                    string DT = Math.Round(ZS * (1 - 0.1m), L2Api.Get精度(this.Zqdm), MidpointRounding.AwayFromZero).ToString();
+
+                    decimal High = (decimal)obj.High / 10000;
+                    decimal Low = (decimal)obj.Low / 10000;
+                    if (this.label最高价.Text != High.ToString(L2Api.PriceFormat(this.Zqdm)))
                     {
-                        #region 刷新十档行情
-                        decimal BJW = (decimal)obj.BidPrice[i] / 10000;
-                        string BSL = Math.Ceiling((decimal)obj.BidVol[i] / 100).ToString();
-
-                        decimal SJW = (decimal)obj.AskPrice[i] / 10000;
-                        string SSL = Math.Round((decimal)obj.AskVol[i] / 100).ToString();
-
-                        var ZS = (decimal)obj.PreClose / 10000;
-                        decimal XJ = (decimal)obj.Match / 10000;
-                        string ZF = (XJ == 0 ? "0.00%" : ((XJ - ZS) / ZS).ToString("P"));
-
-                        string ZT = Math.Round(ZS * (1 + 0.1m), L2Api.Get精度(this.Zqdm), MidpointRounding.AwayFromZero).ToString();
-                        string DT = Math.Round(ZS * (1 - 0.1m), L2Api.Get精度(this.Zqdm), MidpointRounding.AwayFromZero).ToString();
-
-                        decimal High = (decimal)obj.High / 10000;
-                        decimal Low = (decimal)obj.Low / 10000;
-                        if (this.label最高价.Text != High.ToString(L2Api.PriceFormat(this.Zqdm)))
-                        {
-                            this.label最高价.Text = High.ToString(L2Api.PriceFormat(this.Zqdm));
-                        }
-                        if (this.label最低价.Text != Low.ToString(L2Api.PriceFormat(this.Zqdm)))
-                        {
-                            this.label最低价.Text = Low.ToString(L2Api.PriceFormat(this.Zqdm));
-                        }
-
-                        if (this.label涨停价.Text != ZT)
-                        {
-                            this.label涨停价.Text = ZT;
-                        }
-                        if (this.label跌停价.Text != DT)
-                        {
-                            this.label跌停价.Text = DT;
-                        }
-
-                        if (this.listView买盘.Items[i].SubItems[0].Text != BJW.ToString(L2Api.PriceFormat(this.Zqdm)))
-                        {
-                            this.listView买盘.Items[i].SubItems[0].Text = BJW.ToString(L2Api.PriceFormat(this.Zqdm));
-                        }
-
-                        if (this.listView买盘.Items[i].SubItems[1].Text != BSL)
-                        {
-                            this.listView买盘.Items[i].SubItems[1].Text = BSL;
-                        }
-
-                        if (this.listView卖盘.Items[i].SubItems[0].Text != SJW.ToString(L2Api.PriceFormat(this.Zqdm)))
-                        {
-                            this.listView卖盘.Items[i].SubItems[0].Text = SJW.ToString(L2Api.PriceFormat(this.Zqdm));
-
-                        }
-
-                        if (this.listView卖盘.Items[i].SubItems[1].Text != SSL)
-                        {
-                            this.listView卖盘.Items[i].SubItems[1].Text = SSL;
-                        }
-
-                        if (this.label最新价.Text != XJ.ToString("#0.00"))
-                        {
-                            this.label最新价.Text = XJ.ToString("#0.00");
-                        }
-
-                        if (this.label涨幅.Text != ZF)
-                        {
-                            this.label涨幅.Text = ZF;
-                        }
-
-                        Color foreColor = Color.Black;
-
-                        if (XJ > ZS)
-                        {
-                            foreColor = Color.Red;
-                        }
-                        else if (XJ < ZS)
-                        {
-                            foreColor = Color.Green;
-                        }
-                        this.label最新价字.ForeColor = foreColor;
-                        this.label最新价.ForeColor = foreColor;
-                        this.label涨幅字.ForeColor = foreColor;
-                        this.label涨幅.ForeColor = foreColor;
-                        #endregion
+                        this.label最高价.Text = High.ToString(L2Api.PriceFormat(this.Zqdm));
                     }
-                    lastTdfMarket = obj;
-                    if (PublicStock != null && obj.Code == PublicStock.StockCode)
+                    if (this.label最低价.Text != Low.ToString(L2Api.PriceFormat(this.Zqdm)))
                     {
-                        SetHighestPrice();
+                        this.label最低价.Text = Low.ToString(L2Api.PriceFormat(this.Zqdm));
                     }
-                });
 
+                    if (this.label涨停价.Text != ZT)
+                    {
+                        this.label涨停价.Text = ZT;
+                    }
+                    if (this.label跌停价.Text != DT)
+                    {
+                        this.label跌停价.Text = DT;
+                    }
+
+                    if (this.listView买盘.Items[i].SubItems[0].Text != BJW.ToString(L2Api.PriceFormat(this.Zqdm)))
+                    {
+                        this.listView买盘.Items[i].SubItems[0].Text = BJW.ToString(L2Api.PriceFormat(this.Zqdm));
+                    }
+
+                    if (this.listView买盘.Items[i].SubItems[1].Text != BSL)
+                    {
+                        this.listView买盘.Items[i].SubItems[1].Text = BSL;
+                    }
+
+                    if (this.listView卖盘.Items[i].SubItems[0].Text != SJW.ToString(L2Api.PriceFormat(this.Zqdm)))
+                    {
+                        this.listView卖盘.Items[i].SubItems[0].Text = SJW.ToString(L2Api.PriceFormat(this.Zqdm));
+
+                    }
+
+                    if (this.listView卖盘.Items[i].SubItems[1].Text != SSL)
+                    {
+                        this.listView卖盘.Items[i].SubItems[1].Text = SSL;
+                    }
+
+                    if (this.label最新价.Text != XJ.ToString("#0.00"))
+                    {
+                        this.label最新价.Text = XJ.ToString("#0.00");
+                    }
+
+                    if (this.label涨幅.Text != ZF)
+                    {
+                        this.label涨幅.Text = ZF;
+                    }
+
+                    Color foreColor = Color.Black;
+
+                    if (XJ > ZS)
+                    {
+                        foreColor = Color.Red;
+                    }
+                    else if (XJ < ZS)
+                    {
+                        foreColor = Color.Green;
+                    }
+                    this.label最新价字.ForeColor = foreColor;
+                    this.label最新价.ForeColor = foreColor;
+                    this.label涨幅字.ForeColor = foreColor;
+                    this.label涨幅.ForeColor = foreColor;
+                    #endregion
+                }
+
+                if (PublicStock != null && obj.Code == PublicStock.StockCode)
+                {
+                    SetHighestPrice();
+                }
             }
             catch (Exception ex)
             {
@@ -1486,10 +1479,10 @@ namespace AASClient
                 else
                 {
                     int qty = -1;//如果长度为5，且下单数量非一手整数倍，则提示
-                    //if (this.Zqdm.Length == 5 && L2HkApi.Instance.GetQty(this.Zqdm, out qty) && qty > 0 && numericUpDown数量.Value % qty != 0)
-                    //{
-                    //    MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
-                    //}
+                    if (this.Zqdm.Length == 5 && L2HkApi.Instance.GetQty(this.Zqdm, out qty) && qty > 0 && numericUpDown数量.Value % qty != 0)
+                    {
+                        MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
+                    }
                     //else if (!string.IsNullOrWhiteSpace(label涨停价.Text) && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
                     //{
                     //    MessageBox.Show(string.Format("欲挂单价格{0}高于涨停价{1}", numericUpDown价格.Value.ToString(), label涨停价.Text));
@@ -1498,7 +1491,7 @@ namespace AASClient
                     //{
                     //    MessageBox.Show(string.Format("欲挂单价格{0}低于跌停价{1}", numericUpDown价格.Value.ToString(), label跌停价.Text));
                     //}
-                    //else
+                    else
                     {
                         SendOrder();
                     }
@@ -1571,12 +1564,7 @@ namespace AASClient
 
             decimal 委托价格 = Math.Round(this.numericUpDown价格.Value, L2Api.Get精度(this.Zqdm), MidpointRounding.AwayFromZero);
             decimal 委托数量 = Math.Round(this.numericUpDown数量.Value, 0, MidpointRounding.AwayFromZero);
-
-            //decimal Wtje = 委托价格 * 委托数量;
-            //decimal WtjeLimit = decimal.Parse(Program.accountDataSet.参数.GetParaValue(this.Zqdm + "最大金额", "0"));
-
             SendingSync(交易额度Row1 == null ? "" : 交易额度Row1.证券名称, 委托价格, 委托数量);
-            this.btnSendOrder.Enabled = true;
         }
 
         private void SendingSync(string 证券名称, decimal 委托价格, decimal 委托数量)
@@ -1586,8 +1574,6 @@ namespace AASClient
             WaitCallback callback = i =>
             {
                 DateTime dt = DateTime.Now;
-                //var order = new SendingEntity() { Price = 委托价格, Quatity = 委托数量, Zqdm = code, TradeType = tradeType, IsSending = true };
-                //CommonUtils.SendingCache.Add(order);
                 try
                 {
                     string Ret;
@@ -1599,7 +1585,6 @@ namespace AASClient
                         {
                             this.Last委托编号 = Data[0];
                             Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, Data[0], tradeType, 委托数量, 委托价格, "下单成功," + "耗时：" + (DateTime.Now - dt).TotalSeconds);
-                            this.Invoke(new FlushClient(() => { this.panel3.Visible = false; }));
                         }
                         else
                         {
@@ -1621,16 +1606,16 @@ namespace AASClient
                             Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, string.Empty, tradeType, 委托数量, 委托价格, "下单失败, {0}", Data[1]);
                         }
                     }
-
-
-                   
                 }
                 catch (Exception ex)
                 {
                     Program.logger.LogRunning("交易员{0}下单异常：\r\n  Message:{1}\r\n  StackTrace:{2}", Program.Current平台用户.用户名, ex.Message, ex.StackTrace);
-                    this.Invoke(new FlushClient(() => { this.panel3.Visible = false; }));
                 }
-                //CommonUtils.SendingCache.Remove(order);
+                this.Invoke(new Action(() =>
+                {
+                    this.panel3.Visible = false;
+                    this.btnSendOrder.Enabled = true;
+                }));
             };
             ThreadPool.QueueUserWorkItem(callback, 1);
         }

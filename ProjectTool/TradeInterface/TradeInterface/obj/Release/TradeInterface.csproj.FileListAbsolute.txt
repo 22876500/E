@@ -74,3 +74,6 @@ D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.csproj.CoreCompileInputs.cache
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.exe
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.pdb
+G:\github22876500\E\ProjectTool\TradeInterface\TradeInterface\bin\Release\TradeInterface.exe.config
+G:\github22876500\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.exe
+G:\github22876500\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.pdb

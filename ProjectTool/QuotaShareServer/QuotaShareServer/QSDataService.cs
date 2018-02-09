@@ -26,14 +26,21 @@ namespace QuotaShareServer
         
 
         [OperationContract]
-        public bool CanSendOrder(string mac, string ip, string stockID, int qty)
+        public bool LockStockQty(string mac, string stockID, int qty)
         {
-            //1.下单前查询接口，查询是否可以下单
-            // 如可以下单，锁定额度，
             return false;
         }
 
+        public bool FreeStockQty(string mac,  string stockID, int qty)
+        {
+            return false;
+        }
 
+        public List<StockLimit> QueryLimitsTotal()
+        {
+            var db = new QSDBContext();
+            return null;
+        }
 
     }
 }

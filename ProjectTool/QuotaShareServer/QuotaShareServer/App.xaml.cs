@@ -15,6 +15,6 @@ namespace QuotaShareServer
     /// </summary>
     public partial class App : Application
     {
-      
+        public DbDataSet Db;
     }
 }

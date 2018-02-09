@@ -147,6 +147,7 @@
     <Compile Include="Cryptor.cs" />
     <Compile Include="DbDataSet.cs">
       <DependentUpon>DbDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +157,7 @@
     <Compile Include="HsClient.cs" />
     <Compile Include="JyDataSet.cs">
       <DependentUpon>JyDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="JyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

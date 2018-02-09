@@ -1799,7 +1799,7 @@ namespace AASServer
                         }
                         else
                         {
-                            Program.logger.LogInfo("业绩统计逻辑异常，额度共享逻辑未找到组合号{0}下证券代码{1}对应的配置项！");
+                            Program.logger.LogInfo("业绩统计逻辑异常，额度共享逻辑未找到组合号{0}下证券代码{1}对应的配置项！", 已发委托Row1.组合号, 已发委托Row1.证券代码);
                         }
                     }
                     else

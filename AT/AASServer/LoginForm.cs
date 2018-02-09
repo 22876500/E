@@ -28,7 +28,8 @@ namespace AASServer
 
             if (Program.appConfig.Exists("凭据"))
             {
-                this.groupBox1.Visible = false;
+                //this.groupBox1.Visible = false;
+                Logon();
             }
         }
 
@@ -57,6 +58,11 @@ namespace AASServer
         }
 
         private void button登录_Click(object sender, EventArgs e)
+        {
+            Logon();
+        }
+
+        private void Logon()
         {
             try
             {

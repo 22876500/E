@@ -113,12 +113,10 @@ G:\github22876500\E\KFServer\bin\Debug\EntityFramework.SqlServer.xml
 G:\github22876500\E\KFServer\bin\Debug\ZeroMQ.xml
 G:\github22876500\E\KFServer\bin\Debug\zh-Hans\EntityFramework.resources.dll
 G:\github22876500\E\KFServer\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-G:\github22876500\E\KFServer\obj\Debug\AASServer.csprojResolveAssemblyReference.cache
 G:\github22876500\E\KFServer\obj\Debug\AASServer.AddUserForm.resources
 G:\github22876500\E\KFServer\obj\Debug\AASServer.LoginForm.resources
 G:\github22876500\E\KFServer\obj\Debug\AASServer.MainForm.resources
 G:\github22876500\E\KFServer\obj\Debug\AASServer.Properties.Resources.resources
 G:\github22876500\E\KFServer\obj\Debug\AASServer.csproj.GenerateResource.Cache
-G:\github22876500\E\KFServer\obj\Debug\AASServer.csproj.CoreCompileInputs.cache
 G:\github22876500\E\KFServer\obj\Debug\AASServer.exe
 G:\github22876500\E\KFServer\obj\Debug\AASServer.pdb

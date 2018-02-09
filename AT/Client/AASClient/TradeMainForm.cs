@@ -96,38 +96,59 @@ namespace AASClient
         {
             while (true)
             {
+                //首先判断是否需要请求，可根据是否有委托未至最终状态作为条件。
                 try
                 {
-                    var info = Program.AASServiceClient.QueryDataStatus(Program.Current平台用户.用户名);
-                    if (info != null && info.StartsWith("1|"))
+                    //var notFinishOrder = Program.serverDb.已发委托.Where(_ => (_.委托数量 > _.成交数量 + _.撤单数量));
+                    string status = "";
+
+                    if (Program.AASServiceClient.State == CommunicationState.Opened || Program.AASServiceClient.State == CommunicationState.Created || Program.AASServiceClient.State == CommunicationState.Opening)
                     {
-                        var changes = info.Split('|');
-                        var wtChange = changes[1] == "1";
-                        var cjChange = changes[2] == "1";
-                        var ddChange = changes[3] == "1";
-                        if (wtChange)
-                        {
-                            var dt = Program.AASServiceClient.Query委托(Program.Current平台用户.用户名);
-                            Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, dt, new string[] { "组合号", "委托编号" });
-                        }
-                        if (cjChange)
-                        {
-                            var dt = Program.AASServiceClient.Query成交(Program.Current平台用户.用户名);
-                            Tool.RefreshDrcjDataTable(Program.jyDataSet.成交, dt, new string[] { "组合号", "委托编号", "成交编号" });
-                        }
-                        if (ddChange)
-                        {
-                            var dt = Program.AASServiceClient.Query订单(Program.Current平台用户.用户名);
-                            Tool.RefreshDrcjDataTable(Program.serverDb.订单, dt, new string[] { "组合号", "证券代码" });
-                        }
+                        status = "连接状态：已连接";
                     }
+                    else
+                    {
+                        status = "连接状态：未连接";
+                        Program.AutoReLogin();
+                    }
+                    this.Invoke(new Action(() => { toolStripStatusLabelConnect.Text = status; }));
+
+                    var info = Program.AASServiceClient.QueryDataStatus(Program.Current平台用户.用户名);
+                    //if (info != null && info.StartsWith("1|"))
+                    //{
+                    //    var changes = info.Split('|');
+                    //    var wtChange = changes[1] == "1";
+                    //    var cjChange = changes[2] == "1";
+                    //    var ddChange = changes[3] == "1";
+                    //    if (wtChange)
+                    //    {
+                    //        var dt = Program.AASServiceClient.Query委托(Program.Current平台用户.用户名);
+                    //        lock (Program.jyDataSet.委托)
+                    //        {
+                    //            Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, dt, new string[] { "组合号", "委托编号" });
+                    //        }
+                            
+                    //    }
+                    //    if (cjChange)
+                    //    {
+                    //        var dt = Program.AASServiceClient.Query成交(Program.Current平台用户.用户名);
+                    //        lock (Program.jyDataSet.成交)
+                    //        {
+                    //            Tool.RefreshDrcjDataTable(Program.jyDataSet.成交, dt, new string[] { "组合号", "委托编号", "成交编号" });
+                    //        }
+                    //    }
+                    //    if (ddChange)
+                    //    {
+                    //        var dt = Program.AASServiceClient.Query订单(Program.Current平台用户.用户名);
+                    //        lock (Program.serverDb.订单)
+                    //        {
+                    //            Tool.RefreshDrcjDataTable(Program.serverDb.订单, dt, new string[] { "组合号", "证券代码" });
+                    //        }
+                    //    }
+                    //}
                 }
-                catch (Exception ex)
-                {
-                    Program.logger.LogInfo("QueryDataMain Exception");
-                }
-                
-                Thread.Sleep(500);
+                catch{ }
+                Thread.Sleep(5000);
             }
         }
 
@@ -222,8 +243,9 @@ namespace AASClient
             Program.logger.LogRunning("正在关闭连接...");
             try
             {
-                if (Program.AASServiceClient.State == CommunicationState.Opened)
+                if (Program.AASServiceClient.State == CommunicationState.Opened || Program.AASServiceClient.State == CommunicationState.Opened)
                 {
+                    
                     Program.AASServiceClient.Close();
                 }
             }
@@ -472,16 +494,13 @@ namespace AASClient
                 case 6:
                     AASClient.AASServiceReference.DbDataSet.订单DataTable 订单DataTable1 = e.UserState as AASClient.AASServiceReference.DbDataSet.订单DataTable;
                     Tool.RefreshDrcjDataTable(Program.serverDb.订单, 订单DataTable1, new string[] { "组合号", "证券代码" });
-
                     break;
                 case 7:
                     AASClient.AASServiceReference.DbDataSet.已平仓订单DataTable 已平仓订单DataTable1 = e.UserState as AASClient.AASServiceReference.DbDataSet.已平仓订单DataTable;
                     Program.serverDb.已平仓订单.Clear();
                     Program.serverDb.已平仓订单.Merge(已平仓订单DataTable1);
 
-                       
-                    AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable2 = this.Generate业绩统计();
-                    Tool.RefreshDrcjDataTable(Program.jyDataSet.业绩统计, 业绩统计DataTable2, new string[] { "证券代码" });
+                    Refresh业绩();
                     break;
 
                 default:
@@ -492,7 +511,6 @@ namespace AASClient
         private void RefreshOrder(ProgressChangedEventArgs e)
         {
             AASClient.AASServiceReference.JyDataSet.委托DataTable 委托DataTable1 = e.UserState as AASClient.AASServiceReference.JyDataSet.委托DataTable;
-            
 
             if (委托DataTable1 == null)
             {
@@ -500,39 +518,18 @@ namespace AASClient
                 return;
             }
 
-            //List<string> lstID = new List<string>();
-            Dictionary<string, List<string>> dictOrder = new Dictionary<string, List<string>>();
-            var newDt = 委托DataTable1.Copy();
-            newDt.Clear();
-            for (int i = 0; i < 委托DataTable1.Rows.Count; i++)
-            {
-                var row = 委托DataTable1.Rows[i];
+            Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, 委托DataTable1, new string[] { "组合号", "委托编号" });
 
-                var orderID = row["委托编号"] as string;
-                var groupID = row["组合号"] as string;
-                if (dictOrder.ContainsKey(groupID) && dictOrder[groupID].Contains(orderID))
-                {
-                    continue;
-                }
-                else
-                {
-                    if (dictOrder.ContainsKey(groupID))
-                    {
-                        dictOrder[groupID].Add(orderID);
-                    }
-                    else
-                    {
-                        dictOrder.Add(groupID, new List<string>() { orderID });
-                    }
-                }
 
-                newDt.ImportRow(row);
-            }
+            Refresh业绩();
+        }
 
-            Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, newDt, new string[] { "组合号", "委托编号" });
-
-            AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable1 = this.Generate业绩统计();
-            Tool.RefreshDrcjDataTable(Program.jyDataSet.业绩统计, 业绩统计DataTable1, new string[] { "证券代码" });
+        private void Refresh业绩()
+        {
+            Task.Run(() => {
+                AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable1 = this.Generate业绩统计();
+                Tool.RefreshDrcjDataTable(Program.jyDataSet.业绩统计, 业绩统计DataTable1, new string[] { "证券代码" });
+            });
         }
 
 
@@ -551,7 +548,10 @@ namespace AASClient
         public AASClient.AASServiceReference.JyDataSet.业绩统计DataTable Generate业绩统计()
         {
             AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable1 = new AASClient.AASServiceReference.JyDataSet.业绩统计DataTable();
-            foreach (AASClient.AASServiceReference.JyDataSet.委托Row 委托Row1 in Program.jyDataSet.委托.Where(r => r.成交数量 > 0))
+
+            EnumerableRowCollection wtTraded = Program.jyDataSet.委托.Where(r => r.成交数量 > 0);
+
+            foreach (JyDataSet.委托Row 委托Row1 in wtTraded)
             {
                 decimal 交易费用 = 委托Row1.Get交易费用();
 
@@ -689,12 +689,12 @@ namespace AASClient
                         {
                             if (!isOpen)
                             {
-                                Program.logger.LogInfo("1.OpenTdx begin to run");
+                                //Program.logger.LogInfo("1.OpenTdx begin to run");
                                 isOpen = L2Api.OpenTdx(ErrInfo);
                                 if (!isOpen)
                                     Program.logger.LogInfo("OpenTdx Fail: " + ErrInfo.ToString());
                                 else
-                                    Program.logger.LogInfo("2.OpenTdx Success!");
+                                    Program.logger.LogInfo("OpenTdx Success!");
                             }
 
                             if (!isOpen)
@@ -735,46 +735,21 @@ namespace AASClient
                                 List<string> HKCodesMarket = new List<string>();
                                 List<string> HKCodesTrans = new List<string>();
 
-                                for (int i = 0; i < this.hqFormCount; i++)
-                                {
-                                    this.Invoke((Action)delegate()
+                                List<bool> lstVisible = new List<bool>(hqFormCount);
+                                this.Invoke(new Action(() => {
+                                    for (int i = 0; i < this.hqForm.Length; i++)
                                     {
-                                        if (this.hqForm[i].Visible)
-                                        {
-                                            string zqdm1 = Program.accountDataSet.参数.GetParaValue("证券代码" + i.ToString(), "000001");
-                                            if (zqdm1.Length == 6)
-                                            {
-                                                if (!十档证券代码.Contains(zqdm1))
-                                                {
-                                                    十档证券代码.Add(zqdm1);
-                                                }
-                                                if (!逐笔成交证券代码.Contains(zqdm1))
-                                                {
-                                                    逐笔成交证券代码.Add(zqdm1);
-                                                }
-                                            }
-                                            else if (zqdm1.Length == 5)
-                                            {
-                                                if (!HKCodesMarket.Contains(zqdm1))
-                                                {
-                                                    HKCodesMarket.Add(zqdm1);
-                                                }
-                                                if (!HKCodesTrans.Contains(zqdm1))
-                                                {
-                                                    HKCodesTrans.Add(zqdm1);
-                                                }
-                                            }
-                                        }
+                                        lstVisible.Add(hqForm[i].Visible);
+                                    }
+                                }));
 
-                                    });
-                                }
-                                for (int i = 0; i < this.hqFormPublicStock.Count; i++)
+                                for (int i = 0; i < lstVisible.Count; i++)
                                 {
-                                    this.Invoke((Action)delegate()
+                                    if (lstVisible[i])
                                     {
-                                        if (this.hqFormPublicStock[i].Visible)
+                                        string zqdm1 = Program.accountDataSet.参数.GetParaValue("证券代码" + i.ToString(), "000001");
+                                        if (zqdm1.Length == 6)
                                         {
-                                            string zqdm1 = Program.accountDataSet.参数.GetParaValue("证券代码" + (hqFormCount + i).ToString(), "000001");
                                             if (!十档证券代码.Contains(zqdm1))
                                             {
                                                 十档证券代码.Add(zqdm1);
@@ -784,7 +759,18 @@ namespace AASClient
                                                 逐笔成交证券代码.Add(zqdm1);
                                             }
                                         }
-                                    });
+                                        else if (zqdm1.Length == 5)
+                                        {
+                                            if (!HKCodesMarket.Contains(zqdm1))
+                                            {
+                                                HKCodesMarket.Add(zqdm1);
+                                            }
+                                            if (!HKCodesTrans.Contains(zqdm1))
+                                            {
+                                                HKCodesTrans.Add(zqdm1);
+                                            }
+                                        }
+                                    }
                                 }
 
                                 if (this.backgroundWorker行情.CancellationPending)
@@ -793,16 +779,8 @@ namespace AASClient
                                     break;
                                 }
 
-                                this.Invoke((Action)delegate()
+                                try
                                 {
-                                    foreach (AASClient.AASServiceReference.DbDataSet.订单Row 订单Row1 in Program.serverDb.订单)
-                                    {
-                                        if (!十档证券代码.Contains(订单Row1.证券代码))
-                                        {
-                                            十档证券代码.Add(订单Row1.证券代码);
-                                        }
-                                    }
-
                                     foreach (AASClient.AccountDataSet.价格提示Row 价格提示Row1 in Program.accountDataSet.价格提示)
                                     {
                                         if (!十档证券代码.Contains(价格提示Row1.证券代码) && 价格提示Row1.启用)
@@ -811,15 +789,19 @@ namespace AASClient
                                         }
                                     }
 
-                                    if (true)
-                                    {
-
-                                    }
-                                    if (HKCodesMarket.Count > 0)
-                                        L2HkApi.Instance.Submit(HKCodesMarket.ToArray());
-                                    if (HKCodesTrans.Count > 0)
-                                        L2HkApi.Instance.Submit(HKCodesTrans.ToArray());
-                                });
+                                    var codes = Program.serverDb.订单.Select(_=> _.证券代码).ToList();
+                                    codes.ForEach(_ => {
+                                        if (!十档证券代码.Contains(_))
+                                        {
+                                            十档证券代码.Add(_);
+                                        }
+                                    });
+                                    //if (HKCodesMarket.Count > 0)
+                                    //    L2HkApi.Instance.Submit(HKCodesMarket.ToArray());
+                                    //if (HKCodesTrans.Count > 0)
+                                    //    L2HkApi.Instance.Submit(HKCodesTrans.ToArray());
+                                }
+                                catch (Exception) { }
 
                                 if (Program.TempZqdm != null)
                                 {
@@ -1149,47 +1131,6 @@ namespace AASClient
                     this.hqForm[0].comboBox代码.Text = code;
                 }
             }
-        }
-
-
-        DateTime ErrorTime;
-        private void timerTestConnect_Tick(object sender, EventArgs e)
-        {
-            //var task = new Task(() =>
-            //{
-            //    try
-            //    {
-            //        string status = "";
-
-            //        if (Program.AASServiceClient.State == CommunicationState.Opened && Program.AASServiceClient.QuerySingleUser(Program.Version) != null)
-            //        {
-            //            status = "连接状态：已连接";
-            //            ErrorTime = DateTime.MinValue;
-            //        }
-            //        else if (Program.AASServiceClient.State == CommunicationState.Created)
-            //        {
-            //            ErrorTime = DateTime.MinValue;
-            //            status = "连接状态：已连接";
-            //            Program.Current平台用户 = Program.AASServiceClient.QuerySingleUser(Program.Version)[0];
-            //        }
-            //        else
-            //        {
-            //            status = "连接状态：未连接";
-            //            Program.AutoReLogin();
-            //        }
-            //        this.Invoke(new FlushClient(() => { toolStripStatusLabelConnect.Text = status; }));
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        if (!this.IsDisposed)
-            //        {
-            //            Program.logger.LogRunning("连接出错，出错信息：{0}", ex.Message);
-            //            this.Invoke(new FlushClient(() => { toolStripStatusLabelConnect.Text = "连接状态：连接出错"; }));
-            //        }
-            //    }
-            //});
-            //task.Start();
         }
 
         private void 共享额度ToolStripMenuItem_Click(object sender, EventArgs e)

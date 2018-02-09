@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,6 +49,7 @@
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.组合号设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.连接即时查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerCheckClose = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -248,6 +250,10 @@
             this.连接即时查询ToolStripMenuItem.Text = "连接即时查询";
             this.连接即时查询ToolStripMenuItem.Click += new System.EventHandler(this.连接即时查询ToolStripMenuItem_Click);
             // 
+            // timerCheckClose
+            // 
+            this.timerCheckClose.Interval = 1000;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -301,6 +307,7 @@
         private System.Windows.Forms.ToolStripMenuItem 组合号设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 连接即时查询ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.Timer timerCheckClose;
     }
 }
 

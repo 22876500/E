@@ -1555,7 +1555,6 @@ namespace AASServer
                     {
                         Program.logger.LogInfoDetail("KFapi Logon Exception {0}", ex.Message);
                     }
-                    Thread.Sleep(1000);
                     return "等待登录返回";
                 }
                 else
@@ -1572,23 +1571,44 @@ namespace AASServer
                 KFapiInstance.RegistEvent(DisconnnectBackFunc, KFapi.MsgType.ON_DISCONNECTED);
                 KFapiInstance.RegistEvent(OrderCallBackFunc, KFapi.MsgType.ON_RTN_ORDER);
                 KFapiInstance.RegistEvent(TradeCallBackFunc, KFapi.MsgType.ON_RTN_TRADE);
+
+                KFapiInstance.RegistEvent(PositionCallBack, KFapi.MsgType.ON_QRY_ACCOUNT);
                 this.ClientID = 0;
+            }
+
+            private void PositionCallBack(object sender, EventArgs e)
+            {
+                try
+                {
+                    var qry_account = new KFapi.QryAccountInfo(e);
+                    foreach (var item in qry_account.accountList)
+                    {
+                        string code = item.ticker;// 股票代码；long, short, net 多仓，空仓，净仓，total就是总持仓，yesterday就是昨日持仓
+                        var qty = item.net_total;
+                        //使用昨日持仓初始化 额度数据，剩余两个工作，一个是额度数据自动生成，一个是重启时的数据初始化。
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfo("PositionCallBack exception, {0}", ex.Message);
+                }
+                
+
             }
 
             private void DisconnnectBackFunc(object sender, EventArgs e)
             {
-                if (this.Safe启用 && this.ClientID > -1)
+                try
                 {
-                    try
-                    {
-                        KFapiInstance = new KFapi.KFapi();
-                        KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
-                        KFapiInstance.RegistEvent(ConnectBackFunc, KFapi.MsgType.ON_CONNECTED);
-                    }
-                    catch (Exception ex)
-                    {
-                        Program.logger.LogInfoDetail("KFapi reCoonnect Exception {0}", ex.Message);
-                    }
+                    Program.logger.LogInfo("DisconnnectBackFunc excuting……");
+                    KFapiInstance = new KFapi.KFapi();
+                    KFapiInstance.Connect(this.交易帐号, this.交易服务器, 5);
+                    KFapiInstance.RegistEvent(ConnectBackFunc, KFapi.MsgType.ON_CONNECTED);
+                    Program.logger.LogInfo("DisconnnectBackFunc excuted");
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfo("KFapi reCoonnect Exception {0}", ex.Message);
                 }
             }
 
@@ -1615,7 +1635,7 @@ namespace AASServer
             {
                 try
                 {
-                    KFapiInstance.disconnect(this.交易帐号);
+                    KFapiInstance.Disconnect(this.交易帐号);
                 }
                 catch (Exception) { }
                 
@@ -1660,7 +1680,7 @@ namespace AASServer
                         {
                             orderCache.成交数量 = order.volume_traded;
                             orderCache.撤单数量 = order.volume - order.volume_traded - order.volume_remain;
-                            orderCache.状态说明 = GetStatus(order.status);
+                            orderCache.状态说明 = GetStatus(order.status) + ' ' + order.err_msg;
                             var trades = 帐户成交DataTable.Where(_ => _.委托编号 == order.order_id.ToString());
                             if (trades.Count() > 0)
                             {
@@ -1872,6 +1892,11 @@ namespace AASServer
                 }
             }
 
+            public void QueryAccountInfo()
+            {
+                
+                KFapiInstance.RequestPosition(this.交易帐号);
+            }
 
             public void Repay(string amount, StringBuilder Result, StringBuilder ErrInfo)
             {

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -700,7 +701,7 @@ namespace AASClient
                                         if (this.hqForm[i].Visible)
                                         {
                                             string zqdm1 = Program.accountDataSet.参数.GetParaValue("证券代码" + i.ToString(), "000001");
-                                            if (zqdm1.Length == 6)
+                                            if (zqdm1.Length == 6 && Regex.IsMatch(zqdm1, "^[0-9]{6}"))
                                             {
                                                 if (!十档证券代码.Contains(zqdm1))
                                                 {

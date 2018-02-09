@@ -2897,16 +2897,16 @@ namespace AASServer
                     return;
                 }
 
-                if (this.IsCATSAccount)
-                {
-                    SendCatsOrder(Category, Market, Zqdm, Price, Quantity, orderCacheObj, out Result, out ErrInfo, out hasOrderNo);
-                    return;
-                }
-                if (IsImsAccount)
-                {
-                    SendImsOrder(Category, Market, Zqdm, Price, Quantity, out Result, out ErrInfo, out hasOrderNo);
-                    return;
-                }
+                //if (this.IsCATSAccount)
+                //{
+                //    SendCatsOrder(Category, Market, Zqdm, Price, Quantity, orderCacheObj, out Result, out ErrInfo, out hasOrderNo);
+                //    return;
+                //}
+                //if (IsImsAccount)
+                //{
+                //    SendImsOrder(Category, Market, Zqdm, Price, Quantity, out Result, out ErrInfo, out hasOrderNo);
+                //    return;
+                //}
 
                 Result = string.Empty;
                 ErrInfo = string.Empty;

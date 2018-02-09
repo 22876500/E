@@ -69,7 +69,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlWaiting = new System.Windows.Forms.Panel();
             this.lblWaiting = new System.Windows.Forms.Label();
-            this.timerTestConnect = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -331,11 +330,6 @@
             this.lblWaiting.Text = "正在退出系统……";
             this.lblWaiting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timerTestConnect
-            // 
-            this.timerTestConnect.Interval = 2000;
-            this.timerTestConnect.Tick += new System.EventHandler(this.timerTestConnect_Tick);
-            // 
             // TradeMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -389,7 +383,6 @@
         private System.Windows.Forms.ToolStripMenuItem 订阅模式设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 价格提示设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 预警显示ToolStripMenuItem;
-        private System.Windows.Forms.Timer timerTestConnect;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelConnect;
         private System.Windows.Forms.ToolStripMenuItem 共享额度ToolStripMenuItem;
     }

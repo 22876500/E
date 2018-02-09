@@ -55,10 +55,9 @@ namespace AASClient.TDFData
         ConcurrentQueue<string> RequestTransCodes = null;
         ConcurrentQueue<string> RequestCodes = null;
 
-        ConcurrentDictionary<string, DateTime> RequestTime = null;
-
         ConcurrentQueue<string> RemoveMarketeCodes = null;
         ConcurrentQueue<string> RemoveTransCodes = null;
+        ConcurrentDictionary<string, MarketData> DictCodeMarket;
 
         static object sync = new object();
 
@@ -113,7 +112,6 @@ namespace AASClient.TDFData
         private DataCache()
         {
             Codes = new List<string>();
-            RequestTime = new ConcurrentDictionary<string, DateTime>();
             RequestMarketCodes = new ConcurrentQueue<string>();
             RequestTransCodes = new ConcurrentQueue<string>();
             RequestCodes = new ConcurrentQueue<string>();
@@ -132,6 +130,8 @@ namespace AASClient.TDFData
             QueueTransMessage = new ConcurrentQueue<ZMessage>();
 
             QueueMonitorMarket = new ConcurrentQueue<MarketData>();
+
+            DictCodeMarket = new ConcurrentDictionary<string, MarketData>();
         }
 
         private static DataCache _instance;

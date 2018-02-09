@@ -8,3 +8,7 @@ D:\GitHub\E\AT\Client\AASTrade.DataModel\bin\Release\DataModel.pdb
 D:\GitHub\E\AT\Client\AASTrade.DataModel\obj\Release\DataModel.dll
 D:\GitHub\E\AT\Client\AASTrade.DataModel\obj\Release\DataModel.pdb
 D:\GitHub\E\AT\Client\AASTrade.DataModel\obj\Release\DataModel.csprojResolveAssemblyReference.cache
+G:\github22876500\E\AT\Client\AASTrade.DataModel\bin\Release\DataModel.dll
+G:\github22876500\E\AT\Client\AASTrade.DataModel\bin\Release\DataModel.pdb
+G:\github22876500\E\AT\Client\AASTrade.DataModel\obj\Release\DataModel.dll
+G:\github22876500\E\AT\Client\AASTrade.DataModel\obj\Release\DataModel.pdb

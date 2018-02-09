@@ -45,7 +45,7 @@ namespace QuotaShareServer
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.dgLogs.ItemsSource = ocLog;
-            port = ConfigMain.GetConfigValue("ServicePort", "80");
+            port = ConfigMain.GetConfigValue("ServicePort", "42808");
             serverIP = ConfigMain.GetConfigValue("ServiceIp", "localhost");
             this.Title += string.Format(" [端口:{0}]", port);
 

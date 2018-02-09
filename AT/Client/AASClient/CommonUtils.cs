@@ -314,7 +314,7 @@ namespace AASClient
             {
                 IPAddress ip1 = IPAddress.Parse(ip);
                 IPEndPoint ipend = new IPEndPoint(ip1, port);
-                TimeOutSocket.Connect(ipend, 2000);
+                TimeOutSocket.Connect(ipend, 500);
                 if (TimeOutSocket.IsConnectionSuccessful)
                 {
                     isOpen = true;
