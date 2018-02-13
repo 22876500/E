@@ -264,8 +264,8 @@ namespace GroupClient
             Binding.MaxBufferSize = 2147483647;
             Binding.MaxBufferPoolSize = 2147483647;
             Binding.MaxReceivedMessageSize = 2147483647;
-            Binding.SendTimeout = new TimeSpan(0, 0, 8);
-            Binding.ReceiveTimeout = new TimeSpan(4, 0, 0);
+            Binding.SendTimeout = new TimeSpan(0, 0, 5);
+            Binding.ReceiveTimeout = new TimeSpan(0, 0, 10);
             Binding.ReliableSession.InactivityTimeout = TimeSpan.FromHours(4);
 
 

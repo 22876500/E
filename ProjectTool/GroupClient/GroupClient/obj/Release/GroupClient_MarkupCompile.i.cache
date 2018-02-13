@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\githubProject\Tools\GroupClient\GroupClient\obj\Release\
+D:\GitHub\E\ProjectTool\GroupClient\GroupClient\obj\Release\
 GroupClient
 none
 false
 TRACE
-G:\githubProject\Tools\GroupClient\GroupClient\App.xaml
+D:\GitHub\E\ProjectTool\GroupClient\GroupClient\App.xaml
 81991209662
 
-29-166072514
-21-728085396
+29362428488
+211881562020
 AccountEdit.xaml;AddGroup.xaml;AddImsGroup.xaml;ConfigEditor.xaml;Loading.xaml;MainWindow.xaml;winGroupList.xaml;winIdentityVerification.xaml;
 
-False
+True
 

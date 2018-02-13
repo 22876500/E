@@ -125,7 +125,7 @@ namespace AASClient
             NetTcpBinding.ReaderQuotas.MaxArrayLength = 0xfffffff;
             NetTcpBinding.ReaderQuotas.MaxBytesPerRead = 0xfffffff;
             NetTcpBinding.ReaderQuotas.MaxDepth = 0xfffffff;
-
+            NetTcpBinding.MaxConnections = 1000;
 
 
 

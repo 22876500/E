@@ -1573,6 +1573,29 @@ namespace AASServer
                 KFapiInstance.RegistEvent(TradeCallBackFunc, KFapi.MsgType.ON_RTN_TRADE);
 
                 KFapiInstance.RegistEvent(PositionCallBack, KFapi.MsgType.ON_QRY_ACCOUNT);
+                QueryAccountInfo();
+                if (dbOrderIDs.Count > 0 && this.帐户委托DataTable.Count == 0)
+                {
+                    var row = this.帐户委托DataTable.New委托Row();
+                    foreach (var item in Program.db.已发委托.Get已发委托(DateTime.Today, this.名称))
+                    {
+                        row.交易员 = item.交易员;
+                        row.证券代码 = item.证券代码;
+                        row.证券名称 = item.证券名称;
+                        row.组合号 = this.名称;
+                        row.委托数量 = item.委托数量;
+                        row.委托时间 = "9:00:00";
+                        row.委托价格 = item.委托价格;
+                        row.委托编号 = item.委托编号;
+                        row.市场代码 = item.市场代码;
+                        row.买卖方向 = item.买卖方向;
+                        row.成交价格 = item.成交价格;
+                        row.成交数量 = item.成交数量;
+                        row.撤单数量 = item.撤单数量;
+                        row.状态说明 = item.状态说明;
+                    }
+                    this.帐户委托DataTable.Add委托Row(row);
+                }
                 this.ClientID = 0;
             }
 
@@ -1581,12 +1604,25 @@ namespace AASServer
                 try
                 {
                     var qry_account = new KFapi.QryAccountInfo(e);
-                    foreach (var item in qry_account.accountList)
+                    if (qry_account != null && qry_account.accountList.Count > 0)
                     {
-                        string code = item.ticker;// 股票代码；long, short, net 多仓，空仓，净仓，total就是总持仓，yesterday就是昨日持仓
-                        var qty = item.net_total;
-                        //使用昨日持仓初始化 额度数据，剩余两个工作，一个是额度数据自动生成，一个是重启时的数据初始化。
+                        ShareLimitAdapter.Instance.RemoveAccountStocks(this.名称);
                     }
+                    string errMsg = null;
+                    var shareGroup = ShareLimitAdapter.Instance.ShareLimitGroups.FirstOrDefault();
+                    if (shareGroup != null)
+                    {
+                        foreach (var item in qry_account.accountList)
+                        {
+                            string code = item.ticker;// 股票代码；long, short, net 多仓，空仓，净仓，total就是总持仓，yesterday就是昨日持仓
+                            var qty = item.net_total;
+                            //使用昨日持仓初始化 额度数据，剩余两个工作，一个是额度数据自动生成，一个是重启时的数据初始化。
+                            //Program.db.额度分配.Get额度分配("", "");
+                            var limitItem = new StockLimitItem() { StockID = item.ticker, StockName = "", BuyType = "0", SaleType = "0", Commission = "0", LimitCount = item.net_yesterday.ToString(), GroupAccount = this.名称 };
+                            ShareLimitAdapter.Instance.AddGroupStocks(shareGroup.GroupName, limitItem, out errMsg);
+                        }
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -1622,11 +1658,6 @@ namespace AASServer
             private void TradeCallBackFunc(object sender, EventArgs e)
             {
                 KFapi.RtnTradeInfo rtn_trade = new KFapi.RtnTradeInfo(e);
-                //var relatedOrder = 帐户委托DataTable.FirstOrDefault(_ => _.委托编号 == rtn_trade.order_id.ToString());
-                //if (relatedOrder == null)
-                //{
-                //    Program.logger.LogInfo("{0} TradeCallBackFunc get orderID {1} not found order,detail {2}.", this.名称, rtn_trade.order_id, rtn_trade.ToJson());
-                //}
                 Program.logger.LogInfo("{0} get trade info {1}.", this.名称, rtn_trade.ToJson());
                 tradeQueue.Enqueue(rtn_trade);
             }
@@ -1648,6 +1679,7 @@ namespace AASServer
                 double timeCost = 0;
                 using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Read))
                 {
+
                     KFapi.RtnOrderInfo order;
                     while (orderQueue.Count > 0 && orderQueue.TryDequeue(out order))
                     {
@@ -1786,8 +1818,9 @@ namespace AASServer
                     case 'j':
                         return "前置已接受";
                     case 'a':
-                    default:
                         return "未知";
+                    default:
+                        return "未知 " + s;
                 }
             }
 
@@ -1894,20 +1927,12 @@ namespace AASServer
 
             public void QueryAccountInfo()
             {
-                
                 KFapiInstance.RequestPosition(this.交易帐号);
             }
 
             public void Repay(string amount, StringBuilder Result, StringBuilder ErrInfo)
             {
-                if (this.ClientID > -1)
-                {
-                    TdxApi.Repay(this.ClientID, amount, Result, ErrInfo);
-                }
-                else
-                {
-                    ErrInfo.AppendFormat("{0}: ClientID为-1", this.名称);
-                }
+                throw new NotImplementedException("该接口尚未实现此方法");
             }
         }
 
@@ -2032,8 +2057,6 @@ namespace AASServer
                 }
             }
 
-
-
             public 订单Row Get订单(string 交易员, string 组合号, string 证券代码)
             {
                 using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Read))
@@ -2064,11 +2087,6 @@ namespace AASServer
                     return 订单DataTable1;
                 }
             }
-
-
-
-
-
 
             public bool Exists(JyDataSet.成交Row 成交Row1)
             {
@@ -2118,7 +2136,6 @@ namespace AASServer
 
             }
 
-
             public void Update(JyDataSet.成交Row 成交Row1)
             {
                 using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Write))
@@ -2167,27 +2184,6 @@ namespace AASServer
 
                 }
             }
-
-
-
-            //public void Deal订单()
-            //{
-            //    using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Write))
-            //    {
-            //        for (int i = this.Count - 1; i >= 0; i--)
-            //        {
-
-            //            this[i].Deal();
-
-
-            //            if (this[i].已开数量 == this[i].已平数量 && this[i].已开数量 != 0)
-            //            {
-            //                this.Remove订单Row(this[i]);
-            //            }
-            //        }
-            //    }
-            //}
-
 
             public DbDataSet DbDataSet
             {
@@ -2309,10 +2305,6 @@ namespace AASServer
             }
 
         }
-
-
-
-
 
         partial class 已平仓订单DataTable
         {
@@ -2736,8 +2728,6 @@ namespace AASServer
                 }
             }
 
-
-
             public void Load(List<string> JyList, DateTime StartDate, DateTime EndDate)
             {
 
@@ -2777,45 +2767,6 @@ namespace AASServer
                 }
 
             }
-
-            public void LoadToday()
-            {
-                using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Write))
-                {
-                    this.PrimaryKey = new DataColumn[] { this.Columns["日期"], this.Columns["组合号"], this.Columns["委托编号"] };
-
-
-                    using (AASDbContext db = new AASDbContext())
-                    {
-                        var today = DateTime.Today;
-                        foreach (已发委托 已发委托1 in db.已发委托.Where(r => r.日期 >= today))
-                        {
-                            已发委托Row 已发委托Row1 = this.New已发委托Row();
-                            已发委托Row1.日期 = 已发委托1.日期;
-                            已发委托Row1.组合号 = 已发委托1.组合号;
-                            已发委托Row1.委托编号 = 已发委托1.委托编号;
-                            已发委托Row1.交易员 = 已发委托1.交易员;
-                            已发委托Row1.状态说明 = 已发委托1.状态说明;
-                            已发委托Row1.市场代码 = 已发委托1.市场代码;
-                            已发委托Row1.证券代码 = 已发委托1.证券代码;
-                            已发委托Row1.证券名称 = 已发委托1.证券名称;
-                            已发委托Row1.买卖方向 = 已发委托1.买卖方向;
-                            已发委托Row1.成交价格 = 已发委托1.成交价格;
-                            已发委托Row1.成交数量 = 已发委托1.成交数量;
-                            已发委托Row1.委托价格 = 已发委托1.委托价格;
-                            已发委托Row1.委托数量 = 已发委托1.委托数量;
-                            已发委托Row1.撤单数量 = 已发委托1.撤单数量;
-                            this.Add已发委托Row(已发委托Row1);
-                        }
-                    }
-
-                }
-            }
-
-
-
-
-
 
             void 已发委托_已发委托RowChanging(object sender, DbDataSet.已发委托RowChangeEvent e)
             {
@@ -2932,6 +2883,27 @@ namespace AASServer
                     return 已发委托DataTable1[0];
                 }
             }
+
+            public 已发委托DataTable Get已发委托(DateTime 日期, string 组合号)
+            {
+                using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Read))
+                {
+                    var rows = this.Where(r => r.日期 == DateTime.Today && r.组合号 == 组合号);
+                    if (rows == null || rows.Count() == 0)
+                    {
+                        return null;
+                    }
+
+                    已发委托DataTable 已发委托DataTable1 = new 已发委托DataTable();
+                    foreach (var item in rows)
+                    {
+                        已发委托DataTable1.ImportRow(item);
+                    }
+                    
+                    return 已发委托DataTable1;
+                }
+            }
+
             public void Add(DateTime 日期, string 组合号, string 委托编号, string 交易员, string 状态说明, byte 市场代码, string 证券代码, string 证券名称, int 买卖方向, decimal 成交价格, decimal 成交数量, decimal 委托价格, decimal 委托数量, decimal 撤单数量)
             {
                 using (ReadWriteLock ReadWriteLock1 = new ReadWriteLock(this.readerWriterLockSlim, ReadWriteMode.Write))

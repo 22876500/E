@@ -33,3 +33,6 @@ G:\githubProject\Tools\GroupClient\GroupClient\obj\Release\GroupClient.csproj.Ge
 G:\githubProject\Tools\GroupClient\GroupClient\obj\Release\GroupClient.exe
 G:\githubProject\Tools\GroupClient\GroupClient\obj\Release\GroupClient.pdb
 G:\githubProject\Tools\GroupClient\GroupClient\obj\Release\GroupClient.csprojResolveAssemblyReference.cache
+D:\GitHub\E\ProjectTool\GroupClient\GroupClient\bin\Release\GroupClient.exe.config
+D:\GitHub\E\ProjectTool\GroupClient\GroupClient\obj\Release\GroupClient.exe
+D:\GitHub\E\ProjectTool\GroupClient\GroupClient\obj\Release\GroupClient.pdb

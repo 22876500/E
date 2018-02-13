@@ -90,7 +90,6 @@ D:\GitHub\E\KFServer\obj\Debug\AASServer.LoginForm.resources
 D:\GitHub\E\KFServer\obj\Debug\AASServer.MainForm.resources
 D:\GitHub\E\KFServer\obj\Debug\AASServer.Properties.Resources.resources
 D:\GitHub\E\KFServer\obj\Debug\AASServer.csproj.GenerateResource.Cache
-D:\GitHub\E\KFServer\obj\Debug\AASServer.csproj.CoreCompileInputs.cache
 G:\github22876500\E\KFServer\bin\Debug\amd64\libzmq.so
 G:\github22876500\E\KFServer\bin\Debug\amd64\libzmq.dll
 G:\github22876500\E\KFServer\bin\Debug\amd64\libsodium.so

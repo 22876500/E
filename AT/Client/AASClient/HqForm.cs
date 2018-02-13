@@ -1461,10 +1461,6 @@ namespace AASClient
                 {
                     MessageBox.Show("公共券池不包含该股票!");
                 }
-                else if (this.numericUpDown数量.Value < 100)
-                {
-                    MessageBox.Show("下单数量不能小于100股!");
-                }
                 else
                 {
                     SendPubOrder(PublicStock);
@@ -1483,14 +1479,14 @@ namespace AASClient
                     {
                         MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
                     }
-                    //else if (!string.IsNullOrWhiteSpace(label涨停价.Text) && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
-                    //{
-                    //    MessageBox.Show(string.Format("欲挂单价格{0}高于涨停价{1}", numericUpDown价格.Value.ToString(), label涨停价.Text));
-                    //}
-                    //else if (!string.IsNullOrWhiteSpace(label跌停价.Text) && numericUpDown价格.Value < decimal.Parse(label跌停价.Text))
-                    //{
-                    //    MessageBox.Show(string.Format("欲挂单价格{0}低于跌停价{1}", numericUpDown价格.Value.ToString(), label跌停价.Text));
-                    //}
+                    else if (!string.IsNullOrWhiteSpace(label涨停价.Text) && decimal.Parse(label涨停价.Text) > 0 && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
+                    {
+                        MessageBox.Show(string.Format("欲挂单价格{0}高于涨停价{1}", numericUpDown价格.Value.ToString(), label涨停价.Text));
+                    }
+                    else if (!string.IsNullOrWhiteSpace(label跌停价.Text) && decimal.Parse(label跌停价.Text) > 0 && numericUpDown价格.Value < decimal.Parse(label跌停价.Text))
+                    {
+                        MessageBox.Show(string.Format("欲挂单价格{0}低于跌停价{1}", numericUpDown价格.Value.ToString(), label跌停价.Text));
+                    }
                     else
                     {
                         SendOrder();
@@ -1569,10 +1565,9 @@ namespace AASClient
 
         private void SendingSync(string 证券名称, decimal 委托价格, decimal 委托数量)
         {
-            string code = this.Zqdm;
+            string code = Zqdm;
             int tradeType = this.comboBox买卖方向.SelectedIndex;
-            WaitCallback callback = i =>
-            {
+            Task.Run(() => {
                 DateTime dt = DateTime.Now;
                 try
                 {
@@ -1591,7 +1586,7 @@ namespace AASClient
                             Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, string.Empty, tradeType, 委托数量, 委托价格, "下单失败, {0}", Data[1]);
                         }
                     }
-                    else
+                    else if (code.Length == 5)
                     {
                         Ret = Program.AASServiceClient.SendAyersOrder(Program.Current平台用户.用户名, code, 证券名称, tradeType, (int)委托数量, 委托价格);
                         string[] Data = Ret.Split('|');
@@ -1616,8 +1611,7 @@ namespace AASClient
                     this.panel3.Visible = false;
                     this.btnSendOrder.Enabled = true;
                 }));
-            };
-            ThreadPool.QueueUserWorkItem(callback, 1);
+            });
         }
 
         private void comboBox代码_KeyDown(object sender, KeyEventArgs e)

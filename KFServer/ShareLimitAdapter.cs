@@ -316,6 +316,32 @@ namespace AASServer
             errMsg = "不存在股票" + stockID;
             return false;
         }
+
+        public void RemoveAccountStocks(string account)
+        {
+            var groupElems = Document.Root.Elements("group");
+            if (groupElems == null || groupElems.Count() > 0)
+            {
+                return;
+            }
+            foreach (var groupElem in groupElems)
+            {
+                var groupName = groupElem.Attribute("name").Value;
+                var groupItem = this.ShareLimitGroups.First(_ => _.GroupName == groupName);
+                var nodes = groupElem.Element("stocks").Elements("stock").Where(_ => _.Element("account").Value == account);
+                foreach (var stockElem in nodes)
+                {
+                    stockElem.Remove();
+                    var stockItem = groupItem.GroupStockList.FirstOrDefault(_ => _.StockID == stockElem.Element("code").Value);
+                    if (stockElem != null)
+                    {
+                        groupItem.GroupStockList.Remove(stockItem);
+                    }
+                }
+            }
+            Document.Save(System.Windows.Forms.Application.StartupPath + FilePath);
+
+        }
         #endregion
 
         public ShareLimitGroupItem GetLimitGroup(string trader)
@@ -330,17 +356,6 @@ namespace AASServer
                 }
             }
             return null;
-        }
-
-        public decimal Get交易费用(string JyUserName, decimal 手续费率)
-        {
-            
-            decimal 交易费用 = 0;
-            foreach (AASServer.DbDataSet.已发委托Row 已发委托Row1 in Program.db.已发委托.Where(r => r.日期 == DateTime.Today && r.交易员 == JyUserName))
-            {
-                交易费用 += 已发委托Row1.Get交易费用(手续费率);
-            }
-            return 交易费用;
         }
 
         public decimal Get交易费用(AASServer.DbDataSet.已发委托Row wtRow, decimal 手续费率)
@@ -359,6 +374,8 @@ namespace AASServer
                 return 0;
             }
         }
+
+
     }
 
     public class StockLimitItem
