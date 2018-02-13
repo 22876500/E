@@ -1430,8 +1430,8 @@ namespace AASServer
 
 
             object SendOrderObject = new object();
-            List<string> dbOrderIDs = new List<string>();
-
+            ConcurrentQueue<string> OrderIDs = null;
+            
             public void Start()
             {
                 this.backgroundWorker1.WorkerSupportsCancellation = true;
@@ -1440,11 +1440,9 @@ namespace AASServer
                 this.backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
                 this.backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
                 this.backgroundWorker1.RunWorkerAsync();
-                //if (CommonUtils.GetConfig("PubStockGroup") == this.名称)
-                //{
-                //    IsPubStockGroup = true;
-                //}
-                dbOrderIDs.AddRange(Program.db.已发委托.Where(_ => _.组合号 == this.名称 && _.日期 == DateTime.Today).Select(_ => _.委托编号));
+
+                var list = Program.db.已发委托.GetOrderIDList(DateTime.Today, this.名称);
+                OrderIDs = new ConcurrentQueue<string>(list);
             }
 
 
@@ -1680,6 +1678,11 @@ namespace AASServer
                     }
                     else
                     {
+                        //if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday && DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
+                        //{
+                        //    return "周末休息时间无法登录!";
+                        //}
+
                         if (CommonUtils.ExistsGroup(this.名称))
                         {
                             #region 组合号接口ip配置
@@ -1738,7 +1741,7 @@ namespace AASServer
 
             }
 
-            List<string> lstOrderID = new List<string>(256);
+            
             double lastTimeCost = 0;
             string strWtTitle = null;
             string strCjTitle = null;
@@ -1748,6 +1751,14 @@ namespace AASServer
                 {
                     return CATSQueryData();
                 }
+
+                //判断是否需要查询
+                //if ((this.帐户委托DataTable.Count == OrderIDs.Count) && this.帐户委托DataTable.FirstOrDefault(_ => _.成交价格 > 0 && _.委托数量 > (_.成交数量 + _.撤单数量)) == null)
+                //{
+                //    Thread.Sleep(100);
+                //    return "无需查询委托";
+                //}
+                
                 double timeCost = 0;
                 DataTable 查到的成交Result = null;
                 string 查到的成交ErrInfo = null;
@@ -1757,6 +1768,7 @@ namespace AASServer
                 if (CommonUtils.ExistsGroup(this.名称))
                 {
                     QueryDataFromClient(ref timeCost, ref 查到的成交Result, ref 查到的成交ErrInfo, ref 查到的委托Result, ref 查到的委托ErrInfo);
+                    Thread.Sleep(300);
                 }
                 else
                 {
@@ -1792,13 +1804,30 @@ namespace AASServer
                         Program.logger.LogInfo("券商帐户 {0} 查询委托时出错:{1}", this.名称, 查到的委托ErrInfo);
                     }
 
+                    if (查到的委托Result != null && 查到的委托Result.Rows.Count > 0)
+                    {
+                        this.帐户委托DataTable = this.Get规范委托(查到的委托Result);
+
+                        var dtNow = DateTime.Now;
+                        foreach (var item in 帐户委托DataTable)
+                        {
+                            if (dictOrderSend.ContainsKey(item.委托编号) && dictOrderSend[item.委托编号] > DateTime.MinValue && item.成交数量 > 0)
+                            {
+                                Program.logger.LogInfoDetail("下单委托编号{0}首次收到委托成交数量大于0信息，时间间隔{1}, 数据处理时间{2},组合号{3}", item.委托编号, (dtNow - dictOrderSend[item.委托编号]).TotalSeconds, (dtNow - dtMid).TotalSeconds, this.名称);
+                                dictOrderSend[item.委托编号] = DateTime.MinValue;
+                            }
+                            if (dictOrderCancel.ContainsKey(item.委托编号) && dictOrderCancel[item.委托编号] > DateTime.MinValue && item.撤单数量 > 0)
+                            {
+                                Program.logger.LogInfoDetail("撤单委托编号{0}首次收到含撤单数量数据，时间间隔{1}，数据处理时间{2},组合号{3}", item.委托编号, (dtMid - dictOrderCancel[item.委托编号]).TotalSeconds, (dtNow - dtMid).TotalSeconds, this.名称);
+                                dictOrderCancel[item.委托编号] = DateTime.MinValue;
+                            }
+                        }
+                    }
                     lastTimeCost = timeCost;
 
                     Program.帐户成交DataTable[this.名称] = this.帐户成交DataTable.Copy() as JyDataSet.成交DataTable;
                     Program.帐户委托DataTable[this.名称] = this.帐户委托DataTable.Copy() as JyDataSet.委托DataTable;
                 }
-
-                Thread.Sleep(200);
                 return timeCost.ToString();
             }
 
@@ -2148,225 +2177,6 @@ namespace AASServer
                 }
             }
             #endregion
-
-            bool isAdded = false;
-            private void UpdateTradeInfo()
-            {
-                Dictionary<string, JyDataSet.成交DataTable> 交易员成交DataTable = new Dictionary<string, JyDataSet.成交DataTable>();
-                Dictionary<string, JyDataSet.委托DataTable> 交易员委托DataTable = new Dictionary<string, JyDataSet.委托DataTable>();
-
-                #region 由 帐户DataTable 转为 交易员DataTable
-                List<string> lstTradeRelatedAccount = new List<string>();
-                List<string> lstOrderRelatedAccount = new List<string>();
-
-                foreach (JyDataSet.成交Row 成交Row1 in 帐户成交DataTable)
-                {
-                    //if (!lstTradeRelatedAccount.Contains(成交Row1.交易员))
-                    //    lstTradeRelatedAccount.Add(成交Row1.交易员);
-                    if (!交易员成交DataTable.ContainsKey(成交Row1.交易员))
-                        交易员成交DataTable[成交Row1.交易员] = new JyDataSet.成交DataTable();
-
-                    交易员成交DataTable[成交Row1.交易员].ImportRow(成交Row1);
-                }
-
-                foreach (JyDataSet.委托Row 委托Row1 in 帐户委托DataTable)
-                {
-                    //if (!lstOrderRelatedAccount.Contains(委托Row1.交易员))
-                    //    lstOrderRelatedAccount.Add(委托Row1.交易员);
-                    if (!交易员委托DataTable.ContainsKey(委托Row1.交易员))
-                        交易员委托DataTable[委托Row1.交易员] = new JyDataSet.委托DataTable();
-                    var oldOne = 交易员委托DataTable[委托Row1.交易员].FirstOrDefault(_ => _.组合号 == 委托Row1.组合号 && _.委托编号 == 委托Row1.委托编号);
-                    if (oldOne==null)
-                    {
-                        交易员委托DataTable[委托Row1.交易员].ImportRow(委托Row1);
-                    }
-                }
-
-
-                var 风控平仓委托DataTable = Program.db.已发委托.Get风控平仓委托DataTable().Where(_ => _.组合号 == this.名称);
-                
-                Dictionary<string, List<JyDataSet.委托Row>> riskControlTrade = new Dictionary<string, List<JyDataSet.委托Row>>();
-                foreach (JyDataSet.委托Row 委托Row1 in 风控平仓委托DataTable)
-                {
-                    if (!交易员委托DataTable.ContainsKey(委托Row1.交易员))
-                        交易员委托DataTable[委托Row1.交易员] = new JyDataSet.委托DataTable();
-
-                    var row = 交易员委托DataTable[委托Row1.交易员].FirstOrDefault(_ => _.委托编号 == 委托Row1.委托编号 && _.组合号 == 委托Row1.组合号);
-                    if (row == null)
-                    {
-                        交易员委托DataTable[委托Row1.交易员].ImportRow(委托Row1);
-                    }
-                }
-                #endregion
-
-                #region 补齐字典，不存在对应项的加入空DataTable
-                foreach (string 交易员 in 交易员成交DataTable.Keys)
-                {
-                    if (!Program.交易员成交DataTable.ContainsKey(交易员))
-                        Program.交易员成交DataTable[交易员] = new JyDataSet.成交DataTable();
-                }
-
-                foreach (string 交易员 in 交易员委托DataTable.Keys)
-                {
-                    if (!Program.交易员委托DataTable.ContainsKey(交易员))
-                        Program.交易员委托DataTable[交易员] = new JyDataSet.委托DataTable();
-                } 
-                #endregion
-
-                #region 刷新交易员数据表
-                foreach (string 交易员 in 交易员成交DataTable.Keys)
-                {
-                    if (CheckTradeData(Program.交易员成交DataTable[交易员], 交易员成交DataTable[交易员]))
-                    {
-                        Program.成交表Changed[交易员] = true;
-                    }
-                }
-                foreach (string 交易员 in 交易员委托DataTable.Keys)
-                {
-                    if (CheckOrderData(Program.交易员委托DataTable[交易员], 交易员委托DataTable[交易员]))
-                    {
-                        Program.委托表Changed[交易员] = true;
-                    }
-                }
-                #endregion
-
-                if (!isAdded)
-                {
-                    isAdded = true;
-                    Program.logger.LogInfo("组合号{0}委托数据已刷新，当前组合号下委托数据量{1}条,刷新到交易员缓存中{2}条,", this.名称, this.帐户委托DataTable.Rows.Count, 交易员委托DataTable.Values.Sum(_=> _.Rows.Count));
-                }
-            }
-
-            private bool CheckTradeData(JyDataSet.成交DataTable Program成交DataTable, JyDataSet.成交DataTable 成交DataTableNew)
-            {
-                bool isChanged = false;
-                List<JyDataSet.成交Row> rows = null;
-                lock (Program成交DataTable)
-                {
-                    rows = Program成交DataTable.Where(_ => _.组合号 == this.名称).ToList();
-                }
-                
-                List<JyDataSet.成交Row> lstNeedAdd = new List<JyDataSet.成交Row>();
-                foreach (JyDataSet.成交Row item in 成交DataTableNew)
-                {
-                    var rowItemsOld = rows.Where(_ => _.委托编号 == item.委托编号).ToList();
-
-                    if (rowItemsOld == null)
-                    {
-                        lstNeedAdd.Add(item);
-                        isChanged = true;
-                    }
-                    else
-                    {
-                        //如果能找到成交编号，判断是否成交信息，不一致则更新，如果找不到成交编号，判断数量是否一致，不一致则增加
-                        var idMatched = rowItemsOld.FirstOrDefault(_=> _.成交编号 == item.成交编号);
-                        if (idMatched == null)
-                        {
-                            var itemMatched = rowItemsOld.Where(_ => _.成交数量 == item.成交数量 && _.成交价格 == item.成交价格).ToList();
-                            if (itemMatched == null || itemMatched.Count == 0)
-                            {
-                                lstNeedAdd.Add(item);
-                                isChanged = true;
-                            }
-                            else
-                            {
-                                var newRows = 成交DataTableNew.Where(_ => _.委托编号 == item.委托编号 && _.成交数量 == item.成交数量 && _.成交价格 == item.成交价格).ToList();
-                                if (newRows.Count > itemMatched.Count)
-                                {
-                                    lstNeedAdd.Add(item);
-                                }
-                            }
-                        }
-                        else if (idMatched.成交价格 != item.成交价格 || idMatched.成交数量 != item.成交数量 || idMatched.成交金额 != item.成交金额 || idMatched.成交时间 != item.成交时间)
-                        {
-                            isChanged = true;
-                            idMatched.成交价格 = item.成交价格;
-                            idMatched.成交金额 = item.成交金额;
-                            idMatched.成交时间 = item.成交时间;
-                            idMatched.成交数量 = item.成交数量;
-                        }
-                    }
-                }
-                if (lstNeedAdd.Count > 0)
-                {
-                    lock (Program成交DataTable)
-                    {
-                        lstNeedAdd.ForEach(_ => Program成交DataTable.ImportRow(_));
-                    }
-                }
-                return isChanged;
-            }
-
-            private bool CheckOrderData(JyDataSet.委托DataTable Program委托DataTable, JyDataSet.委托DataTable 委托DataTableNew)
-            {
-                bool isChanged = false;
-
-                List<JyDataSet.委托Row> rowsQs = null;
-                //if (Program委托DataTable != null)
-                //{
-                //    lock (Program委托DataTable)
-                //    {
-                //        var tableCopy = Program委托DataTable.Copy() as JyDataSet.委托DataTable;
-                //        rowsQs = tableCopy.Where(_ => _.组合号 == this.名称).ToList();
-                //    }
-                //}
-                rowsQs = Program委托DataTable.Where(_ => _.组合号 == this.名称).ToList();
-                
-                StringBuilder sbExcuteInfo = new StringBuilder(128);
-                List<JyDataSet.委托Row> lstNeedAdd = new List<JyDataSet.委托Row>();
-                if (rowsQs == null)
-                {
-                    rowsQs = new List<JyDataSet.委托Row>();
-                }
-                foreach (JyDataSet.委托Row item in 委托DataTableNew.Rows)
-                {
-                    try
-                    {
-                        sbExcuteInfo.Clear();
-                        sbExcuteInfo.Append("1, 开始查询历史数据是否有重复项");
-                        var rowItemOld = rowsQs.FirstOrDefault(_ => _.委托编号 == item.委托编号);
-                        
-                        if (rowItemOld == null)
-                        {
-                            lstNeedAdd.Add(item);
-                            isChanged = true;
-                        }
-                        else
-                        {
-                            var isItemChanged = rowItemOld.撤单数量 != item.撤单数量 || rowItemOld.成交价格 != item.成交价格 || rowItemOld.成交数量 != item.成交数量 || rowItemOld.状态说明 != item.状态说明;
-                            if (isItemChanged)
-                            {
-                                isChanged = true;
-                                rowItemOld.撤单数量 = item.撤单数量;
-                                rowItemOld.成交价格 = item.成交价格;
-                                rowItemOld.成交数量 = item.成交数量;
-                                rowItemOld.状态说明 = item.状态说明;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Program.logger.LogInfoDetail("DbDataset.券商帐户Row.CheckOrderData 异常, 券商{0} 操作历史{1}, 异常信息 {2}", this.名称, sbExcuteInfo.ToString(), ex.Message);
-                    }
-
-                }
-                if (lstNeedAdd.Count > 0)
-                {
-                    lock (Program委托DataTable)
-                    {
-                        //lstNeedAdd.ForEach(_ => Program委托DataTable.ImportRow(_));
-                        foreach (var item in lstNeedAdd)
-                        {
-                            var order = Program委托DataTable.FirstOrDefault(_ => _.组合号 == this.名称 && _.委托编号 == item.委托编号);
-                            if (order == null)
-                            {
-                                Program委托DataTable.ImportRow(item);
-                            }
-                        }
-                    }
-                }
-                return isChanged;
-            }
 
             JyDataSet.成交DataTable Get规范成交(DataTable 查到的成交DataTable)
             {
@@ -2932,6 +2742,7 @@ namespace AASServer
                         {
                             Result = DataTable1.Rows[0]["委托编号"] as string;
                         }
+                        OrderIDs.Enqueue(Result);
                     }
                     else if(ErrInfo.Length > 0)
                     {
@@ -2970,12 +2781,13 @@ namespace AASServer
                         {
                             Result = DataTable1.Rows[0]["委托编号"] as string;
                         }
-
+                        
                     }
                     else
                     {
                         Result = 下单response.Result;
                     }
+                    OrderIDs.Enqueue(Result);
                     dictOrderSend[Result] = DateTime.Now;
                 }
                 else

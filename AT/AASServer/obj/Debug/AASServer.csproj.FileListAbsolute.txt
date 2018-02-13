@@ -50,7 +50,6 @@ D:\GitHub\E\AT\AASServer\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\E\AT\AASServer\bin\Debug\ZeroMQ.xml
 D:\GitHub\E\AT\AASServer\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\GitHub\E\AT\AASServer\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.csprojResolveAssemblyReference.cache
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.AddUserForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.LoginForm.resources
 D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.MainForm.resources
@@ -88,3 +87,4 @@ G:\github22876500\E\AT\AASServer\obj\Debug\AASServer.LoginForm.resources
 G:\github22876500\E\AT\AASServer\obj\Debug\AASServer.MainForm.resources
 G:\github22876500\E\AT\AASServer\obj\Debug\AASServer.Properties.Resources.resources
 G:\github22876500\E\AT\AASServer\obj\Debug\AASServer.csproj.GenerateResource.Cache
+D:\GitHub\E\AT\AASServer\obj\Debug\AASServer.csprojResolveAssemblyReference.cache

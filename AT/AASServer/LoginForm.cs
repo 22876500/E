@@ -28,8 +28,15 @@ namespace AASServer
 
             if (Program.appConfig.Exists("凭据"))
             {
-                //this.groupBox1.Visible = false;
-                Logon();
+                
+                if (DateTime.Now.Hour == 0)
+                {
+                    Logon();
+                }
+                else
+                {
+                    this.groupBox1.Visible = false;
+                }
             }
         }
 

@@ -238,26 +238,36 @@ namespace AASServer
 
         public static void SendNotifyToClient()
         {
-            //发送废单通知
-            AASServer.JyDataSet.委托Row 委托Row1;
-            while (Program.废单通知.TryDequeue(out 委托Row1))
+            if (Program.废单通知.Count > 0)
             {
-                Tool.Send废单通知ToTrader(委托Row1);
+                //发送废单通知
+                AASServer.JyDataSet.委托Row 委托Row1;
+                while (Program.废单通知.TryDequeue(out 委托Row1))
+                {
+                    Tool.Send废单通知ToTrader(委托Row1);
+                }    
             }
 
-            //发送成交通知
-            AASServer.JyDataSet.成交Row 成交Row1;
-            while (Program.成交通知.TryDequeue(out 成交Row1))
+            if (Program.成交通知.Count > 0)
             {
-                Tool.Send成交通知ToTrader(成交Row1);
+                //发送成交通知
+                AASServer.JyDataSet.成交Row 成交Row1;
+                while (Program.成交通知.TryDequeue(out 成交Row1))
+                {
+                    Tool.Send成交通知ToTrader(成交Row1);
+                }
             }
 
-            //发送风控操作通知
-            风控操作 风控操作1;
-            while (Program.风控操作.TryDequeue(out 风控操作1))
+            if (Program.风控操作.Count > 0)
             {
-                Tool.Send风控操作通知ToTrader(风控操作1);
+                //发送风控操作通知
+                风控操作 风控操作1;
+                while (Program.风控操作.TryDequeue(out 风控操作1))
+                {
+                    Tool.Send风控操作通知ToTrader(风控操作1);
+                }
             }
+            
 
             RiskTableDeal();
 
@@ -289,59 +299,79 @@ namespace AASServer
 
         private static void TradeChangedDeal()
         {
-            var keysTrades = Program.成交表Changed.Keys.ToList();
-            foreach (string UserName in keysTrades)
-            {
-                if (Program.成交表Changed[UserName])
+            Task.Run(() => {
+                try
                 {
-                    if (Program.交易员成交DataTable.ContainsKey(UserName))
+                    var keysTrades = Program.成交表Changed.Keys.ToList();
+                    foreach (string UserName in keysTrades)
                     {
-                        var dtOrders = Program.交易员成交DataTable[UserName];
-                        JyDataSet.成交DataTable dtSuccessOrder = null;
-                        lock (dtOrders)
+                        if (Program.成交表Changed[UserName])
                         {
-                            dtSuccessOrder = dtOrders.Copy() as JyDataSet.成交DataTable;
-                        }
+                            if (Program.交易员成交DataTable.ContainsKey(UserName))
+                            {
+                                var dtOrders = Program.交易员成交DataTable[UserName];
+                                JyDataSet.成交DataTable dtSuccessOrder = null;
+                                lock (dtOrders)
+                                {
+                                    dtSuccessOrder = dtOrders.Copy() as JyDataSet.成交DataTable;
+                                }
 
-                        Send成交TableChangedNoticeToTrader(UserName, dtSuccessOrder);
+                                Send成交TableChangedNoticeToTrader(UserName, dtSuccessOrder);
+                            }
+                            Program.成交表Changed[UserName] = false;
+                        }
                     }
-                    Program.成交表Changed[UserName] = false;
                 }
-            }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("Tool.OrderChangedDeal(交易员成交) Exception, {0}", ex.Message);
+                }
+            });
+            
         }
 
         private static void OrderChangedDeal()
         {
-            var keysOrder = Program.委托表Changed.Keys.ToList();
-            foreach (string UserName in keysOrder)
-            {
-                if (Program.委托表Changed[UserName])
+            Task.Run(() => {
+                try
                 {
-                    if (Program.交易员委托DataTable.ContainsKey(UserName))
+                    var keysOrder = Program.委托表Changed.Keys.ToList();
+                    foreach (string UserName in keysOrder)
                     {
-                        var 交易员委托table = Program.交易员委托DataTable[UserName];
-                        if (AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
+                        if (Program.委托表Changed[UserName])
                         {
-                            if (AutoOrderService.Instance.DictUserConsignmentChange.ContainsKey(UserName))
+                            if (Program.交易员委托DataTable.ContainsKey(UserName))
                             {
-                                AutoOrderService.Instance.DictUserConsignmentChange[UserName] = true;
-                            }
-                            else if (!AutoOrderService.Instance.DictUserConsignmentChange.TryAdd(UserName, true))
-                            {
-                                AutoOrderService.Instance.DictUserConsignmentChange[UserName] = true;
-                            }
-                        }
+                                var 交易员委托table = Program.交易员委托DataTable[UserName];
+                                if (AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
+                                {
+                                    if (AutoOrderService.Instance.DictUserConsignmentChange.ContainsKey(UserName))
+                                    {
+                                        AutoOrderService.Instance.DictUserConsignmentChange[UserName] = true;
+                                    }
+                                    else if (!AutoOrderService.Instance.DictUserConsignmentChange.TryAdd(UserName, true))
+                                    {
+                                        AutoOrderService.Instance.DictUserConsignmentChange[UserName] = true;
+                                    }
+                                }
 
-                        JyDataSet.委托DataTable dtNew = null;
-                        lock (交易员委托table)
-                        {
-                            dtNew = 交易员委托table.Copy() as JyDataSet.委托DataTable;
+                                JyDataSet.委托DataTable dtNew = null;
+                                lock (交易员委托table)
+                                {
+                                    dtNew = 交易员委托table.Copy() as JyDataSet.委托DataTable;
+                                }
+                                Send委托TableChangedNoticeToTrader(UserName, dtNew);
+                            }
+                            Program.委托表Changed[UserName] = false;
                         }
-                        Send委托TableChangedNoticeToTrader(UserName, dtNew);
                     }
-                    Program.委托表Changed[UserName] = false;
                 }
-            }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("Tool.OrderChangedDeal(交易员委托) Exception, {0}", ex.Message);
+                }
+            });
+           
         }
 
         private static void UsersTableDealed()
@@ -372,27 +402,38 @@ namespace AASServer
 
         private static void OrderTableDeal()
         {
-            var keysOrderChange = Program.订单表Changed.Keys.ToList();
-            foreach (string UserName in Program.订单表Changed.Keys)
-            {
-                if (Program.订单表Changed[UserName])
+            Task.Run(() => {
+                try
                 {
-                    var orderTable = Program.db.订单.Query订单BelongJy(UserName);
-                    if (AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
+                    var keysOrderChange = Program.订单表Changed.Keys.ToList();
+                    foreach (string UserName in Program.订单表Changed.Keys)
                     {
-                        if (AutoOrderService.Instance.DictUserOrderChange.ContainsKey(UserName))
+                        if (Program.订单表Changed[UserName])
                         {
-                            AutoOrderService.Instance.DictUserOrderChange[UserName] = true;
-                        }
-                        else if (!AutoOrderService.Instance.DictUserOrderChange.TryAdd(UserName, true))
-                        {
-                            AutoOrderService.Instance.DictUserOrderChange[UserName] = true;
+                            var orderTable = Program.db.订单.Query订单BelongJy(UserName);
+                            if (AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
+                            {
+                                if (AutoOrderService.Instance.DictUserOrderChange.ContainsKey(UserName))
+                                {
+                                    AutoOrderService.Instance.DictUserOrderChange[UserName] = true;
+                                }
+                                else if (!AutoOrderService.Instance.DictUserOrderChange.TryAdd(UserName, true))
+                                {
+                                    AutoOrderService.Instance.DictUserOrderChange[UserName] = true;
+                                }
+                            }
+                            Send订单TableChangedNoticeToTrader(UserName, orderTable);
+                            Program.订单表Changed[UserName] = false;
                         }
                     }
-                    Send订单TableChangedNoticeToTrader(UserName, orderTable);
-                    Program.订单表Changed[UserName] = false;
                 }
-            }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("Tool.OrderTableDeal Exception, {0}", ex.Message);
+                }
+            });
+
+            
         }
 
         private static void OrderOperatedTableDeal()

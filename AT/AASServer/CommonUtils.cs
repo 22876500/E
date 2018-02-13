@@ -48,6 +48,7 @@ namespace AASServer
             {
                 if (_dictGroupIP == null)
                 {
+                    System.Net.ServicePointManager.DefaultConnectionLimit = 512;
                     _dictGroupIP = new Dictionary<string, GroupConfig>();
                     string groupIPFile = "组合号接口IP.txt";
                     if (File.Exists(groupIPFile))

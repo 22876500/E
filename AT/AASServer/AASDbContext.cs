@@ -51,7 +51,7 @@ namespace AASServer
             string port = ConfigCache.ConnectPort;
             string dbName = ConfigCache.DBName;
 
-            this.Database.Connection.ConnectionString = string.Format("Data Source=.\\;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFrameworkMUE", dbName);
+            this.Database.Connection.ConnectionString = string.Format("Data Source=.\\SQLEXPRESS;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFrameworkMUE", dbName);
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AASDbContext>());//模型发生变化则drop后生成新的模型
             Database.SetInitializer(new CreateDatabaseIfNotExists<AASDbContext>());//如果模型不存在则创建。
         }
