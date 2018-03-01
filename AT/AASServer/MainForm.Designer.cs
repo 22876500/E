@@ -252,6 +252,7 @@
             // 
             // timerCheckClose
             // 
+            this.timerCheckClose.Enabled = true;
             this.timerCheckClose.Interval = 1000;
             this.timerCheckClose.Tick += new System.EventHandler(this.timerCheckClose_Tick);
             // 

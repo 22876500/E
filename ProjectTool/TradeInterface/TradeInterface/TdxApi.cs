@@ -16,6 +16,13 @@ namespace TradeInterface
         public static extern void CloseTdx();
         [DllImport("trade.dll", CharSet = CharSet.Ansi)]
         public static extern int Logon(string IP, short Port, string Version, short YybID, string AccountNo, string TradeAccount, string JyPassword, string TxPassword, StringBuilder ErrInfo);
+
+        [DllImport("trade.dll", CharSet = CharSet.Ansi)]
+        public static extern int LogonEx(string IP, short Port, string Version, short YybID, string AccountNo, string TradeAccount, string JyPassword, string TxPassword, string LocalIP, string LocalMac, StringBuilder ErrInfo);
+
+        [DllImport("trade.dll", CharSet = CharSet.Ansi)]
+        public static extern void DllVersion(StringBuilder result);
+
         [DllImport("trade.dll", CharSet = CharSet.Ansi)]
         public static extern void Logoff(int ClientID);
         [DllImport("trade.dll", CharSet = CharSet.Ansi)]

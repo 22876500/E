@@ -71,7 +71,6 @@ D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\winImportLimit
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.g.resources
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.Properties.Resources.resources
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.csproj.GenerateResource.Cache
-D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.csproj.CoreCompileInputs.cache
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.exe
 D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\TradeInterface.pdb
 G:\github22876500\E\ProjectTool\TradeInterface\TradeInterface\bin\Release\TradeInterface.exe.config

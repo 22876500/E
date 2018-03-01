@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\github22876500\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\
+D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\obj\Release\
 TradeInterface
 none
 false
 TRACE
-G:\github22876500\E\ProjectTool\TradeInterface\TradeInterface\App.xaml
+D:\GitHub\E\ProjectTool\TradeInterface\TradeInterface\App.xaml
 6-2097688833
 4-1210081020
-25745070418
-25-118604466
+251273571420
+25-1068130040
 Ctrl\FormulaCal.xaml;Ctrl\Loading.xaml;Logon.xaml;MainWindow.xaml;winImportLimit.xaml;winRepay.xaml;
 
-True
+False
 

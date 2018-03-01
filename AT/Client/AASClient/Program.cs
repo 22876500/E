@@ -16,7 +16,6 @@ namespace AASClient
     {
         public static bool IsSinglePoint = false;
         private static System.Threading.Mutex mutex;
-        public static bool IsRestart { get; set; }
 
         public static string Version = "201711100001";//"201711100001";201611290001
 
@@ -37,7 +36,7 @@ namespace AASClient
         public static List<WarningFormulaOne> WarningFormulas = new List<WarningFormulaOne>();
         public static ConcurrentDictionary<string, ConcurrentQueue<WarningEntity>> Warnings = new ConcurrentDictionary<string, ConcurrentQueue<WarningEntity>>();
         public static ConcurrentDictionary<string, ConcurrentDictionary<string, MarketDataExtend>> MatchedDataCache = new ConcurrentDictionary<string, ConcurrentDictionary<string, MarketDataExtend>>();
-        public static ConcurrentDictionary<string, ConcurrentDictionary<string, int>> MatchedCountCache = new ConcurrentDictionary<string, ConcurrentDictionary<string, int>>();
+        //public static ConcurrentDictionary<string, ConcurrentDictionary<string, int>> MatchedCountCache = new ConcurrentDictionary<string, ConcurrentDictionary<string, int>>();
 
         #region 交易员变量
         

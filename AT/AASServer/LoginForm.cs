@@ -79,7 +79,7 @@ namespace AASServer
 
                     StringBuilder ErrInfo = new StringBuilder(256);
                     int ClientID = TdxApi.Logon(ServerInfo[1], short.Parse(ServerInfo[2]), this.textBox版本号.Text, this.YybID, this.AccountNo, this.AccountNo, this.textBox交易密码.Text, string.Empty, ErrInfo);
-                    //int ClientID = TdxApi.Logon(ServerInfo[1], short.Parse(ServerInfo[2]), this.textBox版本号.Text, YybID, 8, AccountNo, this.AccountNo, this.textBox交易密码.Text, string.Empty, ErrInfo);
+                    //int ClientID = TdxApi.LogonEx(ServerInfo[1], short.Parse(ServerInfo[2]), this.textBox版本号.Text, this.YybID, this.AccountNo, this.AccountNo, this.textBox交易密码.Text, string.Empty, "210.13.212.202", "00-0A-F7-8D-C3-2A", ErrInfo);
                     if (ClientID == -1)
                     {
                         MessageBox.Show(ErrInfo.ToString());
@@ -107,10 +107,11 @@ namespace AASServer
 
                     StringBuilder ErrInfo = new StringBuilder(256);
                     int ClientID = TdxApi.Logon(ServerInfo[1], short.Parse(ServerInfo[2]), Data[1], this.YybID, this.AccountNo, this.AccountNo, Data[2], string.Empty, ErrInfo);
+                    //int ClientID = TdxApi.LogonEx(ServerInfo[1], short.Parse(ServerInfo[2]), this.textBox版本号.Text, this.YybID, this.AccountNo, this.AccountNo, this.textBox交易密码.Text, string.Empty, "210.13.212.202", "00-0A-F7-8D-C3-2A", ErrInfo);
                     if (ClientID == -1)
                     {
                         MessageBox.Show(ErrInfo.ToString());
-                        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+                        //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
                     }
                     else
                     {

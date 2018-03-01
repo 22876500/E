@@ -170,25 +170,10 @@ namespace AASClient
                     MessageBox.Show("请输入登陆服务器IP！");
                     return;
                 }
-                
-                //string server = string.IsNullOrEmpty(serverIP) ? textBox服务器.Text : serverIP;
 
                 Program.EndpointAddress = new EndpointAddress(new Uri(string.Format("net.tcp://{0}:{1}/", textBox服务器.Text, Program.Port)), EndpointIdentity.CreateDnsIdentity("localhost"));
-                //if (Program.Port == "808")
-                //{
-                    
-                //}
-                //else
-                //{
-                //    Program.EndpointAddress = new EndpointAddress(new Uri(string.Format("net.tcp://{0}/", textBox服务器.Text)), EndpointIdentity.CreateDnsIdentity("localhost"));
-                //}
-                
-                
+ 
                 Program.AASServiceClient = new AASServiceReference.AASServiceClient(Program.callbackInstance, Program.NetTcpBinding, Program.EndpointAddress);
-
-                //Program.EndpointAddress = new EndpointAddress(new Uri(string.Format("http://{0}/", server)), EndpointIdentity.CreateDnsIdentity("localhost"));
-                //Program.AASServiceClient = new AASServiceReference.AASServiceClient(Program.callbackInstance, Program.WSDualHttpBinding, Program.EndpointAddress);
-
 
                 Program.AASServiceClient.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.None;
                 Program.AASServiceClient.ClientCredentials.UserName.UserName = this.comboBox用户名.Text;
@@ -226,7 +211,6 @@ namespace AASClient
                 }
 
                 Directory.CreateDirectory(Program.Current平台用户.用户名);
-
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             catch (MessageSecurityException ex)

@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="AccountDataSet.cs">
       <DependentUpon>AccountDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="AccountDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -259,7 +260,9 @@
     <Compile Include="OpenTradeForm.Designer.cs">
       <DependentUpon>OpenTradeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartialClass.cs" />
+    <Compile Include="PartialClass.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +343,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SetDefaultQuantityForm.cs">
       <SubType>Form</SubType>

@@ -215,34 +215,38 @@ namespace AASClient
             {
                 int priceRound, qtyRound, notionRound;
                 MarketAdapter.BinanceAdapter.Instance.GetRoundNum(symble, out priceRound, out qtyRound, out notionRound);
-                this.BeginInvoke(new Action(() => {
-                    int i = 0;
-                    foreach (var bidItem in message.Bids)
-                    {
-                        if (i < listView买盘.Items.Count)
+                if (this.IsHandleCreated)
+                {
+                    this.BeginInvoke(new Action(() => {
+                        int i = 0;
+                        foreach (var bidItem in message.Bids)
                         {
-                            
-                            ListViewItem bidViewItem = listView买盘.Items[i++];
-                            bidViewItem.SubItems[0].Text = Math.Round(bidItem.Price, priceRound).ToString();
-                            bidViewItem.SubItems[1].Text = Math.Round(bidItem.Quantity, qtyRound).ToString();
-                            bidViewItem.SubItems[2].Text = Math.Round(bidItem.Quantity * bidItem.Price, notionRound).ToString();
-                        }
-                    }
+                            if (i < listView买盘.Items.Count)
+                            {
 
-                    i = 0;
-                    foreach (var item in message.Asks)
-                    {
-                        if (i < listView卖盘.Items.Count)
-                        {
-                            ListViewItem askViewItem = listView卖盘.Items[i++];
-                            askViewItem.SubItems[0].Text = Math.Round(item.Price, priceRound) + "";
-                            askViewItem.SubItems[1].Text = Math.Round(item.Quantity, qtyRound) + "";
-                            askViewItem.SubItems[2].Text = Math.Round(item.Quantity * item.Price, notionRound) + "";
+                                ListViewItem bidViewItem = listView买盘.Items[i++];
+                                bidViewItem.SubItems[0].Text = Math.Round(bidItem.Price, priceRound).ToString();
+                                bidViewItem.SubItems[1].Text = Math.Round(bidItem.Quantity, qtyRound).ToString();
+                                bidViewItem.SubItems[2].Text = Math.Round(bidItem.Quantity * bidItem.Price, notionRound).ToString();
+                            }
                         }
-                    }
-                    var qtyMin = MarketAdapter.BinanceAdapter.Instance.GetMinQty(Zqdm);
-                    label可买股数.Text = Math.Round(decimal.Parse(label可用资金.Text) / message.Asks.First().Price, MarketAdapter.BinanceUtils.GetDigit(qtyMin)) + "";
-                }));
+
+                        i = 0;
+                        foreach (var item in message.Asks)
+                        {
+                            if (i < listView卖盘.Items.Count)
+                            {
+                                ListViewItem askViewItem = listView卖盘.Items[i++];
+                                askViewItem.SubItems[0].Text = Math.Round(item.Price, priceRound) + "";
+                                askViewItem.SubItems[1].Text = Math.Round(item.Quantity, qtyRound) + "";
+                                askViewItem.SubItems[2].Text = Math.Round(item.Quantity * item.Price, notionRound) + "";
+                            }
+                        }
+                        var qtyMin = MarketAdapter.BinanceAdapter.Instance.GetMinQty(Zqdm);
+                        label可买股数.Text = Math.Round(decimal.Parse(label可用资金.Text) / message.Asks.First().Price, MarketAdapter.BinanceUtils.GetDigit(qtyMin)) + "";
+                    }));
+                }
+               
             }
         }
         
@@ -252,15 +256,19 @@ namespace AASClient
             {
                 int priceRound, qtyRound, notionRound;
                 MarketAdapter.BinanceAdapter.Instance.GetRoundNum(symble, out priceRound, out qtyRound, out notionRound);
-                this.Invoke(new Action(()=> {
-                    this.listView逐笔成交.Items.RemoveAt(listView逐笔成交.Items.Count - 1);
-                    ListViewItem listViewItemAdded = new ListViewItem(new string[] { Math.Round(message.Price, priceRound) + "", Math.Round(message.Quantity, qtyRound) + "", dateStart.AddMilliseconds(message.TradeTime).ToString("HH:mm:ss") });
-                    for (int i = 0; i < listViewItemAdded.SubItems.Count; i++)
-                    {
-                        listViewItemAdded.SubItems[i].ForeColor = message.BuyerIsMaker ? Color.Red : Color.Green;
-                    }
-                    this.listView逐笔成交.Items.Insert(0, listViewItemAdded);
-                }));
+                if (this.IsHandleCreated)
+                {
+                    this.BeginInvoke(new Action(() => {
+                        this.listView逐笔成交.Items.RemoveAt(listView逐笔成交.Items.Count - 1);
+                        ListViewItem listViewItemAdded = new ListViewItem(new string[] { Math.Round(message.Price, priceRound) + "", Math.Round(message.Quantity, qtyRound) + "", dateStart.AddMilliseconds(message.TradeTime).ToString("HH:mm:ss") });
+                        for (int i = 0; i < listViewItemAdded.SubItems.Count; i++)
+                        {
+                            listViewItemAdded.SubItems[i].ForeColor = message.BuyerIsMaker ? Color.Red : Color.Green;
+                        }
+                        this.listView逐笔成交.Items.Insert(0, listViewItemAdded);
+                    }));
+                }
+                
             }
         }
         #endregion

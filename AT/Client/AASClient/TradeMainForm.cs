@@ -15,11 +15,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using System.Collections.Concurrent;
 
 namespace AASClient
 {
     public partial class TradeMainForm : Form
     {
+
+        public Dictionary<string, ConcurrentDictionary<string, string>> dictOrderSend = new Dictionary<string, ConcurrentDictionary<string, string>>();//股票代码，委托编号，本地下单时间
+        public Dictionary<string, ConcurrentDictionary<string, string>> dictOrderCancel = new Dictionary<string, ConcurrentDictionary<string, string>>();// 股票代码，委托编号，本地下单时间
+
         private delegate void FlushClient();//代理
 
         public int hqFormCount;
@@ -31,7 +36,7 @@ namespace AASClient
         Thread queryDataThread;
         public LogForm logForm = new LogForm();
 
-        CancelWTForm cancelWTForm = new CancelWTForm();
+        CancelWTForm cancelWTForm = new CancelWTForm() ;
         CJForm cJForm = new CJForm();
         WTForm wtForm = new WTForm();
         OpenTradeForm openTradeForm = new OpenTradeForm();
@@ -51,7 +56,7 @@ namespace AASClient
             InitializeComponent();
 
 
-
+            cancelWTForm.tradeMainForm = this;
             this.hqFormCount = (int)decimal.Parse(Program.accountDataSet.参数.GetParaValue("报价窗口数目", "4"));
             this.hqForm = new HqForm[this.hqFormCount];
 
@@ -511,7 +516,7 @@ namespace AASClient
         private void RefreshOrder(ProgressChangedEventArgs e)
         {
             AASClient.AASServiceReference.JyDataSet.委托DataTable 委托DataTable1 = e.UserState as AASClient.AASServiceReference.JyDataSet.委托DataTable;
-
+            DateTime receiveTime = DateTime.Now;
             if (委托DataTable1 == null)
             {
                 Program.logger.LogRunning("委托更新错误，委托列表为空，不能执行更新！");
@@ -522,6 +527,35 @@ namespace AASClient
 
 
             Refresh业绩();
+
+            foreach (var item in 委托DataTable1)
+            {
+                if (dictOrderSend.ContainsKey(item.证券代码) && dictOrderSend[item.证券代码].ContainsKey(item.委托编号))
+                {
+                    if (dictOrderSend[item.证券代码][item.委托编号] != "---")
+                    {
+                        Program.logger.LogInfo(string.Format("证券代码{0}, 委托编号{1} 首次收到该委托信息。 下单完成时间{2}, 收到委托时间{3}. ", item.证券代码, item.委托编号, dictOrderSend[item.证券代码][item.委托编号], receiveTime.ToString("HH:mm:ss fff")));
+                        dictOrderSend[item.证券代码][item.委托编号] = "---";
+                    }
+                }
+                else if (!dictOrderSend.ContainsKey(item.证券代码))
+                {
+                    dictOrderSend.Add(item.证券代码, new ConcurrentDictionary<string, string>());
+                }
+                else if (!dictOrderSend[item.证券代码].ContainsKey(item.委托编号))
+                {
+                    dictOrderSend[item.证券代码][item.委托编号] = "---";
+                }
+
+                if (dictOrderCancel.ContainsKey(item.证券代码) && dictOrderCancel[item.证券代码].ContainsKey(item.委托编号))
+                {
+                    if (dictOrderCancel[item.证券代码][item.委托编号] != "---")
+                    {
+                        Program.logger.LogInfo(string.Format("证券代码{0}, 委托编号{1} 首次收到该委托撤单数据。 撤单完成时间{2}, 收到委托时间{3}. ", item.证券代码, item.委托编号, dictOrderCancel[item.证券代码][item.委托编号], receiveTime.ToString("HH:mm:ss fff")));
+                        dictOrderCancel[item.证券代码][item.委托编号] = "---";
+                    }
+                }
+            }
         }
 
         private void Refresh业绩()

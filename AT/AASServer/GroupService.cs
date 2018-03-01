@@ -20,26 +20,26 @@ namespace GroupClient
         [OperationContract]
         public string Test(string IP, short Port, string Version, short YybID, string AccountNo, string TradeAccount, string JyPassword, string TxPassword)
         {
-            try
-            {
-                StringBuilder Result = new StringBuilder(1024 * 1024);
-                StringBuilder ErrInfo = new StringBuilder(256);
+            //try
+            //{
+            //    StringBuilder Result = new StringBuilder(1024 * 1024);
+            //    StringBuilder ErrInfo = new StringBuilder(256);
 
-                int ClientID = TdxApi.Logon(IP, Port, Version, YybID, AccountNo, TradeAccount, JyPassword, TxPassword, ErrInfo);
+            //    int ClientID = TdxApi.Logon(IP, Port, Version, YybID, AccountNo, TradeAccount, JyPassword, TxPassword, ErrInfo);
 
-                if (ClientID == -1)
-                {
-                    return string.Format("{0}|{1}", ClientID, ErrInfo);
-                }
-                TdxApi.QueryData(ClientID, 5, Result, ErrInfo);
-                TdxApi.Logoff(ClientID);
-                return string.Format("{0}|{1}", Result, ErrInfo);
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-
+            //    if (ClientID == -1)
+            //    {
+            //        return string.Format("{0}|{1}", ClientID, ErrInfo);
+            //    }
+            //    TdxApi.QueryData(ClientID, 5, Result, ErrInfo);
+            //    TdxApi.Logoff(ClientID);
+            //    return string.Format("{0}|{1}", Result, ErrInfo);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return ex.Message;
+            //}
+            return "当前版本暂不支持此方法";
         }
 
         [OperationContract]

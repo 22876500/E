@@ -44,25 +44,39 @@ namespace AASClient
         public TradeMainForm()
         {
             InitializeComponent();
-            
-            this.hqFormCount = (int)decimal.Parse(Program.accountDataSet.参数.GetParaValue("报价窗口数目", "4"));
-            this.hqForm = new HqForm[this.hqFormCount];
-            for (int i = 0; i < this.hqFormCount; i++)
+            try
             {
-                this.hqForm[i] = new HqForm(i, this);
+                this.hqFormCount = (int)decimal.Parse(Program.accountDataSet.参数.GetParaValue("报价窗口数目", "4"));
+                Program.logger.LogInfo(string.Format("2.hqFormCount Init finished, count {0}", hqFormCount));
+
+                this.hqForm = new HqForm[this.hqFormCount];
+                for (int i = 0; i < this.hqFormCount; i++)
+                {
+                    this.hqForm[i] = new HqForm(i, this);
+                }
+
+                this.uiFile = Path.Combine(Application.StartupPath, Program.Current平台用户.用户名 + "\\DockUI.xml");
+                string[] 主窗体位置 = Program.accountDataSet.参数.GetParaValue("主窗体位置", "300|10|1000|618").Split('|');
+                this.Location = new System.Drawing.Point(int.Parse(主窗体位置[0]), int.Parse(主窗体位置[1]));
+                this.Size = new System.Drawing.Size(int.Parse(主窗体位置[2]), int.Parse(主窗体位置[3]));
+                this.FormClosing += TradeMainForm_FormClosing;
+                this.FormClosed += TradeMainForm_FormClosed;
+                formInit();
             }
-            this.uiFile = Path.Combine(Application.StartupPath, Program.Current平台用户.用户名 + "\\DockUI.xml");
-            string[] 主窗体位置 = Program.accountDataSet.参数.GetParaValue("主窗体位置", "300|10|1000|618").Split('|');
-            this.Location = new System.Drawing.Point(int.Parse(主窗体位置[0]), int.Parse(主窗体位置[1]));
-            this.Size = new System.Drawing.Size(int.Parse(主窗体位置[2]), int.Parse(主窗体位置[3]));
+            catch (Exception ex)
+            {
+                Program.logger.LogInfo(string.Format("3.交易员主界面加载异常！错误信息{0}", ex.Message));
+            }
 
-            //共享额度ToolStripMenuItem.Visible = CommonUtils.IsShareLimit;
-
-            this.FormClosing += TradeMainForm_FormClosing;
-            this.FormClosed += TradeMainForm_FormClosed;
+            
         }
                 
         private void TradeMainForm_Load(object sender, EventArgs e)
+        {
+            formInit();
+        }
+
+        private void formInit()
         {
             if (File.Exists(this.uiFile))
             {
@@ -72,7 +86,7 @@ namespace AASClient
 
                     this.dockPanel1.LoadFromXml(uiFile, ddContent);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("加载界面布局文件失败:" + ex.Message);
 
@@ -81,7 +95,15 @@ namespace AASClient
             }
             else
             {
-                this.ShowAllChildWindow();
+                try
+                {
+                    this.ShowAllChildWindow();
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfo(string.Format("ShowAllChildWindow Exception: {0}", ex.Message));
+                }
+
             }
 
 
@@ -517,26 +539,35 @@ namespace AASClient
 
         private void ShowAllChildWindow()
         {
+            Program.logger.LogRunning("1.ShowAllChildWindow Start……");
             this.logForm.Show(this.dockPanel1);
+            Program.logger.LogRunning("2.logForm Show Finished");
 
+            
             foreach (HqForm HqForm1 in this.hqForm)
             {
                 HqForm1.Show(this.dockPanel1);
             }
-
+            Program.logger.LogRunning("3.HqForm Show Finished");
 
             this.openTradeForm.Show(this.dockPanel1);
+            Program.logger.LogRunning("4.openTradeForm Show Finished");
 
             this.closedTradeForm.Show(this.dockPanel1);
+            Program.logger.LogRunning("5.closedTradeForm Show Finished");
 
             this.cancelWTForm.Show(this.dockPanel1);
+            Program.logger.LogRunning("6.cancelWTForm Show Finished");
 
             this.cJForm.Show(this.dockPanel1);
+            Program.logger.LogRunning("7.cJForm Show Finished");
 
             this.wtForm.Show(this.dockPanel1);
+            Program.logger.LogRunning("8.wtForm Show Finished");
 
             this.交易统计Form.Show(this.dockPanel1);
-            
+            Program.logger.LogRunning("9.交易统计Form Show Finished");
+
         }
         
         private void 行情服务器ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -660,54 +691,6 @@ namespace AASClient
             var frm = new PrewarningListForm();
             frm.ShowDialog();
         }
-
-        private void 预警显示ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowPrewarning();
-        }
-
-        private void ShowPrewarning()
-        {
-            if (Program.fmPreWarnings != null)
-            {
-                for (int i = 0; i < Program.fmPreWarnings.Count; i++)
-                {
-                    if (Program.fmPreWarnings[i] != null && !Program.fmPreWarnings[i].IsDisposed)
-                    {
-                        Program.fmPreWarnings[i].Show();
-                    }
-                    else
-                    {
-                        Program.fmPreWarnings[i] = new PrewarningShowForm(Program.WarningFormulas[i]);
-                        Program.fmPreWarnings[i].OnWarningClick += new Action<string>(SetHqformCode);
-                        Program.fmPreWarnings[i].Show();
-                    }
-                }
-            }
-            else
-            {
-                Program.fmPreWarnings = new List<PrewarningShowForm>(Program.WarningFormulas.Count);
-                for (int i = 0; i < Program.WarningFormulas.Count; i++)
-                {
-                    Program.fmPreWarnings.Add(new PrewarningShowForm(Program.WarningFormulas[i]));
-                    Program.fmPreWarnings[i].OnWarningClick += new Action<string>(SetHqformCode);
-                    Program.fmPreWarnings[i].Show();
-                }
-            }
-        }
-
-        private void SetHqformCode(string code)
-        {
-            if (this.hqForm.Length > 0)
-            {
-                if (this.hqForm[0] != null && !this.hqForm[0].IsDisposed)
-                {
-                    this.hqForm[0].comboBox代码.Text = code;
-                }
-            }
-        }
-        
-        
 
         private void TimerTestConnect_Tick(object sender, EventArgs e)
         {

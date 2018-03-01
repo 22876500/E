@@ -43,10 +43,12 @@ namespace AASServer
         bool IsOpenZmqInterface
         {
             get {
-                var needOpen = CommonUtils.GetConfig("UseZmqInterface");
+                var needOpen = Program.appConfig.GetValue("UseZmqInterface", "");
                 return needOpen == "1";
             }
         }
+
+        public bool IsStarted { get; private set; }
         #endregion
 
         #region Instance
@@ -101,6 +103,10 @@ namespace AASServer
         {
             if (IsOpenZmqInterface)
             {
+                if (!IsStarted)
+                {
+                    IsStarted = true;
+                }
                 this.context = ZContext.Create();
                 ReplyThreadStart();
                 PubThreadStart();

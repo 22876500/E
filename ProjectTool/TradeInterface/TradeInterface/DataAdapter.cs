@@ -26,6 +26,7 @@ namespace TradeInterface
                 o.IP = "124.74.242.150";
                 o.Port = 443;
             }
+            //var ClientID = TdxApi.LogonEx(o.IP, o.Port, o.版本号, o.营业部代码, o.登录帐号, o.交易帐号, o.TradePsw, o.CommunicatePsw, "39.104.93.151", "00-16-3E-00-1C-12", ErrInfo);
             var ClientID = TdxApi.Logon(o.IP, o.Port, o.版本号, o.营业部代码, o.登录帐号, o.交易帐号, o.TradePsw, o.CommunicatePsw, ErrInfo);
             if (ErrInfo.Length > 0)
             {

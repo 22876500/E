@@ -275,11 +275,11 @@ namespace AASServer
 
             OrderChangedDeal();
 
+            OrderTableDeal();
+
             UsersTableDealed();
 
             LimitTableDeal();
-
-            OrderTableDeal();
 
             OrderOperatedTableDeal();
         }
@@ -302,21 +302,13 @@ namespace AASServer
             Task.Run(() => {
                 try
                 {
-                    var keysTrades = Program.成交表Changed.Keys.ToList();
-                    foreach (string UserName in keysTrades)
+                    foreach (string UserName in Program.成交表Changed.Keys)
                     {
                         if (Program.成交表Changed[UserName])
                         {
                             if (Program.交易员成交DataTable.ContainsKey(UserName))
                             {
-                                var dtOrders = Program.交易员成交DataTable[UserName];
-                                JyDataSet.成交DataTable dtSuccessOrder = null;
-                                lock (dtOrders)
-                                {
-                                    dtSuccessOrder = dtOrders.Copy() as JyDataSet.成交DataTable;
-                                }
-
-                                Send成交TableChangedNoticeToTrader(UserName, dtSuccessOrder);
+                                Send成交TableChangedNoticeToTrader(UserName, Program.交易员成交DataTable[UserName]);
                             }
                             Program.成交表Changed[UserName] = false;
                         }
@@ -335,15 +327,13 @@ namespace AASServer
             Task.Run(() => {
                 try
                 {
-                    var keysOrder = Program.委托表Changed.Keys.ToList();
-                    foreach (string UserName in keysOrder)
+                    foreach (string UserName in Program.委托表Changed.Keys)
                     {
                         if (Program.委托表Changed[UserName])
                         {
                             if (Program.交易员委托DataTable.ContainsKey(UserName))
                             {
-                                var 交易员委托table = Program.交易员委托DataTable[UserName];
-                                if (AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
+                                if (AutoOrderService.Instance.IsStarted && AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
                                 {
                                     if (AutoOrderService.Instance.DictUserConsignmentChange.ContainsKey(UserName))
                                     {
@@ -354,13 +344,7 @@ namespace AASServer
                                         AutoOrderService.Instance.DictUserConsignmentChange[UserName] = true;
                                     }
                                 }
-
-                                JyDataSet.委托DataTable dtNew = null;
-                                lock (交易员委托table)
-                                {
-                                    dtNew = 交易员委托table.Copy() as JyDataSet.委托DataTable;
-                                }
-                                Send委托TableChangedNoticeToTrader(UserName, dtNew);
+                                Send委托TableChangedNoticeToTrader(UserName, Program.交易员委托DataTable[UserName]);
                             }
                             Program.委托表Changed[UserName] = false;
                         }
@@ -405,13 +389,11 @@ namespace AASServer
             Task.Run(() => {
                 try
                 {
-                    var keysOrderChange = Program.订单表Changed.Keys.ToList();
                     foreach (string UserName in Program.订单表Changed.Keys)
                     {
                         if (Program.订单表Changed[UserName])
                         {
-                            var orderTable = Program.db.订单.Query订单BelongJy(UserName);
-                            if (AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
+                            if (AutoOrderService.Instance.IsStarted && AutoOrderService.Instance.DictUserLogin.ContainsKey(UserName))
                             {
                                 if (AutoOrderService.Instance.DictUserOrderChange.ContainsKey(UserName))
                                 {
@@ -422,7 +404,7 @@ namespace AASServer
                                     AutoOrderService.Instance.DictUserOrderChange[UserName] = true;
                                 }
                             }
-                            Send订单TableChangedNoticeToTrader(UserName, orderTable);
+                            Send订单TableChangedNoticeToTrader(UserName, Program.db.订单.Query订单BelongJy(UserName));
                             Program.订单表Changed[UserName] = false;
                         }
                     }

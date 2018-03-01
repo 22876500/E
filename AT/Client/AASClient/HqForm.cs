@@ -1109,6 +1109,7 @@ namespace AASClient
                     {
 
                         string Ret = Program.AASServiceClient.CancelOrder(Program.Current平台用户.用户名, DataRow1.组合号, DataRow1.证券代码, DataRow1.证券名称, DataRow1.市场代码, DataRow1.委托编号, DataRow1.买卖方向, DataRow1.委托数量, DataRow1.委托价格);
+                        DateTime et = DateTime.Now;
                         string[] Data = Ret.Split('|');
                         if (Data[1] != string.Empty)
                         {
@@ -1116,6 +1117,11 @@ namespace AASClient
                         }
                         else
                         {
+                            if (!this.tradeMainForm.dictOrderCancel.ContainsKey(DataRow1.证券代码))
+                            {
+                                this.tradeMainForm.dictOrderCancel.Add(DataRow1.证券代码, new System.Collections.Concurrent.ConcurrentDictionary<string, string>());
+                            }
+                            this.tradeMainForm.dictOrderCancel[DataRow1.证券代码][DataRow1.委托编号] = et.ToString("HH:mm:ss fff");
                             Program.logger.LogJy(Program.Current平台用户.用户名, DataRow1.证券代码, DataRow1.证券名称, DataRow1.委托编号, DataRow1.买卖方向, DataRow1.委托数量, DataRow1.委托价格, "撤单成功");
                         }
                     }
@@ -1475,11 +1481,12 @@ namespace AASClient
                 else
                 {
                     int qty = -1;//如果长度为5，且下单数量非一手整数倍，则提示
-                    if (this.Zqdm.Length == 5 && L2HkApi.Instance.GetQty(this.Zqdm, out qty) && qty > 0 && numericUpDown数量.Value % qty != 0)
-                    {
-                        MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
-                    }
-                    else if (!string.IsNullOrWhiteSpace(label涨停价.Text) && decimal.Parse(label涨停价.Text) > 0 && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
+                    //if (this.Zqdm.Length == 5 && L2HkApi.Instance.GetQty(this.Zqdm, out qty) && qty > 0 && numericUpDown数量.Value % qty != 0)
+                    //{
+                    //    MessageBox.Show(string.Format("下单数量应为一手({0})的整数倍!,", qty));
+                    //}
+                    //else 
+                    if (!string.IsNullOrWhiteSpace(label涨停价.Text) && decimal.Parse(label涨停价.Text) > 0 && numericUpDown价格.Value > decimal.Parse(label涨停价.Text))
                     {
                         MessageBox.Show(string.Format("欲挂单价格{0}高于涨停价{1}", numericUpDown价格.Value.ToString(), label涨停价.Text));
                     }
@@ -1578,13 +1585,21 @@ namespace AASClient
                         string[] Data = Ret.Split('|');
                         if (Data[1] == string.Empty)
                         {
+                            DateTime successTime = DateTime.Now;
                             this.Last委托编号 = Data[0];
-                            Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, Data[0], tradeType, 委托数量, 委托价格, "下单成功," + "耗时：" + (DateTime.Now - dt).TotalSeconds);
+                            Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, Data[0], tradeType, 委托数量, 委托价格, "下单成功," + "耗时：" + (successTime - dt).TotalSeconds);
+
+                            if (!this.tradeMainForm.dictOrderSend.ContainsKey(code))
+                            {
+                                tradeMainForm.dictOrderSend.Add(code, new ConcurrentDictionary<string, string>());
+                            }
+                            tradeMainForm.dictOrderSend[code][Data[0]] = successTime.ToString("HH:mm:ss fff");
                         }
                         else
                         {
                             Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, string.Empty, tradeType, 委托数量, 委托价格, "下单失败, {0}", Data[1]);
                         }
+                        
                     }
                     else if (code.Length == 5)
                     {

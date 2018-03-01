@@ -307,7 +307,6 @@
             this.Name = "TradeMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "交易员";
-            this.Load += new System.EventHandler(this.TradeMainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

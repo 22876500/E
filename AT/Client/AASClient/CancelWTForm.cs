@@ -12,6 +12,8 @@ namespace AASClient
 {
     public partial class CancelWTForm : WeifenLuo.WinFormsUI.Docking.DockContent
     {
+        public TradeMainForm tradeMainForm;
+
         public CancelWTForm()
         {
             InitializeComponent();
@@ -61,6 +63,11 @@ namespace AASClient
             }
             else
             {
+                if (!this.tradeMainForm.dictOrderCancel.ContainsKey(DataRow1.证券代码))
+                {
+                    this.tradeMainForm.dictOrderCancel.Add(DataRow1.证券代码, new System.Collections.Concurrent.ConcurrentDictionary<string, string>());
+                }
+                this.tradeMainForm.dictOrderCancel[DataRow1.证券代码][DataRow1.委托编号] = et.ToString("HH:mm:ss fff");
                 Program.logger.LogJy(Program.Current平台用户.用户名, DataRow1.证券代码, DataRow1.证券名称, DataRow1.委托编号, DataRow1.买卖方向, DataRow1.委托数量, DataRow1.委托价格, "撤单成功, 耗时{0}", (et - st).TotalSeconds);
             }
         }

@@ -23,11 +23,11 @@ namespace AASClient
     {
         Dictionary<string, string> ServerIPDict = new Dictionary<string, string>();
 
-        bool isSelectServer = false;
+        bool isSelectServer = true;
         Configuration AppConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         
         //110.86.28.229 西安登录的固定ip, 210.13.212.206上海登录的固定ip 
-        readonly string serverIP = "";//"39.104.93.151";
+        readonly string serverIP = "";//"101.132.154.219";
         const string pubServerName = "分发服务器";
         string pubServerIPCache = string.Empty;
 
@@ -35,8 +35,8 @@ namespace AASClient
         public LoginForm()
         {
             InitializeComponent();
-            //ServerIPDict.Add("云服务器", "云 39.104.93.151");
-            //ServerIPDict.Add("65", "65 192.168.1.65");
+            ServerIPDict.Add("云服务器", "云服务器 101.132.154.219");
+            ServerIPDict.Add("65", "65 192.168.1.65");
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -83,15 +83,9 @@ namespace AASClient
                     }
                 }
             }
-            //this.textBox服务器.ReadOnly = true;
-            //this.textBox服务器.Text = "210.13.212.206";//上海交易使用
 
             if (isSelectServer)
             {
-                //comboBoxServer.Items.Add("厦门252 110.86.28.227");
-                //comboBoxServer.Items.Add("65 110.86.28.229");
-                //comboBoxServer.Items.Add("策略正式 110.86.28.230");
-                //comboBoxServer.Items.Add("策略测试 110.86.28.228");
                 foreach (var item in ServerIPDict.Values)
                 {
                     comboBoxServer.Items.Add(item);

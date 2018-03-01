@@ -577,12 +577,20 @@ namespace AASServer
                                 交易帐户Row1 = Program.UIdataSet.交易帐户.New交易帐户Row();
                                 交易帐户Row1.组合号 = this.名称;
                                 交易帐户Row1.查询耗时 = e.UserState as string;
+                                if (CommonUtils.ExistsGroup(this.名称))
+                                {
+                                    交易帐户Row1.IP = CommonUtils.GetGroupConfig(this.名称).ServerIP;
+                                }
+                                else {
+                                    交易帐户Row1.IP = "本地登陆";
+                                }
                                 Program.UIdataSet.交易帐户.Add交易帐户Row(交易帐户Row1);
                             }
                             else
                             {
                                 交易帐户Row1.查询耗时 = e.UserState as string;
                             }
+
                         });
                         break;
                     default:
@@ -1579,11 +1587,20 @@ namespace AASServer
                                 交易帐户Row1 = Program.UIdataSet.交易帐户.New交易帐户Row();
                                 交易帐户Row1.组合号 = this.名称;
                                 交易帐户Row1.查询耗时 = e.UserState as string;
+
                                 Program.UIdataSet.交易帐户.Add交易帐户Row(交易帐户Row1);
                             }
                             else
                             {
                                 交易帐户Row1.查询耗时 = e.UserState as string;
+                            }
+                            if (CommonUtils.ExistsGroup(this.名称))
+                            {
+                                交易帐户Row1.IP = CommonUtils.GetGroupConfig(this.名称).ServerIP;
+                            }
+                            else
+                            {
+                                交易帐户Row1.IP = "本地登陆";
                             }
                         });
                         break;
@@ -1678,10 +1695,10 @@ namespace AASServer
                     }
                     else
                     {
-                        //if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday && DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
-                        //{
-                        //    return "周末休息时间无法登录!";
-                        //}
+                        if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday && DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
+                        {
+                            return "周末休息时间无法登录!";
+                        }
 
                         if (CommonUtils.ExistsGroup(this.名称))
                         {
@@ -1752,12 +1769,13 @@ namespace AASServer
                     return CATSQueryData();
                 }
 
-                //判断是否需要查询
+                //判断是否需要查询，出现不能推送至客户端问题，需研究为什么。
                 //if ((this.帐户委托DataTable.Count == OrderIDs.Count) && this.帐户委托DataTable.FirstOrDefault(_ => _.成交价格 > 0 && _.委托数量 > (_.成交数量 + _.撤单数量)) == null)
                 //{
                 //    Thread.Sleep(100);
                 //    return "无需查询委托";
                 //}
+                DateTime dtStart = DateTime.Now;
                 
                 double timeCost = 0;
                 DataTable 查到的成交Result = null;
@@ -1768,7 +1786,11 @@ namespace AASServer
                 if (CommonUtils.ExistsGroup(this.名称))
                 {
                     QueryDataFromClient(ref timeCost, ref 查到的成交Result, ref 查到的成交ErrInfo, ref 查到的委托Result, ref 查到的委托ErrInfo);
-                    Thread.Sleep(300);
+                    double ms = (DateTime.Now - dtStart).TotalMilliseconds;
+                    if (ms < 300)
+                    {
+                        Thread.Sleep(300 - (int)ms);
+                    }
                 }
                 else
                 {
@@ -1776,6 +1798,7 @@ namespace AASServer
                 }
 
                 DateTime dtMid = DateTime.Now;
+                //Program.logger.LogInfo("查询耗时:{0}", (dtMid - dtStart).TotalSeconds);
 
                 if (isTradeResultChange || isOperateResultChange)
                 {
@@ -1804,29 +1827,31 @@ namespace AASServer
                         Program.logger.LogInfo("券商帐户 {0} 查询委托时出错:{1}", this.名称, 查到的委托ErrInfo);
                     }
 
-                    if (查到的委托Result != null && 查到的委托Result.Rows.Count > 0)
-                    {
-                        this.帐户委托DataTable = this.Get规范委托(查到的委托Result);
-
-                        var dtNow = DateTime.Now;
-                        foreach (var item in 帐户委托DataTable)
-                        {
-                            if (dictOrderSend.ContainsKey(item.委托编号) && dictOrderSend[item.委托编号] > DateTime.MinValue && item.成交数量 > 0)
-                            {
-                                Program.logger.LogInfoDetail("下单委托编号{0}首次收到委托成交数量大于0信息，时间间隔{1}, 数据处理时间{2},组合号{3}", item.委托编号, (dtNow - dictOrderSend[item.委托编号]).TotalSeconds, (dtNow - dtMid).TotalSeconds, this.名称);
-                                dictOrderSend[item.委托编号] = DateTime.MinValue;
-                            }
-                            if (dictOrderCancel.ContainsKey(item.委托编号) && dictOrderCancel[item.委托编号] > DateTime.MinValue && item.撤单数量 > 0)
-                            {
-                                Program.logger.LogInfoDetail("撤单委托编号{0}首次收到含撤单数量数据，时间间隔{1}，数据处理时间{2},组合号{3}", item.委托编号, (dtMid - dictOrderCancel[item.委托编号]).TotalSeconds, (dtNow - dtMid).TotalSeconds, this.名称);
-                                dictOrderCancel[item.委托编号] = DateTime.MinValue;
-                            }
-                        }
-                    }
                     lastTimeCost = timeCost;
 
                     Program.帐户成交DataTable[this.名称] = this.帐户成交DataTable.Copy() as JyDataSet.成交DataTable;
                     Program.帐户委托DataTable[this.名称] = this.帐户委托DataTable.Copy() as JyDataSet.委托DataTable;
+
+                    if (ConfigCache.UseLogDetail == "1")
+                    {
+                        if (查到的委托Result != null && 查到的委托Result.Rows.Count > 0)
+                        {
+                            var dtNow = DateTime.Now;
+                            foreach (var item in 帐户委托DataTable)
+                            {
+                                if (dictOrderSend.ContainsKey(item.委托编号) && dictOrderSend[item.委托编号] > DateTime.MinValue && item.成交数量 > 0)
+                                {
+                                    Program.logger.LogInfoDetail("下单委托编号{0}首次收到委托成交数量大于0信息，时间间隔{1}, 数据处理时间{2},组合号{3}", item.委托编号, (dtNow - dictOrderSend[item.委托编号]).TotalSeconds, (dtNow - dtMid).TotalSeconds, this.名称);
+                                    dictOrderSend[item.委托编号] = DateTime.MinValue;
+                                }
+                                if (dictOrderCancel.ContainsKey(item.委托编号) && dictOrderCancel[item.委托编号] > DateTime.MinValue && item.撤单数量 > 0)
+                                {
+                                    Program.logger.LogInfoDetail("撤单委托编号{0}首次收到含撤单数量数据，时间间隔{1}，数据处理时间{2},组合号{3}", item.委托编号, (dtMid - dictOrderCancel[item.委托编号]).TotalSeconds, (dtNow - dtMid).TotalSeconds, this.名称);
+                                    dictOrderCancel[item.委托编号] = DateTime.MinValue;
+                                }
+                            }
+                        }
+                    }
                 }
                 return timeCost.ToString();
             }
@@ -2638,19 +2663,18 @@ namespace AASServer
             {
                 if (this.帐户成交DataTable.Any(r => r.委托编号 == 委托编号))
                 {
-                    var rows = this.帐户成交DataTable.Where(r => r.委托编号 == 委托编号 && r.成交数量 > 0 && r.成交金额 == 0).ToList();
-                    if (rows.Count > 0)
+                    // r.成交数量 > 0 && r.成交金额 == 0
+                    var tradeRelated = this.帐户成交DataTable.Where(r => r.委托编号 == 委托编号);
+                    decimal 成交金额 = 0;
+                    成交数量 = 0;
+                    成交价格 = 0;
+                    foreach (var item in tradeRelated)
                     {
-                        rows.ForEach(_ =>
-                        {
-                            if (_.成交价格 > 0)
-                            {
-                                _.成交金额 = _.成交价格 * _.成交数量;
-                            }
-                        });
+                        if (item.成交金额 == 0 && item.成交价格 > 0 && item.成交数量 > 0)
+                            item.成交金额 = item.成交价格 * item.成交数量;
+                        成交金额 += item.成交金额;
+                        成交数量 += item.成交数量;
                     }
-                    decimal 成交金额 = this.帐户成交DataTable.Where(r => r.委托编号 == 委托编号).Sum(r => r.成交金额);
-                    成交数量 = this.帐户成交DataTable.Where(r => r.委托编号 == 委托编号).Sum(r => r.成交数量);
                     成交价格 = Math.Round(成交金额 / 成交数量, 3, MidpointRounding.AwayFromZero);
                 }
                 else
@@ -2689,9 +2713,11 @@ namespace AASServer
 
             public void SendOrder(int Category, byte Market, string Zqdm, decimal Price, decimal Quantity, OrderCacheEntity orderCacheObj, out string Result, out string ErrInfo, out bool hasOrderNo)
             {
+                Result = string.Empty;
+                ErrInfo = string.Empty;
+
                 if (this.ClientID == -1)
                 {
-                    Result = string.Empty;
                     ErrInfo = string.Format("{0}未登录到券商交易服务器", this.名称);
                     hasOrderNo = false;
                     return;
@@ -2703,23 +2729,19 @@ namespace AASServer
                 if (!Tool.IsSendOrderTimeFit())
                 {
                     ErrInfo = string.Format("下单时限为9:00-15:00, 当前时间{0}超出下单时限", DateTime.Now);
-                    Result = string.Empty;
                     return;
                 }
 
-                //if (this.IsCATSAccount)
-                //{
-                //    SendCatsOrder(Category, Market, Zqdm, Price, Quantity, orderCacheObj, out Result, out ErrInfo, out hasOrderNo);
-                //    return;
-                //}
-                //if (IsImsAccount)
-                //{
-                //    SendImsOrder(Category, Market, Zqdm, Price, Quantity, out Result, out ErrInfo, out hasOrderNo);
-                //    return;
-                //}
-
-                Result = string.Empty;
-                ErrInfo = string.Empty;
+                if (this.IsCATSAccount)
+                {
+                    SendCatsOrder(Category, Market, Zqdm, Price, Quantity, orderCacheObj, out Result, out ErrInfo, out hasOrderNo);
+                    return;
+                }
+                if (IsImsAccount)
+                {
+                    SendImsOrder(Category, Market, Zqdm, Price, Quantity, out Result, out ErrInfo, out hasOrderNo);
+                    return;
+                }
 
                 string 股东代码 = (Market == 0 ? this.深圳股东代码 : this.上海股东代码);
                 if (股东代码 == string.Empty)
@@ -2731,71 +2753,53 @@ namespace AASServer
                 if (!CommonUtils.ExistsGroup(this.名称))
                 {
                     this.SendOrderLocal(Category, 股东代码, Zqdm, Price, Quantity, out Result, out ErrInfo);
-                    DataTable DataTable1 = Tool.ChangeDataStringToTable(Result);
-                    if (DataTable1 != null)
-                    {
-                        if (this.券商 == "银河证券" && this.类型 == "信用")
-                        {
-                            Result = DataTable1.Rows[0]["合同编号"] as string;
-                        }
-                        else
-                        {
-                            Result = DataTable1.Rows[0]["委托编号"] as string;
-                        }
-                        OrderIDs.Enqueue(Result);
-                    }
-                    else if(ErrInfo.Length > 0)
-                    {
-                        Program.logger.LogInfo("下单错误 组合号{0}, 交易员{1}, 证券代码{2}, 错误信息 {3}", this.名称, orderCacheObj.Trader, Zqdm, ErrInfo);
-                    }
                 }
                 else
                 {
                     SendOrderClient(Category, 股东代码, Zqdm, Price, Quantity, ref Result, ref ErrInfo);
                 }
 
-            }
-
-            private void SendOrderClient(int Category, string Gddm, string Zqdm, decimal Price, decimal Quantity, ref string Result, ref string ErrInfo)
-            {
-
-
-                AASServer.ServiceReference.GroupServiceQueryinfo 下单response = null;
-                var client1 = CommonUtils.GetGroupClient(this.名称);
-                下单response = client1.SendOrder(this.名称, Category, 0, Gddm, Zqdm, (float)Price, (int)Quantity, CommonUtils.Mac);
-                client1.Close();
-
-                ErrInfo = 下单response.Error;
-
-
                 if (ErrInfo == string.Empty)
                 {
-                    if (下单response.Result.Contains('\n'))
-                    {
-                        DataTable DataTable1 = Tool.ChangeDataStringToTable(下单response.Result);
-                        if (this.券商 == "银河证券" && this.类型 == "信用")
-                        {
-                            Result = DataTable1.Rows[0]["合同编号"] as string;
-                        }
-                        else
-                        {
-                            Result = DataTable1.Rows[0]["委托编号"] as string;
-                        }
-                        
-                    }
-                    else
-                    {
-                        Result = 下单response.Result;
-                    }
+                    Result = GetOrderID(Result);
                     OrderIDs.Enqueue(Result);
                     dictOrderSend[Result] = DateTime.Now;
                 }
                 else
                 {
                     Result = string.Empty;
+                    Program.logger.LogInfoDetail("下单错误 组合号{0}, 交易员{1}, 证券代码{2}, 错误信息 {3}", this.名称, orderCacheObj.Trader, Zqdm, ErrInfo);
+                }
+            }
+
+            private void SendOrderClient(int Category, string Gddm, string Zqdm, decimal Price, decimal Quantity, ref string Result, ref string ErrInfo)
+            {
+                var client = CommonUtils.GetGroupClient(this.名称);
+                var 下单response = client.SendOrder(this.名称, Category, 0, Gddm, Zqdm, (float)Price, (int)Quantity, CommonUtils.Mac);
+                client.Close();
+                ErrInfo = 下单response.Error;
+                Result = 下单response.Result;
+            }
+
+            private string GetOrderID(string result)
+            {
+                if (result.Contains('\n'))
+                {
+                    DataTable DataTable1 = Tool.ChangeDataStringToTable(result);
+                    if (this.券商 == "银河证券" && this.类型 == "信用")
+                    {
+                        return DataTable1.Rows[0]["合同编号"] as string;
+                    }
+                    else
+                    {
+                        return DataTable1.Rows[0]["委托编号"] as string;
+                    }
 
                 }
-              
+                else
+                {
+                    return result;
+                }
             }
 
             public void SendOrderLocal(int Category, string Gddm, string Zqdm, decimal Price, decimal Quantity, out string Result, out string ErrInfo)
@@ -3144,20 +3148,15 @@ namespace AASServer
                             订单1.平仓价位 = e.Row.平仓价位;
                             订单1.市场代码 = e.Row.市场代码;
                             db.订单.Add(订单1);
-                            db.SaveChanges();
-
-
-
                             Program.订单表Changed[e.Row.交易员] = true;
+                            db.SaveChanges();
                             break;
                         case DataRowAction.Delete:
                             订单1 = db.订单.Find(e.Row.交易员, e.Row.组合号, e.Row.证券代码);
                             db.订单.Remove(订单1);
-                            db.SaveChanges();
-
-
                             Program.订单表Changed[e.Row.交易员] = true;
 
+                            db.SaveChanges();
                             break;
                         case DataRowAction.Change:
                             订单1 = db.订单.First(r => r.交易员 == e.Row.交易员 && r.组合号 == e.Row.组合号 && r.证券代码 == e.Row.证券代码);
@@ -3179,11 +3178,8 @@ namespace AASServer
                             订单1.平仓价位 = e.Row.平仓价位;
                             订单1.市场代码 = e.Row.市场代码;
                             db.Entry(订单1).State = System.Data.Entity.EntityState.Modified;
-                            db.SaveChanges();
-
                             Program.订单表Changed[e.Row.交易员] = true;
-
-
+                            db.SaveChanges();
                             break;
                         default:
                             break;

@@ -48,52 +48,56 @@ namespace AASServer
             {
                 if (_dictGroupIP == null)
                 {
-                    System.Net.ServicePointManager.DefaultConnectionLimit = 512;
-                    _dictGroupIP = new Dictionary<string, GroupConfig>();
-                    string groupIPFile = "组合号接口IP.txt";
-                    if (File.Exists(groupIPFile))
+                    lock (Sync)
                     {
-                        var arr = File.ReadAllLines(groupIPFile);
-                        foreach (var item in arr)
+                        System.Net.ServicePointManager.DefaultConnectionLimit = 512;
+                        _dictGroupIP = new Dictionary<string, GroupConfig>();
+                        string groupIPFile = "组合号接口IP.txt";
+                        if (File.Exists(groupIPFile))
                         {
-                            if (!string.IsNullOrEmpty(item))
+                            var arr = File.ReadAllLines(groupIPFile);
+                            foreach (var item in arr)
                             {
-                                var groupInfo = item.Split(new char[] { '|', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                                if (groupInfo.Length >= 2)
+                                if (!string.IsNullOrEmpty(item))
                                 {
-                                    var groupName = groupInfo[0].Trim();
-                                    var ip = groupInfo[1].Trim();
-                                    var config = new GroupConfig() { ServerIP = groupInfo[1].Trim() };
-                                    
-                                    if (groupInfo.Length == 3)
+                                    var groupInfo = item.Split(new char[] { '|', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                                    if (groupInfo.Length >= 2)
                                     {
-                                        var bindTypeInfo = groupInfo[2].ToLower();
-                                        if (bindTypeInfo.Contains("tcp"))
+                                        var groupName = groupInfo[0].Trim();
+                                        var ip = groupInfo[1].Trim();
+                                        var config = new GroupConfig() { ServerIP = groupInfo[1].Trim() };
+
+                                        if (groupInfo.Length == 3)
                                         {
-                                            config.ConnectType = GroupConfig.BindingType.NetTcpBindg;
-                                        }
-                                        else if (bindTypeInfo.Contains("basic"))
-                                        {
-                                            config.ConnectType = GroupConfig.BindingType.BasicHttpBinding;
+                                            var bindTypeInfo = groupInfo[2].ToLower();
+                                            if (bindTypeInfo.Contains("tcp"))
+                                            {
+                                                config.ConnectType = GroupConfig.BindingType.NetTcpBindg;
+                                            }
+                                            else if (bindTypeInfo.Contains("basic"))
+                                            {
+                                                config.ConnectType = GroupConfig.BindingType.BasicHttpBinding;
+                                            }
+                                            else
+                                            {
+                                                config.ConnectType = GroupConfig.BindingType.WSHttpBinding;
+                                            }
                                         }
                                         else
                                         {
                                             config.ConnectType = GroupConfig.BindingType.WSHttpBinding;
                                         }
+                                        if (!_dictGroupIP.ContainsKey(groupName))
+                                        {
+                                            _dictGroupIP.Add(groupName, config);
+                                        }
                                     }
-                                    else
-                                    {
-                                        config.ConnectType = GroupConfig.BindingType.WSHttpBinding;
-                                    }
-                                    if (!_dictGroupIP.ContainsKey(groupName))
-                                    {
-                                        _dictGroupIP.Add(groupName, config);
-                                    }
+
                                 }
-                                
                             }
                         }
                     }
+                    
                 }
                 return _dictGroupIP;
             }
