@@ -70,6 +70,8 @@ namespace start
                 Console.WriteLine("Server Time {0}, Client Time {1}", GetTime(serverTime.ServerTime), DateTime.Now.ToString("HH:mm:ss fff"));
                 SetSystemDateTime.SetLocalTimeByStr(DateTime.Now.ToString());
                 Console.WriteLine(DateTime.Now.ToString("HH:mm:ss fff"));
+
+                var testOrder = binanceClient.PostNewOrder("trxbtc", 2000m, 0.000001m, OrderSide.BUY).Result;
                 //var accountInfo = binanceClient.GetAccountInfo().Result;
                 //Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(accountInfo));
                 //var allOrders = binanceClient.GetAllOrders("trxbtc", 21293338).Result;
@@ -94,7 +96,7 @@ namespace start
                 
                 CheckAutoBanInfo(ex);
             }
-            
+
             //var test_c = new BinanceTest();
             //var orderBook = binanceClient.GetOrderBook("xlmbtc").Result;
             //binanceClient.ListenTradeEndpoint("xlmbtc", AggregateTradesHandler);
@@ -104,7 +106,7 @@ namespace start
             //binanceClient.ListenPartialDepthEndpoint("ethbtc", PartialDepthHandler);
 
 
-            
+
             //var serverTime = binanceClient.GetServerTime().Result;
             //Console.WriteLine(serverTime.ServerTime);
             //var listenKey = binanceClient.StartUserStream().Result.ListenKey;
@@ -117,7 +119,7 @@ namespace start
             //var accountInfo = binanceClient.GetAccountInfo().Result;
             //var info = (Newtonsoft.Json.JsonConvert.SerializeObject(accountInfo));
             //logger.LogWarn(info);
-            //var testOrder = binanceClient.PostNewOrder("trxbtc", 2000m, 0.000001m, OrderSide.BUY).Result;            
+            //var testOrder = binanceClient.PostNewOrder("trxbtc", 2000m, 0.000001m, OrderSide.BUY).Result;
             //Thread.Sleep(5000);
 
             //var allOrders = binanceClient.GetAllOrders("xlmbtc").Result;

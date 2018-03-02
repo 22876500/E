@@ -1489,6 +1489,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="委托Change">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="successQty" type="xs:decimal" />
+        <xs:element minOccurs="0" name="successPrice" type="xs:decimal" />
+        <xs:element minOccurs="0" name="cancelQty" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Close">
     <xs:complexType>
       <xs:sequence />

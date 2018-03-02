@@ -50,8 +50,7 @@ namespace AASServer
                         Program.废单通知.Enqueue(this);
                     }
                 }
-                
-                if (this.状态说明.Contains("未通知废单"))
+                else if (this.状态说明.Contains("未通知废单"))
                 {
                     if (Regex.IsMatch(this.状态说明, "Please Input Valid Value For Quantity [(]Lot Size [0-9]+"))
                     {
@@ -116,16 +115,17 @@ namespace AASServer
 
                     Program.db.已发委托.Update(DateTime.Today, this.组合号, this.委托编号, this.成交价格, this.成交数量);
 
-
+                    Program.成交通知.Enqueue(成交Row1);
 
                     Program.db.交易日志.Add(成交Row1);
 
-
-
-
-                    Program.成交通知.Enqueue(成交Row1);
-
-
+                    foreach (IClient IClient1 in Program.ClientUserName.Keys)
+                    {
+                        if (Program.ClientUserName[IClient1] == this.交易员)
+                        {
+                            IClient1.委托Change(this.委托编号, this.状态说明, this.成交数量, this.成交价格, this.撤单数量);
+                        }
+                    }
                 }
             }
 

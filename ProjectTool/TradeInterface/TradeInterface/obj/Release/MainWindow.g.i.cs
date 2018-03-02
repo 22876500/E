@@ -42,7 +42,7 @@ namespace TradeInterface {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 25 "..\..\MainWindow.xaml"
+        #line 29 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox cbTodayType;
         
@@ -50,7 +50,7 @@ namespace TradeInterface {
         #line hidden
         
         
-        #line 37 "..\..\MainWindow.xaml"
+        #line 41 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox cmbGroup;
         
@@ -58,7 +58,7 @@ namespace TradeInterface {
         #line hidden
         
         
-        #line 38 "..\..\MainWindow.xaml"
+        #line 42 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.CheckBox ckbIsAllColumn;
         
@@ -66,7 +66,7 @@ namespace TradeInterface {
         #line hidden
         
         
-        #line 39 "..\..\MainWindow.xaml"
+        #line 43 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.CheckBox ckbIsCheckPort;
         
@@ -74,7 +74,7 @@ namespace TradeInterface {
         #line hidden
         
         
-        #line 41 "..\..\MainWindow.xaml"
+        #line 45 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnRepay;
         
@@ -82,7 +82,7 @@ namespace TradeInterface {
         #line hidden
         
         
-        #line 44 "..\..\MainWindow.xaml"
+        #line 48 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DataGrid dgMain;
         
@@ -90,7 +90,7 @@ namespace TradeInterface {
         #line hidden
         
         
-        #line 53 "..\..\MainWindow.xaml"
+        #line 57 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal TradeInterface.Ctrl.Loading loading;
         
@@ -145,7 +145,7 @@ namespace TradeInterface {
             case 2:
             this.cbTodayType = ((System.Windows.Controls.ComboBox)(target));
             
-            #line 25 "..\..\MainWindow.xaml"
+            #line 29 "..\..\MainWindow.xaml"
             this.cbTodayType.GotFocus += new System.Windows.RoutedEventHandler(this.cbTodayType_GotFocus);
             
             #line default
@@ -154,7 +154,7 @@ namespace TradeInterface {
             case 3:
             this.cmbGroup = ((System.Windows.Controls.ComboBox)(target));
             
-            #line 37 "..\..\MainWindow.xaml"
+            #line 41 "..\..\MainWindow.xaml"
             this.cmbGroup.GotFocus += new System.Windows.RoutedEventHandler(this.cmbGroup_GotFocus);
             
             #line default
@@ -163,7 +163,7 @@ namespace TradeInterface {
             case 4:
             this.ckbIsAllColumn = ((System.Windows.Controls.CheckBox)(target));
             
-            #line 38 "..\..\MainWindow.xaml"
+            #line 42 "..\..\MainWindow.xaml"
             this.ckbIsAllColumn.Click += new System.Windows.RoutedEventHandler(this.ckbIsAllColumn_Click);
             
             #line default
@@ -174,7 +174,7 @@ namespace TradeInterface {
             return;
             case 6:
             
-            #line 40 "..\..\MainWindow.xaml"
+            #line 44 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Search_Click);
             
             #line default
@@ -183,7 +183,7 @@ namespace TradeInterface {
             case 7:
             this.btnRepay = ((System.Windows.Controls.Button)(target));
             
-            #line 41 "..\..\MainWindow.xaml"
+            #line 45 "..\..\MainWindow.xaml"
             this.btnRepay.Click += new System.Windows.RoutedEventHandler(this.btnRepay_Click);
             
             #line default

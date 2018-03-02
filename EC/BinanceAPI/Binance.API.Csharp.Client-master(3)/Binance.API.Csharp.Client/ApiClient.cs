@@ -57,7 +57,16 @@ namespace Binance.API.Csharp.Client
             }
             else
             {
-                return JsonConvert.DeserializeObject<T>(result);
+                try
+                {
+                    T resultObj = JsonConvert.DeserializeObject<T>(result);
+                    return resultObj;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(string.Format("解析异常: 返回消息 {0} 转为 {1}时失败，异常信息{2}", result, typeof(T).Name, ex.Message));    
+                }
+                
             }
         }
 

@@ -2420,9 +2420,10 @@ namespace AASServer
                             && CommonUtils.IsTdxBuy(_.Category) == CommonUtils.IsTdxBuy(int.Parse(DataRow0["买卖标志"] + "")));
                         if (needAddOrd != null)
                         {
+                            Program.logger.LogInfo("查询到判断为漏单的委托数据，组合号{0}, 委托编号{1}", this.名称, 委托编号);
                             //加入委托表和交易日志表。
-                            Program.db.已发委托.Add(DateTime.Today, this.名称, 委托编号, needAddOrd.Trader, "委托成功", needAddOrd.Market, needAddOrd.Zqdm, needAddOrd.ZqName,needAddOrd.Category, 0m, 0m, needAddOrd.Price, needAddOrd.Quantity, 0m);
-                            string Msg =needAddOrd.IsRiskControl ? string.Format("风控员{0}下单成功", needAddOrd.Sender) : "下单成功";
+                            Program.db.已发委托.Add(DateTime.Today, this.名称, 委托编号, needAddOrd.Trader, "委托补漏成功", needAddOrd.Market, needAddOrd.Zqdm, needAddOrd.ZqName, needAddOrd.Category, 0m, 0m, needAddOrd.Price, needAddOrd.Quantity, 0m);
+                            string Msg = needAddOrd.IsRiskControl ? string.Format("风控员{0}下单补漏成功", needAddOrd.Sender) : "下单补漏成功";
                             Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), needAddOrd.Trader, this.名称, needAddOrd.Zqdm, needAddOrd.ZqName, 委托编号, needAddOrd.Category, needAddOrd.Quantity, needAddOrd.Price, Msg);
                             needAddOrd.OrderID = 委托编号;
 

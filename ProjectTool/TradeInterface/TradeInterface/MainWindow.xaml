@@ -13,13 +13,17 @@
         <TabControl>
             <TabItem Header="接口查询">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="814*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="40" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,8">
 
                         <Label Content="交易数据" VerticalAlignment="Center"></Label>
                         <ComboBox Width="80" x:Name="cbTodayType"  GotFocus="cbTodayType_GotFocus">
@@ -41,7 +45,7 @@
                         <Button x:Name="btnRepay"  Click="btnRepay_Click">信用账户还款</Button>
 
                     </StackPanel>
-                    <DataGrid x:Name="dgMain" Grid.Row="2" CanUserDeleteRows="False" CanUserAddRows="False" ClipboardCopyMode="IncludeHeader"></DataGrid>
+                    <DataGrid x:Name="dgMain" Grid.Row="2" CanUserDeleteRows="False" CanUserAddRows="False" ClipboardCopyMode="IncludeHeader" Grid.ColumnSpan="2"></DataGrid>
 
                 </Grid>
             </TabItem>

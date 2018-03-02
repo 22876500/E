@@ -59,6 +59,21 @@ namespace AASClient
             Program.已平仓订单表通知.Enqueue(request);
         }
 
+        public void 委托Change(AASClient.AASServiceReference.委托Change request)
+        {
+            var order = Program.jyDataSet.委托.FirstOrDefault(_ => _.委托编号 == request.orderID);
+            if (order != null)
+            {
+                order.状态说明 = request.status;
+                order.成交数量 = request.successQty;
+                order.成交价格 = request.successPrice;
+                order.撤单数量 = request.cancelQty;
+            }
+            else
+            {
+                Program.logger.LogInfo(string.Format("Not found Order {0}", request.orderID));
+            }
+        }
 
         public void Close()
         {

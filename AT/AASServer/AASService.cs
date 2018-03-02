@@ -818,14 +818,15 @@ namespace AASServer
                 return string.Format("{0}|", 委托编号);
 
             }
-            else if (string.IsNullOrEmpty(orderCacheObj.ClientGUID))
-            {
-                orderCacheObj.IsReturnedResult = true;
-            }
             else if (ErrInfo.Contains("尝试其他交易服务器") || ErrInfo.Contains("超时"))
             {
                 orderCacheObj.IsTimeOutError = "1";
             }
+            else if (string.IsNullOrEmpty(orderCacheObj.ClientGUID))
+            {
+                orderCacheObj.IsReturnedResult = true;
+            }
+
             return string.Format("|{0}", ErrInfo);
         }
 
@@ -2238,13 +2239,8 @@ namespace AASServer
         [OperationContract(IsOneWay = true)]
         void 已平仓订单DataTableChanged(string UserName, AASServer.DbDataSet.已平仓订单DataTable TableChanged);
 
-
-
-
-      
-
-       
-
+        [OperationContract(IsOneWay = true)]
+        void 委托Change(string orderID, string status, decimal successQty, decimal successPrice, decimal cancelQty);
 
         [OperationContract(IsOneWay = true)]
         void Close();//当帐号被管理员删除是调用

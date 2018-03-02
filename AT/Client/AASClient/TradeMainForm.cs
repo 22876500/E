@@ -528,6 +528,8 @@ namespace AASClient
 
             Refresh业绩();
 
+            
+
             foreach (var item in 委托DataTable1)
             {
                 if (dictOrderSend.ContainsKey(item.证券代码) && dictOrderSend[item.证券代码].ContainsKey(item.委托编号))
