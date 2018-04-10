@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UIDataSet" targetNamespace="http://tempuri.org/UIDataSet.xsd" xmlns:mstns="http://tempuri.org/UIDataSet.xsd" xmlns="http://tempuri.org/UIDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UIDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UIDataSet" msprop:Generator_UserDSName="UIDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="交易帐户" msprop:Generator_TableClassName="交易帐户DataTable" msprop:Generator_TableVarName="table交易帐户" msprop:Generator_RowChangedName="交易帐户RowChanged" msprop:Generator_TablePropName="交易帐户" msprop:Generator_RowDeletingName="交易帐户RowDeleting" msprop:Generator_RowChangingName="交易帐户RowChanging" msprop:Generator_RowEvHandlerName="交易帐户RowChangeEventHandler" msprop:Generator_RowDeletedName="交易帐户RowDeleted" msprop:Generator_RowClassName="交易帐户Row" msprop:Generator_UserTableName="交易帐户" msprop:Generator_RowEvArgName="交易帐户RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="组合号" msprop:Generator_ColumnVarNameInTable="column组合号" msprop:Generator_ColumnPropNameInRow="组合号" msprop:Generator_ColumnPropNameInTable="组合号Column" msprop:Generator_UserColumnName="组合号" type="xs:string" minOccurs="0" />
+              <xs:element name="查询耗时" msprop:Generator_ColumnVarNameInTable="column查询耗时" msprop:Generator_ColumnPropNameInRow="查询耗时" msprop:Generator_ColumnPropNameInTable="查询耗时Column" msprop:Generator_UserColumnName="查询耗时" type="xs:string" minOccurs="0" />
+              <xs:element name="IP" msprop:Generator_ColumnVarNameInTable="columnIP" msprop:Generator_ColumnPropNameInRow="IP" msprop:Generator_ColumnPropNameInTable="IPColumn" msprop:Generator_UserColumnName="IP" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -19,7 +19,7 @@ namespace AASClient
 
         public static string Version = "201711100001";//"201711100001";201611290001
 
-        public static string Port = "40808";//普通用808,测试用30808
+        public static string Port = "808";
         public static NetTcpBinding NetTcpBinding = new NetTcpBinding(SecurityMode.Message);
         //public static WSDualHttpBinding WSDualHttpBinding = new WSDualHttpBinding(WSDualHttpSecurityMode.Message);
 

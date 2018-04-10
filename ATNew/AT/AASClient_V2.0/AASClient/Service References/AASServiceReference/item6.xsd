@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AASServer.AyersEntity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AyersFeeConfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Commission" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CommissionMin" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StampTax" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TradingFee" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TransactionLevy" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TransferFee" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AyersFeeConfig" nillable="true" type="tns:AyersFeeConfig" />
+</xs:schema>

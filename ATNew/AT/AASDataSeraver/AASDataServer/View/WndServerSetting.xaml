@@ -1,0 +1,109 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:ViewModel="clr-namespace:AASDataServer.ViewModel" x:Name="ViewServerSetting" x:Class="AASDataServer.View.WndServerSetting"
+        Title="服务器参数设置" Height="400" Width="452" ResizeMode="NoResize" UseLayoutRounding="True" Closing="ViewServerSetting_Closing">
+    <Window.DataContext>
+        <ViewModel:ServerSettingDataContext/>
+    </Window.DataContext>
+    <StackPanel>
+        <TabControl Height="296" Margin="5,10,5,0">
+            <TabItem Header="服务器参数">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel Margin="0">
+                        <StackPanel Height="30" Orientation="Horizontal" Margin="0,4,0,0">
+                        	<CheckBox x:Name="tbServer_Restart" Content="转发服务器" VerticalAlignment="Center" FontSize="13.333" Margin="4,8,0,4" FlowDirection="RightToLeft" IsChecked="{Binding ServerSetting.IsReboot}"/>
+                        	<Label Content="重要：仅能够发送服务器数据，客户端无法接收数据" Height="24" VerticalAlignment="Center" ToolTip="" Margin="10,3,0,3" Foreground="Red"/>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal" Margin="0,4,0,0">
+                            <Label Content="数据地址：" Height="24" VerticalAlignment="Center" ToolTip="数据发送的IP地址"/>
+                            <xctk:MaskedTextBox x:Name="tbServer_PubAddress" TextWrapping="Wrap" Width="140" Height="24" VerticalAlignment="Center" Text="{Binding ServerSetting.PubAddress}"/>
+                            <CheckBox x:Name="tbServer_Restart_Copy" Content="数据压缩" VerticalAlignment="Center" FontSize="13.333" Margin="4,8,0,4" FlowDirection="RightToLeft" IsChecked="{Binding ServerSetting.IsReboot}" ToolTip="数据是否压缩，客户端需要相应配置"/>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal" Margin="0,4,0,0">
+                            <Label Content="订阅地址：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址"/>
+                            <xctk:MaskedTextBox x:Name="tbServer_SubAddress" TextWrapping="Wrap" Width="140" Height="24" VerticalAlignment="Center" Text="{Binding ServerSetting.SubAddress}"/>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal" Margin="0,4,0,0">
+                            <Label Content="开盘时间：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址"/>
+                            <xctk:TimePicker x:Name="tbServer_OpenTime" Height="24" Width="100" Background="White" Value="{Binding ServerSetting.OpenTime}"/>
+                            <Label Content="收盘时间：" Height="24" VerticalAlignment="Center" Margin="0,3" ToolTip="请求的端口号"/>
+                            <xctk:TimePicker x:Name="tbServer_CloseTime" Height="24" Width="100" Background="White" Value="{Binding ServerSetting.CloseTime}"/>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal" Margin="0,4,0,0">
+                        	<CheckBox x:Name="tbServer_Restart1" Content="是否重启" VerticalAlignment="Center" FontSize="13.333" Margin="4,3,0,0" FlowDirection="RightToLeft" IsChecked="{Binding ServerSetting.IsReboot}"/>
+                        	<Label Content="重启时间：" Height="24" VerticalAlignment="Center" Margin="10,3,0,3" ToolTip="请求的端口号"/>
+                        	<xctk:TimePicker x:Name="tbServer_RestartTime1" Height="24" Width="100" Background="White" Value="{Binding ServerSetting.RebootTime}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="市场行情">
+                <StackPanel Background="#FFE5E5E5">
+                    <GroupBox Header="实时行情" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" BorderBrush="#FF938080">
+                        <StackPanel Margin="0" Width="410">
+                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+                                <Label Content="服务器地址：" Height="24" VerticalAlignment="Center" ToolTip="数据发送的IP地址"/>
+                                <xctk:MaskedTextBox TextWrapping="Wrap" Width="140" Height="24" VerticalAlignment="Center" Text="{Binding RealtimeAdapterSetting.Ip}"/>
+                                <Label Content="服务器端口：" Height="24" VerticalAlignment="Center" Margin="0,3" ToolTip="数据发送的端口号"/>
+                                <xctk:IntegerUpDown Minimum="2000" Maximum="60000" ShowButtonSpinner="False" Height="24" Width="60" Value="{Binding RealtimeAdapterSetting.Port}"/>
+                            </StackPanel>
+                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+                                <Label Content="账号：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址"/>
+                                <TextBox TextWrapping="Wrap" Width="154" Height="24" Margin="0,3" Text="{Binding RealtimeAdapterSetting.Username}"/>
+                                <Label Content="密码：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址" Margin="0,3"/>
+                                <TextBox TextWrapping="Wrap" Width="120" Height="24" Margin="0,3" Text="{Binding RealtimeAdapterSetting.Password}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="历史行情" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" BorderBrush="#FF938080">
+                        <StackPanel Margin="0" Width="410">
+                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+                                <Label Content="服务器地址：" Height="24" VerticalAlignment="Center" ToolTip="数据发送的IP地址"/>
+                                <xctk:MaskedTextBox TextWrapping="Wrap" Width="140" Height="24" VerticalAlignment="Center" Text="{Binding HistoryAdapterSetting.Ip}"/>
+                                <Label Content="服务器端口：" Height="24" VerticalAlignment="Center" Margin="0,3" ToolTip="数据发送的端口号"/>
+                                <xctk:IntegerUpDown Minimum="2000" Maximum="60000" ShowButtonSpinner="False" Height="24" Width="60" Value="{Binding HistoryAdapterSetting.Port}"/>
+                            </StackPanel>
+                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+                                <Label Content="账号：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址"/>
+                                <TextBox TextWrapping="Wrap" Width="154" Height="24" Margin="0,3" Text="{Binding HistoryAdapterSetting.Username}"/>
+                                <Label Content="密码：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址" Margin="0,3"/>
+                                <TextBox TextWrapping="Wrap" Width="120" Height="24" Margin="0,3" Text="{Binding HistoryAdapterSetting.Password}"/>
+                            </StackPanel>
+                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+                                <Label Content="回放时间：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址"/>
+                                <xctk:DateTimePicker Width="150" Height="24" Value="{Binding HistoryAdapterSetting.PlayTime}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="远程行情">
+            	<StackPanel Background="#FFE5E5E5">
+            		<StackPanel Margin="0,0,16,0" Height="69">
+            			<StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+            				<Label Content="服务器地址：" Height="24" VerticalAlignment="Center" ToolTip="数据发送的IP地址"/>
+            				<xctk:MaskedTextBox TextWrapping="Wrap" Width="140" Height="24" VerticalAlignment="Center" Text=""/>
+            				<Label Content="服务器端口：" Height="24" VerticalAlignment="Center" Margin="0,3" ToolTip="数据发送的端口号"/>
+            				<xctk:IntegerUpDown Minimum="2000" Maximum="60000" ShowButtonSpinner="False" Height="24" Width="60" Value="0" DefaultValue="0"/>
+            			</StackPanel>
+            			<StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
+            				<Label Content="账号：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址"/>
+            				<TextBox TextWrapping="Wrap" Width="154" Height="24" Margin="0,3" Text=""/>
+            				<Label Content="密码：" Height="24" VerticalAlignment="Center" ToolTip="客户端请求数据的IP地址" Margin="0,3"/>
+            				<TextBox TextWrapping="Wrap" Width="120" Height="24" Margin="0,3" Text=""/>
+            			</StackPanel>
+            		</StackPanel>
+            	</StackPanel>
+            </TabItem>
+            <!--<TabItem Header="本地行情">
+            	<Grid Background="#FFE5E5E5"/>
+            </TabItem>-->
+            
+        </TabControl>
+        <StackPanel Height="30" Margin="5,10,5,0" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="btnSave" Content="保存" Width="75" Click="btnSave_Click"/>
+            <Button x:Name="btnCancel" Content="取消" Width="75" Margin="20,0,0,0" Click="btnCancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

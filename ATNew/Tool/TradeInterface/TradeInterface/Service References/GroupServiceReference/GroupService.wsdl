@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GroupService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_GroupService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GroupClient" />
+      <xsd:import schemaLocation="http://localhost/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GroupService_Decrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:Decrypt" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_Decrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DecryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_Test_InputMessage">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_Test_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_GetGroupClientID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroupClientID" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_GetGroupClientID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroupClientIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_IsGroupMultythread_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsGroupMultythread" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_IsGroupMultythread_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsGroupMultythreadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryData" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataHK_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataHK" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataHK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataHKResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataAuto_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataAuto" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataAuto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataAutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataAutoHK_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataAutoHK" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataAutoHK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataAutoHKResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataAutoByMac_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataAutoByMac" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataAutoByMac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataAutoByMacResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataFilted_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataFilted" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryDataFilted_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataFiltedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_UpdateOrderIDList_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderIDList" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_UpdateOrderIDList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderIDListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryOrderByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryOrderByID" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryOrderByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryOrderByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryListByMac_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryListByMac" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_QueryListByMac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryListByMacResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_SendOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendOrder" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_SendOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_CancelOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelOrder" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_CancelOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_CancelOrderHK_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelOrderHK" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_CancelOrderHK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelOrderHKResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_SendIMSOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendIMSOrder" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_SendIMSOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendIMSOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_CancelImsOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelImsOrder" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_CancelImsOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelImsOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_AccountRepay_InputMessage">
+    <wsdl:part name="parameters" element="tns:AccountRepay" />
+  </wsdl:message>
+  <wsdl:message name="GroupService_AccountRepay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AccountRepayResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GroupService">
+    <wsdl:operation name="Decrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/Decrypt" message="tns:GroupService_Decrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/DecryptResponse" message="tns:GroupService_Decrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/Test" message="tns:GroupService_Test_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/TestResponse" message="tns:GroupService_Test_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupClientID">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/GetGroupClientID" message="tns:GroupService_GetGroupClientID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/GetGroupClientIDResponse" message="tns:GroupService_GetGroupClientID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsGroupMultythread">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/IsGroupMultythread" message="tns:GroupService_IsGroupMultythread_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/IsGroupMultythreadResponse" message="tns:GroupService_IsGroupMultythread_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryData">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryData" message="tns:GroupService_QueryData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryDataResponse" message="tns:GroupService_QueryData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataHK">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryDataHK" message="tns:GroupService_QueryDataHK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryDataHKResponse" message="tns:GroupService_QueryDataHK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataAuto">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryDataAuto" message="tns:GroupService_QueryDataAuto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryDataAutoResponse" message="tns:GroupService_QueryDataAuto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataAutoHK">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryDataAutoHK" message="tns:GroupService_QueryDataAutoHK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryDataAutoHKResponse" message="tns:GroupService_QueryDataAutoHK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataAutoByMac">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryDataAutoByMac" message="tns:GroupService_QueryDataAutoByMac_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryDataAutoByMacResponse" message="tns:GroupService_QueryDataAutoByMac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataFilted">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryDataFilted" message="tns:GroupService_QueryDataFilted_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryDataFiltedResponse" message="tns:GroupService_QueryDataFilted_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderIDList">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/UpdateOrderIDList" message="tns:GroupService_UpdateOrderIDList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/UpdateOrderIDListResponse" message="tns:GroupService_UpdateOrderIDList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryOrderByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryOrderByID" message="tns:GroupService_QueryOrderByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryOrderByIDResponse" message="tns:GroupService_QueryOrderByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryListByMac">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/QueryListByMac" message="tns:GroupService_QueryListByMac_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/QueryListByMacResponse" message="tns:GroupService_QueryListByMac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/SendOrder" message="tns:GroupService_SendOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/SendOrderResponse" message="tns:GroupService_SendOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/CancelOrder" message="tns:GroupService_CancelOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/CancelOrderResponse" message="tns:GroupService_CancelOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelOrderHK">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/CancelOrderHK" message="tns:GroupService_CancelOrderHK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/CancelOrderHKResponse" message="tns:GroupService_CancelOrderHK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendIMSOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/SendIMSOrder" message="tns:GroupService_SendIMSOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/SendIMSOrderResponse" message="tns:GroupService_SendIMSOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelImsOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/CancelImsOrder" message="tns:GroupService_CancelImsOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/CancelImsOrderResponse" message="tns:GroupService_CancelImsOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountRepay">
+      <wsdl:input wsaw:Action="http://tempuri.org/GroupService/AccountRepay" message="tns:GroupService_AccountRepay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/GroupService/AccountRepayResponse" message="tns:GroupService_AccountRepay_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_GroupService" type="tns:GroupService">
+    <wsp:PolicyReference URI="#WSHttpBinding_GroupService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Decrypt">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/Decrypt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupClientID">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/GetGroupClientID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsGroupMultythread">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/IsGroupMultythread" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryData">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataHK">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryDataHK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataAuto">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryDataAuto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataAutoHK">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryDataAutoHK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataAutoByMac">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryDataAutoByMac" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataFilted">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryDataFilted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderIDList">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/UpdateOrderIDList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOrderByID">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryOrderByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryListByMac">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/QueryListByMac" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrder">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/SendOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelOrder">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/CancelOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelOrderHK">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/CancelOrderHK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIMSOrder">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/SendIMSOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelImsOrder">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/CancelImsOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountRepay">
+      <soap12:operation soapAction="http://tempuri.org/GroupService/AccountRepay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GroupService">
+    <wsdl:port name="WSHttpBinding_GroupService" binding="tns:WSHttpBinding_GroupService">
+      <soap12:address location="http://localhost/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost/</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

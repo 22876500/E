@@ -1,0 +1,77 @@
+Teamview账户信息    
+        账户：ghoul84
+        邮箱：22876500@qq.com
+        密码：@-b-la0B
+本计算机名称：DESKTOP-LRGBCLB
+        密码：lzh0129
+
+liuzh@frd-freedom.com
+-L31PH6g
+  
+企业QQ: 2851566747
+二次密码:z7QG34gN
+
+西安服务器：
+1. 192.168.1.51:
+administrator/admin.2017/Chen1103
+user/I9c-8tQT$s
+
+厦门服务器：
+公网IP:
+110.86.28.226
+110.86.28.227
+110.86.28.228
+110.86.28.229
+110.86.28.230
+路由：192.168.35.1
+psw : Aa123456
+
+路由： 192.168.2.1
+psw：  BWG7X-J98
+
+210.13.212.206
+路由密码：jdy82804
+
+Bat321123
+
+厦门服务器2
+ip:210.13.212.206， 网关：210.13.212.205 
+
+美股路由：192.168.10.1.801，
+帐号:adminxm
+密码:xm123456789
+
+
+重庆路由：
+admin
+DTDTdtdt55704
+
+当日交易查询软件：
+wyt 
+ipo753
+
+A股对比工具用户名密码
+用户名:W7txy 密码:W5waD6Kk
+用户名:MhVe7 密码:c3NB3vwv
+用户名:X0stA 密码:y3Pzk485
+http://101.132.154.219/DataWebService.asmx
+W7txy-W5waD6Kk|MhVe7-c3NB3vwv|X0stA-y3Pzk485
+
+海康威视iVMS-4200：
+用户名：FRDfrd321a
+密  码：frd-321a
+
+8D8F路由登录:b4ImtSyVIw
+8D8FWifi密码:p3T$apr+
+
+账号700159
+密码111111
+
+TortoiseSVN
+svn，lzh，密码liu
+
+56机器密码：Bat321_123
+
+server2012 
+server virture/b5AAH6Hc
+

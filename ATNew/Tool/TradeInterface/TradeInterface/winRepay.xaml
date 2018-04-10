@@ -1,0 +1,26 @@
+﻿<Window x:Class="TradeInterface.winRepay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="winRepay" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1">账户：</Label>
+        <TextBlock x:Name="tbAccount" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="100"></TextBlock>
+
+
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2">金额：</Label>
+        <TextBox x:Name="txtAmount" TextChanged="txtAmount_TextChanged" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"></TextBox>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Width="70" VerticalAlignment="Center" Click="Button_Click">确定</Button>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,74 @@
+﻿<Window x:Class="DataComparision.View.DeliveryEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="交割单编辑" Height="500" Width="400" Icon="../Images/ThunderShield.ico">
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="Height" Value="20"></Setter>
+            </Style>
+        </Grid.Resources>
+
+        <Label Grid.Column="0" Grid.Row="0">序号:</Label>
+        <Label Grid.Column="0" Grid.Row="1">组合号:</Label>
+        <Label Grid.Column="0" Grid.Row="2">交割日期:</Label>
+        <Label Grid.Column="0" Grid.Row="3">证券代码:</Label>
+        <Label Grid.Column="0" Grid.Row="4">证券名称:</Label>
+        <Label Grid.Column="0" Grid.Row="5">买卖标志:</Label>
+        <Label Grid.Column="0" Grid.Row="6">成交数量:</Label>
+        <Label Grid.Column="0" Grid.Row="7">成交价格:</Label>
+        <Label Grid.Column="0" Grid.Row="8">成交金额:</Label>
+        <Label Grid.Column="0" Grid.Row="9">发生金额:</Label>
+        <Label Grid.Column="0" Grid.Row="10">手续费:</Label>
+        <Label Grid.Column="0" Grid.Row="11">印花税:</Label>
+        <Label Grid.Column="0" Grid.Row="12">过户费:</Label>
+        <Label Grid.Column="0" Grid.Row="13">其他费:</Label>
+        <Label Grid.Column="0" Grid.Row="14">备注:</Label>
+
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="txt序号"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="txt组合号"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="txt交割日期"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="txt证券代码"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="4" x:Name="txt证券名称"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="txt买卖标志"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="6" x:Name="txt成交数量"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="7" x:Name="txt成交价格"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="8" x:Name="txt成交金额"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="9" x:Name="txt发生金额"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="10" x:Name="txt手续费"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="11" x:Name="txt印花税"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="12" x:Name="txt过户费"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="13" x:Name="txt其他费"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="14" x:Name="txt备注"></TextBox>
+
+        <Button Grid.Row="15" Grid.ColumnSpan="2" Width="120" VerticalAlignment="Center" Click="Button_Click">保存</Button>
+    </Grid>
+</Window>

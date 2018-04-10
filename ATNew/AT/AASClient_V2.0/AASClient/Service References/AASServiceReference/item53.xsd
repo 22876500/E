@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AASServer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:82/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="DbDataSet.平台用户DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.平台用户DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="平台用户DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="角色">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="超级管理员" />
+      <xs:enumeration value="普通管理员" />
+      <xs:enumeration value="超级风控员" />
+      <xs:enumeration value="普通风控员" />
+      <xs:enumeration value="交易员" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="角色" nillable="true" type="tns:角色" />
+  <xs:simpleType name="分组">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL" />
+      <xs:enumeration value="XM" />
+      <xs:enumeration value="CQ" />
+      <xs:enumeration value="XA" />
+      <xs:enumeration value="SH" />
+      <xs:enumeration value="T1" />
+      <xs:enumeration value="BY1" />
+      <xs:enumeration value="BY2" />
+      <xs:enumeration value="FK" />
+      <xs:enumeration value="NB" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="分组" nillable="true" type="tns:分组" />
+  <xs:element name="DbDataSet.券商帐户DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.券商帐户DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="券商帐户DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.额度分配DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.额度分配DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="额度分配DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="买模式">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="现金买入" />
+      <xs:enumeration value="融资买入" />
+      <xs:enumeration value="买券还券" />
+      <xs:enumeration value="担保品买入" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="买模式" nillable="true" type="tns:买模式" />
+  <xs:simpleType name="卖模式">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="现券卖出" />
+      <xs:enumeration value="融券卖出" />
+      <xs:enumeration value="卖券还款" />
+      <xs:enumeration value="担保品卖出" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="卖模式" nillable="true" type="tns:卖模式" />
+  <xs:element name="DbDataSet.MAC地址分配DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.MAC地址分配DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="MAC地址分配DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfHKMarketData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HKMarketData" nillable="true" type="tns:HKMarketData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHKMarketData" nillable="true" type="tns:ArrayOfHKMarketData" />
+  <xs:complexType name="HKMarketData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Highest" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Lowest" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PriceB" nillable="true" type="q1:ArrayOfdecimal" />
+      <xs:element minOccurs="0" name="PricePRE" type="xs:decimal" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PriceS" nillable="true" type="q2:ArrayOfdecimal" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="QtyB" nillable="true" type="q3:ArrayOfdecimal" />
+      <xs:element minOccurs="0" name="QtyPermit" type="xs:decimal" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="QtyS" nillable="true" type="q4:ArrayOfdecimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HKMarketData" nillable="true" type="tns:HKMarketData" />
+  <xs:element name="JyDataSet.委托DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.委托DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="委托DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.成交DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.成交DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="成交DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.订单DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.订单DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="订单DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.交易日志DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.交易日志DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="交易日志DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JyDataSet.业绩统计DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="JyDataSet.业绩统计DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/JyDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="业绩统计DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbDataSet.恒生帐户DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.恒生帐户DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="恒生帐户DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfShareLimitGroupItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShareLimitGroupItem" nillable="true" type="tns:ShareLimitGroupItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShareLimitGroupItem" nillable="true" type="tns:ArrayOfShareLimitGroupItem" />
+  <xs:complexType name="ShareLimitGroupItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupStockList" nillable="true" type="tns:ArrayOfStockLimitItem" />
+      <xs:element minOccurs="0" name="GroupTraderList" nillable="true" type="tns:ArrayOfLimitTrader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShareLimitGroupItem" nillable="true" type="tns:ShareLimitGroupItem" />
+  <xs:complexType name="ArrayOfStockLimitItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StockLimitItem" nillable="true" type="tns:StockLimitItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStockLimitItem" nillable="true" type="tns:ArrayOfStockLimitItem" />
+  <xs:complexType name="StockLimitItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuyType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Commission" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LimitCount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaleType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StockID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StockName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StockLimitItem" nillable="true" type="tns:StockLimitItem" />
+  <xs:complexType name="ArrayOfLimitTrader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitTrader" nillable="true" type="tns:LimitTrader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLimitTrader" nillable="true" type="tns:ArrayOfLimitTrader" />
+  <xs:complexType name="LimitTrader">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TraderAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LimitTrader" nillable="true" type="tns:LimitTrader" />
+  <xs:element name="DbDataSet.已平仓订单DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DbDataSet.已平仓订单DataTable" Namespace="http://schemas.datacontract.org/2004/07/AASServer" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/DbDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="已平仓订单DataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

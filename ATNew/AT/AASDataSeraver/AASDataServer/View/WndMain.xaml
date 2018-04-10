@@ -1,0 +1,195 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:cmd="clr-namespace:AASDataServer.Command"
+        xmlns:ViewModel="clr-namespace:AASDataServer.ViewModel" 
+        x:Class="AASDataServer.View.WndMain"
+        x:Name="ViewMain"
+        Title="数据服务器" ResizeMode="CanMinimize" UseLayoutRounding="True" VerticalAlignment="Top" Closed="ViewMain_Closed" Closing="ViewMain_Closing" Loaded="ViewMain_Loaded" HorizontalAlignment="Left" Width="542" Height="450" Icon="/DataServer;component/Images/dataserver.ico" >
+
+    <Window.DataContext>
+        <ViewModel:DataServerDataContext/>
+    </Window.DataContext>
+    <Window.CommandBindings>
+        <CommandBinding x:Name="cmdStartServer" Command="cmd:DataServerCommand.StartServer" CanExecute="cmdStartServer_CanExecute" Executed="cmdStartServer_Executed" />
+        <CommandBinding x:Name="cmdStopServer" Command="cmd:DataServerCommand.StopServer" CanExecute="cmdStopServer_CanExecute" Executed="cmdStopServer_Executed"/>
+        <CommandBinding x:Name="cmdClearCache" Command="cmd:DataServerCommand.ClearCache" CanExecute="cmdClearCache_CanExecute" Executed="cmdClearCache_Executed"/>
+        <CommandBinding x:Name="cmdStartIceDataServer" Command="cmd:DataServerCommand.StartIceDataServer" CanExecute="cmdStartIceDataServer_CanExecute" Executed="cmdStartIceDataServer_Executed"/>
+        <CommandBinding x:Name="cmdStopIceDataServer" Command="cmd:DataServerCommand.StopIceDataServer" CanExecute="cmdStopIceDataServer_CanExecute" Executed="cmdStopIceDataServer_Executed"/>
+        <CommandBinding x:Name="cmdStartPubServer" Command="cmd:DataServerCommand.StartPubServer" CanExecute="cmdStartPubServer_CanExecute" Executed="cmdStartPubServer_Executed"/>
+        <CommandBinding x:Name="cmdStopPubServer" Command="cmd:DataServerCommand.StopPubServer" CanExecute="cmdStopPubServer_CanExecute" Executed="cmdStopPubServer_Executed"/>
+        <CommandBinding x:Name="cmdStartDataSource" Command="cmd:DataServerCommand.StartDataSource" CanExecute="cmdStartDataSource_CanExecute" Executed="cmdStartDataSource_Executed"/>
+        <CommandBinding x:Name="cmdStopDataSource" Command="cmd:DataServerCommand.StopDataSource" CanExecute="cmdStopDataSource_CanExecute" Executed="cmdStopDataSource_Executed"/>
+    </Window.CommandBindings>
+
+    <StackPanel>
+        <Menu Height="24" VerticalAlignment="Top">
+            <MenuItem Header="系统" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13.333">
+                <MenuItem Header="启动数据源" HorizontalAlignment="Left" Command="cmd:DataServerCommand.StartDataSource" />
+                <MenuItem Header="停止数据源" HorizontalAlignment="Left" Command="cmd:DataServerCommand.StopDataSource" />
+                <Separator HorizontalAlignment="Left" Width="170"/>
+                <MenuItem Header="启动数据发布" HorizontalAlignment="Left" Width="170" Command="cmd:DataServerCommand.StartPubServer" />
+                <MenuItem Header="停止数据发布" HorizontalAlignment="Left" Width="170" Command="cmd:DataServerCommand.StopPubServer" />
+                <Separator HorizontalAlignment="Left" Width="170"/>
+                <MenuItem Header="启动数据订阅" HorizontalAlignment="Left" Width="170" Command="cmd:DataServerCommand.StartIceDataServer" />
+                <MenuItem Header="停止数据订阅" HorizontalAlignment="Left" Width="170" Command="cmd:DataServerCommand.StopIceDataServer"/>
+                <Separator HorizontalAlignment="Left" Width="170"/>
+                <MenuItem Header="清空缓存" HorizontalAlignment="Left" Width="170" Command="cmd:DataServerCommand.ClearCache" />
+            </MenuItem>
+            <MenuItem Header="设置" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13.333">
+                <MenuItem x:Name="mnServerSetting" Header="服务器设置" HorizontalAlignment="Left" Click="mnServerSetting_Click"/>
+            </MenuItem>
+            <MenuItem Header="工具" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13.333">
+                <MenuItem Header="行情测试" HorizontalAlignment="Left"/>
+            </MenuItem>
+        </Menu>
+        <TabControl Height="360">
+            <TabItem x:Name="tbServer" Header="数据状态">
+                <Grid Margin="2,0">
+                    <GroupBox Header="数据状态" HorizontalAlignment="Left" VerticalAlignment="Top" Height="287" Width="195">
+                        <StackPanel HorizontalAlignment="Left" Height="267" VerticalAlignment="Top" Width="185" Orientation="Horizontal" Margin="0,0,-2,-2">
+                            <StackPanel Height="257" VerticalAlignment="Top" Width="178">
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="数据设置：" Width="70"/>
+                                    <ComboBox x:Name="cbServer_DataType" Width="102" SelectedIndex="{Binding DataType}" VerticalAlignment="Center" SelectionChanged="cbServer_DataType_SelectionChanged">
+                                        <ComboBoxItem Content="市场行情"/>
+                                        <ComboBoxItem Content="历史行情"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="启动状态：" Width="70"/>
+                                    <Label x:Name="lblStatus_BootStatus" Content="{Binding ServerIsRunning, Mode=OneWay}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="启动时间：" Width="70"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label x:Name="lblStatus_BootTime" Content="{Binding ServerBootTime, Mode=OneWay}" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="股票数量：" Width="70"/>
+                                    <Label x:Name="lblStatus_CodeCount" Content="{Binding CodeCount}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="连接数量：" Width="70"/>
+                                    <Label x:Name="lblStatus_ClientCount" Content="{Binding ClientCount}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="订阅股票：" Width="70"/>
+                                    <Label x:Name="lblStatus_SubCount" Content="{Binding SubCount}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="接收数据：" Width="70"/>
+                                    <Label x:Name="lblCode_RecvDataCount" Content="{Binding RecvDataCount}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="发送数据：" Width="70"/>
+                                    <Label x:Name="lblStatus_PubDataCount" Content="{Binding SendDataCount}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0" Orientation="Horizontal">
+                                    <Label Content="缓存队列：" Width="70"/>
+                                    <Label x:Name="lblStatus_CacheDataCount" Content="{Binding CacheCount}" Width="80" Foreground="#FFFE1A01"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <ListBox x:Name="lbLog" HorizontalAlignment="Left" Height="277" VerticalAlignment="Top" Width="312" Margin="200,10,0,0" FontFamily="Microsoft YaHei" FontSize="13.333" ItemsSource="{Binding Logs}"/>
+                    <StackPanel Height="24" Margin="0,294,0,0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Button x:Name="btnServerStart" Content="启动数据服务" Margin="10,0,0,0" HorizontalAlignment="Center"  Command="cmd:DataServerCommand.StartServer" />
+                        <Button x:Name="btnServerStop" Content="停止数据服务" Margin="10,0,0,0" HorizontalAlignment="Center"  Command="cmd:DataServerCommand.StopServer" />
+                        <Button x:Name="btnClearCache" Content="清空缓存" Margin="10,0,0,0" HorizontalAlignment="Center"  Command="cmd:DataServerCommand.ClearCache" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbInit" Header="初始列表" >
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="481" Margin="0,4,0,0">
+                        <Button x:Name="btnInitClear" Content="清空订阅" Margin="15,0,0,0" Height="23" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Button x:Name="btnInitLoad" Content="载入订阅" Margin="5,0,0,0" Height="23" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <DataGrid x:Name="dgInitCode" HorizontalAlignment="Left" VerticalAlignment="Top" Height="286" Width="506" Margin="10,32,0,0" ItemsSource="{Binding SubCodeList}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True">
+                        <DataGrid.RowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+                        </DataGrid.RowBackground>
+                        <DataGrid.AlternatingRowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
+                        </DataGrid.AlternatingRowBackground>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Code}" ClipboardContentBinding="{x:Null}" Header="股票代码"/>
+                            <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="股票名称"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbStockCode" Header="股票列表">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgMarketCode" HorizontalAlignment="Left" VerticalAlignment="Top" Height="308" Width="506" Margin="10,10,0,0" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding MarketCodeList}" AlternationCount="2">
+                        <DataGrid.AlternatingRowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
+                        </DataGrid.AlternatingRowBackground>
+                        <DataGrid.RowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+                        </DataGrid.RowBackground>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Market}" ClipboardContentBinding="{x:Null}" Header="交易所" CanUserResize="False"/>
+                            <DataGridTextColumn Binding="{Binding Code}" ClipboardContentBinding="{x:Null}" Header="代码" CanUserResize="False"/>
+                            <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="名称" CanUserResize="False"/>
+                            <DataGridTextColumn Binding="{Binding Pinyin}" ClipboardContentBinding="{x:Null}" Header="拼音" CanUserResize="False"/>
+                            <DataGridTextColumn Binding="{Binding Wind}" ClipboardContentBinding="{x:Null}" Header="万得代码" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbClient" Header="客户端列表">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgClient" HorizontalAlignment="Left" Width="506" ItemsSource="{Binding ClientList}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Margin="10,10,0,0" Height="308" VerticalAlignment="Top">
+                        <DataGrid.RowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+                        </DataGrid.RowBackground>
+                        <DataGrid.AlternatingRowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
+                        </DataGrid.AlternatingRowBackground>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Username}" ClipboardContentBinding="{x:Null}" Header="用户名"/>
+                            <DataGridTextColumn Binding="{Binding SubCount, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="订阅量"/>
+                            <DataGridTextColumn Binding="{Binding UpdateTime}" ClipboardContentBinding="{x:Null}" Header="更新时间"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbSubCode" Header="订阅列表">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgSubCode" HorizontalAlignment="Left" VerticalAlignment="Top" Height="308" Width="506" Margin="10,10,0,0" ItemsSource="{Binding SubCodeList}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True">
+                        <DataGrid.RowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+                        </DataGrid.RowBackground>
+                        <DataGrid.AlternatingRowBackground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
+                        </DataGrid.AlternatingRowBackground>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Code}" ClipboardContentBinding="{x:Null}" Header="股票代码"/>
+                            <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="股票名称"/>
+                            <DataGridTextColumn Binding="{Binding UserCount, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="订阅量"/>
+                            <DataGridTextColumn Binding="{Binding SubTime}" ClipboardContentBinding="{x:Null}" Header="订阅时间"/>
+                            <DataGridTextColumn Binding="{Binding FlushTime}" ClipboardContentBinding="{x:Null}" Header="更新时间"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StatusBar Height="26" VerticalAlignment="Top" Margin="0">
+            <StatusBarItem Content="状态：" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Canvas Height="25" Width="22" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image x:Name="status" Height="16" Width="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,2,0,0" Source="{Binding ServerIsRunningImage, Mode=OneWay}"/>
+            </Canvas>
+            <StatusBarItem Content="连接数：" Height="25" VerticalAlignment="Top" Margin="10,0,0,0"/>
+            <StatusBarItem x:Name="sbClientCount" Content="{Binding ClientCount}" Height="25" VerticalAlignment="Top" Width="40"/>
+            <StatusBarItem Content="订阅股票" Height="25" VerticalAlignment="Top" Margin="10,0,0,0"/>
+            <StatusBarItem x:Name="sbSubCount" Content="{Binding SubCount}" Height="25" VerticalAlignment="Top" Width="40"/>
+            <StatusBarItem Content="数据收发：" Height="25" VerticalAlignment="Top"/>
+            <StatusBarItem x:Name="sbDataCount" Content="{Binding SendDataCount}" Height="25" VerticalAlignment="Top"/>
+        </StatusBar>
+    </StackPanel>
+</Window>
+
