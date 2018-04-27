@@ -1623,6 +1623,12 @@ namespace AASClient
                         else
                         {
                             Program.logger.LogJy(Program.Current平台用户.用户名, code, 证券名称, string.Empty, tradeType, 委托数量, 委托价格, "下单失败, {0}", Data[1]);
+
+                            if (Data[1].Length > 0 && (Data[1].Contains("漏单，请联系风控查询是否下单成功") || Data[1].Contains("尝试其他交易服务器") || Data[1].Contains("超时")))
+                            {
+                                string errInfo = string.Format("下单失败信息： {5} \r\n证券代码:{0}\r\n证券名称{1}\r\n委托数量{2}\r\n委托价格{3}\r\n下单时间{4}", code, 证券名称, 委托数量, 委托价格, dt.ToString("HH:mm:ss fff"), Data[1]);
+                                this.BeginInvoke(new Action(() => { MessageBox.Show(errInfo, "下单失败", MessageBoxButtons.OK, MessageBoxIcon.Error); }));    
+                            }
                         }
                         
                     }

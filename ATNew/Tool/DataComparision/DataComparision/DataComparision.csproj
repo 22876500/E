@@ -134,6 +134,9 @@
       <DependentUpon>HisSearch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\OrderCancelRate.xaml.cs">
+      <DependentUpon>OrderCancelRate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataAdapter\CSVDataReader.cs" />
     <Compile Include="Service References\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HisSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OrderCancelRate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -88,7 +88,7 @@
             // 
             // button测试帐号
             // 
-            this.button测试帐号.Location = new System.Drawing.Point(343, 303);
+            this.button测试帐号.Location = new System.Drawing.Point(375, 302);
             this.button测试帐号.Name = "button测试帐号";
             this.button测试帐号.Size = new System.Drawing.Size(121, 23);
             this.button测试帐号.TabIndex = 36;
@@ -363,7 +363,7 @@
             // 
             // button保存修改
             // 
-            this.button保存修改.Location = new System.Drawing.Point(343, 332);
+            this.button保存修改.Location = new System.Drawing.Point(375, 331);
             this.button保存修改.Name = "button保存修改";
             this.button保存修改.Size = new System.Drawing.Size(121, 23);
             this.button保存修改.TabIndex = 45;
@@ -408,7 +408,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(307, 284);
+            this.label13.Location = new System.Drawing.Point(307, 254);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 12);
             this.label13.TabIndex = 52;
@@ -518,7 +518,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 375);
+            this.ClientSize = new System.Drawing.Size(770, 370);
             this.Controls.Add(this.comboBox卖出方式);
             this.Controls.Add(this.comboBox买入方式);
             this.Controls.Add(this.label17);

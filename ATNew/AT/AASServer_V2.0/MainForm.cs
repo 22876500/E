@@ -746,5 +746,10 @@ namespace AASServer
                 this.Close();
             }
         }
+
+        private void 多线程查询配置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }   
 }

@@ -14,8 +14,8 @@ namespace DataComparision
         public DataComparisionDataset()
             : base(CommonUtils.DBConnection)
         {
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataComparisionDataset>());//如果模型不存在则创建。
-            Database.SetInitializer(new CreateDatabaseIfNotExists<DataComparisionDataset>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataComparisionDataset>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DataComparisionDataset>());//如果模型不存在则创建。
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

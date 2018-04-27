@@ -50,7 +50,7 @@ namespace AASClient
             }
             catch (Exception ex)
             {
-                Program.logger.LogInfo(ex.Message);
+                Program.logger.LogInfo("TradeDetailForm_Load Exception:" + ex.Message);
             }
 
             this.dataGridView当前成交.DataSource = this.bindingSource当前成交;

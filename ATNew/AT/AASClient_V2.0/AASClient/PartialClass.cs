@@ -197,13 +197,13 @@ namespace AASClient.AASServiceReference
 
 
 
-             public void Get已买卖股数(string 交易员, string 证券代码, out decimal 已买股数, out decimal 已卖股数)
+             public void Get已买卖股数(string 交易员, string 证券代码, string 组合号, out decimal 已买股数, out decimal 已卖股数)
              {
 
                  已买股数 = 0;
                  已卖股数 = 0;
 
-                 foreach (委托Row 委托Row1 in this.Where(r => r.交易员 == 交易员 && r.证券代码 == 证券代码))//已发委托 已发委托1 in db.已发委托.Where(r => r.交易员 == UserName && r.日期 == DateTime.Today  && r.证券代码 == 证券代码))
+                 foreach (委托Row 委托Row1 in this.Where(r => r.交易员 == 交易员 && r.证券代码 == 证券代码 && r.组合号 == 组合号))//已发委托 已发委托1 in db.已发委托.Where(r => r.交易员 == UserName && r.日期 == DateTime.Today  && r.证券代码 == 证券代码))
                  {
                      if (委托Row1.买卖方向 == 0)
                      {
@@ -292,66 +292,72 @@ namespace AASClient.AASServiceReference
 
              public decimal Get交易费用()
              {
-                 var permition = Program.serverDb.额度分配.FirstOrDefault(_=>_.证券代码 == this.证券代码 && _.交易员 == this.交易员 && _.组合号 == this.组合号);
-
-                 decimal 手续费率 = permition == null ? 0 : permition.手续费率;
+               
                  try
                  {
-                     if (Program.ShareLimitGroups == null)
+                     var permition = Program.serverDb.额度分配.FirstOrDefault(_ => _.证券代码 == this.证券代码 && _.交易员 == this.交易员 && _.组合号 == this.组合号);
+
+                     decimal 手续费率 = permition == null ? 0 : permition.手续费率;
+                     if (Program.AASServiceClient != null && (Program.AASServiceClient.State != System.ServiceModel.CommunicationState.Closing && Program.AASServiceClient.State != System.ServiceModel.CommunicationState.Closed) )
                      {
-                         Program.ShareLimitGroups = Program.AASServiceClient.ShareGroupQuery();
-                     }
-                     if (Program.ShareLimitGroups != null && Program.ShareLimitGroups.Length > 0)
-                     {
-                         foreach (var item in Program.ShareLimitGroups)
+                         if (Program.ShareLimitGroups == null)
                          {
-                             if (item.GroupTraderList.FirstOrDefault(_=>_.TraderAccount == this.交易员) != null)
-                             {
-                                 var shreLimitItem = item.GroupStockList.FirstOrDefault(_ => _.StockID == this.证券代码 && _.GroupAccount == this.组合号);
-                                 if (shreLimitItem != null)
-                                 {
-                                     手续费率 = decimal.Parse(shreLimitItem.Commission);
-                                     break;
-                                 }
-                             }
-                             
+                             Program.ShareLimitGroups = Program.AASServiceClient.ShareGroupQuery();
                          }
+                         if (Program.ShareLimitGroups != null && Program.ShareLimitGroups.Length > 0)
+                         {
+                             foreach (var item in Program.ShareLimitGroups)
+                             {
+                                 if (item.GroupTraderList.FirstOrDefault(_ => _.TraderAccount == this.交易员) != null)
+                                 {
+                                     var shreLimitItem = item.GroupStockList.FirstOrDefault(_ => _.StockID == this.证券代码 && _.GroupAccount == this.组合号);
+                                     if (shreLimitItem != null)
+                                     {
+                                         手续费率 = decimal.Parse(shreLimitItem.Commission);
+                                         break;
+                                     }
+                                 }
+
+                             }
+                         }
+                     }
+                     if (this.成交数量 > 0)
+                     {
+                         decimal 成交金额 = this.成交价格 * this.成交数量;
+
+                         if (this.组合号 == "Ayers")
+                         {
+                             var config = CommonUtils.AyersFeeConfig;
+                             decimal 佣金 = Math.Max(config.Commission * 成交金额, config.CommissionMin);
+                             decimal 印花税 = Math.Ceiling(config.StampTax * 成交金额);
+                             decimal 过户费 = config.TransferFee * 成交金额;
+                             decimal levy = config.TransactionLevy * 成交金额; //交易征费
+                             decimal trading_fee = config.TradingFee * 成交金额;// 交易费
+
+                             return Math.Round(佣金 + 印花税 + 过户费 + levy + trading_fee, 2);
+                         }
+                         else
+                         {
+                             //Program.logger.LogRunning("佣金计算参数，成交金额{0},手续费率{1}", 成交金额, 手续费率);
+                             decimal 佣金 = Math.Max(5, Math.Round(成交金额 * 手续费率, 2, MidpointRounding.AwayFromZero));
+                             decimal 印花税 = this.买卖方向 == 0 ? 0 : Math.Round(成交金额 * 0.001m, 2, MidpointRounding.AwayFromZero);
+                             decimal 过户费 = this.市场代码 == 1 ? Math.Round(this.成交数量 * 0.0006m, 2, MidpointRounding.AwayFromZero) : 0;
+                             return 佣金 + 印花税 + 过户费;
+                         }
+
+                     }
+                     else
+                     {
+                         return 0;
                      }
                  }
                  catch (Exception ex)
                  {
                      Program.logger.LogRunning("自动计算交易费用异常, 异常信息{0}", ex.Message);
-                 }
-
-                 if (this.成交数量 > 0)
-                 {
-                     decimal 成交金额 = this.成交价格 * this.成交数量;
-
-                     if (this.组合号 == "Ayers")
-                     {
-                         var config = CommonUtils.AyersFeeConfig;
-                         decimal 佣金 = Math.Max(config.Commission * 成交金额, config.CommissionMin);
-                         decimal 印花税 = Math.Ceiling(config.StampTax * 成交金额);
-                         decimal 过户费 = config.TransferFee * 成交金额;
-                         decimal levy = config.TransactionLevy * 成交金额; //交易征费
-                         decimal trading_fee = config.TradingFee * 成交金额;// 交易费
-
-                         return Math.Round(佣金 + 印花税 + 过户费 + levy + trading_fee, 2);
-                     }
-                     else
-                     {
-                         //Program.logger.LogRunning("佣金计算参数，成交金额{0},手续费率{1}", 成交金额, 手续费率);
-                         decimal 佣金 = Math.Max(5, Math.Round(成交金额 * 手续费率, 2, MidpointRounding.AwayFromZero));
-                         decimal 印花税 = this.买卖方向 == 0 ? 0 : Math.Round(成交金额 * 0.001m, 2, MidpointRounding.AwayFromZero);
-                         decimal 过户费 = this.市场代码 == 1 ? Math.Round(this.成交数量 * 0.0006m, 2, MidpointRounding.AwayFromZero) : 0;
-                         return 佣金 + 印花税 + 过户费;
-                     }
-                     
-                 }
-                 else
-                 {
                      return 0;
                  }
+
+                 
              }
          }
     }

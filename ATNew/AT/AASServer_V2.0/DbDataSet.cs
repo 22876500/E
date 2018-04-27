@@ -1818,7 +1818,7 @@ namespace AASServer
                 }
 
                 //判断是否需要查询，出现不能推送至客户端问题，需研究为什么。
-                //if ((this.帐户委托DataTable.Count == OrderIDs.Count) && this.帐户委托DataTable.FirstOrDefault(_ => _.成交价格 > 0 && _.委托数量 > (_.成交数量 + _.撤单数量)) == null)
+                //if ((this.帐户委托DataTable.Count == OrderIDs.Count) && this.帐户委托DataTable.FirstOrDefault(_ => _.委托数量 > (_.成交数量 + _.撤单数量)) == null)
                 //{
                 //    Thread.Sleep(100);
                 //    return "无需查询委托";
@@ -1909,6 +1909,7 @@ namespace AASServer
             bool isOperateResultChange = true;
             bool isTradeResultChange = true;
 
+            Thread QueryTradeResultThread = null;
             private void QueryDataLocal(ref double timeCost, ref DataTable 查到的成交Result, ref string 查到的成交ErrInfo, ref DataTable 查到的委托Result, ref string 查到的委托ErrInfo)
             {
                 var dt = DateTime.Now;
@@ -1918,22 +1919,40 @@ namespace AASServer
                 {
                     LocalData = new GroupClient.GroupService.GroupQueryData();
                 }
-
-                TdxApi.QueryData(this.ClientID, 3, Result, ErrInfo);
-                if (LocalData.SearchTradeResult != Result.ToString())
+                if (ConfigCache.MutiThreadAccount.Contains(this.名称))
                 {
-                    isTradeResultChange = true;
-                    LocalData.SearchTradeResult = Result.ToString();
-                    LocalData.SearchTradeErrInfo = ErrInfo.ToString();
-
-                    查到的成交Result = Tool.ChangeDataStringToTable(LocalData.SearchTradeResult);
-                    查到的成交ErrInfo = LocalData.SearchTradeErrInfo;
+                    if (QueryTradeResultThread == null)
+                    {
+                        QueryTradeResultThread = new Thread(new ThreadStart(QueryTradeResultMain)) { IsBackground = true };
+                        QueryTradeResultThread.Start();
+                    }
+                    if (LocalData != null)
+                    {
+                        if (LocalData.SearchTradeResult != null)
+                        {
+                            查到的成交Result = Tool.ChangeDataStringToTable(LocalData.SearchTradeResult);
+                        }
+                        查到的成交ErrInfo = LocalData.SearchTradeErrInfo;
+                    }
+                    
                 }
                 else
                 {
-                    isTradeResultChange = false;
+                    TdxApi.QueryData(this.ClientID, 3, Result, ErrInfo);
+                    if (LocalData.SearchTradeResult != Result.ToString())
+                    {
+                        isTradeResultChange = true;
+                        LocalData.SearchTradeResult = Result.ToString();
+                        LocalData.SearchTradeErrInfo = ErrInfo.ToString();
+                        //这里在转为DataTable之前考虑根据委托编号过滤一番。相同逻辑也应在委托数据那里执行一遍。
+                        查到的成交Result = Tool.ChangeDataStringToTable(LocalData.SearchTradeResult);
+                        查到的成交ErrInfo = LocalData.SearchTradeErrInfo;
+                    }
+                    else
+                    {
+                        isTradeResultChange = false;
+                    }
                 }
-
                 Thread.Sleep(this.查询间隔时间 / 2);
 
                 TdxApi.QueryData(this.ClientID, 2, Result, ErrInfo);
@@ -1956,6 +1975,40 @@ namespace AASServer
                 LocalData.QueryTime = DateTime.Now - dt;
                 timeCost = LocalData.QueryTime.TotalSeconds;
 
+            }
+
+            private void QueryTradeResultMain()
+            {
+                DataTable 查到的成交Result = new DataTable();
+                string 查到的成交ErrInfo = string.Empty;
+                StringBuilder Result = new StringBuilder(1024 * 1024);
+                StringBuilder ErrInfo = new StringBuilder(1024);
+                while (!this.backgroundWorker1.CancellationPending)
+                {
+                    if (this.Safe启用 && this.ClientID != -1)
+                    {
+                        TdxApi.QueryData(this.ClientID, 3, Result, ErrInfo);
+                        if (LocalData.SearchTradeResult != Result.ToString())
+                        {
+                            isTradeResultChange = true;
+                            LocalData.SearchTradeResult = Result.ToString();
+                            LocalData.SearchTradeErrInfo = ErrInfo.ToString();
+
+                            查到的成交Result = Tool.ChangeDataStringToTable(LocalData.SearchTradeResult);
+                            查到的成交ErrInfo = LocalData.SearchTradeErrInfo;
+                        }
+                        else
+                        {
+                            isTradeResultChange = false;
+                        }
+
+                        Thread.Sleep(this.查询间隔时间);
+                    }
+                    else
+                    {
+                        Thread.Sleep(2000);
+                    }
+                }
             }
 
             DateTime lastRefreshTime = DateTime.MinValue;
@@ -2294,75 +2347,79 @@ namespace AASServer
                         {
                             DataRow DataRow0 = 查到的成交DataTable.Rows[i];
                             string 委托编号 = this.GetDataRow委托编号(DataRow0);
-                            AASServer.DbDataSet.已发委托Row 已发委托Row1 = this.table券商帐户.DbDataSet.已发委托.Get已发委托(DateTime.Today, this.名称, 委托编号);
-                            if (已发委托Row1 != null)
+                            if (this.OrderIDs.Contains(委托编号))
                             {
-                                JyDataSet.成交Row 成交Row1 = 规范的成交DataTable.New成交Row();
-                                成交Row1.交易员 = 已发委托Row1.交易员;
-                                成交Row1.组合号 = this.名称;
-                                成交Row1.证券代码 = 已发委托Row1.证券代码;
-                                成交Row1.证券名称 = 已发委托Row1.证券名称;
-                                成交Row1.委托编号 = 已发委托Row1.委托编号;
-                                成交Row1.买卖方向 = 已发委托Row1.买卖方向;
-                                成交Row1.市场代码 = 已发委托Row1.市场代码;
-                                成交Row1.成交编号 = 规范的成交DataTable.Count.ToString();//此券商不提供成交编号.  不能更改，成交编号必须这么定义为序号，防止重复
-
-                                #region 各个券商
-                                if ((this.券商 == "模拟测试" && this.类型 == "普通") ||
-                                    (this.券商 == "招商证券" && this.类型 == "信用") ||
-                                    (this.券商 == "招商证券" && this.类型 == "普通") ||
-                                    (this.券商 == "银河证券" && this.类型 == "信用") ||
-                                    (this.券商 == "广发证券" && this.类型 == "普通") ||
-                                    (this.券商 == "广发证券" && this.类型 == "信用") ||
-                                    (this.券商 == "光大证券" && this.类型 == "信用") ||
-                                    (this.券商 == "光大证券" && this.类型 == "普通") ||
-                                    (this.券商 == "国海证券" && this.类型 == "普通") ||
-                                    (this.券商 == "东方证券" && this.类型 == "普通") ||
-                                    (this.券商 == "东方证券" && this.类型 == "信用") ||
-                                    (this.券商 == "民族证券" && this.类型 == "普通") ||
-                                    (this.券商 == "中信证券" && this.类型 == "信用") ||
-                                    (this.券商 == "中信证券" && this.类型 == "普通") ||
-                                    (this.券商 == "兴业证券" && this.类型 == "普通") ||
-                                    (this.券商 == "国信证券" && this.类型 == "普通") ||
-                                    (this.券商 == "国信证券" && this.类型 == "信用") ||
-                                    (this.券商 == "银河证券" && this.类型 == "普通") ||
-                                    (this.券商 == "国泰君安" && this.类型 == "信用") ||
-                                    (this.券商 == "中泰证券" && this.类型 == "信用") ||
-                                    (this.券商 == "国盛证券" && this.类型 == "信用")
-                                    )
+                                AASServer.DbDataSet.已发委托Row 已发委托Row1 = this.table券商帐户.DbDataSet.已发委托.Get已发委托(DateTime.Today, this.名称, 委托编号);
+                                if (已发委托Row1 != null)
                                 {
-                                    成交Row1.成交时间 = DataRow0["成交时间"] as string;
-                                    if (!string.IsNullOrEmpty(sucPriceCol))
+                                    JyDataSet.成交Row 成交Row1 = 规范的成交DataTable.New成交Row();
+                                    成交Row1.交易员 = 已发委托Row1.交易员;
+                                    成交Row1.组合号 = this.名称;
+                                    成交Row1.证券代码 = 已发委托Row1.证券代码;
+                                    成交Row1.证券名称 = 已发委托Row1.证券名称;
+                                    成交Row1.委托编号 = 已发委托Row1.委托编号;
+                                    成交Row1.买卖方向 = 已发委托Row1.买卖方向;
+                                    成交Row1.市场代码 = 已发委托Row1.市场代码;
+                                    成交Row1.成交编号 = 规范的成交DataTable.Count.ToString();//此券商不提供成交编号.  不能更改，成交编号必须这么定义为序号，防止重复
+
+                                    #region 各个券商
+                                    if ((this.券商 == "模拟测试" && this.类型 == "普通") ||
+                                        (this.券商 == "招商证券" && this.类型 == "信用") ||
+                                        (this.券商 == "招商证券" && this.类型 == "普通") ||
+                                        (this.券商 == "银河证券" && this.类型 == "信用") ||
+                                        (this.券商 == "广发证券" && this.类型 == "普通") ||
+                                        (this.券商 == "广发证券" && this.类型 == "信用") ||
+                                        (this.券商 == "光大证券" && this.类型 == "信用") ||
+                                        (this.券商 == "光大证券" && this.类型 == "普通") ||
+                                        (this.券商 == "国海证券" && this.类型 == "普通") ||
+                                        (this.券商 == "东方证券" && this.类型 == "普通") ||
+                                        (this.券商 == "东方证券" && this.类型 == "信用") ||
+                                        (this.券商 == "民族证券" && this.类型 == "普通") ||
+                                        (this.券商 == "中信证券" && this.类型 == "信用") ||
+                                        (this.券商 == "中信证券" && this.类型 == "普通") ||
+                                        (this.券商 == "兴业证券" && this.类型 == "普通") ||
+                                        (this.券商 == "国信证券" && this.类型 == "普通") ||
+                                        (this.券商 == "国信证券" && this.类型 == "信用") ||
+                                        (this.券商 == "银河证券" && this.类型 == "普通") ||
+                                        (this.券商 == "国泰君安" && this.类型 == "信用") ||
+                                        (this.券商 == "中泰证券" && this.类型 == "信用") ||
+                                        (this.券商 == "国盛证券" && this.类型 == "信用")
+                                        )
                                     {
-                                        成交Row1.成交价格 = decimal.Parse(DataRow0["成交价格"] as string);
+                                        成交Row1.成交时间 = DataRow0["成交时间"] as string;
+                                        if (!string.IsNullOrEmpty(sucPriceCol))
+                                        {
+                                            成交Row1.成交价格 = decimal.Parse(DataRow0["成交价格"] as string);
+                                        }
+
+                                        成交Row1.成交数量 = decimal.Parse(DataRow0["成交数量"] as string);
+                                        成交Row1.成交金额 = decimal.Parse(DataRow0["成交金额"] as string);
                                     }
-
-                                    成交Row1.成交数量 = decimal.Parse(DataRow0["成交数量"] as string);
-                                    成交Row1.成交金额 = decimal.Parse(DataRow0["成交金额"] as string);
-                                }
-                                else if (this.券商 == "华泰证券" && (this.类型 == "信用" || this.类型 == "普通"))
-                                {
-                                    成交Row1.成交时间 = "9:30";
-                                    成交Row1.成交价格 = decimal.Parse(DataRow0["成交价格"] as string);
-                                    成交Row1.成交数量 = decimal.Parse(DataRow0["成交数量"] as string);
-                                    成交Row1.成交金额 = decimal.Parse(DataRow0["成交金额"] as string);
-                                }
-                                else if (this.券商 == "Ims")
-                                {
-                                    成交Row1.成交时间 = CommonUtils.GetImsDateTimeString(DataRow0["knockTime"] as string);
-                                    成交Row1.成交价格 = decimal.Parse(DataRow0["knockPrice"] as string);
-                                    成交Row1.成交数量 = decimal.Parse(DataRow0["knockQty"] as string);
-                                    成交Row1.成交金额 = decimal.Parse(DataRow0["knockAmt"] as string);
-                                }
-                                else
-                                {
-                                    throw new Exception(string.Format("不支持 {0}{1} 帐户", this.券商, this.类型));
-                                }
-                                #endregion
+                                    else if (this.券商 == "华泰证券" && (this.类型 == "信用" || this.类型 == "普通"))
+                                    {
+                                        成交Row1.成交时间 = "9:30";
+                                        成交Row1.成交价格 = decimal.Parse(DataRow0["成交价格"] as string);
+                                        成交Row1.成交数量 = decimal.Parse(DataRow0["成交数量"] as string);
+                                        成交Row1.成交金额 = decimal.Parse(DataRow0["成交金额"] as string);
+                                    }
+                                    else if (this.券商 == "Ims")
+                                    {
+                                        成交Row1.成交时间 = CommonUtils.GetImsDateTimeString(DataRow0["knockTime"] as string);
+                                        成交Row1.成交价格 = decimal.Parse(DataRow0["knockPrice"] as string);
+                                        成交Row1.成交数量 = decimal.Parse(DataRow0["knockQty"] as string);
+                                        成交Row1.成交金额 = decimal.Parse(DataRow0["knockAmt"] as string);
+                                    }
+                                    else
+                                    {
+                                        throw new Exception(string.Format("不支持 {0}{1} 帐户", this.券商, this.类型));
+                                    }
+                                    #endregion
 
 
-                                规范的成交DataTable.Add成交Row(成交Row1);
+                                    规范的成交DataTable.Add成交Row(成交Row1);
+                                }
                             }
+                           
                         }
                     }
                 }
@@ -2438,7 +2495,10 @@ namespace AASServer
                         continue;
                     }
 
-
+                    if (!this.OrderIDs.Contains(委托编号))
+                    {
+                        continue;
+                    }
 
                     AASServer.DbDataSet.已发委托Row 已发委托Row1 = this.table券商帐户.DbDataSet.已发委托.Get已发委托(DateTime.Today, this.名称, 委托编号);
                     if (已发委托Row1 != null)
@@ -2460,39 +2520,6 @@ namespace AASServer
 
                         规范的委托DataTable.Add委托Row(委托Row1);
                     }
-                    //else if (EnableRepair && needRepairList.Count > 0)
-                    //{
-                    //    //30秒内，没有已下单记录，同时 股票代码，买卖方向，委托价格，委托数量
-                    //    var needAddOrd = needRepairList.FirstOrDefault(_ => _.Zqdm == DataRow0["证券代码"].ToString()
-                    //        && _.Quantity == decimal.Parse(DataRow0["委托数量"] + "")
-                    //        && _.Price == decimal.Parse(DataRow0["委托价格"] + "")
-                    //        && CommonUtils.IsTdxBuy(_.Category) == CommonUtils.IsTdxBuy(int.Parse(DataRow0["买卖标志"] + "")));
-                    //    if (needAddOrd != null)
-                    //    {
-                    //        Program.logger.LogInfo("查询到判断为漏单的委托数据，组合号{0}, 委托编号{1}", this.名称, 委托编号);
-                    //        //加入委托表和交易日志表。
-                    //        Program.db.已发委托.Add(DateTime.Today, this.名称, 委托编号, needAddOrd.Trader, "委托补漏成功", needAddOrd.Market, needAddOrd.Zqdm, needAddOrd.ZqName, needAddOrd.Category, 0m, 0m, needAddOrd.Price, needAddOrd.Quantity, 0m);
-                    //        string Msg = needAddOrd.IsRiskControl ? string.Format("风控员{0}下单补漏成功", needAddOrd.Sender) : "下单补漏成功";
-                    //        Program.db.交易日志.Add(DateTime.Today, DateTime.Now.ToString("HH:mm:ss"), needAddOrd.Trader, this.名称, needAddOrd.Zqdm, needAddOrd.ZqName, 委托编号, needAddOrd.Category, needAddOrd.Quantity, needAddOrd.Price, Msg);
-                    //        needAddOrd.OrderID = 委托编号;
-
-                    //        JyDataSet.委托Row 委托Row1 = 规范的委托DataTable.New委托Row();
-
-                    //        委托Row1.交易员 = needAddOrd.Trader;
-                    //        委托Row1.组合号 = this.名称;
-                    //        委托Row1.证券代码 = needAddOrd.Zqdm;
-                    //        委托Row1.证券名称 = needAddOrd.ZqName;
-                    //        委托Row1.委托价格 = needAddOrd.Price;
-                    //        委托Row1.委托数量 = needAddOrd.Quantity;
-                    //        委托Row1.委托编号 = 委托编号;
-                    //        委托Row1.买卖方向 = needAddOrd.Category;
-                    //        委托Row1.市场代码 = needAddOrd.Market;
-
-                    //        DataStandard(DataRow0, 委托编号, 委托Row1);
-
-                    //        规范的委托DataTable.Add委托Row(委托Row1);
-                    //    }
-                    //}
                 }
 
                 return 规范的委托DataTable;
@@ -5773,7 +5800,7 @@ namespace AASServer
                         this.Add可用仓位Row(row);
 
                         //将相关额度全部删除
-                        Program.db.额度分配.DeleteLimit(row.组合号, row.证券代码);
+                        //Program.db.额度分配.DeleteLimit(row.组合号, row.证券代码);
                         return true;
                     }
                     else
@@ -5802,7 +5829,7 @@ namespace AASServer
                         row.总仓位 = 可用数量;
                         row.证券名称 = 证券名称;
                     }
-                    Program.db.额度分配.DeleteLimit(组合号, 证券代码);
+                    //Program.db.额度分配.DeleteLimit(组合号, 证券代码);
                 }
             }
 
@@ -5815,7 +5842,7 @@ namespace AASServer
                     {
                         row.总仓位 = 总仓位;
                         row.证券名称 = 证券名称;
-                        Program.db.额度分配.DeleteLimit(组合号, 证券代码);
+                        //Program.db.额度分配.DeleteLimit(组合号, 证券代码);
                         return "1|";
                     }
                     else

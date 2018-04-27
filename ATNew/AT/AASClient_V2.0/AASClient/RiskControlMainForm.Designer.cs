@@ -55,12 +55,11 @@
             this.tabPage监控对象 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView交易员 = new System.Windows.Forms.DataGridView();
-            this.用户名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.仓位限制 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.亏损限制 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView交易额度 = new System.Windows.Forms.DataGridView();
             this.tabPage当前仓位 = new System.Windows.Forms.TabPage();
             this.dataGridView当前仓位 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip当前仓位 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label实现盈亏 = new System.Windows.Forms.Label();
             this.label浮动盈亏 = new System.Windows.Forms.Label();
@@ -82,36 +81,19 @@
             this.dateTimePicker开始日期 = new System.Windows.Forms.DateTimePicker();
             this.tabPage组合仓位 = new System.Windows.Forms.TabPage();
             this.dataGridView组合仓位 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage额度共享 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dataGridView额度分配交易员 = new System.Windows.Forms.DataGridView();
-            this.ColumnTraderAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView额度分配股票 = new System.Windows.Forms.DataGridView();
-            this.ColumnGroupAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLimitCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBuyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSaleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSearchShareLimit = new System.Windows.Forms.Button();
             this.comboBoxShareLimitGroup = new System.Windows.Forms.ComboBox();
             this.tabPage可用仓位 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.ucPositionShow1 = new AASClient.UC.ucPositionShow();
             this.tabPage交易员配置 = new System.Windows.Forms.TabPage();
-            this.ucUserAccountSet1 = new AASClient.UC.ucUserAccountSet();
             this.tabPage额度管理 = new System.Windows.Forms.TabPage();
-            this.ucStockLimitManage1 = new AASClient.UC.ucStockLimitManage();
             this.tabPage交易员管理 = new System.Windows.Forms.TabPage();
-            this.ucTraderManager1 = new AASClient.UC.ucTraderManager();
             this.tabPage运行日志 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView运行日志 = new System.Windows.Forms.DataGridView();
@@ -127,6 +109,7 @@
             this.bindingSource运行日志 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource额度共享股票 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource额度共享交易员 = new System.Windows.Forms.BindingSource(this.components);
+            this.labelLoading = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -143,8 +126,26 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip当前仓位 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.用户名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.仓位限制 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.亏损限制 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTraderAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGroupAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLimitCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBuyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSaleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ucPositionShow1 = new AASClient.UC.ucPositionShow();
+            this.ucUserAccountSet1 = new AASClient.UC.ucUserAccountSet();
+            this.ucStockLimitManage1 = new AASClient.UC.ucStockLimitManage();
+            this.ucTraderManager1 = new AASClient.UC.ucTraderManager();
             this.contextMenuStrip交易额度.SuspendLayout();
             this.contextMenuStrip交易日志.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -162,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView交易额度)).BeginInit();
             this.tabPage当前仓位.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView当前仓位)).BeginInit();
+            this.contextMenuStrip当前仓位.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage当前委托.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView当前委托)).BeginInit();
@@ -198,7 +200,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource运行日志)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource额度共享股票)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource额度共享交易员)).BeginInit();
-            this.contextMenuStrip当前仓位.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip交易额度
@@ -242,10 +243,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel时间,
             this.toolStripStatusLabelConnect});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 558);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1164, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -258,7 +259,7 @@
             // toolStripStatusLabelConnect
             // 
             this.toolStripStatusLabelConnect.Name = "toolStripStatusLabelConnect";
-            this.toolStripStatusLabelConnect.Size = new System.Drawing.Size(911, 17);
+            this.toolStripStatusLabelConnect.Size = new System.Drawing.Size(1091, 17);
             this.toolStripStatusLabelConnect.Spring = true;
             this.toolStripStatusLabelConnect.Text = "连接状态：已连接";
             this.toolStripStatusLabelConnect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,7 +280,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(984, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1164, 27);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -354,7 +355,7 @@
             // 
             this.splitContainer2.Panel1.Controls.Add(this.tabControlMain);
             this.splitContainer2.Panel2Collapsed = true;
-            this.splitContainer2.Size = new System.Drawing.Size(984, 531);
+            this.splitContainer2.Size = new System.Drawing.Size(1164, 612);
             this.splitContainer2.SplitterDistance = 303;
             this.splitContainer2.SplitterWidth = 6;
             this.splitContainer2.TabIndex = 1;
@@ -378,7 +379,7 @@
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(984, 531);
+            this.tabControlMain.Size = new System.Drawing.Size(1164, 612);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -388,7 +389,7 @@
             this.tabPage监控对象.Location = new System.Drawing.Point(4, 26);
             this.tabPage监控对象.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage监控对象.Name = "tabPage监控对象";
-            this.tabPage监控对象.Size = new System.Drawing.Size(976, 501);
+            this.tabPage监控对象.Size = new System.Drawing.Size(1156, 582);
             this.tabPage监控对象.TabIndex = 5;
             this.tabPage监控对象.Text = "监控对象";
             this.tabPage监控对象.UseVisualStyleBackColor = true;
@@ -408,7 +409,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView交易额度);
-            this.splitContainer1.Size = new System.Drawing.Size(976, 501);
+            this.splitContainer1.Size = new System.Drawing.Size(1156, 582);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
@@ -417,6 +418,7 @@
             // 
             this.dataGridView交易员.AllowUserToAddRows = false;
             this.dataGridView交易员.AllowUserToDeleteRows = false;
+            this.dataGridView交易员.AllowUserToResizeRows = false;
             this.dataGridView交易员.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView交易员.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView交易员.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -430,40 +432,17 @@
             this.dataGridView交易员.ReadOnly = true;
             this.dataGridView交易员.RowHeadersVisible = false;
             this.dataGridView交易员.RowTemplate.Height = 23;
-            this.dataGridView交易员.Size = new System.Drawing.Size(300, 501);
+            this.dataGridView交易员.Size = new System.Drawing.Size(300, 582);
             this.dataGridView交易员.TabIndex = 0;
             this.dataGridView交易员.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView交易员_CellClick);
             this.dataGridView交易员.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView交易员_CellDoubleClick);
             this.dataGridView交易员.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView交易员_CellFormatting);
             // 
-            // 用户名
-            // 
-            this.用户名.DataPropertyName = "用户名";
-            this.用户名.HeaderText = "用户名";
-            this.用户名.Name = "用户名";
-            this.用户名.ReadOnly = true;
-            this.用户名.Width = 69;
-            // 
-            // 仓位限制
-            // 
-            this.仓位限制.DataPropertyName = "仓位限制";
-            this.仓位限制.HeaderText = "仓位限制";
-            this.仓位限制.Name = "仓位限制";
-            this.仓位限制.ReadOnly = true;
-            this.仓位限制.Width = 81;
-            // 
-            // 亏损限制
-            // 
-            this.亏损限制.DataPropertyName = "亏损限制";
-            this.亏损限制.HeaderText = "亏损限制";
-            this.亏损限制.Name = "亏损限制";
-            this.亏损限制.ReadOnly = true;
-            this.亏损限制.Width = 81;
-            // 
             // dataGridView交易额度
             // 
             this.dataGridView交易额度.AllowUserToAddRows = false;
             this.dataGridView交易额度.AllowUserToDeleteRows = false;
+            this.dataGridView交易额度.AllowUserToResizeRows = false;
             this.dataGridView交易额度.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView交易额度.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView交易额度.ContextMenuStrip = this.contextMenuStrip交易额度;
@@ -474,10 +453,11 @@
             this.dataGridView交易额度.ReadOnly = true;
             this.dataGridView交易额度.RowHeadersVisible = false;
             this.dataGridView交易额度.RowTemplate.Height = 23;
-            this.dataGridView交易额度.Size = new System.Drawing.Size(671, 501);
+            this.dataGridView交易额度.Size = new System.Drawing.Size(851, 582);
             this.dataGridView交易额度.TabIndex = 1;
             this.dataGridView交易额度.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView交易额度_CellDoubleClick);
             this.dataGridView交易额度.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView交易额度_CellFormatting);
+            this.dataGridView交易额度.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView交易额度_DataError);
             // 
             // tabPage当前仓位
             // 
@@ -487,7 +467,7 @@
             this.tabPage当前仓位.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage当前仓位.Name = "tabPage当前仓位";
             this.tabPage当前仓位.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage当前仓位.Size = new System.Drawing.Size(976, 501);
+            this.tabPage当前仓位.Size = new System.Drawing.Size(1156, 582);
             this.tabPage当前仓位.TabIndex = 0;
             this.tabPage当前仓位.Text = "当前仓位";
             this.tabPage当前仓位.UseVisualStyleBackColor = true;
@@ -507,12 +487,26 @@
             this.dataGridView当前仓位.ReadOnly = true;
             this.dataGridView当前仓位.RowHeadersVisible = false;
             this.dataGridView当前仓位.RowTemplate.Height = 23;
-            this.dataGridView当前仓位.Size = new System.Drawing.Size(970, 461);
+            this.dataGridView当前仓位.Size = new System.Drawing.Size(1150, 542);
             this.dataGridView当前仓位.TabIndex = 0;
             this.dataGridView当前仓位.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView当前仓位_CellDoubleClick);
             this.dataGridView当前仓位.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView当前仓位_CellFormatting);
             this.dataGridView当前仓位.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView当前仓位_DataError);
             this.dataGridView当前仓位.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView当前仓位_RowPrePaint);
+            // 
+            // contextMenuStrip当前仓位
+            // 
+            this.contextMenuStrip当前仓位.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.刷新ToolStripMenuItem});
+            this.contextMenuStrip当前仓位.Name = "contextMenuStrip当前仓位";
+            this.contextMenuStrip当前仓位.Size = new System.Drawing.Size(101, 26);
+            // 
+            // 刷新ToolStripMenuItem
+            // 
+            this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.刷新ToolStripMenuItem.Text = "刷新";
+            this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.刷新ToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -526,7 +520,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 4);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(970, 32);
+            this.panel2.Size = new System.Drawing.Size(1150, 32);
             this.panel2.TabIndex = 1;
             // 
             // label实现盈亏
@@ -590,7 +584,7 @@
             this.tabPage当前委托.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage当前委托.Name = "tabPage当前委托";
             this.tabPage当前委托.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage当前委托.Size = new System.Drawing.Size(976, 501);
+            this.tabPage当前委托.Size = new System.Drawing.Size(1156, 582);
             this.tabPage当前委托.TabIndex = 1;
             this.tabPage当前委托.Text = "当前委托";
             this.tabPage当前委托.UseVisualStyleBackColor = true;
@@ -608,20 +602,22 @@
             this.dataGridView当前委托.ReadOnly = true;
             this.dataGridView当前委托.RowHeadersVisible = false;
             this.dataGridView当前委托.RowTemplate.Height = 23;
-            this.dataGridView当前委托.Size = new System.Drawing.Size(970, 493);
+            this.dataGridView当前委托.Size = new System.Drawing.Size(1150, 574);
             this.dataGridView当前委托.TabIndex = 1;
             this.dataGridView当前委托.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView当前委托_CellDoubleClick);
             this.dataGridView当前委托.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView当前委托_CellFormatting);
+            this.dataGridView当前委托.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView当前委托_DataError);
             this.dataGridView当前委托.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView当前委托_RowPrePaint);
             // 
             // tabPage业绩统计
             // 
+            this.tabPage业绩统计.Controls.Add(this.labelLoading);
             this.tabPage业绩统计.Controls.Add(this.dataGridView业绩统计);
             this.tabPage业绩统计.Controls.Add(this.panel1);
             this.tabPage业绩统计.Location = new System.Drawing.Point(4, 26);
             this.tabPage业绩统计.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage业绩统计.Name = "tabPage业绩统计";
-            this.tabPage业绩统计.Size = new System.Drawing.Size(976, 501);
+            this.tabPage业绩统计.Size = new System.Drawing.Size(1156, 582);
             this.tabPage业绩统计.TabIndex = 6;
             this.tabPage业绩统计.Text = "业绩统计";
             this.tabPage业绩统计.UseVisualStyleBackColor = true;
@@ -639,7 +635,7 @@
             this.dataGridView业绩统计.ReadOnly = true;
             this.dataGridView业绩统计.RowHeadersVisible = false;
             this.dataGridView业绩统计.RowTemplate.Height = 23;
-            this.dataGridView业绩统计.Size = new System.Drawing.Size(698, 501);
+            this.dataGridView业绩统计.Size = new System.Drawing.Size(878, 582);
             this.dataGridView业绩统计.TabIndex = 1;
             this.dataGridView业绩统计.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView业绩统计_CellFormatting);
             this.dataGridView业绩统计.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView业绩统计_RowPrePaint);
@@ -654,10 +650,10 @@
             this.panel1.Controls.Add(this.dateTimePicker结束日期);
             this.panel1.Controls.Add(this.dateTimePicker开始日期);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(698, 0);
+            this.panel1.Location = new System.Drawing.Point(878, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(278, 501);
+            this.panel1.Size = new System.Drawing.Size(278, 582);
             this.panel1.TabIndex = 0;
             // 
             // radioButton按组合号
@@ -734,7 +730,7 @@
             this.tabPage组合仓位.Controls.Add(this.dataGridView组合仓位);
             this.tabPage组合仓位.Location = new System.Drawing.Point(4, 26);
             this.tabPage组合仓位.Name = "tabPage组合仓位";
-            this.tabPage组合仓位.Size = new System.Drawing.Size(976, 501);
+            this.tabPage组合仓位.Size = new System.Drawing.Size(1156, 582);
             this.tabPage组合仓位.TabIndex = 7;
             this.tabPage组合仓位.Text = "组合仓位";
             this.tabPage组合仓位.UseVisualStyleBackColor = true;
@@ -757,52 +753,10 @@
             this.dataGridView组合仓位.ReadOnly = true;
             this.dataGridView组合仓位.RowHeadersVisible = false;
             this.dataGridView组合仓位.RowTemplate.Height = 23;
-            this.dataGridView组合仓位.Size = new System.Drawing.Size(976, 501);
+            this.dataGridView组合仓位.Size = new System.Drawing.Size(1156, 582);
             this.dataGridView组合仓位.TabIndex = 0;
             this.dataGridView组合仓位.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView组合仓位_CellFormatting);
             this.dataGridView组合仓位.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView组合仓位_RowPrePaint);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "组合号";
-            this.Column1.HeaderText = "组合号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 69;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "证券代码";
-            this.Column2.HeaderText = "证券代码";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 81;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "证券名称";
-            this.Column3.HeaderText = "证券名称";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 81;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "开仓类别";
-            this.Column4.HeaderText = "开仓类别";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 81;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "已开数量";
-            dataGridViewCellStyle4.Format = "f0";
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column5.HeaderText = "已开数量";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 81;
             // 
             // tabPage额度共享
             // 
@@ -811,7 +765,7 @@
             this.tabPage额度共享.Location = new System.Drawing.Point(4, 26);
             this.tabPage额度共享.Name = "tabPage额度共享";
             this.tabPage额度共享.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage额度共享.Size = new System.Drawing.Size(976, 501);
+            this.tabPage额度共享.Size = new System.Drawing.Size(1156, 582);
             this.tabPage额度共享.TabIndex = 8;
             this.tabPage额度共享.Text = "共享额度";
             this.tabPage额度共享.UseVisualStyleBackColor = true;
@@ -822,7 +776,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 59);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(970, 439);
+            this.panel4.Size = new System.Drawing.Size(1150, 520);
             this.panel4.TabIndex = 1;
             // 
             // splitContainer4
@@ -838,8 +792,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dataGridView额度分配股票);
-            this.splitContainer4.Size = new System.Drawing.Size(970, 439);
-            this.splitContainer4.SplitterDistance = 167;
+            this.splitContainer4.Size = new System.Drawing.Size(1150, 520);
+            this.splitContainer4.SplitterDistance = 197;
             this.splitContainer4.TabIndex = 0;
             // 
             // dataGridView额度分配交易员
@@ -853,14 +807,8 @@
             this.dataGridView额度分配交易员.Location = new System.Drawing.Point(0, 0);
             this.dataGridView额度分配交易员.Name = "dataGridView额度分配交易员";
             this.dataGridView额度分配交易员.RowTemplate.Height = 23;
-            this.dataGridView额度分配交易员.Size = new System.Drawing.Size(167, 439);
+            this.dataGridView额度分配交易员.Size = new System.Drawing.Size(197, 520);
             this.dataGridView额度分配交易员.TabIndex = 0;
-            // 
-            // ColumnTraderAccount
-            // 
-            this.ColumnTraderAccount.DataPropertyName = "TraderAccount";
-            this.ColumnTraderAccount.HeaderText = "用户名";
-            this.ColumnTraderAccount.Name = "ColumnTraderAccount";
             // 
             // dataGridView额度分配股票
             // 
@@ -879,51 +827,9 @@
             this.dataGridView额度分配股票.Location = new System.Drawing.Point(0, 0);
             this.dataGridView额度分配股票.Name = "dataGridView额度分配股票";
             this.dataGridView额度分配股票.RowTemplate.Height = 23;
-            this.dataGridView额度分配股票.Size = new System.Drawing.Size(799, 439);
+            this.dataGridView额度分配股票.Size = new System.Drawing.Size(949, 520);
             this.dataGridView额度分配股票.TabIndex = 0;
             this.dataGridView额度分配股票.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView额度分配股票_CellFormatting);
-            // 
-            // ColumnGroupAccount
-            // 
-            this.ColumnGroupAccount.DataPropertyName = "GroupAccount";
-            this.ColumnGroupAccount.HeaderText = "组合号";
-            this.ColumnGroupAccount.Name = "ColumnGroupAccount";
-            // 
-            // ColumnStockID
-            // 
-            this.ColumnStockID.DataPropertyName = "StockID";
-            this.ColumnStockID.HeaderText = "股票代码";
-            this.ColumnStockID.Name = "ColumnStockID";
-            // 
-            // ColumnStockName
-            // 
-            this.ColumnStockName.DataPropertyName = "StockName";
-            this.ColumnStockName.HeaderText = "股票名称";
-            this.ColumnStockName.Name = "ColumnStockName";
-            // 
-            // ColumnLimitCount
-            // 
-            this.ColumnLimitCount.DataPropertyName = "LimitCount";
-            this.ColumnLimitCount.HeaderText = "额度";
-            this.ColumnLimitCount.Name = "ColumnLimitCount";
-            // 
-            // ColumnCommission
-            // 
-            this.ColumnCommission.DataPropertyName = "Commission";
-            this.ColumnCommission.HeaderText = "手续费率";
-            this.ColumnCommission.Name = "ColumnCommission";
-            // 
-            // ColumnBuyType
-            // 
-            this.ColumnBuyType.DataPropertyName = "BuyType";
-            this.ColumnBuyType.HeaderText = "买方式";
-            this.ColumnBuyType.Name = "ColumnBuyType";
-            // 
-            // ColumnSaleType
-            // 
-            this.ColumnSaleType.DataPropertyName = "SaleType";
-            this.ColumnSaleType.HeaderText = "卖方式";
-            this.ColumnSaleType.Name = "ColumnSaleType";
             // 
             // panel3
             // 
@@ -933,7 +839,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(970, 56);
+            this.panel3.Size = new System.Drawing.Size(1150, 56);
             this.panel3.TabIndex = 0;
             // 
             // buttonSearchShareLimit
@@ -959,7 +865,7 @@
             this.tabPage可用仓位.Controls.Add(this.panel6);
             this.tabPage可用仓位.Location = new System.Drawing.Point(4, 26);
             this.tabPage可用仓位.Name = "tabPage可用仓位";
-            this.tabPage可用仓位.Size = new System.Drawing.Size(976, 501);
+            this.tabPage可用仓位.Size = new System.Drawing.Size(1156, 582);
             this.tabPage可用仓位.TabIndex = 10;
             this.tabPage可用仓位.Text = "可用仓位";
             this.tabPage可用仓位.UseVisualStyleBackColor = true;
@@ -970,17 +876,8 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(976, 501);
+            this.panel6.Size = new System.Drawing.Size(1156, 582);
             this.panel6.TabIndex = 2;
-            // 
-            // ucPositionShow1
-            // 
-            this.ucPositionShow1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPositionShow1.Location = new System.Drawing.Point(0, 0);
-            this.ucPositionShow1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.ucPositionShow1.Name = "ucPositionShow1";
-            this.ucPositionShow1.Size = new System.Drawing.Size(976, 501);
-            this.ucPositionShow1.TabIndex = 0;
             // 
             // tabPage交易员配置
             // 
@@ -988,38 +885,20 @@
             this.tabPage交易员配置.Location = new System.Drawing.Point(4, 26);
             this.tabPage交易员配置.Name = "tabPage交易员配置";
             this.tabPage交易员配置.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage交易员配置.Size = new System.Drawing.Size(976, 501);
+            this.tabPage交易员配置.Size = new System.Drawing.Size(1156, 582);
             this.tabPage交易员配置.TabIndex = 11;
             this.tabPage交易员配置.Text = "组合号交易员配置";
             this.tabPage交易员配置.UseVisualStyleBackColor = true;
-            // 
-            // ucUserAccountSet1
-            // 
-            this.ucUserAccountSet1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucUserAccountSet1.Location = new System.Drawing.Point(3, 3);
-            this.ucUserAccountSet1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ucUserAccountSet1.Name = "ucUserAccountSet1";
-            this.ucUserAccountSet1.Size = new System.Drawing.Size(970, 495);
-            this.ucUserAccountSet1.TabIndex = 0;
             // 
             // tabPage额度管理
             // 
             this.tabPage额度管理.Controls.Add(this.ucStockLimitManage1);
             this.tabPage额度管理.Location = new System.Drawing.Point(4, 26);
             this.tabPage额度管理.Name = "tabPage额度管理";
-            this.tabPage额度管理.Size = new System.Drawing.Size(976, 501);
+            this.tabPage额度管理.Size = new System.Drawing.Size(1156, 582);
             this.tabPage额度管理.TabIndex = 12;
             this.tabPage额度管理.Text = "额度管理";
             this.tabPage额度管理.UseVisualStyleBackColor = true;
-            // 
-            // ucStockLimitManage1
-            // 
-            this.ucStockLimitManage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucStockLimitManage1.Location = new System.Drawing.Point(0, 0);
-            this.ucStockLimitManage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ucStockLimitManage1.Name = "ucStockLimitManage1";
-            this.ucStockLimitManage1.Size = new System.Drawing.Size(976, 501);
-            this.ucStockLimitManage1.TabIndex = 0;
             // 
             // tabPage交易员管理
             // 
@@ -1027,26 +906,17 @@
             this.tabPage交易员管理.Location = new System.Drawing.Point(4, 26);
             this.tabPage交易员管理.Name = "tabPage交易员管理";
             this.tabPage交易员管理.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage交易员管理.Size = new System.Drawing.Size(976, 501);
+            this.tabPage交易员管理.Size = new System.Drawing.Size(1156, 582);
             this.tabPage交易员管理.TabIndex = 13;
             this.tabPage交易员管理.Text = "交易员管理";
             this.tabPage交易员管理.UseVisualStyleBackColor = true;
-            // 
-            // ucTraderManager1
-            // 
-            this.ucTraderManager1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTraderManager1.Location = new System.Drawing.Point(3, 3);
-            this.ucTraderManager1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ucTraderManager1.Name = "ucTraderManager1";
-            this.ucTraderManager1.Size = new System.Drawing.Size(970, 495);
-            this.ucTraderManager1.TabIndex = 0;
             // 
             // tabPage运行日志
             // 
             this.tabPage运行日志.Controls.Add(this.panel5);
             this.tabPage运行日志.Location = new System.Drawing.Point(4, 26);
             this.tabPage运行日志.Name = "tabPage运行日志";
-            this.tabPage运行日志.Size = new System.Drawing.Size(976, 501);
+            this.tabPage运行日志.Size = new System.Drawing.Size(1156, 582);
             this.tabPage运行日志.TabIndex = 9;
             this.tabPage运行日志.Text = "运行日志";
             this.tabPage运行日志.UseVisualStyleBackColor = true;
@@ -1058,7 +928,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(976, 501);
+            this.panel5.Size = new System.Drawing.Size(1156, 582);
             this.panel5.TabIndex = 0;
             // 
             // dataGridView运行日志
@@ -1072,11 +942,23 @@
             this.dataGridView运行日志.Name = "dataGridView运行日志";
             this.dataGridView运行日志.ReadOnly = true;
             this.dataGridView运行日志.RowHeadersVisible = false;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView运行日志.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView运行日志.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView运行日志.RowTemplate.Height = 23;
-            this.dataGridView运行日志.Size = new System.Drawing.Size(974, 499);
+            this.dataGridView运行日志.Size = new System.Drawing.Size(1154, 580);
             this.dataGridView运行日志.TabIndex = 1;
+            // 
+            // labelLoading
+            // 
+            this.labelLoading.AutoSize = true;
+            this.labelLoading.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelLoading.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelLoading.Location = new System.Drawing.Point(335, 211);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(66, 19);
+            this.labelLoading.TabIndex = 2;
+            this.labelLoading.Text = "加载中……";
+            this.labelLoading.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1137,8 +1019,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "已开数量";
-            dataGridViewCellStyle6.Format = "f0";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Format = "f0";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn8.HeaderText = "已开数量";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -1192,25 +1074,161 @@
             this.dataGridViewTextBoxColumn16.HeaderText = "卖方式";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             // 
-            // contextMenuStrip当前仓位
+            // 用户名
             // 
-            this.contextMenuStrip当前仓位.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.刷新ToolStripMenuItem});
-            this.contextMenuStrip当前仓位.Name = "contextMenuStrip当前仓位";
-            this.contextMenuStrip当前仓位.Size = new System.Drawing.Size(101, 26);
+            this.用户名.DataPropertyName = "用户名";
+            this.用户名.HeaderText = "用户名";
+            this.用户名.Name = "用户名";
+            this.用户名.ReadOnly = true;
+            this.用户名.Width = 69;
             // 
-            // 刷新ToolStripMenuItem
+            // 仓位限制
             // 
-            this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.刷新ToolStripMenuItem.Text = "刷新";
-            this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.刷新ToolStripMenuItem_Click);
+            this.仓位限制.DataPropertyName = "仓位限制";
+            this.仓位限制.HeaderText = "仓位限制";
+            this.仓位限制.Name = "仓位限制";
+            this.仓位限制.ReadOnly = true;
+            this.仓位限制.Width = 81;
+            // 
+            // 亏损限制
+            // 
+            this.亏损限制.DataPropertyName = "亏损限制";
+            this.亏损限制.HeaderText = "亏损限制";
+            this.亏损限制.Name = "亏损限制";
+            this.亏损限制.ReadOnly = true;
+            this.亏损限制.Width = 81;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "组合号";
+            this.Column1.HeaderText = "组合号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 69;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "证券代码";
+            this.Column2.HeaderText = "证券代码";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 81;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "证券名称";
+            this.Column3.HeaderText = "证券名称";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 81;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "开仓类别";
+            this.Column4.HeaderText = "开仓类别";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 81;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "已开数量";
+            dataGridViewCellStyle6.Format = "f0";
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column5.HeaderText = "已开数量";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 81;
+            // 
+            // ColumnTraderAccount
+            // 
+            this.ColumnTraderAccount.DataPropertyName = "TraderAccount";
+            this.ColumnTraderAccount.HeaderText = "用户名";
+            this.ColumnTraderAccount.Name = "ColumnTraderAccount";
+            // 
+            // ColumnGroupAccount
+            // 
+            this.ColumnGroupAccount.DataPropertyName = "GroupAccount";
+            this.ColumnGroupAccount.HeaderText = "组合号";
+            this.ColumnGroupAccount.Name = "ColumnGroupAccount";
+            // 
+            // ColumnStockID
+            // 
+            this.ColumnStockID.DataPropertyName = "StockID";
+            this.ColumnStockID.HeaderText = "股票代码";
+            this.ColumnStockID.Name = "ColumnStockID";
+            // 
+            // ColumnStockName
+            // 
+            this.ColumnStockName.DataPropertyName = "StockName";
+            this.ColumnStockName.HeaderText = "股票名称";
+            this.ColumnStockName.Name = "ColumnStockName";
+            // 
+            // ColumnLimitCount
+            // 
+            this.ColumnLimitCount.DataPropertyName = "LimitCount";
+            this.ColumnLimitCount.HeaderText = "额度";
+            this.ColumnLimitCount.Name = "ColumnLimitCount";
+            // 
+            // ColumnCommission
+            // 
+            this.ColumnCommission.DataPropertyName = "Commission";
+            this.ColumnCommission.HeaderText = "手续费率";
+            this.ColumnCommission.Name = "ColumnCommission";
+            // 
+            // ColumnBuyType
+            // 
+            this.ColumnBuyType.DataPropertyName = "BuyType";
+            this.ColumnBuyType.HeaderText = "买方式";
+            this.ColumnBuyType.Name = "ColumnBuyType";
+            // 
+            // ColumnSaleType
+            // 
+            this.ColumnSaleType.DataPropertyName = "SaleType";
+            this.ColumnSaleType.HeaderText = "卖方式";
+            this.ColumnSaleType.Name = "ColumnSaleType";
+            // 
+            // ucPositionShow1
+            // 
+            this.ucPositionShow1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPositionShow1.Location = new System.Drawing.Point(0, 0);
+            this.ucPositionShow1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.ucPositionShow1.Name = "ucPositionShow1";
+            this.ucPositionShow1.Size = new System.Drawing.Size(1156, 582);
+            this.ucPositionShow1.TabIndex = 0;
+            // 
+            // ucUserAccountSet1
+            // 
+            this.ucUserAccountSet1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucUserAccountSet1.Location = new System.Drawing.Point(3, 3);
+            this.ucUserAccountSet1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ucUserAccountSet1.Name = "ucUserAccountSet1";
+            this.ucUserAccountSet1.Size = new System.Drawing.Size(1150, 576);
+            this.ucUserAccountSet1.TabIndex = 0;
+            // 
+            // ucStockLimitManage1
+            // 
+            this.ucStockLimitManage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucStockLimitManage1.Location = new System.Drawing.Point(0, 0);
+            this.ucStockLimitManage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ucStockLimitManage1.Name = "ucStockLimitManage1";
+            this.ucStockLimitManage1.Size = new System.Drawing.Size(1156, 582);
+            this.ucStockLimitManage1.TabIndex = 0;
+            // 
+            // ucTraderManager1
+            // 
+            this.ucTraderManager1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTraderManager1.Location = new System.Drawing.Point(3, 3);
+            this.ucTraderManager1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ucTraderManager1.Name = "ucTraderManager1";
+            this.ucTraderManager1.Size = new System.Drawing.Size(1150, 576);
+            this.ucTraderManager1.TabIndex = 0;
             // 
             // RiskControlMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 580);
+            this.ClientSize = new System.Drawing.Size(1164, 661);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -1241,11 +1259,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView交易额度)).EndInit();
             this.tabPage当前仓位.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView当前仓位)).EndInit();
+            this.contextMenuStrip当前仓位.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabPage当前委托.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView当前委托)).EndInit();
             this.tabPage业绩统计.ResumeLayout(false);
+            this.tabPage业绩统计.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView业绩统计)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1279,7 +1299,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource运行日志)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource额度共享股票)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource额度共享交易员)).EndInit();
-            this.contextMenuStrip当前仓位.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1400,5 +1419,6 @@
         private System.Windows.Forms.ToolStripMenuItem 当日平仓ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip当前仓位;
         private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
+        private System.Windows.Forms.Label labelLoading;
     }
 }

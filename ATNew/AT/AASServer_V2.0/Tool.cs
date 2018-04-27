@@ -477,7 +477,7 @@ namespace AASServer
                 }
                 catch (Exception ex)
                 {
-                    Program.logger.LogInfoDetail("成交变更通知风控出错,交易员：{0}, 通知对象{1}; 出错信息：{2}", TradeName, item.Value, ex.Message);
+                    Program.logger.LogInfoDetail("成交变更通知出错,交易员：{0}, 通知对象{1}; 出错信息：{2}", TradeName, item.Value, ex.Message);
                 }
             }
 
@@ -773,8 +773,10 @@ namespace AASServer
                         AASServer.DbDataSet.额度分配Row AASPermition = Program.db.额度分配.Get额度分配(已发委托Row1.交易员, 已发委托Row1.组合号, 已发委托Row1.证券代码);
                         if (AASPermition == null)
                         {
-                            AASUser1 = Program.db.平台用户.Get平台用户(已发委托Row1.交易员);
-                            交易费用 = 已发委托Row1.Get交易费用(AASUser1.手续费率);
+                            //AASUser1 = Program.db.平台用户.Get平台用户(已发委托Row1.交易员);
+                            //交易费用 = 已发委托Row1.Get交易费用(AASUser1.手续费率);
+                            var acc = Program.db.券商帐户.QueryQsAccount(已发委托Row1.组合号);
+                            交易费用 = 已发委托Row1.Get交易费用(acc.手续费率);
                         }
                         else
                         {
@@ -956,67 +958,30 @@ namespace AASServer
                     }
                 }
 
-                //var limitValue = CommonUtils.GetConfig("UseZmqInterface");
-                //if ("1".Equals(limitValue))
-                //{
-                //    //策略下单
-                //    foreach (ShareLimitGroupItem item in ShareLimitAdapter.Instance.ShareLimitGroups)
-                //    {
-                //        foreach (LimitTrader trader in item.GroupTraderList)
-                //        {
-                //            foreach (StockLimitItem subItem in item.GroupStockList)
-                //            {
-                //                YJServiceReference.JyDataSet.额度分配Row 额度分配RowNew = new额度分配DataTable1.New额度分配Row();
-                //                new额度分配DataTable1.Add额度分配Row(额度分配RowNew);
 
-                //                额度分配RowNew.交易员 = trader.TraderAccount;
-                //                额度分配RowNew.证券代码 = subItem.StockID;
-                //                额度分配RowNew.组合号 = subItem.GroupAccount;
-                //                额度分配RowNew.市场 = (byte)(subItem.StockID.StartsWith("6") ? 1 : 0);
-                //                额度分配RowNew.证券名称 = subItem.StockName;
-                //                额度分配RowNew.拼音缩写 = string.Empty;
-                //                额度分配RowNew.买模式 = Convert.ToInt32(subItem.BuyType);
-                //                额度分配RowNew.卖模式 = Convert.ToInt32(subItem.SaleType);
-                //                额度分配RowNew.交易额度 = Convert.ToDecimal(subItem.LimitCount);
-                //                额度分配RowNew.手续费率 = Convert.ToDecimal(subItem.Commission);
-                //                if (dicGroup.ContainsKey(额度分配RowNew.交易员))
-                //                    额度分配RowNew.分组 = dicGroup[额度分配RowNew.交易员];
-                //                else
-                //                {
-                //                    额度分配RowNew.分组 = string.Empty;
-                //                }
-                //            }
-                //        }
-                //    }
+                AASServer.DbDataSet.额度分配DataTable 额度分配DataTable1 = new DbDataSet.额度分配DataTable();
+                额度分配DataTable1.LoadToday();
 
-                //}
-                //else
+                foreach (AASServer.DbDataSet.额度分配Row 额度分配Row1 in 额度分配DataTable1)
                 {
+                    YJServiceReference.JyDataSet.额度分配Row 额度分配RowNew = new额度分配DataTable1.New额度分配Row();
+                    new额度分配DataTable1.Add额度分配Row(额度分配RowNew);
 
-                    AASServer.DbDataSet.额度分配DataTable 额度分配DataTable1 = new DbDataSet.额度分配DataTable();
-                    额度分配DataTable1.LoadToday();
-
-                    foreach (AASServer.DbDataSet.额度分配Row 额度分配Row1 in 额度分配DataTable1)
+                    额度分配RowNew.交易员 = 额度分配Row1.交易员;
+                    额度分配RowNew.证券代码 = 额度分配Row1.证券代码;
+                    额度分配RowNew.组合号 = 额度分配Row1.组合号;
+                    额度分配RowNew.市场 = 额度分配Row1.市场;
+                    额度分配RowNew.证券名称 = 额度分配Row1.证券名称;
+                    额度分配RowNew.拼音缩写 = 额度分配Row1.拼音缩写;
+                    额度分配RowNew.买模式 = 额度分配Row1.卖模式;
+                    额度分配RowNew.卖模式 = 额度分配Row1.卖模式;
+                    额度分配RowNew.交易额度 = 额度分配Row1.交易额度;
+                    额度分配RowNew.手续费率 = 额度分配Row1.手续费率;
+                    if (dicGroup.ContainsKey(额度分配RowNew.交易员))
+                        额度分配RowNew.分组 = dicGroup[额度分配RowNew.交易员];
+                    else
                     {
-                        YJServiceReference.JyDataSet.额度分配Row 额度分配RowNew = new额度分配DataTable1.New额度分配Row();
-                        new额度分配DataTable1.Add额度分配Row(额度分配RowNew);
-
-                        额度分配RowNew.交易员 = 额度分配Row1.交易员;
-                        额度分配RowNew.证券代码 = 额度分配Row1.证券代码;
-                        额度分配RowNew.组合号 = 额度分配Row1.组合号;
-                        额度分配RowNew.市场 = 额度分配Row1.市场;
-                        额度分配RowNew.证券名称 = 额度分配Row1.证券名称;
-                        额度分配RowNew.拼音缩写 = 额度分配Row1.拼音缩写;
-                        额度分配RowNew.买模式 = 额度分配Row1.卖模式;
-                        额度分配RowNew.卖模式 = 额度分配Row1.卖模式;
-                        额度分配RowNew.交易额度 = 额度分配Row1.交易额度;
-                        额度分配RowNew.手续费率 = 额度分配Row1.手续费率;
-                        if (dicGroup.ContainsKey(额度分配RowNew.交易员))
-                            额度分配RowNew.分组 = dicGroup[额度分配RowNew.交易员];
-                        else
-                        {
-                            额度分配RowNew.分组 = string.Empty;
-                        }
+                        额度分配RowNew.分组 = string.Empty;
                     }
                 }
 

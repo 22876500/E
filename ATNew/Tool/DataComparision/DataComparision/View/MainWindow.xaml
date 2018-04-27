@@ -138,6 +138,12 @@
                         </TabItem.Header>
                         <control:HisSearch x:Name="his"></control:HisSearch>
                     </TabItem>
+                    <TabItem x:Name="tiCancelRate">
+                        <TabItem.Header>
+                            <Label>撤单率</Label>
+                        </TabItem.Header>
+                        <control:OrderCancelRate></control:OrderCancelRate>
+                    </TabItem>
                 </TabControl>
             </Grid>
         </Border>

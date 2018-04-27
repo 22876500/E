@@ -122,7 +122,7 @@ namespace AASClient
             }
             catch (Exception ex)
             {
-                Program.logger.LogRunning(ex.Message);
+                Program.logger.LogRunning("Form Closing Exception:" + ex.Message);
             }
         }
 

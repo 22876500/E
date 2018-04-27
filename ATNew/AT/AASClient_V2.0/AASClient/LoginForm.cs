@@ -26,7 +26,7 @@ namespace AASClient
         bool isSelectServer = false;
         Configuration AppConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-        readonly string serverIP = "211.149.152.92:808";//"101.132.154.219";
+        readonly string serverIP = "211.149.152.92:808";//"211.149.152.92:808";
         const string pubServerName = "分发服务器";
         string pubServerIPCache = string.Empty;
 

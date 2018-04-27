@@ -417,7 +417,7 @@
             this.textBox上海股东代码.Location = new System.Drawing.Point(131, 362);
             this.textBox上海股东代码.Name = "textBox上海股东代码";
             this.textBox上海股东代码.ReadOnly = true;
-            this.textBox上海股东代码.Size = new System.Drawing.Size(142, 21);
+            this.textBox上海股东代码.Size = new System.Drawing.Size(184, 21);
             this.textBox上海股东代码.TabIndex = 37;
             // 
             // textBox深圳股东代码
@@ -425,7 +425,7 @@
             this.textBox深圳股东代码.Location = new System.Drawing.Point(131, 386);
             this.textBox深圳股东代码.Name = "textBox深圳股东代码";
             this.textBox深圳股东代码.ReadOnly = true;
-            this.textBox深圳股东代码.Size = new System.Drawing.Size(142, 21);
+            this.textBox深圳股东代码.Size = new System.Drawing.Size(184, 21);
             this.textBox深圳股东代码.TabIndex = 38;
             // 
             // label13

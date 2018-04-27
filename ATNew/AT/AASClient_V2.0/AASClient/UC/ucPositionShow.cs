@@ -283,8 +283,12 @@ namespace AASClient.UC
         {
             Task.Run(() =>
             {
-                Arr = Program.AASServiceClient.GetPositonLockedAll();
-                this.Invoke(new Action(FilterData));
+                try
+                {
+                    Arr = Program.AASServiceClient.GetPositonLockedAll();
+                    this.Invoke(new Action(FilterData));
+                }
+                catch (Exception) { }
             });
         }
 

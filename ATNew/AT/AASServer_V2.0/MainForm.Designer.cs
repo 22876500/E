@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,6 +50,7 @@
             this.组合号设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.连接即时查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerCheckClose = new System.Windows.Forms.Timer(this.components);
+            this.多线程查询配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -138,9 +139,9 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "启用/停用";
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = "启用/停用";
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "操作";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -231,7 +232,8 @@
             // 
             this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.组合号设置ToolStripMenuItem,
-            this.连接即时查询ToolStripMenuItem});
+            this.连接即时查询ToolStripMenuItem,
+            this.多线程查询配置ToolStripMenuItem});
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
             this.设置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.设置ToolStripMenuItem.Text = "设置";
@@ -255,6 +257,13 @@
             this.timerCheckClose.Enabled = true;
             this.timerCheckClose.Interval = 1000;
             this.timerCheckClose.Tick += new System.EventHandler(this.timerCheckClose_Tick);
+            // 
+            // 多线程查询配置ToolStripMenuItem
+            // 
+            this.多线程查询配置ToolStripMenuItem.Name = "多线程查询配置ToolStripMenuItem";
+            this.多线程查询配置ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.多线程查询配置ToolStripMenuItem.Text = "多线程查询配置";
+            this.多线程查询配置ToolStripMenuItem.Click += new System.EventHandler(this.多线程查询配置ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -310,6 +319,7 @@
         private System.Windows.Forms.ToolStripMenuItem 连接即时查询ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.Timer timerCheckClose;
+        private System.Windows.Forms.ToolStripMenuItem 多线程查询配置ToolStripMenuItem;
     }
 }
 

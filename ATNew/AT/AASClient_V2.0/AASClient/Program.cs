@@ -110,7 +110,7 @@ namespace AASClient
             NetTcpBinding.MaxBufferSize = 2147483647;//在Binding里指定了最大缓存字节数和最大接受字节数，相当于2G的大小
             NetTcpBinding.MaxBufferPoolSize = 2147483647;
             NetTcpBinding.MaxReceivedMessageSize = 2147483647;
-            NetTcpBinding.SendTimeout = new TimeSpan(0, 0, 15);
+            NetTcpBinding.SendTimeout = new TimeSpan(0, 0, 30);
             NetTcpBinding.ReceiveTimeout = new TimeSpan(4, 0, 0);
 
             NetTcpBinding.ReaderQuotas.MaxArrayLength = 2147483647;
@@ -217,7 +217,7 @@ namespace AASClient
                 }
                 else
                 {
-                    Program.logger.LogRunning(ex.Message + ex.StackTrace);
+                    Program.logger.LogRunning("UnhandledException:" + ex.Message + ex.StackTrace);
                 }
             }
             else

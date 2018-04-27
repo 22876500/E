@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,9 +39,8 @@ namespace AASClient.StockPosition
                 {
                     if (!this.IsDisposed)
                     {
-
                         RefreshPositionList();
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
                     }
                     else
                     {
@@ -64,10 +64,11 @@ namespace AASClient.StockPosition
 
                 dataGridView可用仓位.BeginInvoke(new Action(() =>
                 {
-                    foreach (var item in info)
-                    {
-                        dataGridView可用仓位.Rows.Add(item.组合号, item.证券代码, item.证券名称, item.剩余数量, item.剩余市值, item.昨收);
-                    }
+                    //foreach (var item in info)
+                    //{
+                    //    dataGridView可用仓位.Rows.Add(item.组合号, item.证券代码, item.证券名称, item.剩余数量, item.剩余市值, item.昨收);
+                    //}
+                    BindFiltedData(info);
                     labelLoading.Visible = false;
                 }));
             });
@@ -105,7 +106,6 @@ namespace AASClient.StockPosition
             {
                 try
                 {
-                    
                     info = Program.AASServiceClient.GetPositonLockedAll();
                     var arr = info.ToArray();
                     dataGridView可用仓位.BeginInvoke(new Action(() =>
@@ -116,7 +116,10 @@ namespace AASClient.StockPosition
                 }
                 catch (Exception ex)
                 {
-                    labelLoading.BeginInvoke(new Action(() => { labelLoading.Visible = false; }));
+                    if (labelLoading != null && labelLoading.IsAccessible)
+                    {
+                        labelLoading.BeginInvoke(new Action(() => { labelLoading.Visible = false; }));
+                    }
                     Program.logger.LogInfo("刷新可用仓位异常!" + ex.Message);
                 }
             });
@@ -137,7 +140,14 @@ namespace AASClient.StockPosition
             {
 
                 string strFL = textBox证券名称.Text;
-                arr = arr.Where(_ => _.证券名称.StartsWith(textBox证券名称.Text) || PinYin.PinYinConvertor.GetFirstPinyin(_.证券名称).StartsWith(strFL)).ToArray();
+                if (Regex.IsMatch(strFL, "^[A-Za-z]+$"))
+                {
+                    arr = arr.Where(_ => PinYin.PinYinConvertor.GetFirstPinyin(_.证券名称).StartsWith(strFL)).ToArray();
+                }
+                else
+                {
+                    arr = arr.Where(_ => _.证券名称.StartsWith(textBox证券名称.Text)).ToArray();
+                }
             }
 
             for (int i = 0; i < arr.Length; i++)
@@ -151,6 +161,10 @@ namespace AASClient.StockPosition
                 {
                     dataGridView可用仓位.Rows.Add(item.组合号, item.证券代码, item.证券名称, item.剩余数量, item.剩余市值, item.昨收);
                 }
+            }
+            while (dataGridView可用仓位.Rows.Count > arr.Length)
+            {
+                dataGridView可用仓位.Rows.RemoveAt(arr.Length);
             }
         }
 

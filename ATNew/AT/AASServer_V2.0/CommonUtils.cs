@@ -105,7 +105,18 @@ namespace AASServer
 
         public static void ResetGroupConfig()
         {
-            _dictGroupIP = null;
+            lock (Sync)
+            {
+                _dictGroupIP = null;
+                try
+                {
+                    Program.logger.LogInfoDetail("组合号配置个数：" + DictGroupIP.Count.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogInfoDetail("ResetGroupConfig Exception：" + ex.Message);
+                }
+            }
         }
 
         public static GroupConfig GetGroupConfig(string group)

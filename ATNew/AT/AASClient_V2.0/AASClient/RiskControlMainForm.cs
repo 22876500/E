@@ -62,12 +62,13 @@ namespace AASClient
             this.bindingSource交易员.DataSource = Program.serverDb;
             this.bindingSource交易员.DataMember = "平台用户";
             this.dataGridView交易员.DataSource = this.bindingSource交易员;
-            
 
 
 
-            this.bindingSource交易额度.DataSource = Program.serverDb;
-            this.bindingSource交易额度.DataMember = "额度分配";
+            var dt额度分配 = Program.serverDb.额度分配.Copy() as DbDataSet.额度分配DataTable;
+            dt额度分配.Rows.Clear();
+            this.bindingSource交易额度.DataSource = dt额度分配;
+            //this.bindingSource交易额度.DataMember = "额度分配";
             this.dataGridView交易额度.DataSource = this.bindingSource交易额度;
             this.dataGridView交易额度.Columns["拼音缩写"].Visible = false;
             //this.dataGridView交易额度.Columns["组合号"].Visible = false;
@@ -186,17 +187,18 @@ namespace AASClient
                     {
                         var dt = Program.AASServiceClient.QueryAll订单();
                         Tool.RefreshDrcjDataTable(Program.serverDb.订单, dt, new string[] { "交易员", "组合号", "证券代码" });
-
                         Thread.Sleep(60000);
                     }
                     else if(Program.AASServiceClient.State == CommunicationState.Opened)
                     {
                         var dt = Program.AASServiceClient.QueryAll订单();
-                        dataGridView当前仓位.Invoke(new Action(() =>
-                        {
-                            Refresh订单UI(dt);
-                        }));
-                        Thread.Sleep(5000);
+                        //dataGridView当前仓位.Invoke(new Action(() => 
+                        //{
+                            
+                        //}));
+                        Refresh订单UI(dt);
+                        //Tool.RefreshDrcjDataTable(Program.serverDb.订单, dt, new string[] { "交易员", "组合号", "证券代码" });
+                        Thread.Sleep(6000);
                     }
                 }
                 catch (Exception ex)
@@ -244,7 +246,10 @@ namespace AASClient
 
                 foreach (var item in dt)
                 {
-                    Program.serverDb.订单.ImportRow(item);
+                    if (item != null && !string.IsNullOrEmpty(item.组合号) )
+                    {
+                        Program.serverDb.订单.ImportRow(item);
+                    }
                 }
 
             }
@@ -332,7 +337,7 @@ namespace AASClient
             }
             catch (Exception ex)
             {
-                Program.logger.LogRunning(ex.Message);
+                Program.logger.LogRunning("Closing Exception" + ex.Message);
             }
 
 
@@ -753,42 +758,46 @@ namespace AASClient
 
         private void RefreshOrder(ProgressChangedEventArgs e)
         {
-            JyDataSet.委托DataTable 委托DataTable1 = e.UserState as JyDataSet.委托DataTable;
-
-            Dictionary<string, List<string>> dictOrder = new Dictionary<string, List<string>>();
-
-            var dt = 委托DataTable1.Copy() as JyDataSet.委托DataTable;
-            dt.Clear();
-            foreach (var item in 委托DataTable1)
+            Task.Run(() => 
             {
-                if (dictOrder.ContainsKey(item.组合号))
+                JyDataSet.委托DataTable 委托DataTable1 = e.UserState as JyDataSet.委托DataTable;
+
+                Dictionary<string, List<string>> dictOrder = new Dictionary<string, List<string>>();
+
+                var dt = 委托DataTable1.Copy() as JyDataSet.委托DataTable;
+                dt.Clear();
+                foreach (var item in 委托DataTable1)
                 {
-                    if (dictOrder[item.组合号].Contains(item.委托编号))
+                    if (dictOrder.ContainsKey(item.组合号))
                     {
-                        continue;
+                        if (dictOrder[item.组合号].Contains(item.委托编号))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            dictOrder[item.组合号].Add(item.委托编号);
+                            dt.ImportRow(item);
+                        }
                     }
                     else
                     {
+                        dictOrder.Add(item.组合号, new List<string>());
                         dictOrder[item.组合号].Add(item.委托编号);
                         dt.ImportRow(item);
                     }
                 }
-                else
-                {
-                    dictOrder.Add(item.组合号, new List<string>());
-                    dictOrder[item.组合号].Add(item.委托编号);
-                    dt.ImportRow(item);
-                }
-            }
 
-            try
-            {
-                Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, dt, new string[] { "组合号", "委托编号" });
-            }
-            catch (Exception ex)
-            {
-                Program.logger.LogRunning("backgroundWorker报价_ProgressChanged 委托更新异常，异常信息{0}", ex.Message);
-            }
+                try
+                {
+                    Tool.RefreshDrcjDataTable(Program.jyDataSet.委托, dt, new string[] { "组合号", "委托编号" });
+                }
+                catch (Exception ex)
+                {
+                    Program.logger.LogRunning("backgroundWorker报价_ProgressChanged 委托更新异常，异常信息{0}", ex.Message);
+                }
+            });
+            
 
         }
 
@@ -1030,14 +1039,20 @@ namespace AASClient
         private void dataGridView交易员_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             AASClient.AASServiceReference.DbDataSet.平台用户Row DataRow1 = (this.bindingSource交易员.Current as DataRowView).Row as AASClient.AASServiceReference.DbDataSet.平台用户Row;
-
-
-            this.bindingSource交易额度.Filter = string.Format("交易员='{0}'", DataRow1.用户名);
+            //this.bindingSource交易额度.Filter = string.Format("交易员='{0}'", DataRow1.用户名);
+            var rows = Program.serverDb.额度分配.Where(_=> _.交易员 == DataRow1.用户名);
+            var dt = new DbDataSet.额度分配DataTable();
+            foreach (var item in rows)
+            {
+                dt.ImportRow(item);
+            }
+            this.bindingSource交易额度.DataSource = dt;
         }
 
         private void 显示全部ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.bindingSource交易额度.Filter = null;
+            //this.bindingSource交易额度.Filter = null;
+            this.bindingSource交易额度.DataSource = Program.serverDb.额度分配;
         }
 
 
@@ -1093,107 +1108,116 @@ namespace AASClient
         private void button统计_Click(object sender, EventArgs e)
         {
             AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable1 = null;
-            try
+            bool isFormatTrader = this.radioButton按交易员.Checked;
+            labelLoading.Visible = true;
+            button统计.Enabled = false;
+
+            Task.Run(() => 
             {
-                业绩统计DataTable1 = Program.AASServiceClient.Query业绩BelongFK(Program.Current平台用户.用户名, this.dateTimePicker开始日期.Value.Date, this.dateTimePicker结束日期.Value.Date);
-            }
-            catch (Exception ex)
-            {
-                Program.logger.LogRunning("风控统计业绩问题：{0}", ex.Message);
-                //MessageBox.Show("出错了，请联系管理员！");
-                return;
-            }
-
-
-
-
-            Dictionary<string, List<JyDataSet.业绩统计Row>> 业绩统计RowList = new Dictionary<string, List<JyDataSet.业绩统计Row>>();
-
-            foreach (AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row1 in 业绩统计DataTable1)
-            {
-                string Key1 = this.radioButton按交易员.Checked ? 业绩统计Row1.交易员 : 业绩统计Row1.组合号;
-
-                if (!业绩统计RowList.ContainsKey(Key1))
+                try
                 {
-                    业绩统计RowList[Key1] = new List<JyDataSet.业绩统计Row>();
+                    
+                    业绩统计DataTable1 = Program.AASServiceClient.Query业绩BelongFK(Program.Current平台用户.用户名, this.dateTimePicker开始日期.Value.Date, this.dateTimePicker结束日期.Value.Date);
+                }
+                catch (Exception ex)
+                {
+                    string msg = "风控统计业绩问题:" + ex.Message;
+                    Program.logger.LogRunning(msg);
+                    this.Invoke(new Action(() => { MessageBox.Show(msg); }));
+                    return;
                 }
 
-                业绩统计RowList[Key1].Add(业绩统计Row1);
-            }
 
 
 
+                Dictionary<string, List<JyDataSet.业绩统计Row>> 业绩统计RowList = new Dictionary<string, List<JyDataSet.业绩统计Row>>();
 
-
-
-            AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable2 = new JyDataSet.业绩统计DataTable();
-
-            foreach (string Key in 业绩统计RowList.Keys)
-            {
-                foreach (AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row1 in 业绩统计RowList[Key])
+                foreach (AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row1 in 业绩统计DataTable1)
                 {
-                    业绩统计DataTable2.ImportRow(业绩统计Row1);
+                    string Key1 = isFormatTrader ? 业绩统计Row1.交易员 : 业绩统计Row1.组合号;
+
+                    if (!业绩统计RowList.ContainsKey(Key1))
+                    {
+                        业绩统计RowList[Key1] = new List<JyDataSet.业绩统计Row>();
+                    }
+
+                    业绩统计RowList[Key1].Add(业绩统计Row1);
                 }
 
-                AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row2 = 业绩统计DataTable2.New业绩统计Row();
-                业绩统计Row2.交易员 = "合计";
-                业绩统计Row2.组合号 = string.Empty;
-                业绩统计Row2.证券代码 = string.Empty;
-                业绩统计Row2.证券名称 = string.Empty;
-                业绩统计Row2.买入数量 = 业绩统计RowList[Key].Sum(r => r.买入数量);
-                业绩统计Row2.买入金额 = 业绩统计RowList[Key].Sum(r => r.买入金额);
-                业绩统计Row2.买入均价 = 业绩统计Row2.买入数量 != 0 ? Math.Round(业绩统计Row2.买入金额 / 业绩统计Row2.买入数量, 3, MidpointRounding.AwayFromZero) : 0;
-                业绩统计Row2.卖出数量 = 业绩统计RowList[Key].Sum(r => r.卖出数量);
-                业绩统计Row2.卖出金额 = 业绩统计RowList[Key].Sum(r => r.卖出金额);
-                业绩统计Row2.卖出均价 = 业绩统计Row2.卖出数量 != 0 ? Math.Round(业绩统计Row2.卖出金额 / 业绩统计Row2.卖出数量, 3, MidpointRounding.AwayFromZero) : 0;
-                业绩统计Row2.毛利 = 业绩统计RowList[Key].Sum(r => r.毛利);
-                业绩统计Row2.净利润 = 业绩统计RowList[Key].Sum(r => r.净利润);
-                业绩统计Row2.交易费用 = 业绩统计RowList[Key].Sum(r => r.交易费用);
-                业绩统计DataTable2.Add业绩统计Row(业绩统计Row2);
-
-            }
 
 
 
 
 
+                AASClient.AASServiceReference.JyDataSet.业绩统计DataTable 业绩统计DataTable2 = new JyDataSet.业绩统计DataTable();
 
-            if (业绩统计DataTable1.Any())
-            {
-                AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row2 = 业绩统计DataTable2.New业绩统计Row();
-                业绩统计Row2.交易员 = "总计";
-                业绩统计Row2.组合号 = string.Empty;
-                业绩统计Row2.证券代码 = string.Empty;
-                业绩统计Row2.证券名称 = string.Empty;
-                业绩统计Row2.买入数量 = 业绩统计DataTable1.Sum(r => r.买入数量);
-                业绩统计Row2.买入金额 = 业绩统计DataTable1.Sum(r => r.买入金额);
-                业绩统计Row2.买入均价 = 业绩统计Row2.买入数量 != 0 ? Math.Round(业绩统计Row2.买入金额 / 业绩统计Row2.买入数量, 3, MidpointRounding.AwayFromZero) : 0;
-                业绩统计Row2.卖出数量 = 业绩统计DataTable1.Sum(r => r.卖出数量);
-                业绩统计Row2.卖出金额 = 业绩统计DataTable1.Sum(r => r.卖出金额);
-                业绩统计Row2.卖出均价 = 业绩统计Row2.卖出数量 != 0 ? Math.Round(业绩统计Row2.卖出金额 / 业绩统计Row2.卖出数量, 3, MidpointRounding.AwayFromZero) : 0;
-                业绩统计Row2.毛利 = 业绩统计DataTable1.Sum(r => r.毛利);
-                业绩统计Row2.净利润 = 业绩统计DataTable1.Sum(r => r.净利润);
-                业绩统计Row2.交易费用 = 业绩统计DataTable1.Sum(r => r.交易费用);
-                业绩统计DataTable2.Add业绩统计Row(业绩统计Row2);
-            }
+                foreach (string Key in 业绩统计RowList.Keys)
+                {
+                    foreach (AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row1 in 业绩统计RowList[Key])
+                    {
+                        业绩统计DataTable2.ImportRow(业绩统计Row1);
+                    }
 
+                    AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row2 = 业绩统计DataTable2.New业绩统计Row();
+                    业绩统计Row2.交易员 = Key + "合计";
+                    业绩统计Row2.组合号 = string.Empty;
+                    业绩统计Row2.证券代码 = string.Empty;
+                    业绩统计Row2.证券名称 = string.Empty;
+                    业绩统计Row2.买入数量 = 业绩统计RowList[Key].Sum(r => r.买入数量);
+                    业绩统计Row2.买入金额 = 业绩统计RowList[Key].Sum(r => r.买入金额);
+                    业绩统计Row2.买入均价 = 业绩统计Row2.买入数量 != 0 ? Math.Round(业绩统计Row2.买入金额 / 业绩统计Row2.买入数量, 3, MidpointRounding.AwayFromZero) : 0;
+                    业绩统计Row2.卖出数量 = 业绩统计RowList[Key].Sum(r => r.卖出数量);
+                    业绩统计Row2.卖出金额 = 业绩统计RowList[Key].Sum(r => r.卖出金额);
+                    业绩统计Row2.卖出均价 = 业绩统计Row2.卖出数量 != 0 ? Math.Round(业绩统计Row2.卖出金额 / 业绩统计Row2.卖出数量, 3, MidpointRounding.AwayFromZero) : 0;
+                    业绩统计Row2.毛利 = 业绩统计RowList[Key].Sum(r => r.毛利);
+                    业绩统计Row2.净利润 = 业绩统计RowList[Key].Sum(r => r.净利润);
+                    业绩统计Row2.交易费用 = 业绩统计RowList[Key].Sum(r => r.交易费用);
+                    业绩统计DataTable2.Add业绩统计Row(业绩统计Row2);
 
-
-            this.dataGridView业绩统计.DataSource = 业绩统计DataTable2;
-
-
-            foreach (DataGridViewColumn DataGridViewColumn1 in this.dataGridView业绩统计.Columns)
-            {
-
-                DataGridViewColumn1.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+                }
 
 
 
-            this.dataGridView业绩统计.Columns["买入数量"].DefaultCellStyle.Format = "f0";
-            this.dataGridView业绩统计.Columns["卖出数量"].DefaultCellStyle.Format = "f0";
-            this.dataGridView业绩统计.Columns["买入金额"].DefaultCellStyle.Format = "f2";
-            this.dataGridView业绩统计.Columns["卖出金额"].DefaultCellStyle.Format = "f2";
+
+
+
+                if (业绩统计DataTable1.Any())
+                {
+                    AASClient.AASServiceReference.JyDataSet.业绩统计Row 业绩统计Row2 = 业绩统计DataTable2.New业绩统计Row();
+                    业绩统计Row2.交易员 = "总计";
+                    业绩统计Row2.组合号 = string.Empty;
+                    业绩统计Row2.证券代码 = string.Empty;
+                    业绩统计Row2.证券名称 = string.Empty;
+                    业绩统计Row2.买入数量 = 业绩统计DataTable1.Sum(r => r.买入数量);
+                    业绩统计Row2.买入金额 = 业绩统计DataTable1.Sum(r => r.买入金额);
+                    业绩统计Row2.买入均价 = 业绩统计Row2.买入数量 != 0 ? Math.Round(业绩统计Row2.买入金额 / 业绩统计Row2.买入数量, 3, MidpointRounding.AwayFromZero) : 0;
+                    业绩统计Row2.卖出数量 = 业绩统计DataTable1.Sum(r => r.卖出数量);
+                    业绩统计Row2.卖出金额 = 业绩统计DataTable1.Sum(r => r.卖出金额);
+                    业绩统计Row2.卖出均价 = 业绩统计Row2.卖出数量 != 0 ? Math.Round(业绩统计Row2.卖出金额 / 业绩统计Row2.卖出数量, 3, MidpointRounding.AwayFromZero) : 0;
+                    业绩统计Row2.毛利 = 业绩统计DataTable1.Sum(r => r.毛利);
+                    业绩统计Row2.净利润 = 业绩统计DataTable1.Sum(r => r.净利润);
+                    业绩统计Row2.交易费用 = 业绩统计DataTable1.Sum(r => r.交易费用);
+                    业绩统计DataTable2.Add业绩统计Row(业绩统计Row2);
+                }
+
+
+                this.BeginInvoke(new Action(() => 
+                {
+                    this.labelLoading.Visible = false;
+                    button统计.Enabled = true;
+                    this.dataGridView业绩统计.DataSource = 业绩统计DataTable2;
+
+                    foreach (DataGridViewColumn DataGridViewColumn1 in this.dataGridView业绩统计.Columns)
+                    {
+                        DataGridViewColumn1.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    }
+
+                    this.dataGridView业绩统计.Columns["买入数量"].DefaultCellStyle.Format = "f0";
+                    this.dataGridView业绩统计.Columns["卖出数量"].DefaultCellStyle.Format = "f0";
+                    this.dataGridView业绩统计.Columns["买入金额"].DefaultCellStyle.Format = "f2";
+                    this.dataGridView业绩统计.Columns["卖出金额"].DefaultCellStyle.Format = "f2";
+                }));
+            });
 
         }
 
@@ -1259,51 +1283,66 @@ namespace AASClient
         //    }
         //}
 
+        bool IsRefreshing = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Task.Run(() => {
-                RefreshTrades();
-
-                try
+            if (!IsRefreshing)
+            {
+                IsRefreshing = true;
+                Task.Run(() =>
                 {
-                    decimal 当日委托交易费用 = 0;
-                    decimal 毛利 = Program.serverDb.已平仓订单.Get毛利();
+                    RefreshTrades();
 
-                    JyDataSet.委托DataTable wtCopy = Program.jyDataSet.委托.Copy() as JyDataSet.委托DataTable;
-                    当日委托交易费用 = wtCopy.Where(r => r.成交数量 > 0).Sum(_ => _.Get交易费用());
-
-                    if (!this.IsDisposed)
+                    try
                     {
-                        this.Invoke(new Action(() => { RefreshDataGridView(当日委托交易费用, 毛利, wtCopy); }));
+                        decimal 当日委托交易费用 = 0;
+                        decimal 毛利 = Program.serverDb.已平仓订单.Get毛利();
+
+
+                        JyDataSet.委托DataTable wtCopy = Program.jyDataSet.委托.Copy() as JyDataSet.委托DataTable;
+                        当日委托交易费用 = wtCopy.Where(r => r.成交数量 > 0).Sum(_ => _.Get交易费用());
+
+                        if (!this.IsDisposed)
+                        {
+                            this.Invoke(new Action(() => {
+                                
+                                RefreshDataGridView(当日委托交易费用, 毛利, wtCopy);
+                                try
+                                {
+                                    foreach (DataGridViewRow 交易额度row in this.dataGridView交易额度.Rows)
+                                    {
+                                        string Jyy = 交易额度row.Cells["交易员"].Value as string;
+                                        string Zqdm = 交易额度row.Cells["证券代码"].Value as string;
+                                        decimal 交易额度 = (decimal)交易额度row.Cells["交易额度"].Value;
+                                        string 组合号 = 交易额度row.Cells["组合号"].Value as string;
+                                        decimal 已买股数, 已卖股数;
+
+                                        wtCopy.Get已买卖股数(Jyy, Zqdm, 组合号, out 已买股数, out 已卖股数);
+
+                                        decimal 可用股数 = 交易额度 - 已卖股数;
+                                        交易额度row.Cells["已卖股数"].Value = 已卖股数;
+                                        交易额度row.Cells["可卖股数"].Value = 可用股数;
+                                    }
+
+                                    //this.label市值合计.Text = Program.serverDb.订单.Get市值合计().ToString();
+                                    //this.label浮动盈亏.Text = Program.serverDb.订单.Get浮动盈亏().ToString();
+                                    //this.label实现盈亏.Text = (毛利 - 当日委托交易费用).ToString();
+                                }
+                                catch (Exception) { }
+                            }));
+
+                        }
                     }
-                }
-                catch (Exception) { }
-            });
+                    catch (Exception) { }
+                    IsRefreshing = false;
+                });
+            }
+           
         }
 
         private void RefreshDataGridView(decimal 当日委托交易费用, decimal 毛利, JyDataSet.委托DataTable wtCopy)
         {
-            try
-            {
-                foreach (DataGridViewRow 交易额度row in this.dataGridView交易额度.Rows)
-                {
-                    string Jyy = 交易额度row.Cells["交易员"].Value as string;
-                    string Zqdm = 交易额度row.Cells["证券代码"].Value as string;
-                    decimal 交易额度 = (decimal)交易额度row.Cells["交易额度"].Value;
-                    decimal 已买股数, 已卖股数;
-
-                    wtCopy.Get已买卖股数(Jyy, Zqdm, out 已买股数, out 已卖股数);
-
-                    decimal 可用股数 = 交易额度 - 已卖股数;
-                    交易额度row.Cells["已卖股数"].Value = 已卖股数;
-                    交易额度row.Cells["可卖股数"].Value = 可用股数;
-                }
-
-                //this.label市值合计.Text = Program.serverDb.订单.Get市值合计().ToString();
-                //this.label浮动盈亏.Text = Program.serverDb.订单.Get浮动盈亏().ToString();
-                //this.label实现盈亏.Text = (毛利 - 当日委托交易费用).ToString();
-            }
-            catch (Exception) { }
+            
             
         }
 
@@ -1357,7 +1396,7 @@ namespace AASClient
         {
             string fdyk = (string)this.dataGridView业绩统计["交易员", e.RowIndex].Value;
 
-            if (fdyk == "合计")
+            if ((fdyk + "").Length > 0 && fdyk.Contains("合计"))
             {
                 this.dataGridView业绩统计.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
             }
@@ -1763,7 +1802,7 @@ namespace AASClient
 
         private void dataGridView当前仓位_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            //Program.logger.LogInfo("dataGridView当前仓位_DataError: " + e.Exception.Message);
+            Program.logger.LogInfo("dataGridView当前仓位_DataError: " + e.Exception.Message);
             e.ThrowException = false;
             e.Cancel = true;
         }
@@ -1792,10 +1831,11 @@ namespace AASClient
                 try
                 {
                     var result = Program.AASServiceClient.QueryAll订单();
-                    dataGridView当前仓位.Invoke(new Action(() =>
-                    { 
-                        Refresh订单UI(result); 
-                    }));
+                    //dataGridView当前仓位.Invoke(new Action(() =>
+                    //{ 
+                    //    Refresh订单UI(result); 
+                    //}));
+                    Tool.RefreshDrcjDataTable(Program.serverDb.订单, result, new string[] { "交易员", "组合号", "证券代码" });
                 }
                 catch (Exception)
                 {
@@ -1804,6 +1844,20 @@ namespace AASClient
                 
             });
             
+        }
+
+        private void dataGridView交易额度_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            Program.logger.LogInfo("dataGridView交易额度_DataError: " + e.Exception.Message);
+            e.ThrowException = false;
+            e.Cancel = true;
+        }
+
+        private void dataGridView当前委托_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            Program.logger.LogInfo("dataGridView当前委托_DataError: " + e.Exception.Message);
+            e.ThrowException = false;
+            e.Cancel = true;
         }
     }
 }

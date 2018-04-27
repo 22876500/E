@@ -108,5 +108,18 @@ namespace AASServer
                 return _openGroupService;
             }
         }
+
+        private static string _mutiThreadAccount;
+        public static string MutiThreadAccount
+        {
+            get 
+            {
+                if (_mutiThreadAccount == null)
+                {
+                    _mutiThreadAccount = Program.appConfig.GetValue("MutiThreadAccount", "");
+                }
+                return _mutiThreadAccount;
+            }
+        }
     }
 }
